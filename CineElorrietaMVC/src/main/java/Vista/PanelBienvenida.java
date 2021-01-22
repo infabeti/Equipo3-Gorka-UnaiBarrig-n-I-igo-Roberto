@@ -47,6 +47,7 @@ public class PanelBienvenida extends JPanel{
 	
 	private void initializeEvents() {
 		this.btnTickets.addActionListener(listenerBotonTickets(this.controladorPanelBienvenida));
+		this.btnPedidos.addActionListener(listenerBotonPedidos(this.controladorPanelBienvenida));
 	}
 	
 	private ActionListener listenerBotonTickets(ControladorPanelBienvenida controladorPanelBienvenida) {
@@ -54,6 +55,14 @@ public class PanelBienvenida extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Tickets");
 				controladorPanelBienvenida.accionadoBottonMostrarPanelTickets();
+			}
+		};
+	}
+	private ActionListener listenerBotonPedidos(ControladorPanelBienvenida controladorPanelBienvenida) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Ejecutando evento Boton Pedidos");
+				controladorPanelBienvenida.accionadoBottonMostrarPanelPedidos();
 			}
 		};
 	}

@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.Modelo;
 import Vista.PanelBienvenida;
+import Vista.PanelPedidos;
 import Vista.PanelTickets;
 import Vista.Vista;
 
@@ -18,7 +19,7 @@ public class ControladorPanelPedidos {
 		this.controlador = controlador;	
 	}
 	
-	public void mostrarPanePedidos() {
+	public void mostrarPanelPedidos() {
 		this.panelPedidos = new PanelPedidos(this);
 		this.vista.mostrarPanel(this.panelPedidos);
 	}
@@ -26,4 +27,7 @@ public class ControladorPanelPedidos {
 	public void accionadoBottonVolverPanelPedidos() {
 		this.controlador.navegarPanelBienvenida();
 	}
+
+
+	
 }

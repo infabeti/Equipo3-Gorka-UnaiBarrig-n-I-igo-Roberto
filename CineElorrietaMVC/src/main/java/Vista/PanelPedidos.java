@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Controlador.ControladorPanelPedidos;
 import Controlador.ControladorPanelTickets;
 
 @SuppressWarnings("serial")
@@ -13,7 +15,7 @@ public class PanelPedidos extends JPanel {
 
 	private JButton btnVolver;
 	private JLabel lblPedidos;
-	private ControladorPanelTickets controladorPanelPedidos;
+	private ControladorPanelPedidos controladorPanelPedidos;
 	
 	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos)
 	{

@@ -26,6 +26,9 @@ public class ControladorPanelBienvenida {
 	public void accionadoBottonMostrarPanelTickets() {
 		this.controlador.navegarPanelTickets();
 	}
+	public void accionadoBottonMostrarPanelPedidos() {
+		this.controlador.navegarPanelPedidos();
+	}
 
 	
 }
