@@ -1,11 +1,13 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Controlador.ControladorPanelBienvenida;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class PanelBienvenida extends JPanel{
@@ -23,23 +25,33 @@ public class PanelBienvenida extends JPanel{
 		setLayout(null);
 		
 		lblBienvenida = new JLabel("Pantalla inicial");
-		lblBienvenida.setBounds(120, 20, 180, 23);
+		lblBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBienvenida.setBounds(108, 26, 200, 23);
 		add(lblBienvenida);
 		
 		btnPedidos = new JButton("Pedidos");
 		btnPedidos.setBounds(120, 60, 180, 23);
+		btnPedidos.setFocusPainted(false);
+		Color cpanel = new Color(200,194,182);
+		btnPedidos.setBackground(cpanel);
 		add(btnPedidos);
 		
 		btnComandas = new JButton("Comandas");
 		btnComandas.setBounds(120, 90, 180, 23);
+		btnComandas.setFocusPainted(false);
+		btnComandas.setBackground(cpanel);
 		add(btnComandas);
 		
 		btnTickets = new JButton("Facturas/Tickets");
 		btnTickets.setBounds(120, 120, 180, 23);
+		btnTickets.setFocusPainted(false);
+		btnTickets.setBackground(cpanel);
 		add(btnTickets);
 		
 		btnAprovisionamiento = new JButton("Aprovisionamiento");
 		btnAprovisionamiento.setBounds(120, 150, 180, 23);
+		btnAprovisionamiento.setFocusPainted(false);
+		btnAprovisionamiento.setBackground(cpanel);
 		add(btnAprovisionamiento);
 		
 		initializeEvents();

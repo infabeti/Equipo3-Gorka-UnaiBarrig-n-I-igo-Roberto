@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,6 +30,10 @@ public class PanelAprovisionamiento extends JPanel {
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(58, 192, 89, 23);
+		btnVolver.setFocusPainted(false);
+		Color cpanel = new Color(200,194,182);
+		btnVolver.setBackground(cpanel);
+		
 		add(btnVolver);
 		
 		initializeEvents();
