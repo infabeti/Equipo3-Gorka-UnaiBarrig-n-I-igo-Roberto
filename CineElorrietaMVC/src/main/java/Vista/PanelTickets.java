@@ -3,23 +3,25 @@ package Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import Controlador.ControladorPanelTickets;
+
 import javax.swing.JTextPane;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 @SuppressWarnings("serial")
 public class PanelTickets extends JPanel {
 
 	private JButton btnVolver;
 	private JLabel lblTickets;
-	private JLabel lblProducto1;
-	private JLabel lblProducto2;
-	private JLabel lblProducto3;
 	private int contP1 = 0;
-	private int contP2 = 0;
-	private int contP3 = 0;
+	private int contP2 = 100;
 
 	private ControladorPanelTickets controladorPanelTickets;
 	
@@ -30,7 +32,7 @@ public class PanelTickets extends JPanel {
 		setLayout(null);
 		
 		JTextPane textPane = new JTextPane();
-		textPane.setBounds(247, 63, 146, 197);
+		textPane.setBounds(263, 52, 131, 138);
 		add(textPane);
 		
 		lblTickets = new JLabel("Tickets");
@@ -39,39 +41,42 @@ public class PanelTickets extends JPanel {
 		
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(58, 192, 89, 23);
+		btnVolver.setBounds(34, 239, 89, 23);
 		add(btnVolver);
 		
-		JButton btnNewButton = new JButton("Producto1");
+		JList list_1 = new JList();
+		list_1.setModel(new AbstractListModel() {
+			String[] values = new String[] {"producto 1", "producto 2", "producto 3"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		list_1.setBounds(34, 52, 155, 138);
+		add(list_1);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
+		spinner.setBounds(199, 59, 41, 23);
+		add(spinner);
+		
+		JButton btnNewButton = new JButton("Añadir");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-			contP1 = contador(contP1);
-				
+				String selec = list_1.getSelectedValue().toString();
+				Integer valor = (Integer)spinner.getValue();
+				String numero = String.valueOf(valor);
+				textPane.setText(selec+": Cant: "+numero);
 			}
 		});
-		btnNewButton.setBounds(58, 66, 89, 23);
+		btnNewButton.setBounds(100, 205, 89, 23);
 		add(btnNewButton);
 		
-		JButton btnProducto = new JButton("Producto2");
-		btnProducto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				contP2 = contador(contP2);
-			}
-		});
-		btnProducto.setBounds(58, 100, 89, 23);
-		add(btnProducto);
 		
-		JButton btnNewButton_1_1 = new JButton("Producto3");
-		btnNewButton_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				contP3 = contador(contP3);
-				String numero = String.valueOf(contP3);
-				textPane.setText(numero);
-			}
-		});
-		btnNewButton_1_1.setBounds(58, 134, 89, 23);
-		add(btnNewButton_1_1);
+		
+		
 		
 		
 		
@@ -89,8 +94,5 @@ public class PanelTickets extends JPanel {
 				controladorPanelTickets.accionadoBottonVolverPanelTickets();
 			}
 		};
-	}
-	public int contador(int cont) {
-		return cont++;
 	}
 }
