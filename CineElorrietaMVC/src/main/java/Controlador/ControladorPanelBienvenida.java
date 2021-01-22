@@ -23,7 +23,7 @@ public class ControladorPanelBienvenida {
 		this.vista.mostrarPanel(this.panelBienvenida);
 	}
 	
-	public void accionadoBottonMostrarPanelGeneros() {
+	public void accionadoBottonMostrarPanelPedidos() {
 		this.controlador.navegarPanelGeneros();
 	}
 }
