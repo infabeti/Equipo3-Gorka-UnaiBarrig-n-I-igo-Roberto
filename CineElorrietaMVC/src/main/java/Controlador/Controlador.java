@@ -10,6 +10,8 @@ public class Controlador {
 	private ControladorPanelBienvenida controladorPanelBienvenida;
 	private ControladorPanelTickets controladorPanelTickets;
 	private ControladorPanelPedidos controladorPanelPedidos;
+	private ControladorPanelComandas controladorPanelComandas;
+	private ControladorPanelAprovisionamiento controladorPanelAprovisionamiento;
 	
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
@@ -17,6 +19,8 @@ public class Controlador {
 		this.controladorPanelBienvenida = new ControladorPanelBienvenida(this.modelo, this.vista, this);
 		this.controladorPanelTickets = new ControladorPanelTickets(this.modelo, this.vista, this);
 		this.controladorPanelPedidos = new ControladorPanelPedidos(this.modelo, this.vista, this);
+		this.controladorPanelComandas = new ControladorPanelComandas(this.modelo, this.vista, this);
+		this.controladorPanelAprovisionamiento = new ControladorPanelAprovisionamiento(this.modelo, this.vista, this);
 		this.navegarPanelBienvenida();
 	}
 	
@@ -33,6 +37,17 @@ public class Controlador {
 		System.out.println("Navegar panel Pedidos");
 		this.controladorPanelPedidos.mostrarPanelPedidos();
 	}
+	
+	public void navegarPanelComandas() {
+		System.out.println("Navegar panel Comandas");
+		this.controladorPanelComandas.mostrarPanelComandas();
+	}
+	
+	public void navegarPanelAprovisionamiento() {
+		System.out.println("Navegar panel Aprovisionamiento");
+		this.controladorPanelAprovisionamiento.mostrarPanelAprovisionamiento();
+	}
+	
 
 	
 }

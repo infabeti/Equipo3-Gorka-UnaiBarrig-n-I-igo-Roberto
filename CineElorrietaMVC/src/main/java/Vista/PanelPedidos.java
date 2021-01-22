@@ -23,12 +23,12 @@ public class PanelPedidos extends JPanel {
 		
 		setLayout(null);
 		
-		lblPedidos = new JLabel("Panel Pedidos");
-		lblPedidos.setBounds(58, 35, 115, 14);
+		lblPedidos = new JLabel("Pedidos");
+		lblPedidos.setBounds(198, 15, 115, 14);
 		add(lblPedidos);
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(58, 62, 89, 23);
+		btnVolver.setBounds(58, 192, 89, 23);
 		add(btnVolver);
 		
 		initializeEvents();

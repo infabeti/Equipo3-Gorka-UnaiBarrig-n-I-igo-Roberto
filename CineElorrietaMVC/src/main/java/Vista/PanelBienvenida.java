@@ -13,7 +13,7 @@ public class PanelBienvenida extends JPanel{
 	private JButton btnPedidos;
 	private JButton btnComandas;
 	private JButton btnTickets;
-	private JButton btnAprov;
+	private JButton btnAprovisionamiento;
 	private JLabel lblBienvenida;
 	private ControladorPanelBienvenida controladorPanelBienvenida;
 	
@@ -38,9 +38,9 @@ public class PanelBienvenida extends JPanel{
 		btnTickets.setBounds(120, 120, 180, 23);
 		add(btnTickets);
 		
-		btnAprov = new JButton("Aprovisionamiento");
-		btnAprov.setBounds(120, 150, 180, 23);
-		add(btnAprov);
+		btnAprovisionamiento = new JButton("Aprovisionamiento");
+		btnAprovisionamiento.setBounds(120, 150, 180, 23);
+		add(btnAprovisionamiento);
 		
 		initializeEvents();
 	}
@@ -48,7 +48,11 @@ public class PanelBienvenida extends JPanel{
 	private void initializeEvents() {
 		this.btnTickets.addActionListener(listenerBotonTickets(this.controladorPanelBienvenida));
 		this.btnPedidos.addActionListener(listenerBotonPedidos(this.controladorPanelBienvenida));
+		this.btnComandas.addActionListener(listenerBotonComandas(this.controladorPanelBienvenida));
+		this.btnAprovisionamiento.addActionListener(listenerBotonAprovisionamiento(this.controladorPanelBienvenida));
+
 	}
+	
 	
 	private ActionListener listenerBotonTickets(ControladorPanelBienvenida controladorPanelBienvenida) {
 		return new ActionListener() {
@@ -63,6 +67,22 @@ public class PanelBienvenida extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Pedidos");
 				controladorPanelBienvenida.accionadoBottonMostrarPanelPedidos();
+			}
+		};
+	}
+	private ActionListener listenerBotonComandas(ControladorPanelBienvenida controladorPanelBienvenida) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Ejecutando evento Boton Comandas");
+				controladorPanelBienvenida.accionadoBottonMostrarPanelComandas();
+			}
+		};
+	}
+	private ActionListener listenerBotonAprovisionamiento(ControladorPanelBienvenida controladorPanelBienvenida) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Ejecutando evento Boton Aprovisionamiento");
+				controladorPanelBienvenida.accionadoBottonMostrarPanelAprovisionamiento();
 			}
 		};
 	}

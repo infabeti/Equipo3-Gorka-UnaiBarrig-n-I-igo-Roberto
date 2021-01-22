@@ -29,6 +29,12 @@ public class ControladorPanelBienvenida {
 	public void accionadoBottonMostrarPanelPedidos() {
 		this.controlador.navegarPanelPedidos();
 	}
+	public void accionadoBottonMostrarPanelComandas() {
+		this.controlador.navegarPanelComandas();
+	}
+	public void accionadoBottonMostrarPanelAprovisionamiento() {
+		this.controlador.navegarPanelAprovisionamiento();
+	}
 
 	
 }

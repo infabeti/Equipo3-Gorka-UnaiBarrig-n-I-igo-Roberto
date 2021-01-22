@@ -21,12 +21,12 @@ public class PanelTickets extends JPanel {
 		
 		setLayout(null);
 		
-		lblTickets = new JLabel("Panel Tickets");
-		lblTickets.setBounds(58, 35, 115, 14);
+		lblTickets = new JLabel("Tickets");
+		lblTickets.setBounds(198, 15, 115, 14);
 		add(lblTickets);
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(58, 62, 89, 23);
+		btnVolver.setBounds(58, 192, 89, 23);
 		add(btnVolver);
 		
 		initializeEvents();
