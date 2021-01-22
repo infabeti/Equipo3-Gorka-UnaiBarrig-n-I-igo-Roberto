@@ -14,6 +14,8 @@ import javax.swing.JTextPane;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JMenuBar;
+import javax.swing.JTable;
 
 @SuppressWarnings("serial")
 public class PanelTickets extends JPanel {
@@ -22,6 +24,7 @@ public class PanelTickets extends JPanel {
 	private JLabel lblTickets;
 	private int contP1 = 0;
 	private int contP2 = 100;
+	private String[] texto2 =new String[256];
 
 	private ControladorPanelTickets controladorPanelTickets;
 	
@@ -66,9 +69,13 @@ public class PanelTickets extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selec = list_1.getSelectedValue().toString();
+				int[] posicion = list_1.getSelectedIndices();
 				Integer valor = (Integer)spinner.getValue();
 				String numero = String.valueOf(valor);
-				textPane.setText(selec+": Cant: "+numero);
+				String texto = selec+": Cant: "+numero+"\n";
+				texto2[variable] = texto;
+				String textoF = String.valueOf(texto2);
+				textPane.setText(textoF);
 			}
 		});
 		btnNewButton.setBounds(100, 205, 89, 23);
@@ -83,6 +90,11 @@ public class PanelTickets extends JPanel {
 		initializeEvents();
 	}
 	
+	protected int parseInt(int i) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	private void initializeEvents() {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelTickets));
 	}
