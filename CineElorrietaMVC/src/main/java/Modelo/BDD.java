@@ -22,5 +22,12 @@ public class BDD {
 			
 		}
 	}
-
+	public static Productos  getProductos() {
+		Productos producto = new Productos();
+		Productos producto[]=new Productos[256];
+		producto[0]=new Productos("Fernando");
+		producto[1]=new Productos();
+		producto[2]=new Productos();
+		return producto;
+	}
 }
