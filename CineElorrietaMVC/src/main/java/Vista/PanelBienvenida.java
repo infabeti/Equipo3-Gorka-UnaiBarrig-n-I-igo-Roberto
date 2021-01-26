@@ -16,6 +16,7 @@ public class PanelBienvenida extends JPanel{
 	private JButton btnComandas;
 	private JButton btnTickets;
 	private JButton btnAprovisionamiento;
+	private JButton btnBDD;
 	private JLabel lblBienvenida;
 	private ControladorPanelBienvenida controladorPanelBienvenida;
 	
@@ -54,6 +55,14 @@ public class PanelBienvenida extends JPanel{
 		btnAprovisionamiento.setBackground(cpanel);
 		add(btnAprovisionamiento);
 		
+		btnBDD = new JButton("Conexión BDD");
+		btnBDD.setBounds(120, 180, 180, 23);
+		btnBDD.setFocusPainted(false);
+		btnBDD.setBackground(cpanel);
+		add(btnBDD);
+		
+		
+		
 		initializeEvents();
 	}
 	
@@ -62,6 +71,7 @@ public class PanelBienvenida extends JPanel{
 		this.btnPedidos.addActionListener(listenerBotonPedidos(this.controladorPanelBienvenida));
 		this.btnComandas.addActionListener(listenerBotonComandas(this.controladorPanelBienvenida));
 		this.btnAprovisionamiento.addActionListener(listenerBotonAprovisionamiento(this.controladorPanelBienvenida));
+		this.btnBDD.addActionListener(listenerBotonBDD(this.controladorPanelBienvenida));
 
 	}
 	
@@ -95,6 +105,14 @@ public class PanelBienvenida extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Aprovisionamiento");
 				controladorPanelBienvenida.accionadoBottonMostrarPanelAprovisionamiento();
+			}
+		};
+	}
+	private ActionListener listenerBotonBDD(ControladorPanelBienvenida controladorPanelBDD) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Ejecutando evento conexión BDD");
+				controladorPanelBDD.accionadoBottonMostrarConexionBDD();
 			}
 		};
 	}

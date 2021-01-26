@@ -35,6 +35,11 @@ public class ControladorPanelBienvenida {
 	public void accionadoBottonMostrarPanelAprovisionamiento() {
 		this.controlador.navegarPanelAprovisionamiento();
 	}
+	
+	public void accionadoBottonMostrarConexionBDD() {
+		
+		this.controlador.conectarBDD();
+	}
 
 	
 }

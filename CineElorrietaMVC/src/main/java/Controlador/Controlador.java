@@ -48,6 +48,12 @@ public class Controlador {
 		this.controladorPanelAprovisionamiento.mostrarPanelAprovisionamiento();
 	}
 	
+	public void conectarBDD() {
+		System.out.println("Conectar a BDD");
+		this.controladorPanelBienvenida.accionadoBottonMostrarConexionBDD();
+		
+	}
+	
 
 	
 }
