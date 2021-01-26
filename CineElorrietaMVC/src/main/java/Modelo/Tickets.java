@@ -4,7 +4,7 @@ public class Tickets{
 	private String NumTrans;
 	private String fecha;
 	private String NomLocal;
-	private String[] productos;
+	private String[] productos = new String[256];
 	
 	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
@@ -23,5 +23,11 @@ public class Tickets{
 	}
 	public String getNomLocal() {
 		return this.NomLocal;
+	}
+	public void setproductos(String[] productos) {
+		this.productos = productos;
+	}
+	public String[] getproductos(String[] productos) {
+		return this.productos;
 	}
 }
