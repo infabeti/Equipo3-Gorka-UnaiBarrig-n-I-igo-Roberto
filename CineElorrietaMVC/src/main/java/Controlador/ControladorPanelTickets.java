@@ -11,6 +11,7 @@ public class ControladorPanelTickets {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelTickets panelTickets;
+	private int cont=1;
 	
 	public ControladorPanelTickets(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
@@ -25,5 +26,13 @@ public class ControladorPanelTickets {
 	
 	public void accionadoBottonVolverPanelTickets() {
 		this.controlador.navegarPanelBienvenida();
+	}
+	public void accionadoBottonAñadirPanelTickets() {
+		this.controlador.navegarPanelBienvenida();
+	}
+	public void accionadoBottonGuardarPanelTickets() {
+		
+		this.cont++;
+		
 	}
 }
