@@ -19,6 +19,7 @@ public class BDD {
 		}catch(SQLException e){
 
 			System.out.println("No se ha podido conectar a la base de datos");
+			e.printStackTrace();
 			
 		}
 	}

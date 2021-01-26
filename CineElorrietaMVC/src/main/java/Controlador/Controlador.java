@@ -1,11 +1,13 @@
 package Controlador;
 
+import Modelo.BDD;
 import Modelo.Modelo;
 import Vista.Vista;
 
 public class Controlador {
 
 	private Modelo modelo;
+	private BDD bd;
 	private Vista vista;
 	private ControladorPanelBienvenida controladorPanelBienvenida;
 	private ControladorPanelTickets controladorPanelTickets;
@@ -50,7 +52,7 @@ public class Controlador {
 	
 	public void conectarBDD() {
 		System.out.println("Conectar a BDD");
-		this.controladorPanelBienvenida.accionadoBottonMostrarConexionBDD();
+		this.bd.conexion();
 		
 	}
 	
