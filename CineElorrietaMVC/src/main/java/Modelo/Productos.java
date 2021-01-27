@@ -24,4 +24,9 @@ public class Productos {
 	public int getPrecio() {
 		return this.Precio;
 	}
+	 
+	public String toString()
+	{
+		return this.getNombreP() + "-" + this.getPrecio();
+	}
 }

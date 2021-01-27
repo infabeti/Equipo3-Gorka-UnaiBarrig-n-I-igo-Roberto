@@ -38,4 +38,16 @@ public class ControladorPanelTickets {
 		
 	}
 	
+	public String[] pasarString(){
+		BDD productos = new BDD();
+		Productos[] poductos2 = productos.getProductos();
+		String [] arrayr=new String[poductos2.length];
+		for(int i=0; i<poductos2.length; i++) {
+			arrayr[i]=poductos2[i].toString();
+			System.out.println("afsd");
+		}
+		System.out.println("auipsfgasdu");
+		return  arrayr;
+		
+	}
 }

@@ -24,7 +24,7 @@ public class BDD {
 		}
 	}
 	public Productos[]  getProductos() {
-		Productos producto[]=new Productos[256];
+		Productos producto[]=new Productos[6];
 		producto[0]=new Productos("kass",5);
 		producto[1]=new Productos("cocacola",5);
 		producto[2]=new Productos("cafe",5);

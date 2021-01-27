@@ -54,4 +54,5 @@ public class Controlador {
 		System.out.println("Conectar a BDD");
 		this.bd.conexion();
 	}
+	
 }

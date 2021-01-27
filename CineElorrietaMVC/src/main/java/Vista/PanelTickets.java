@@ -2,26 +2,17 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import Controlador.ControladorPanelTickets;
-
-import javax.swing.JTextPane;
-import javax.swing.JRadioButton;
+import Modelo.Productos;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.JMenuBar;
 import javax.swing.JTable;
-import java.awt.Component;
-import javax.swing.Box;
 import javax.swing.DefaultListModel;
-import javax.swing.border.BevelBorder;
 import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
@@ -30,11 +21,11 @@ public class PanelTickets extends JPanel {
 	private JButton btnVolver;
 	private JLabel lblTickets;
 	private int contTickets = 1;
-	private int contP2 = 100;
 
 	private ControladorPanelTickets controladorPanelTickets;
 	private JTable table;
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelTickets(ControladorPanelTickets controladorPanelTickets)
 	{
 		this.controladorPanelTickets = controladorPanelTickets;
@@ -51,9 +42,7 @@ public class PanelTickets extends JPanel {
 		JList list_1 = new JList();
 		list_1.setBounds(34, 52, 155, 138);
 		list_1.setModel(new AbstractListModel() {
-			
-			
-			String[] values = new String[] {"producto 1", "producto 2", "producto 3"};
+			String[] values = controladorPanelTickets.pasarString();
 			public int getSize() {
 				return values.length;
 			}
