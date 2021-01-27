@@ -23,7 +23,7 @@ public class BDD {
 			
 		}
 	}
-	public static Productos[]  getProductos() {
+	public Productos[]  getProductos() {
 		Productos producto[]=new Productos[256];
 		producto[0]=new Productos("kass",5);
 		producto[1]=new Productos("cocacola",5);

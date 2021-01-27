@@ -1,6 +1,8 @@
 package Controlador;
 
+import Modelo.BDD;
 import Modelo.Modelo;
+import Modelo.Productos;
 import Vista.PanelBienvenida;
 import Vista.PanelTickets;
 import Vista.Vista;
@@ -12,6 +14,7 @@ public class ControladorPanelTickets {
 	private Controlador controlador;
 	private PanelTickets panelTickets;
 	private int cont=1;
+	
 	
 	public ControladorPanelTickets(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
@@ -34,4 +37,5 @@ public class ControladorPanelTickets {
 		this.cont++;
 		
 	}
+	
 }
