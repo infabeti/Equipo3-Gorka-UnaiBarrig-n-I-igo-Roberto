@@ -29,6 +29,9 @@ public class ControladorPanelPedidos {
 	public void accionadoBottonVolverPanelPedidos() {
 		this.controlador.navegarPanelBienvenida();
 	}
+	public void accionadoBottonAñadirPanelPedidos() {
+		this.controlador.navegarPanelBienvenida();
+	}
 	public String[] pasarString(){
 		BDD productos = new BDD();
 		Productos[] poductos2 = productos.getProductosP();
