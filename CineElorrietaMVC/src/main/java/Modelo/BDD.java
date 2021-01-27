@@ -33,4 +33,15 @@ public class BDD {
 		producto[5]=new Productos("pistachos",5);
 		return producto;
 	}
+	public Productos[]  getProductosP() {
+		Productos producto[]=new Productos[6];
+		producto[0]=new Productos("Arroz",5);
+		producto[1]=new Productos("Macarrones",5);
+		producto[2]=new Productos("Lentejas",5);
+		producto[3]=new Productos("bainas",5);
+		producto[4]=new Productos("pastel",5);
+		producto[5]=new Productos("tarta",5);
+		return producto;
+	}
+	
 }

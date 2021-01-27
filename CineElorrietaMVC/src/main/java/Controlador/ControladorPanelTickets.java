@@ -31,7 +31,7 @@ public class ControladorPanelTickets {
 		this.controlador.navegarPanelBienvenida();
 	}
 	public void accionadoBottonAñadirPanelTickets() {
-		this.controlador.navegarPanelBienvenida();
+		String selec = list_1.getSelectedValue().toString();
 	}
 	public void accionadoBottonGuardarPanelTickets() {
 		this.cont++;
@@ -44,9 +44,7 @@ public class ControladorPanelTickets {
 		String [] arrayr=new String[poductos2.length];
 		for(int i=0; i<poductos2.length; i++) {
 			arrayr[i]=poductos2[i].toString();
-			System.out.println("afsd");
 		}
-		System.out.println("auipsfgasdu");
 		return  arrayr;
 		
 	}

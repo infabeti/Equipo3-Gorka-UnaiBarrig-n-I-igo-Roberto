@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 
 import Controlador.ControladorPanelPedidos;
 import Controlador.ControladorPanelTickets;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
 
 @SuppressWarnings("serial")
 public class PanelPedidos extends JPanel {
@@ -34,6 +36,19 @@ public class PanelPedidos extends JPanel {
 		Color cpanel = new Color(200,194,182);
 		btnVolver.setBackground(cpanel);
 		add(btnVolver);
+		
+		JList list = new JList();
+		list.setModel(new AbstractListModel() {
+			String[] values = controladorPanelPedidos.pasarString();
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		list.setBounds(35, 54, 140, 90);
+		add(list);
 		
 		initializeEvents();
 	}
