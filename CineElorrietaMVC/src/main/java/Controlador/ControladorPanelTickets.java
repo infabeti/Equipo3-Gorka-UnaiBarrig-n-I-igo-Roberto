@@ -31,7 +31,6 @@ public class ControladorPanelTickets {
 		this.controlador.navegarPanelBienvenida();
 	}
 	public void accionadoBottonGuardarPanelTickets() {
-		
 		this.cont++;
 		
 	}
