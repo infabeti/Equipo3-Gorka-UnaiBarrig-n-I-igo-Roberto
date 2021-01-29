@@ -6,6 +6,16 @@ public class Tickets{
 	private String NomLocal;
 	private String[] productos = new String[256];
 	
+	public Tickets(){
+	}
+	
+	public Tickets(String NumTrans,String fecha,String NomLocal,String[] productos){
+		this.NumTrans = NumTrans;
+		this.fecha = fecha;
+		this.NomLocal = NomLocal;
+		this.productos = productos;
+	}
+	
 	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
 	}

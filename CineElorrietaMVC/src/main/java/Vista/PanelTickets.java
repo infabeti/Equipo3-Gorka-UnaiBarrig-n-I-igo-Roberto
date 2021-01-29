@@ -76,7 +76,6 @@ public class PanelTickets extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String selec = list_1.getSelectedValue().toString();
 				Integer valor = (Integer)spinner.getValue();
-					
 			}
 		});
 		btnAñadir.setBounds(117, 211, 89, 23);

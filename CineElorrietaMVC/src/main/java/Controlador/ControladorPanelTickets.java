@@ -31,11 +31,10 @@ public class ControladorPanelTickets {
 		this.controlador.navegarPanelBienvenida();
 	}
 	public void accionadoBottonAñadirPanelTickets() {
-		String selec = list_1.getSelectedValue().toString();
+	
 	}
 	public void accionadoBottonGuardarPanelTickets() {
 		this.cont++;
-		
 	}
 	
 	public String[] pasarString(){

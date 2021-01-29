@@ -26,6 +26,7 @@ public class PanelPedidos extends JPanel {
 	private ControladorPanelPedidos controladorPanelPedidos;
 	private JTextField textField;
 	
+	@SuppressWarnings("unchecked")
 	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos)
 	{
 		this.controladorPanelPedidos = controladorPanelPedidos;
