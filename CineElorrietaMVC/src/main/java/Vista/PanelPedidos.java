@@ -16,6 +16,8 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import java.awt.SystemColor;
+import java.awt.Choice;
+import javax.swing.JSlider;
 
 @SuppressWarnings("serial")
 public class PanelPedidos extends JPanel {
@@ -25,6 +27,7 @@ public class PanelPedidos extends JPanel {
 	private JLabel lblPedidos;
 	private ControladorPanelPedidos controladorPanelPedidos;
 	private JTextField textField;
+	private JComboBox combo;
 	
 	@SuppressWarnings("unchecked")
 	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos)
@@ -44,6 +47,12 @@ public class PanelPedidos extends JPanel {
 		btnVolver.setBackground(cpanel);
 		add(btnVolver);
 		
+		btnAñadir = new JButton("A\u00F1adir\r\n");
+		btnAñadir.setFocusPainted(false);
+		btnAñadir.setBackground(new Color(200, 194, 182));
+		btnAñadir.setBounds(135, 234, 89, 23);
+		add(btnAñadir);
+		
 		JList list = new JList();
 		list.setModel(new AbstractListModel() {
 			String[] values = controladorPanelPedidos.pasarString();
@@ -61,14 +70,6 @@ public class PanelPedidos extends JPanel {
 		list_1.setBounds(274, 97, 140, 140);
 		add(list_1);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBackground(SystemColor.activeCaption);
-		comboBox.setToolTipText("");
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Local", "Domicilio"}));
-		comboBox.setBounds(347, 25, 86, 22);
-		add(comboBox);
-		
-		
 		JLabel lblNewLabel = new JLabel("Direccion:\r\n");
 		lblNewLabel.setBounds(284, 69, 66, 14);
 		add(lblNewLabel);
@@ -77,13 +78,31 @@ public class PanelPedidos extends JPanel {
 		textField.setBounds(347, 66, 86, 20);
 		add(textField);
 		textField.setColumns(10);
+		String variableDeTexto;
+		variableDeTexto =textField.getText();
+
+
+
+
+		
+		combo = new JComboBox();
+		combo.addItem("Local");
+		combo.addItem("Domicilio");
+		combo.setBackground(SystemColor.activeCaption);
+		combo.setToolTipText("");
+		combo.setBounds(347, 25, 86, 22);
+		add(combo);
 		
 		
-		JButton btnAñadir = new JButton("A\u00F1adir\r\n");
-		btnAñadir.setFocusPainted(false);
-		btnAñadir.setBackground(new Color(200, 194, 182));
-		btnAñadir.setBounds(135, 234, 89, 23);
-		add(btnAñadir);
+		combo.addActionListener(new ActionListener() {
+			   @Override
+			   public void actionPerformed(ActionEvent e) {
+			      // Aquí hacemos lo que queramos hacer.
+				  String Direccion= variableDeTexto;
+			   }
+			});
+		
+		
 		
 		initializeEvents();
 	}
