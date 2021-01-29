@@ -14,6 +14,7 @@ public class ControladorPanelTickets {
 	private Controlador controlador;
 	private PanelTickets panelTickets;
 	private int cont=1;
+	private String[] Separado;
 	
 	
 	public ControladorPanelTickets(Modelo modelo, Vista vista, Controlador controlador) {
@@ -30,11 +31,9 @@ public class ControladorPanelTickets {
 	public void accionadoBottonVolverPanelTickets() {
 		this.controlador.navegarPanelBienvenida();
 	}
-	public void accionadoBottonAñadirPanelTickets() {
-	
-	}
-	public void accionadoBottonGuardarPanelTickets() {
-		this.cont++;
+	public void accionadoBottonAñadirPanelTickets(Object selec) {
+		Productos producto = new Productos();
+		Separado = producto.separar(selec);
 	}
 	
 	public String[] pasarString(){
@@ -46,5 +45,10 @@ public class ControladorPanelTickets {
 		}
 		return  arrayr;
 		
+	}
+	public String entrega() {
+		Productos producto = new Productos();
+		Separado = producto.quitarEuro(Separado);
+		return null;
 	}
 }

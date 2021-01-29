@@ -29,4 +29,12 @@ public class Productos {
 	{
 		return this.getNombreP() + "-" + this.getPrecio()+"€";
 	}
+	
+	public String[] separar(Object selec) {
+		return ((String) selec).split("-");
+		
+	}
+	public String[] quitarEuro(Object selec) {
+		return ((String) selec).split("€");
+	}
 }

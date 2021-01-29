@@ -13,6 +13,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
 public class PanelTickets extends JPanel {
@@ -20,9 +21,11 @@ public class PanelTickets extends JPanel {
 	private JButton btnVolver;
 	private JButton btnAñadir;
 	private JLabel lblTickets;
-
-	private ControladorPanelTickets controladorPanelTickets;
+	private JList list_1;
+	private JSpinner spinner;
 	private JTable table;
+	private ControladorPanelTickets controladorPanelTickets;
+	
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelTickets(ControladorPanelTickets controladorPanelTickets)
@@ -39,7 +42,7 @@ public class PanelTickets extends JPanel {
 		add(btnVolver);
 		
 		
-		JList list_1 = new JList();
+		list_1 = new JList();
 		list_1.setBounds(20, 59, 155, 141);
 		list_1.setModel(new AbstractListModel() {
 			String[] values = controladorPanelTickets.pasarString();
@@ -52,17 +55,37 @@ public class PanelTickets extends JPanel {
 		});
 		add(list_1);
 		
-		JSpinner spinner = new JSpinner();
+		spinner = new JSpinner();
 		spinner.setBounds(185, 59, 41, 23);
 		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 		add(spinner);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(20, 29, 51, 22);
-		add(textArea);
+		JTextArea cont = new JTextArea();
+		cont.setText("1");
+		cont.setBounds(110, 10, 26, 22);
+		add(cont);
 		
 		table = new JTable();
-		table.setBounds(236, 60, 165, 141);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{1, 2, 3, 4},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"Producto", "Cantidad", "Precio/Cant", "Total"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, Integer.class, Integer.class, Object.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		table.setBounds(236, 60, 165, 80);
 		add(table);
 		
 		JLabel lblNewLabel = new JLabel("0");
@@ -74,12 +97,16 @@ public class PanelTickets extends JPanel {
 		btnAñadir = new JButton("Añadir");
 		btnAñadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String selec = list_1.getSelectedValue().toString();
-				Integer valor = (Integer)spinner.getValue();
+				table.setModel(controladorPanelTickets.entrega());
+				
 			}
 		});
 		btnAñadir.setBounds(117, 211, 89, 23);
 		add(btnAñadir);
+		
+		JLabel lblNumeroDeCompra = new JLabel("Numero de compra:");
+		lblNumeroDeCompra.setBounds(10, 15, 115, 14);
+		add(lblNumeroDeCompra);
 		
 		
 		
@@ -90,6 +117,11 @@ public class PanelTickets extends JPanel {
 		
 		
 		initializeEvents();
+	}
+	
+	private int calcularPrecioCant(int valor,int preciobase) {
+		int precio = valor+preciobase;
+		return precio;
 	}
 	
 
@@ -110,7 +142,7 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
-				controladorPanelTickets.accionadoBottonAñadirPanelTickets();
+				controladorPanelTickets.accionadoBottonAñadirPanelTickets(list_1.getSelectedValue());
 			}
 		};
 	}
