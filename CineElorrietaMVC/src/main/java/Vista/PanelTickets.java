@@ -20,10 +20,12 @@ public class PanelTickets extends JPanel {
 
 	private JButton btnVolver;
 	private JButton btnAñadir;
+	private JButton btnGuardar;
 	private JLabel lblTickets;
 	private JList list_1;
 	private JSpinner spinner;
 	private JTable table;
+	private JTextArea cont;
 	private ControladorPanelTickets controladorPanelTickets;
 	
 	
@@ -34,12 +36,16 @@ public class PanelTickets extends JPanel {
 		setLayout(null);
 		
 		lblTickets = new JLabel("Tickets");
-		lblTickets.setBounds(198, 15, 115, 14);
+		lblTickets.setBounds(185, 15, 115, 14);
 		add(lblTickets);
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(10, 211, 89, 23);
 		add(btnVolver);
+		
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(312, 211, 89, 23);
+		add(btnGuardar);
 		
 		
 		list_1 = new JList();
@@ -60,7 +66,7 @@ public class PanelTickets extends JPanel {
 		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 		add(spinner);
 		
-		JTextArea cont = new JTextArea();
+		cont = new JTextArea();
 		cont.setText("1");
 		cont.setBounds(110, 10, 26, 22);
 		add(cont);
@@ -68,18 +74,15 @@ public class PanelTickets extends JPanel {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{1, 2, 3, 4},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
+				{null, null, null},
+				
 			},
 			new String[] {
-				"Producto", "Cantidad", "Precio/Cant", "Total"
+				"Producto", "Cantidad", "Precio/Cant"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				String.class, Integer.class, Integer.class, Object.class
+				String.class, Integer.class, Integer.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
@@ -91,13 +94,13 @@ public class PanelTickets extends JPanel {
 		JLabel lblNewLabel = new JLabel("0");
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setBounds(355, 212, 46, 14);
+		lblNewLabel.setBounds(363, 165, 46, 14);
 		add(lblNewLabel);
 		
 		btnAñadir = new JButton("Añadir");
 		btnAñadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				table.setModel(controladorPanelTickets.entrega());
+				
 				
 			}
 		});
@@ -108,14 +111,10 @@ public class PanelTickets extends JPanel {
 		lblNumeroDeCompra.setBounds(10, 15, 115, 14);
 		add(lblNumeroDeCompra);
 		
-		
-		
-		
-		
-		
-		
-		
-		
+		JLabel lblTotal = new JLabel("Total:");
+		lblTotal.setBounds(325, 165, 115, 14);
+		add(lblTotal);
+	
 		initializeEvents();
 	}
 	
@@ -128,6 +127,7 @@ public class PanelTickets extends JPanel {
 	private void initializeEvents() {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelTickets));
 		this.btnAñadir.addActionListener(listenerBotonAñadir(this.controladorPanelTickets));
+		this.btnGuardar.addActionListener(listenerBotonGuardar(this.controladorPanelTickets));
 	}
 	
 	private ActionListener listenerBotonVolver(ControladorPanelTickets controladorPanelTickets) {
@@ -143,6 +143,8 @@ public class PanelTickets extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
 				controladorPanelTickets.accionadoBottonAñadirPanelTickets(list_1.getSelectedValue());
+				table.add(btnAñadir, new Object[] { });
+				
 			}
 		};
 	}
@@ -151,7 +153,7 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Guardar");
-				controladorPanelTickets.accionadoBottonGuardarPanelTickets();
+				controladorPanelTickets.contador(cont);
 			}
 		};
 	}
