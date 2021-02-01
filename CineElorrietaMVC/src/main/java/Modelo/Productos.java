@@ -35,6 +35,7 @@ public class Productos {
 		
 	}
 	public String[] quitarEuro(Object selec) {
+		System.out.println("aodkps");
 		return ((String) selec).split("€");
 	}
 }

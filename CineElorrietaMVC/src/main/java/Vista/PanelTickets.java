@@ -70,20 +70,21 @@ public class PanelTickets extends JPanel {
 		cont.setText("1");
 		cont.setBounds(110, 10, 26, 22);
 		add(cont);
+		String col[] = {"Producto", "Cantidad", "Precio/Cant"};
+		String[] values = controladorPanelTickets.entrega();
+		 int numEntero = Integer.parseInt(values[1]);
+		 int spinnerInt = Integer.parseInt((String) spinner.getValue());
+		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+		table = new JTable(tableModel);
+		System.out.println("aodkps");
+		Object[] objs = {values[0],spinner.getValue(),spinnerInt*numEntero};
+		tableModel.addRow(objs);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null},
-				
-			},
-			new String[] {
-				"Producto", "Cantidad", "Precio/Cant"
-			}
-		) {
+		table.setModel(new DefaultTableModel() {
 			Class[] columnTypes = new Class[] {
 				String.class, Integer.class, Integer.class
 			};
+			
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
@@ -143,7 +144,6 @@ public class PanelTickets extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
 				controladorPanelTickets.accionadoBottonAñadirPanelTickets(list_1.getSelectedValue());
-				table.add(btnAñadir, new Object[] { });
 				
 			}
 		};
@@ -153,7 +153,7 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Guardar");
-				controladorPanelTickets.contador(cont);
+				
 			}
 		};
 	}
