@@ -42,12 +42,12 @@ public class PanelUsuarios extends JPanel {
 		add(lblUsuario);
 		
 		
-		JLabel lblNewLabel = new JLabel("Nombre de Usuario:");
-		lblNewLabel.setBounds(62, 85, 104, 14);
+		JLabel lblNewLabel = new JLabel("DNI:");
+		lblNewLabel.setBounds(83, 85, 104, 14);
 		add(lblNewLabel);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setBounds(62, 134, 104, 14);
+		lblContrasea.setBounds(83, 134, 104, 14);
 		add(lblContrasea);
 		
 		textField = new JTextField();

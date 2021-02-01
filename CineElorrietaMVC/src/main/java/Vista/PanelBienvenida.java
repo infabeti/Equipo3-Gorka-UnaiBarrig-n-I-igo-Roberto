@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Controlador.ControladorPanelBienvenida;
+import Modelo.Registrar;
+
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
@@ -17,8 +19,10 @@ public class PanelBienvenida extends JPanel{
 	private JButton btnTickets;
 	private JButton btnAprovisionamiento;
 	private JButton btnBDD;
+	private JButton btnCerrar;
 	private JLabel lblBienvenida;
 	private ControladorPanelBienvenida controladorPanelBienvenida;
+	private JLabel lblNewLabel;
 	
 	public PanelBienvenida(ControladorPanelBienvenida controladorPanelBienvenida) {
 		this.controladorPanelBienvenida = controladorPanelBienvenida;
@@ -61,6 +65,14 @@ public class PanelBienvenida extends JPanel{
 		btnBDD.setBackground(cpanel);
 		add(btnBDD);
 		
+		btnCerrar = new JButton("Cerrar Sesion");
+		btnCerrar.setBounds(303, 230, 120, 23);
+		add(btnCerrar);
+		
+		lblNewLabel = new JLabel("Inicio:");
+		lblNewLabel.setBounds(21, 234, 46, 14);
+		add(lblNewLabel);
+		
 		
 		
 		initializeEvents();
@@ -72,6 +84,7 @@ public class PanelBienvenida extends JPanel{
 		this.btnComandas.addActionListener(listenerBotonComandas(this.controladorPanelBienvenida));
 		this.btnAprovisionamiento.addActionListener(listenerBotonAprovisionamiento(this.controladorPanelBienvenida));
 		this.btnBDD.addActionListener(listenerBotonBDD(this.controladorPanelBienvenida));
+		this.btnCerrar.addActionListener(listenerBotonCerrar(this.controladorPanelBienvenida));
 
 	}
 	
@@ -113,6 +126,14 @@ public class PanelBienvenida extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento conexión BDD");
 				controladorPanelBDD.accionadoBottonMostrarConexionBDD();
+			}
+		};
+	}
+	private ActionListener listenerBotonCerrar(ControladorPanelBienvenida controladorPanelBienvenida) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Ejecutando evento Boton Cerrar Sesion");
+				controladorPanelBienvenida.accionadoBottonMostrarPanelCerrar();
 			}
 		};
 	}

@@ -35,7 +35,9 @@ public class ControladorPanelBienvenida {
 	public void accionadoBottonMostrarPanelAprovisionamiento() {
 		this.controlador.navegarPanelAprovisionamiento();
 	}
-	
+	public void accionadoBottonMostrarPanelCerrar() {
+		this.controlador.navegarPanelUsuarios();
+	}
 	public void accionadoBottonMostrarConexionBDD() {
 		
 		this.controlador.conectarBDD();

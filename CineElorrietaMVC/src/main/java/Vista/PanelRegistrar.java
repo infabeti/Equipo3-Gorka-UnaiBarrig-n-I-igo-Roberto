@@ -83,7 +83,7 @@ public class PanelRegistrar extends JPanel {
 		add(lblDni);
 		
 		JLabel lblContrasea_1 = new JLabel("Contrase\u00F1a:");
-		lblContrasea_1.setBounds(234, 134, 65, 14);
+		lblContrasea_1.setBounds(234, 134, 135, 14);
 		add(lblContrasea_1);
 		
 		textField_1 = new JTextField();
