@@ -14,6 +14,8 @@ public class Controlador {
 	private ControladorPanelPedidos controladorPanelPedidos;
 	private ControladorPanelComandas controladorPanelComandas;
 	private ControladorPanelAprovisionamiento controladorPanelAprovisionamiento;
+	private ControladorPanelUsuarios controladorPanelUsuarios;
+	private ControladorPanelRegistrar controladorPanelRegistrar;
 	
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
@@ -23,7 +25,9 @@ public class Controlador {
 		this.controladorPanelPedidos = new ControladorPanelPedidos(this.modelo, this.vista, this);
 		this.controladorPanelComandas = new ControladorPanelComandas(this.modelo, this.vista, this);
 		this.controladorPanelAprovisionamiento = new ControladorPanelAprovisionamiento(this.modelo, this.vista, this);
-		this.navegarPanelBienvenida();
+		this.controladorPanelUsuarios = new ControladorPanelUsuarios(this.modelo, this.vista, this);
+		this.controladorPanelRegistrar = new ControladorPanelRegistrar(this.modelo, this.vista, this);
+		this.navegarPanelUsuarios();
 	}
 	
 	public void navegarPanelBienvenida() {
@@ -48,6 +52,15 @@ public class Controlador {
 	public void navegarPanelAprovisionamiento() {
 		System.out.println("Navegar panel Aprovisionamiento");
 		this.controladorPanelAprovisionamiento.mostrarPanelAprovisionamiento();
+	}
+	public void navegarPanelRegistrar() {
+		System.out.println("Navegar panel Registrar");
+		this.controladorPanelRegistrar.mostrarPanelRegistrar();
+	}
+	
+	public void navegarPanelUsuarios() {
+		System.out.println("Navegar panel Usuarios");
+		this.controladorPanelUsuarios.mostrarPanelUsuarios();
 	}
 	
 	public void conectarBDD() {
