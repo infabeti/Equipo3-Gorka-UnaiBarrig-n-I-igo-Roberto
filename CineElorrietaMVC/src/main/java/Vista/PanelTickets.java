@@ -30,7 +30,7 @@ public class PanelTickets extends JPanel {
 	private JTextArea cont;
 	private JLabel lblNewLabel;
 	private ControladorPanelTickets controladorPanelTickets;
-	private int precioTotal = 0;
+	private double precioTotal = 0;
 	private JTextField NIF;
 	private JTextField Apellido;
 	private JTextField Nombre;
@@ -205,14 +205,14 @@ public class PanelTickets extends JPanel {
 				System.out.println("Ejecutando evento Boton Añadir");
 				controladorPanelTickets.accionadoBottonAñadirPanelTickets(list_1.getSelectedValue());
 				String[] values = ControladorPanelTickets.setSeparado();
-				 int numEntero = Integer.parseInt(values[1]);
-				 int spinnerInt = (int) spinner.getValue();
-				 int precioCant = spinnerInt*numEntero;
+				 double numEntero = Double.parseDouble(values[1]);
+				 double spinnerInt = (int) spinner.getValue();
+				 double precioCant = spinnerInt*numEntero;
 				Object[] objs = {values[0],spinner.getValue(),precioCant};
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.addRow(objs);
 				
-				precioTotal = precioTotal+precioCant;
+				precioTotal = ControladorPanelTickets.suma(precioTotal,precioCant);
 				String total = String.valueOf(precioTotal);		
 				lblNewLabel.setText(total);
 			}

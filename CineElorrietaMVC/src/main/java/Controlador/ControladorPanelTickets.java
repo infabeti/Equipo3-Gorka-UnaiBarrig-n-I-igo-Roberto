@@ -5,6 +5,7 @@ import javax.swing.JTextArea;
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
+import Modelo.Tickets;
 import Vista.PanelBienvenida;
 import Vista.PanelTickets;
 import Vista.Vista;
@@ -39,6 +40,14 @@ public class ControladorPanelTickets {
 		Productos producto = new Productos();
 		Separado = producto.separar(selec);
 		 
+	}
+	public static double suma(double num1,double num2) {
+		num2 = Tickets.suma(num1,num2);
+		return num2;
+	}
+	public double multi(double num1,double num2) {
+		double total = Tickets.multi(num1,num2);
+		return total;
 	}
 	
 	public String[] pasarString(){
