@@ -34,6 +34,10 @@ public class PanelTickets extends JPanel {
 	private JTextField NIF;
 	private JTextField Apellido;
 	private JTextField Nombre;
+	private JCheckBox Factura;
+	private JLabel TextoNIF;
+	private JLabel TextoNombre;
+	private JLabel TextoApellido;
 	
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -74,6 +78,7 @@ public class PanelTickets extends JPanel {
 		add(spinner);
 		
 		cont = new JTextArea();
+		cont.setEditable(false);
 		cont.setText("1");
 		cont.setBounds(147, 10, 26, 22);
 		add(cont);
@@ -120,36 +125,62 @@ public class PanelTickets extends JPanel {
 		table.setBounds(275, 60, 165, 80);
 		add(table);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Factura");
-		chckbxNewCheckBox.setBounds(50, 220, 97, 23);
-		add(chckbxNewCheckBox);
+		Factura = new JCheckBox("Factura");
+		Factura.setBounds(50, 220, 97, 23);
+		Factura.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Factura.isSelected() == true) {
+					NIF.setVisible(true);
+					Apellido.setVisible(true);
+					Nombre.setVisible(true);
+					TextoNIF.setVisible(true);
+					TextoNombre.setVisible(true);
+					TextoApellido.setVisible(true);
+				}else {
+					NIF.setVisible(false);
+					Apellido.setVisible(false);
+					Nombre.setVisible(false);
+					TextoNIF.setVisible(false);
+					TextoNombre.setVisible(false);
+					TextoApellido.setVisible(false);
+				}
+			}
+		});
+	
+		add(Factura);
 		
 		NIF = new JTextField();
 		NIF.setBounds(72, 321, 86, 20);
+		NIF.setVisible(false);
 		add(NIF);
 		NIF.setColumns(10);
 		
 		Apellido = new JTextField();
 		Apellido.setColumns(10);
 		Apellido.setBounds(338, 321, 86, 20);
+		Apellido.setVisible(false);
 		add(Apellido);
 		
 		Nombre = new JTextField();
 		Nombre.setColumns(10);
 		Nombre.setBounds(206, 321, 86, 20);
+		Nombre.setVisible(false);
 		add(Nombre);
 		
-		JLabel lblNewLabel_1 = new JLabel("NIF");
-		lblNewLabel_1.setBounds(108, 306, 46, 14);
-		add(lblNewLabel_1);
+		TextoNIF = new JLabel("NIF");
+		TextoNIF.setBounds(108, 306, 46, 14);
+		TextoNIF.setVisible(false);
+		add(TextoNIF);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Nombre\r\n");
-		lblNewLabel_1_1.setBounds(227, 306, 46, 14);
-		add(lblNewLabel_1_1);
+		TextoNombre = new JLabel("Nombre");
+		TextoNombre.setBounds(227, 306, 46, 14);
+		TextoNombre.setVisible(false);
+		add(TextoNombre);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Apellido");
-		lblNewLabel_1_1_1.setBounds(359, 306, 46, 14);
-		add(lblNewLabel_1_1_1);
+		TextoApellido = new JLabel("Apellido");
+		TextoApellido.setBounds(359, 306, 46, 14);
+		TextoApellido.setVisible(false);
+		add(TextoApellido);
 	
 		initializeEvents();
 	}
