@@ -26,7 +26,9 @@ public class PanelTickets extends JPanel {
 	private JSpinner spinner;
 	private JTable table;
 	private JTextArea cont;
+	private JLabel lblNewLabel;
 	private ControladorPanelTickets controladorPanelTickets;
+	private int precioTotal = 0;
 	
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -70,32 +72,14 @@ public class PanelTickets extends JPanel {
 		cont.setText("1");
 		cont.setBounds(110, 10, 26, 22);
 		add(cont);
-		String col[] = {"Producto", "Cantidad", "Precio/Cant"};
-		String[] values = controladorPanelTickets.entrega();
-		 int numEntero = Integer.parseInt(values[1]);
-		 int spinnerInt = Integer.parseInt((String) spinner.getValue());
-		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-		table = new JTable(tableModel);
-		System.out.println("aodkps");
-		Object[] objs = {values[0],spinner.getValue(),spinnerInt*numEntero};
-		tableModel.addRow(objs);
 		
-		table.setModel(new DefaultTableModel() {
-			Class[] columnTypes = new Class[] {
-				String.class, Integer.class, Integer.class
-			};
-			
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		table.setBounds(236, 60, 165, 80);
-		add(table);
 		
-		JLabel lblNewLabel = new JLabel("0");
+		
+		lblNewLabel = new JLabel("0");
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setBounds(363, 165, 46, 14);
+		
 		add(lblNewLabel);
 		
 		btnAñadir = new JButton("Añadir");
@@ -115,15 +99,24 @@ public class PanelTickets extends JPanel {
 		JLabel lblTotal = new JLabel("Total:");
 		lblTotal.setBounds(325, 165, 115, 14);
 		add(lblTotal);
+		
+		
+		String col[] = {"Producto", "Cantidad", "Precio/Cant"};
+		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+		table = new JTable(tableModel);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				
+			},
+			new String[] {
+				"Producto", "Cantidad", "Precio/Cant"
+			}
+		));
+		table.setBounds(236, 60, 165, 80);
+		add(table);
 	
 		initializeEvents();
 	}
-	
-	private int calcularPrecioCant(int valor,int preciobase) {
-		int precio = valor+preciobase;
-		return precio;
-	}
-	
 
 	private void initializeEvents() {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelTickets));
@@ -144,7 +137,17 @@ public class PanelTickets extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
 				controladorPanelTickets.accionadoBottonAñadirPanelTickets(list_1.getSelectedValue());
+				String[] values = ControladorPanelTickets.setSeparado();
+				 int numEntero = Integer.parseInt(values[1]);
+				 int spinnerInt = (int) spinner.getValue();
+				 int precioCant = spinnerInt*numEntero;
+				Object[] objs = {values[0],spinner.getValue(),precioCant};
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				model.addRow(objs);
 				
+				precioTotal = precioTotal+precioCant;
+				String total = String.valueOf(precioTotal);		
+				lblNewLabel.setText(total);
 			}
 		};
 	}

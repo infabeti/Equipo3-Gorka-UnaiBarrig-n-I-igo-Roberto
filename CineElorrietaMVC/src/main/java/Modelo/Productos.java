@@ -27,15 +27,10 @@ public class Productos {
 	 
 	public String toString()
 	{
-		return this.getNombreP() + "-" + this.getPrecio()+"€";
+		return this.getNombreP() + "-" + this.getPrecio();
 	}
 	
 	public String[] separar(Object selec) {
-		return ((String) selec).split("-");
-		
-	}
-	public String[] quitarEuro(Object selec) {
-		System.out.println("aodkps");
-		return ((String) selec).split("€");
+		return ((String) selec).split("-") ;
 	}
 }
