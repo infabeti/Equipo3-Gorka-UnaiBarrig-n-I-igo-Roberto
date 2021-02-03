@@ -16,7 +16,6 @@ public class PanelBienvenida extends JPanel{
 	private JButton btnComandas;
 	private JButton btnTickets;
 	private JButton btnAprovisionamiento;
-	private JButton btnBDD;
 	private JLabel lblBienvenida;
 	private ControladorPanelBienvenida controladorPanelBienvenida;
 	
@@ -25,41 +24,35 @@ public class PanelBienvenida extends JPanel{
 		
 		setLayout(null);
 		
-		lblBienvenida = new JLabel("Pantalla inicial");
+		lblBienvenida = new JLabel("BIENVENIDA");
 		lblBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBienvenida.setBounds(108, 26, 200, 23);
+		lblBienvenida.setBounds(153, 26, 200, 23);
 		add(lblBienvenida);
 		
 		btnPedidos = new JButton("Pedidos");
-		btnPedidos.setBounds(120, 60, 180, 23);
+		btnPedidos.setBounds(153, 84, 212, 74);
 		btnPedidos.setFocusPainted(false);
 		Color cpanel = new Color(200,194,182);
 		btnPedidos.setBackground(cpanel);
 		add(btnPedidos);
 		
 		btnComandas = new JButton("Comandas");
-		btnComandas.setBounds(120, 90, 180, 23);
+		btnComandas.setBounds(153, 341, 212, 74);
 		btnComandas.setFocusPainted(false);
 		btnComandas.setBackground(cpanel);
 		add(btnComandas);
 		
 		btnTickets = new JButton("Facturas/Tickets");
-		btnTickets.setBounds(120, 120, 180, 23);
+		btnTickets.setBounds(153, 171, 212, 74);
 		btnTickets.setFocusPainted(false);
 		btnTickets.setBackground(cpanel);
 		add(btnTickets);
 		
 		btnAprovisionamiento = new JButton("Aprovisionamiento");
-		btnAprovisionamiento.setBounds(120, 150, 180, 23);
+		btnAprovisionamiento.setBounds(153, 256, 212, 74);
 		btnAprovisionamiento.setFocusPainted(false);
 		btnAprovisionamiento.setBackground(cpanel);
 		add(btnAprovisionamiento);
-		
-		btnBDD = new JButton("Conexión BDD");
-		btnBDD.setBounds(120, 180, 180, 23);
-		btnBDD.setFocusPainted(false);
-		btnBDD.setBackground(cpanel);
-		add(btnBDD);
 		
 		
 		
@@ -71,7 +64,6 @@ public class PanelBienvenida extends JPanel{
 		this.btnPedidos.addActionListener(listenerBotonPedidos(this.controladorPanelBienvenida));
 		this.btnComandas.addActionListener(listenerBotonComandas(this.controladorPanelBienvenida));
 		this.btnAprovisionamiento.addActionListener(listenerBotonAprovisionamiento(this.controladorPanelBienvenida));
-		this.btnBDD.addActionListener(listenerBotonBDD(this.controladorPanelBienvenida));
 
 	}
 	
