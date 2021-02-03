@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JCheckBox;
+import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class PanelTickets extends JPanel {
@@ -30,6 +31,9 @@ public class PanelTickets extends JPanel {
 	private JLabel lblNewLabel;
 	private ControladorPanelTickets controladorPanelTickets;
 	private int precioTotal = 0;
+	private JTextField NIF;
+	private JTextField Apellido;
+	private JTextField Nombre;
 	
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -119,6 +123,33 @@ public class PanelTickets extends JPanel {
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Factura");
 		chckbxNewCheckBox.setBounds(50, 220, 97, 23);
 		add(chckbxNewCheckBox);
+		
+		NIF = new JTextField();
+		NIF.setBounds(72, 321, 86, 20);
+		add(NIF);
+		NIF.setColumns(10);
+		
+		Apellido = new JTextField();
+		Apellido.setColumns(10);
+		Apellido.setBounds(338, 321, 86, 20);
+		add(Apellido);
+		
+		Nombre = new JTextField();
+		Nombre.setColumns(10);
+		Nombre.setBounds(206, 321, 86, 20);
+		add(Nombre);
+		
+		JLabel lblNewLabel_1 = new JLabel("NIF");
+		lblNewLabel_1.setBounds(108, 306, 46, 14);
+		add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Nombre\r\n");
+		lblNewLabel_1_1.setBounds(227, 306, 46, 14);
+		add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("Apellido");
+		lblNewLabel_1_1_1.setBounds(359, 306, 46, 14);
+		add(lblNewLabel_1_1_1);
 	
 		initializeEvents();
 	}
