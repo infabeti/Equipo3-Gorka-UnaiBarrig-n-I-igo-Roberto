@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
+import Modelo.Usuarios;
 import Vista.PanelBienvenida;
 import Vista.PanelTickets;
 import Vista.PanelUsuarios;
@@ -34,15 +35,17 @@ public class ControladorPanelUsuarios {
 	public void accionadoBottonRegistrarPanelUsuarios() {
 		this.controlador.navegarPanelRegistrar();
 	}
+
+	
 	
 
 	
 	public String[] pasarString(){
-		BDD productos = new BDD();
-		Productos[] poductos2 = productos.getProductos();
-		String [] arrayr=new String[poductos2.length];
-		for(int i=0; i<poductos2.length; i++) {
-			arrayr[i]=poductos2[i].toString();
+		BDD Usuarios = new BDD();
+		Usuarios[] usuarios2 = Usuarios.getUsuarios();
+		String [] arrayr=new String[usuarios2.length];
+		for(int i=0; i<usuarios2.length; i++) {
+			arrayr[i]=usuarios2[i].toString();
 		}
 		return  arrayr;
 		

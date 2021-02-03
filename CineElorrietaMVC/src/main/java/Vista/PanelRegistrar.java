@@ -2,15 +2,20 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Controlador.ControladorPanelRegistrar;
 import Controlador.ControladorPanelTickets;
 import Controlador.ControladorPanelUsuarios;
+import Modelo.Registrar;
+import Modelo.Usuarios;
 
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
@@ -30,10 +35,10 @@ public class PanelRegistrar extends JPanel {
 
 	private ControladorPanelRegistrar controladorPanelRegistrar;
 	private JTable table;
-	private JTextField textField;
-	private JPasswordField passwordField;
-	private JTextField textField_1;
-	private JPasswordField passwordField_1;
+	private JTextField nombretxt;
+	private JTextField apellidotxt;
+	private JTextField DNItxt;
+	private JTextField contraseñatxt;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelRegistrar(ControladorPanelRegistrar controladorPanelRegistrar)
@@ -57,20 +62,48 @@ public class PanelRegistrar extends JPanel {
 		lblContrasea.setBounds(37, 134, 54, 14);
 		add(lblContrasea);
 		
-		textField = new JTextField();
-		textField.setBounds(101, 82, 95, 20);
-		add(textField);
-		textField.setColumns(10);
+		nombretxt = new JTextField();
+		nombretxt.setBounds(101, 82, 95, 20);
+		add(nombretxt);
+		nombretxt.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(101, 131, 98, 20);
-		add(passwordField);
+		apellidotxt = new JTextField();
+		apellidotxt.setBounds(101, 131, 98, 20);
+		add(apellidotxt);
+		
+		DNItxt = new JTextField();
+		DNItxt.setColumns(10);
+		DNItxt.setBounds(314, 82, 95, 20);
+		add(DNItxt);
+		
+		contraseñatxt = new JTextField();
+		contraseñatxt.setBounds(314, 131, 94, 20);
+		add(contraseñatxt);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 60, 430, 2);
 		add(separator);
 		
+		ArrayList<Registrar> lista_registrados=new ArrayList<>();
+
 		btnRegistrar = new JButton("Registrar");
+		btnRegistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String Nombre = nombretxt.getText();
+				String Apellido = apellidotxt.getText();
+				String DNI = DNItxt.getText();
+				String Contraseña = contraseñatxt.getText();
+				Registrar nuevo_usuario = new Registrar();
+				nuevo_usuario.setNombre(Nombre);
+				nuevo_usuario.setApellido(Apellido);
+				nuevo_usuario.setDNI(DNI);
+				nuevo_usuario.setContraseña(Contraseña);
+				lista_registrados.add(nuevo_usuario);
+				JOptionPane.showMessageDialog(null, "El Usuario ha sido registrado");
+				
+			}
+		});
 		btnRegistrar.setBounds(320, 211, 89, 23);
 		add(btnRegistrar);
 		
@@ -86,14 +119,7 @@ public class PanelRegistrar extends JPanel {
 		lblContrasea_1.setBounds(234, 134, 135, 14);
 		add(lblContrasea_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(314, 82, 95, 20);
-		add(textField_1);
-		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(314, 131, 94, 20);
-		add(passwordField_1);
+	
 
 		
 		initializeEvents();

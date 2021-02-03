@@ -22,7 +22,6 @@ public class PanelBienvenida extends JPanel{
 	private JButton btnCerrar;
 	private JLabel lblBienvenida;
 	private ControladorPanelBienvenida controladorPanelBienvenida;
-	private JLabel lblNewLabel;
 	
 	public PanelBienvenida(ControladorPanelBienvenida controladorPanelBienvenida) {
 		this.controladorPanelBienvenida = controladorPanelBienvenida;
@@ -69,15 +68,14 @@ public class PanelBienvenida extends JPanel{
 		btnCerrar.setBounds(303, 230, 120, 23);
 		add(btnCerrar);
 		
-		lblNewLabel = new JLabel("Inicio:");
-		lblNewLabel.setBounds(21, 234, 46, 14);
-		add(lblNewLabel);
 		
 		
 		
 		initializeEvents();
 	}
 	
+
+
 	private void initializeEvents() {
 		this.btnTickets.addActionListener(listenerBotonTickets(this.controladorPanelBienvenida));
 		this.btnPedidos.addActionListener(listenerBotonPedidos(this.controladorPanelBienvenida));

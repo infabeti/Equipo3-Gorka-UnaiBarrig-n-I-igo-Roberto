@@ -4,17 +4,26 @@ public class Usuarios {
 	
 	private String DNI;
 	private String Contraseña;
+	private String TipoLocal;
+
 	
 	public Usuarios(){
 	}
 	
-	public Usuarios(String DNI, String Contraseña){
+	public Usuarios(String TipoLocal, String DNI, String Contraseña){
 		
+		this.TipoLocal = TipoLocal;
 		this.DNI = DNI;
 		this.Contraseña = Contraseña;
 		
 	}
 	
+	public void setTipoLocal(String TipoLocal) {
+		this.TipoLocal = TipoLocal;
+	}
+	public String getTipoLocal() {
+		return this.TipoLocal;
+	}
 	public void setDNI(String DNI) {
 		this.DNI = DNI;
 	}
@@ -26,6 +35,11 @@ public class Usuarios {
 	}
 	public String getContraseña() {
 		return this.Contraseña;
+	}
+
+	public String toString()
+	{
+		return this.getDNI() + "-" + this.getContraseña();
 	}
 	
 	
