@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JCheckBox;
 
 @SuppressWarnings("serial")
 public class PanelTickets extends JPanel {
@@ -38,20 +39,20 @@ public class PanelTickets extends JPanel {
 		setLayout(null);
 		
 		lblTickets = new JLabel("Tickets");
-		lblTickets.setBounds(185, 15, 115, 14);
+		lblTickets.setBounds(227, 15, 115, 14);
 		add(lblTickets);
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(10, 211, 89, 23);
+		btnVolver.setBounds(33, 423, 89, 23);
 		add(btnVolver);
 		
 		btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(312, 211, 89, 23);
+		btnGuardar.setBounds(367, 423, 89, 23);
 		add(btnGuardar);
 		
 		
 		list_1 = new JList();
-		list_1.setBounds(20, 59, 155, 141);
+		list_1.setBounds(45, 59, 155, 141);
 		list_1.setModel(new AbstractListModel() {
 			String[] values = controladorPanelTickets.pasarString();
 			public int getSize() {
@@ -64,13 +65,13 @@ public class PanelTickets extends JPanel {
 		add(list_1);
 		
 		spinner = new JSpinner();
-		spinner.setBounds(185, 59, 41, 23);
+		spinner.setBounds(210, 56, 41, 23);
 		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 		add(spinner);
 		
 		cont = new JTextArea();
 		cont.setText("1");
-		cont.setBounds(110, 10, 26, 22);
+		cont.setBounds(147, 10, 26, 22);
 		add(cont);
 		
 		
@@ -78,7 +79,7 @@ public class PanelTickets extends JPanel {
 		lblNewLabel = new JLabel("0");
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setBounds(363, 165, 46, 14);
+		lblNewLabel.setBounds(410, 151, 46, 14);
 		
 		add(lblNewLabel);
 		
@@ -89,15 +90,15 @@ public class PanelTickets extends JPanel {
 				
 			}
 		});
-		btnAñadir.setBounds(117, 211, 89, 23);
+		btnAñadir.setBounds(277, 147, 89, 23);
 		add(btnAñadir);
 		
 		JLabel lblNumeroDeCompra = new JLabel("Numero de compra:");
-		lblNumeroDeCompra.setBounds(10, 15, 115, 14);
+		lblNumeroDeCompra.setBounds(22, 15, 115, 14);
 		add(lblNumeroDeCompra);
 		
 		JLabel lblTotal = new JLabel("Total:");
-		lblTotal.setBounds(325, 165, 115, 14);
+		lblTotal.setBounds(376, 151, 115, 14);
 		add(lblTotal);
 		
 		
@@ -112,8 +113,12 @@ public class PanelTickets extends JPanel {
 				"Producto", "Cantidad", "Precio/Cant"
 			}
 		));
-		table.setBounds(236, 60, 165, 80);
+		table.setBounds(275, 60, 165, 80);
 		add(table);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Factura");
+		chckbxNewCheckBox.setBounds(50, 220, 97, 23);
+		add(chckbxNewCheckBox);
 	
 		initializeEvents();
 	}
