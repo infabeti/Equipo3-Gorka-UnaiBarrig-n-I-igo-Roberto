@@ -168,35 +168,35 @@ public class PanelTickets extends JPanel {
 		add(Factura);
 		
 		NIF = new JTextField();
-		NIF.setBounds(71, 265, 86, 20);
+		NIF.setBounds(74, 317, 86, 20);
 		NIF.setVisible(false);
 		add(NIF);
 		NIF.setColumns(10);
 		
 		Apellido = new JTextField();
 		Apellido.setColumns(10);
-		Apellido.setBounds(337, 265, 86, 20);
+		Apellido.setBounds(340, 317, 86, 20);
 		Apellido.setVisible(false);
 		add(Apellido);
 		
 		Nombre = new JTextField();
 		Nombre.setColumns(10);
-		Nombre.setBounds(205, 265, 86, 20);
+		Nombre.setBounds(208, 317, 86, 20);
 		Nombre.setVisible(false);
 		add(Nombre);
 		
 		TextoNIF = new JLabel("NIF");
-		TextoNIF.setBounds(107, 250, 46, 14);
+		TextoNIF.setBounds(110, 302, 46, 14);
 		TextoNIF.setVisible(false);
 		add(TextoNIF);
 		
 		TextoNombre = new JLabel("Nombre");
-		TextoNombre.setBounds(226, 250, 46, 14);
+		TextoNombre.setBounds(229, 302, 46, 14);
 		TextoNombre.setVisible(false);
 		add(TextoNombre);
 		
 		TextoApellido = new JLabel("Apellido");
-		TextoApellido.setBounds(358, 250, 46, 14);
+		TextoApellido.setBounds(361, 302, 46, 14);
 		TextoApellido.setVisible(false);
 		add(TextoApellido);
 		
