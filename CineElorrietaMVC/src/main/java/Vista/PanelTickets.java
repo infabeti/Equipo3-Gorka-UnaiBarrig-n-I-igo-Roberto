@@ -84,7 +84,7 @@ public class PanelTickets extends JPanel {
 		
 		spinner = new JSpinner();
 		spinner.setBounds(210, 56, 41, 23);
-		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
+		spinner.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 		add(spinner);
 		
 		cont = new JTextArea();
@@ -125,6 +125,7 @@ public class PanelTickets extends JPanel {
 		String col[] = {"Producto", "Cantidad", "Precio/Cant"};
 		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
 		table = new JTable(tableModel);
+		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				
@@ -135,9 +136,9 @@ public class PanelTickets extends JPanel {
 		));
 		scrollBar = new JScrollBar();
 		scrollBar.setBounds(439, 59, 17, 81);
-		scrollBar.add(table);
-		add(scrollBar);
 		table.setBounds(275, 60, 165, 80);
+		add(scrollBar);
+		
 		add(table);
 		
 		
