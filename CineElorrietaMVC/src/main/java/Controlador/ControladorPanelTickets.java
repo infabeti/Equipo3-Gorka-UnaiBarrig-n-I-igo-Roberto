@@ -47,9 +47,7 @@ public class ControladorPanelTickets {
 	public double accionadoBottonAñadirTotal(double num1, double num2) {
 		Modelo.ticket.setTotal(num1,num2);
 		return Modelo.ticket.getTotal();
-	}
-	
-		
+	}		
 	public String[] pasarString(){
 		BDD productos = new BDD();
 		Productos[] poductos2 = productos.getProductos();

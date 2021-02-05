@@ -38,7 +38,7 @@ public class PanelTickets extends JPanel {
 	private JLabel TextoNIF;
 	private JLabel TextoNombre;
 	private JLabel TextoApellido;
-	
+	private DefaultTableModel model;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelTickets(ControladorPanelTickets controladorPanelTickets)
@@ -209,11 +209,12 @@ public class PanelTickets extends JPanel {
 				 double spinnerInt = (int) spinner.getValue();
 				 double precioCant = controladorPanelTickets.accionadoBottonAñadirPrecioCant(spinnerInt, numEntero);
 				Object[] objs = {values[0],spinner.getValue(),precioCant};
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				model = (DefaultTableModel) table.getModel();
 				model.addRow(objs);
 				precioTotal = controladorPanelTickets.accionadoBottonAñadirTotal(precioTotal,precioCant);
 				String total = String.valueOf(precioTotal);		
 				lblNewLabel.setText(total);
+				
 			}
 		};
 	}
@@ -225,5 +226,12 @@ public class PanelTickets extends JPanel {
 				
 			}
 		};
+	}
+	public void borrarTabla(JTable tabla) {
+		int contador = tabla.getRowCount();
+		for(int i = contador -1;i>=0;i--) {
+			tabla.remove(i);
+		}
+		
 	}
 }

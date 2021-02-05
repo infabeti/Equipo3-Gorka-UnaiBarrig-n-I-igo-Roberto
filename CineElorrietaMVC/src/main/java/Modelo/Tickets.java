@@ -9,20 +9,24 @@ public class Tickets{
 	private ProductosElegidos [] productos = new ProductosElegidos[20];
 	private double precioCant = 0;
 	private double total = 0;
-	
+	private String NIF;
+	private String Nombre;
+	private String Apellido;
+	private boolean EsFactura = false;
 	
 	public Tickets(){
 	}
-	
-	public Tickets(int NumTrans,Date fecha,String NomLocal,ProductosElegidos[] productos,double total,double precioCant){
+	public Tickets(int NumTrans,Date fecha,String NomLocal,ProductosElegidos[] productos,double total,double precioCant, String NIF, String Nombre, String Apellido){
 		this.NumTrans = NumTrans;
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;
 		this.productos = productos;
 		this.precioCant = precioCant;
-		this.total = total;	
+		this.total = total;
+		this.NIF = NIF;
+		this.Nombre = Nombre;
+		this.Apellido = Apellido;
 	}
-	
 	public void setNumTrans(int Numtrans) {
 		this.NumTrans = Numtrans;
 	}
@@ -58,5 +62,23 @@ public class Tickets{
 	}
 	public double getCant() {
 		return this.precioCant;
+	}
+	public void setNIF(String NIF) {
+		this.NIF = NIF;
+	}
+	public String getNIF() {
+		return this.NIF;
+	}
+	public void setNombre(String Nombre) {
+		this.Nombre = Nombre;
+	}
+	public String getNombre() {
+		return this.Nombre;
+	}
+	public void setApellido(String Apellido) {
+		this.Apellido = Apellido;
+	}
+	public String getApellido() {
+		return this.Apellido;
 	}
 }
