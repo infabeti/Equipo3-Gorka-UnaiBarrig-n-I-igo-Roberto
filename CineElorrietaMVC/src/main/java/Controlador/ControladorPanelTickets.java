@@ -39,17 +39,17 @@ public class ControladorPanelTickets {
 	public void accionadoBottonAñadirPanelTickets(Object selec) {
 		Productos producto = new Productos();
 		Separado = producto.separar(selec);
-		 
 	}
-	public static double suma(double num1,double num2) {
-		num2 = Tickets.suma(num1,num2);
-		return num2;
+	public double accionadoBottonAñadirPrecioCant(double num1, double num2) {
+		Modelo.ticket.setCant(num1,num2);
+		return Modelo.ticket.getCant();
 	}
-	public double multi(double num1,double num2) {
-		double total = Tickets.multi(num1,num2);
-		return total;
+	public double accionadoBottonAñadirTotal(double num1, double num2) {
+		Modelo.ticket.setTotal(num1,num2);
+		return Modelo.ticket.getTotal();
 	}
 	
+		
 	public String[] pasarString(){
 		BDD productos = new BDD();
 		Productos[] poductos2 = productos.getProductos();

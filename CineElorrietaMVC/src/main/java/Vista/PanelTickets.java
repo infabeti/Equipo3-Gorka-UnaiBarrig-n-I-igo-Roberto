@@ -207,12 +207,11 @@ public class PanelTickets extends JPanel {
 				String[] values = ControladorPanelTickets.setSeparado();
 				 double numEntero = Double.parseDouble(values[1]);
 				 double spinnerInt = (int) spinner.getValue();
-				 double precioCant = spinnerInt*numEntero;
+				 double precioCant = controladorPanelTickets.accionadoBottonAñadirPrecioCant(spinnerInt, numEntero);
 				Object[] objs = {values[0],spinner.getValue(),precioCant};
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.addRow(objs);
-				
-				precioTotal = ControladorPanelTickets.suma(precioTotal,precioCant);
+				precioTotal = controladorPanelTickets.accionadoBottonAñadirTotal(precioTotal,precioCant);
 				String total = String.valueOf(precioTotal);		
 				lblNewLabel.setText(total);
 			}

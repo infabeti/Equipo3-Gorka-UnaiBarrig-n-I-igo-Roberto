@@ -1,31 +1,38 @@
 package Modelo;
 
+import java.util.Date;
+
 public class Tickets{
-	private String NumTrans;
-	private String fecha;
+	private int NumTrans;
+	private Date fecha = new Date();
 	private String NomLocal;
-	private String[] productos = new String[256];
+	private ProductosElegidos [] productos = new ProductosElegidos[20];
+	private double precioCant = 0;
+	private double total = 0;
+	
 	
 	public Tickets(){
 	}
 	
-	public Tickets(String NumTrans,String fecha,String NomLocal,String[] productos){
+	public Tickets(int NumTrans,Date fecha,String NomLocal,ProductosElegidos[] productos,double total,double precioCant){
 		this.NumTrans = NumTrans;
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;
 		this.productos = productos;
+		this.precioCant = precioCant;
+		this.total = total;	
 	}
 	
-	public void setNumTrans(String Numtrans) {
+	public void setNumTrans(int Numtrans) {
 		this.NumTrans = Numtrans;
 	}
-	public String getNumTrans() {
+	public int getNumTrans() {
 		return this.NumTrans;
 	}
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public String getFecha() {
+	public Date getFecha() {
 		return this.fecha;
 	}
 	public void setNomLocal(String NomLocal) {
@@ -34,18 +41,22 @@ public class Tickets{
 	public String getNomLocal() {
 		return this.NomLocal;
 	}
-	public void setproductos(String[] productos) {
+	public void setproductos(ProductosElegidos[] productos) {
 		this.productos = productos;
 	}
-	public String[] getproductos(String[] productos) {
+	public ProductosElegidos[] getproductos(ProductosElegidos[] productos) {
 		return this.productos;
 	}
-	public double suma(double num1,double num2) {
-		double total = num1+num2;
-		return total;
+	public void setTotal(double num1,double num2) {
+		this.total = num1+num2;
 	}
-	public double multi(double num1,double num2) {
-		double total = num1*num2;
-		return total;
+	public double getTotal() {
+		return this.total;
+	}
+	public void setCant(double num1,double num2) {
+		this.precioCant = num1*num2;
+	}
+	public double getCant() {
+		return this.precioCant;
 	}
 }
