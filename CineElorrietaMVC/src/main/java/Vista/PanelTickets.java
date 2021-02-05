@@ -7,15 +7,24 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+
 import Controlador.ControladorPanelTickets;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JScrollPane;
+import javax.swing.border.MatteBorder;
+import javax.swing.JScrollBar;
 
 @SuppressWarnings("serial")
 public class PanelTickets extends JPanel {
@@ -39,6 +48,7 @@ public class PanelTickets extends JPanel {
 	private JLabel TextoNombre;
 	private JLabel TextoApellido;
 	private DefaultTableModel model;
+	private JScrollBar scrollBar;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelTickets(ControladorPanelTickets controladorPanelTickets)
@@ -111,6 +121,7 @@ public class PanelTickets extends JPanel {
 		add(lblTotal);
 		
 		
+		
 		String col[] = {"Producto", "Cantidad", "Precio/Cant"};
 		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
 		table = new JTable(tableModel);
@@ -122,8 +133,14 @@ public class PanelTickets extends JPanel {
 				"Producto", "Cantidad", "Precio/Cant"
 			}
 		));
+		scrollBar = new JScrollBar();
+		scrollBar.setBounds(439, 59, 17, 81);
+		scrollBar.add(table);
+		add(scrollBar);
 		table.setBounds(275, 60, 165, 80);
 		add(table);
+		
+		
 		
 		Factura = new JCheckBox("Factura");
 		Factura.setBounds(50, 220, 97, 23);
@@ -150,37 +167,39 @@ public class PanelTickets extends JPanel {
 		add(Factura);
 		
 		NIF = new JTextField();
-		NIF.setBounds(72, 321, 86, 20);
+		NIF.setBounds(71, 265, 86, 20);
 		NIF.setVisible(false);
 		add(NIF);
 		NIF.setColumns(10);
 		
 		Apellido = new JTextField();
 		Apellido.setColumns(10);
-		Apellido.setBounds(338, 321, 86, 20);
+		Apellido.setBounds(337, 265, 86, 20);
 		Apellido.setVisible(false);
 		add(Apellido);
 		
 		Nombre = new JTextField();
 		Nombre.setColumns(10);
-		Nombre.setBounds(206, 321, 86, 20);
+		Nombre.setBounds(205, 265, 86, 20);
 		Nombre.setVisible(false);
 		add(Nombre);
 		
 		TextoNIF = new JLabel("NIF");
-		TextoNIF.setBounds(108, 306, 46, 14);
+		TextoNIF.setBounds(107, 250, 46, 14);
 		TextoNIF.setVisible(false);
 		add(TextoNIF);
 		
 		TextoNombre = new JLabel("Nombre");
-		TextoNombre.setBounds(227, 306, 46, 14);
+		TextoNombre.setBounds(226, 250, 46, 14);
 		TextoNombre.setVisible(false);
 		add(TextoNombre);
 		
 		TextoApellido = new JLabel("Apellido");
-		TextoApellido.setBounds(359, 306, 46, 14);
+		TextoApellido.setBounds(358, 250, 46, 14);
 		TextoApellido.setVisible(false);
 		add(TextoApellido);
+		
+		
 	
 		initializeEvents();
 	}
