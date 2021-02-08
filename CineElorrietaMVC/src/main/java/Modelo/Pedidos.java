@@ -1,12 +1,19 @@
 package Modelo;
 
+import java.util.Date;
+
 public class Pedidos {
 	
 	private String NumTrans;
-	private String fecha;
+	private Date fecha = new Date();
 	private String NomLocal;
 	private String Direccion;
-	private String[] productos = new String[256];
+	private ProductosElegidos [] productos = new ProductosElegidos[20];
+	private double precioCant = 0;
+	private double total = 0;
+	private String NIF;
+	private String Nombre;
+	private String Apellido;
 	
 	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
@@ -14,10 +21,10 @@ public class Pedidos {
 	public String getNumTrans() {
 		return this.NumTrans;
 	}
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public String getFecha() {
+	public Date getFecha() {
 		return this.fecha;
 	}
 	public void setNomLocal(String NomLocal) {
@@ -32,11 +39,40 @@ public class Pedidos {
 	public String getDireccion() {
 		return this.Direccion;
 	}
-	public void setproductos(String[] productos) {
+	public void setproductos(ProductosElegidos[] productos) {
 		this.productos = productos;
 	}
-	public String[] getproductos(String[] productos) {
+	public ProductosElegidos[] getproductos() {
 		return this.productos;
 	}
-
+	public void setTotal(double num1,double num2) {
+		this.total = num1+num2;
+	}
+	public double getTotal() {
+		return this.total;
+	}
+	public void setCant(double num1,double num2) {
+		this.precioCant = num1*num2;
+	}
+	public double getCant() {
+		return this.precioCant;
+	}
+	public void setNIF(String NIF) {
+		this.NIF = NIF;
+	}
+	public String getNIF() {
+		return this.NIF;
+	}
+	public void setNombre(String Nombre) {
+		this.Nombre = Nombre;
+	}
+	public String getNombre() {
+		return this.Nombre;
+	}
+	public void setApellido(String Apellido) {
+		this.Apellido = Apellido;
+	}
+	public String getApellido() {
+		return this.Apellido;
+	}
 }

@@ -49,6 +49,7 @@ public class PanelTickets extends JPanel {
 	private JLabel TextoApellido;
 	private DefaultTableModel model;
 	private JScrollBar scrollBar;
+	private JScrollPane scrollPane;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelTickets(ControladorPanelTickets controladorPanelTickets)
@@ -134,11 +135,8 @@ public class PanelTickets extends JPanel {
 				"Producto", "Cantidad", "Precio/Cant"
 			}
 		));
-		scrollBar = new JScrollBar();
-		scrollBar.setBounds(439, 59, 17, 81);
-		table.setBounds(275, 60, 165, 80);
-		add(scrollBar);
 		
+		table.setBounds(275, 60, 165, 80);
 		add(table);
 		
 		
@@ -200,6 +198,7 @@ public class PanelTickets extends JPanel {
 		TextoApellido.setVisible(false);
 		add(TextoApellido);
 		
+	
 		
 	
 		initializeEvents();
