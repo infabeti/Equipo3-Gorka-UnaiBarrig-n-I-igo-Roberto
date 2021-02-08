@@ -49,11 +49,10 @@ public class ControladorPanelTickets {
 		return Modelo.ticket.getTotal();
 	}		
 	public String[] pasarString(){
-		BDD productos = new BDD();
-		Productos[] poductos2 = productos.getProductos();
-		String [] arrayr=new String[poductos2.length];
-		for(int i=0; i<poductos2.length; i++) {
-			arrayr[i]=poductos2[i].toString();
+		Productos[] productos = Modelo.BDD.getProductos();
+		String [] arrayr=new String[productos.length];
+		for(int i=0; i<productos.length; i++) {
+			arrayr[i]=productos[i].toString();
 		}
 		return  arrayr;
 	}
