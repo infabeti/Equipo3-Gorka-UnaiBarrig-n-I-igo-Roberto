@@ -60,7 +60,7 @@ public class PanelPedidos extends JPanel {
 		add(lblPedidos);
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(21, 466, 89, 23);
+		btnVolver.setBounds(39, 412, 89, 23);
 		btnVolver.setFocusPainted(false);
 		Color cpanel = new Color(200,194,182);
 		btnVolver.setBackground(cpanel);
@@ -69,7 +69,7 @@ public class PanelPedidos extends JPanel {
 		btnAnadir = new JButton("A\u00F1adir\r\n");
 		btnAnadir.setFocusPainted(false);
 		btnAnadir.setBackground(new Color(200, 194, 182));
-		btnAnadir.setBounds(21, 418, 89, 23);
+		btnAnadir.setBounds(135, 412, 89, 23);
 		add(btnAnadir);
 		
 		NIF = new JTextField();
