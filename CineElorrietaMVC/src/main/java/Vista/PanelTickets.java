@@ -37,7 +37,7 @@ public class PanelTickets extends JPanel {
 	private JSpinner spinner;
 	private JTable table;
 	private JTextArea cont;
-	private JLabel lblNewLabel;
+	private JLabel PrecioFinal;
 	private ControladorPanelTickets controladorPanelTickets;
 	private double precioTotal = 0;
 	private JTextField NIF;
@@ -96,12 +96,11 @@ public class PanelTickets extends JPanel {
 		
 		
 		
-		lblNewLabel = new JLabel("0");
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setBounds(410, 151, 46, 14);
-		
-		add(lblNewLabel);
+		PrecioFinal = new JLabel("0");
+		PrecioFinal.setBackground(Color.WHITE);
+		PrecioFinal.setForeground(Color.BLACK);
+		PrecioFinal.setBounds(410, 151, 46, 14);
+		add(PrecioFinal);
 		
 		btnAnadir = new JButton("Añadir");
 		btnAnadir.addActionListener(new ActionListener() {
@@ -232,7 +231,7 @@ public class PanelTickets extends JPanel {
 				model.addRow(objs);
 				precioTotal = controladorPanelTickets.accionadoBottonAñadirTotal(precioTotal,precioCant);
 				String total = String.valueOf(precioTotal);		
-				lblNewLabel.setText(total);
+				PrecioFinal.setText(total);
 				
 			}
 		};

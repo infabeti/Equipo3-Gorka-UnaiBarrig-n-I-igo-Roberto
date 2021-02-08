@@ -15,11 +15,13 @@ import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.SystemColor;
 import java.awt.Choice;
 import javax.swing.JSlider;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 
 @SuppressWarnings("serial")
@@ -29,8 +31,7 @@ public class PanelPedidos extends JPanel {
 	private JButton btnAnadir;
 	private JLabel lblPedidos;
 	private ControladorPanelPedidos controladorPanelPedidos;
-	private JTextField textField;
-	private JComboBox combo;
+	private JComboBox Localidad;
 	private JTable table;
 	private JLabel TextoNIF;
 	private JLabel TextoNombre;
@@ -38,6 +39,14 @@ public class PanelPedidos extends JPanel {
 	private JTextField NIF;
 	private JTextField Apellido;
 	private JTextField Nombre;
+	private JSpinner spinner;
+	private JLabel DireccionLabel;
+	private JTextField DireccionTexto;
+	private DefaultTableModel model;
+	private JLabel PrecioFinal;
+	private double precioTotal = 0;
+	private JList list;
+	
 	
 	@SuppressWarnings("unchecked")
 	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos)
@@ -47,7 +56,7 @@ public class PanelPedidos extends JPanel {
 		setLayout(null);
 		
 		lblPedidos = new JLabel("Pedidos");
-		lblPedidos.setBounds(198, 25, 54, 14);
+		lblPedidos.setBounds(226, 25, 54, 14);
 		add(lblPedidos);
 		
 		btnVolver = new JButton("Volver");
@@ -64,39 +73,44 @@ public class PanelPedidos extends JPanel {
 		add(btnAnadir);
 		
 		NIF = new JTextField();
-		NIF.setBounds(74, 317, 86, 20);
-		NIF.setVisible(false);
-		add(NIF);
+		NIF.setBounds(79, 85, 86, 20);
+		NIF.setVisible(true);
 		NIF.setColumns(10);
+		add(NIF);
 		
 		Apellido = new JTextField();
 		Apellido.setColumns(10);
-		Apellido.setBounds(340, 317, 86, 20);
-		Apellido.setVisible(false);
+		Apellido.setBounds(345, 85, 86, 20);
+		Apellido.setVisible(true);
 		add(Apellido);
 		
 		Nombre = new JTextField();
 		Nombre.setColumns(10);
-		Nombre.setBounds(208, 317, 86, 20);
-		Nombre.setVisible(false);
+		Nombre.setBounds(213, 85, 86, 20);
+		Nombre.setVisible(true);
 		add(Nombre);
 		
 		TextoNIF = new JLabel("NIF");
-		TextoNIF.setBounds(110, 302, 46, 14);
-		TextoNIF.setVisible(false);
+		TextoNIF.setBounds(115, 70, 46, 14);
+		TextoNIF.setVisible(true);
 		add(TextoNIF);
 		
 		TextoNombre = new JLabel("Nombre");
-		TextoNombre.setBounds(229, 302, 46, 14);
-		TextoNombre.setVisible(false);
+		TextoNombre.setBounds(234, 70, 46, 14);
+		TextoNombre.setVisible(true);
 		add(TextoNombre);
 		
 		TextoApellido = new JLabel("Apellido");
-		TextoApellido.setBounds(361, 302, 46, 14);
-		TextoApellido.setVisible(false);
+		TextoApellido.setBounds(366, 70, 46, 14);
+		TextoApellido.setVisible(true);
 		add(TextoApellido);
 		
-		JList list = new JList();
+		spinner = new JSpinner();
+		spinner.setBounds(217, 252, 41, 23);
+		spinner.setModel(new SpinnerNumberModel(1, 1, 100, 1));
+		add(spinner);
+		
+		list = new JList();
 		list.setModel(new AbstractListModel() {
 			String[] values = controladorPanelPedidos.pasarString();
 			public int getSize() {
@@ -106,19 +120,21 @@ public class PanelPedidos extends JPanel {
 				return values[index];
 			}
 		});
-		list.setBounds(21, 239, 157, 140);
+		list.setBounds(39, 239, 157, 140);
 		add(list);
 		
-		JLabel lblNewLabel = new JLabel("Direccion:\r\n");
-		lblNewLabel.setBounds(155, 197, 66, 14);
-		add(lblNewLabel);
+		DireccionLabel = new JLabel("Direccion:\r\n");
+		DireccionLabel.setBounds(238, 188, 66, 14);
+		DireccionLabel.setVisible(false);
+		add(DireccionLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(218, 194, 86, 20);
-		add(textField);
-		textField.setColumns(10);
+		DireccionTexto = new JTextField();
+		DireccionTexto.setBounds(301, 185, 86, 20);
+		DireccionTexto.setVisible(false);
+		add(DireccionTexto);
+		DireccionTexto.setColumns(10);
 		String variableDeTexto;
-		variableDeTexto =textField.getText();
+		variableDeTexto =DireccionTexto.getText();
 		
 		String col[] = {"Producto", "Cantidad", "Precio/Cant"};
 		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
@@ -136,20 +152,36 @@ public class PanelPedidos extends JPanel {
 		table.setBounds(283, 240, 165, 140);
 		add(table);
 		
-		combo = new JComboBox();
-		combo.addItem("Local");
-		combo.addItem("Domicilio");
-		combo.setBackground(SystemColor.activeCaption);
-		combo.setToolTipText("");
-		combo.setBounds(38, 192, 86, 22);
-		add(combo);
+		PrecioFinal = new JLabel("0");
+		PrecioFinal.setBackground(Color.WHITE);
+		PrecioFinal.setForeground(Color.BLACK);
+		PrecioFinal.setBounds(402, 398, 46, 14);
+		add(PrecioFinal);
+		
+		Localidad = new JComboBox();
+		Localidad.addItem("Local");
+		Localidad.addItem("Domicilio");
+		Localidad.setBackground(SystemColor.activeCaption);
+		Localidad.setToolTipText("");
+		Localidad.setBounds(121, 183, 86, 22);
+		add(Localidad);
+		
+		JLabel totalTexto = new JLabel("Total:");
+		totalTexto.setBounds(358, 398, 54, 14);
+		add(totalTexto);
 		
 		
-		combo.addActionListener(new ActionListener() {
+		Localidad.addActionListener(new ActionListener() {
 			   @Override
 			   public void actionPerformed(ActionEvent e) {
-			      // Aquí hacemos lo que queramos hacer.
 				  String Direccion= variableDeTexto;
+				  if (Localidad.getSelectedItem() == "Local") {
+					  DireccionTexto.setVisible(false);
+					  DireccionLabel.setVisible(false);
+					}else {
+						DireccionTexto.setVisible(true);
+						DireccionLabel.setVisible(true);
+					}
 			   }
 			});
 		
@@ -175,7 +207,17 @@ public class PanelPedidos extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
-				controladorPanelPedidos.accionadoBottonAñadirPanelPedidos();
+				controladorPanelPedidos.accionadoBottonAñadirPanelPedidos(list.getSelectedValue());
+				String[] values = ControladorPanelTickets.setSeparado();
+				 double numEntero = Double.parseDouble(values[1]);
+				 double spinnerInt = (int) spinner.getValue();
+				 double precioCant = controladorPanelPedidos.accionadoBottonAñadirPrecioCant(spinnerInt, numEntero);
+				Object[] objs = {values[0],spinner.getValue(),precioCant};
+				model = (DefaultTableModel) table.getModel();
+				model.addRow(objs);
+				precioTotal = controladorPanelPedidos.accionadoBottonAñadirTotal(precioTotal,precioCant);
+				String total = String.valueOf(precioTotal);		
+				PrecioFinal.setText(total);
 			}
 		};
 	}

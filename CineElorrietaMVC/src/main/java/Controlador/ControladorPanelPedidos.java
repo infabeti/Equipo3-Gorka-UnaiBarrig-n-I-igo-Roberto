@@ -12,6 +12,7 @@ public class ControladorPanelPedidos {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelPedidos panelPedidos;
+	private static String[] Separado;
 	
 	public ControladorPanelPedidos(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
@@ -30,6 +31,18 @@ public class ControladorPanelPedidos {
 	public void accionadoBottonAñadirPanelPedidos() {
 		this.controlador.navegarPanelBienvenida();
 	}
+	public double accionadoBottonAñadirPrecioCant(double num1, double num2) {
+		Modelo.pedidos.setCant(num1,num2);
+		return Modelo.pedidos.getCant();
+	}
+	public double accionadoBottonAñadirTotal(double num1, double num2) {
+		Modelo.pedidos.setTotal(num1,num2);
+		return Modelo.pedidos.getTotal();
+	}
+	public void accionadoBottonAñadirPanelPedidos(Object selec) {
+		Productos producto = new Productos();
+		Separado = producto.separar(selec);
+	}
 	public String[] pasarString(){
 		BDD productos = new BDD();
 		Productos[] poductos2 = productos.getProductos();
@@ -40,6 +53,7 @@ public class ControladorPanelPedidos {
 		return  arrayr;
 		
 	}
+	
 
 	
 }
