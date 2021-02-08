@@ -30,7 +30,7 @@ import javax.swing.JScrollBar;
 public class PanelTickets extends JPanel {
 
 	private JButton btnVolver;
-	private JButton btnAñadir;
+	private JButton btnAnadir;
 	private JButton btnGuardar;
 	private JLabel lblTickets;
 	private JList list_1;
@@ -103,15 +103,15 @@ public class PanelTickets extends JPanel {
 		
 		add(lblNewLabel);
 		
-		btnAñadir = new JButton("Añadir");
-		btnAñadir.addActionListener(new ActionListener() {
+		btnAnadir = new JButton("Añadir");
+		btnAnadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
 			}
 		});
-		btnAñadir.setBounds(277, 147, 89, 23);
-		add(btnAñadir);
+		btnAnadir.setBounds(277, 147, 89, 23);
+		add(btnAnadir);
 		
 		JLabel lblNumeroDeCompra = new JLabel("Numero de compra:");
 		lblNumeroDeCompra.setBounds(22, 15, 115, 14);
@@ -206,7 +206,7 @@ public class PanelTickets extends JPanel {
 
 	private void initializeEvents() {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelTickets));
-		this.btnAñadir.addActionListener(listenerBotonAñadir(this.controladorPanelTickets));
+		this.btnAnadir.addActionListener(listenerBotonAnadir(this.controladorPanelTickets));
 		this.btnGuardar.addActionListener(listenerBotonGuardar(this.controladorPanelTickets));
 	}
 	
@@ -218,7 +218,7 @@ public class PanelTickets extends JPanel {
 			}
 		};
 	}
-	private ActionListener listenerBotonAñadir(ControladorPanelTickets controladorPanelTickets) {
+	private ActionListener listenerBotonAnadir(ControladorPanelTickets controladorPanelTickets) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");

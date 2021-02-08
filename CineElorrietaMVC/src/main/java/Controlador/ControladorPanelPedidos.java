@@ -3,9 +3,7 @@ package Controlador;
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
-import Vista.PanelBienvenida;
 import Vista.PanelPedidos;
-import Vista.PanelTickets;
 import Vista.Vista;
 
 public class ControladorPanelPedidos {
