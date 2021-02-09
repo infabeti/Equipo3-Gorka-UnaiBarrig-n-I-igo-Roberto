@@ -2,29 +2,22 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-
 import Controlador.ControladorPanelTickets;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JScrollPane;
-import javax.swing.border.MatteBorder;
-import javax.swing.JScrollBar;
 
 @SuppressWarnings("serial")
 public class PanelTickets extends JPanel {
@@ -48,9 +41,8 @@ public class PanelTickets extends JPanel {
 	private JLabel TextoNombre;
 	private JLabel TextoApellido;
 	private DefaultTableModel model;
-	private JScrollBar scrollBar;
-	private JScrollPane scrollPane;
-	
+	private JLabel Aviso;
+	private Date fecha;
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelTickets(ControladorPanelTickets controladorPanelTickets)
 	{
@@ -197,6 +189,16 @@ public class PanelTickets extends JPanel {
 		TextoApellido.setVisible(false);
 		add(TextoApellido);
 		
+		JLabel fechaTexto = new JLabel("Fecha:");
+		fechaTexto.setBounds(325, 29, 115, 14);
+		fechaTexto.setText("Fecha: ");
+		add(fechaTexto);
+		
+		Aviso = new JLabel("Rellene los campos");
+		Aviso.setBounds(292, 362, 115, 14);
+		Aviso.setVisible(false);
+		add(Aviso);
+		
 	
 		
 	
@@ -207,6 +209,7 @@ public class PanelTickets extends JPanel {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelTickets));
 		this.btnAnadir.addActionListener(listenerBotonAnadir(this.controladorPanelTickets));
 		this.btnGuardar.addActionListener(listenerBotonGuardar(this.controladorPanelTickets));
+		
 	}
 	
 	private ActionListener listenerBotonVolver(ControladorPanelTickets controladorPanelTickets) {
@@ -232,7 +235,6 @@ public class PanelTickets extends JPanel {
 				precioTotal = controladorPanelTickets.accionadoBottonAñadirTotal(precioTotal,precioCant);
 				String total = String.valueOf(precioTotal);		
 				PrecioFinal.setText(total);
-				
 			}
 		};
 	}
@@ -241,7 +243,10 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Guardar");
-				
+				boolean comprobar = comprobarCamposFactura();
+				if(comprobar == true) {
+					// controladorPanelTickets.accionadoBottonGuardarPanelTickets();
+				}
 			}
 		};
 	}
@@ -252,4 +257,22 @@ public class PanelTickets extends JPanel {
 		}
 		
 	}
-}
+	//Este metodo comprueba si se ha selecionado 1 producto como minimo
+	public boolean comprobarCamposFactura() {
+		boolean si = false;
+		if(table.getRowCount() == 0) {
+			Aviso.setVisible(true);
+		} else if (table.getRowCount() > 0 && Factura.isSelected() == true) {
+			if (NIF.getText().length() == 0 || Nombre.getText().length() == 0 || Apellido.getText().length() == 0) {
+				Aviso.setVisible(true);
+			}else {
+				Aviso.setVisible(false);
+				si = true;
+			}
+		}
+		return si;
+			
+		} 
+		
+	}
+
