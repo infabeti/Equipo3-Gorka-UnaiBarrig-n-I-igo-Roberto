@@ -14,6 +14,8 @@ public class Main {
 	public static void main(String[] args) {
 		modelo = new Modelo();    
 		vista = new Vista();
+		
+		Modelo.BDD.conexion();
                 
 		controlador = new Controlador(modelo, vista);
 	}
