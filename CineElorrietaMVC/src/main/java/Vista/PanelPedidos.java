@@ -111,6 +111,7 @@ public class PanelPedidos extends JPanel {
 		add(spinner);
 		
 		list = new JList();
+		list.setBounds(39, 239, 157, 140);
 		list.setModel(new AbstractListModel() {
 			String[] values = controladorPanelPedidos.pasarString();
 			public int getSize() {
@@ -120,7 +121,6 @@ public class PanelPedidos extends JPanel {
 				return values[index];
 			}
 		});
-		list.setBounds(39, 239, 157, 140);
 		add(list);
 		
 		DireccionLabel = new JLabel("Direccion:\r\n");
@@ -178,7 +178,7 @@ public class PanelPedidos extends JPanel {
 				  if (Localidad.getSelectedItem() == "Local") {
 					  DireccionTexto.setVisible(false);
 					  DireccionLabel.setVisible(false);
-					}else {
+					}else if (Localidad.getSelectedItem() == "Domicilio") {
 						DireccionTexto.setVisible(true);
 						DireccionLabel.setVisible(true);
 					}
@@ -208,7 +208,7 @@ public class PanelPedidos extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
 				controladorPanelPedidos.accionadoBottonAñadirPanelPedidos(list.getSelectedValue());
-				String[] values = ControladorPanelTickets.setSeparado();
+				String[] values = ControladorPanelPedidos.setSeparado();
 				 double numEntero = Double.parseDouble(values[1]);
 				 double spinnerInt = (int) spinner.getValue();
 				 double precioCant = controladorPanelPedidos.accionadoBottonAñadirPrecioCant(spinnerInt, numEntero);

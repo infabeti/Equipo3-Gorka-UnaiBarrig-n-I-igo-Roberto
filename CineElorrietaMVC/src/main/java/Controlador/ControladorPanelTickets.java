@@ -49,12 +49,9 @@ public class ControladorPanelTickets {
 		return Modelo.ticket.getTotal();
 	}		
 	public String[] pasarString(){
-		Productos[] productos = Modelo.BDD.getProductos();
-		String [] arrayr=new String[productos.length];
-		for(int i=0; i<productos.length; i++) {
-			arrayr[i]=productos[i].toString();
-		}
-		return  arrayr;
+		
+		String [] arrayr = Modelo.BDD.pasarString();
+		return arrayr;
 	}
 	public void contador(JTextArea cont) {
 		int i = Integer.parseInt(cont.getText());

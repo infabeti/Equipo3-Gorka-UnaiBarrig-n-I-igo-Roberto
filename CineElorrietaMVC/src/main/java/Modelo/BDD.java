@@ -33,4 +33,13 @@ public class BDD {
 		producto[5]=new Productos("pistachos",5);
 		return producto;
 	}
+	
+	public String[] pasarString(){
+		Productos[] productos = Modelo.BDD.getProductos();
+		String [] arrayr=new String[productos.length];
+		for(int i=0; i<productos.length; i++) {
+			arrayr[i]=productos[i].toString();
+		}
+		return  arrayr;
+	}
 }
