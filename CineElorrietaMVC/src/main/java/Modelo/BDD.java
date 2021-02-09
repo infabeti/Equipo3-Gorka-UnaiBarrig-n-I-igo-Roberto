@@ -6,7 +6,7 @@ public class BDD {
 	
 	public static void conexion() {
 		
-		String url="jdbc:mysql://localhost:3306/reto3";
+		String url="jdbc:mysql://localhost:33060/reto3";
 		String username="dam";
 		String password="elorrieta";
 
