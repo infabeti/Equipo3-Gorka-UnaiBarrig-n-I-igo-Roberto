@@ -50,7 +50,11 @@ public class ControladorPanelPedidos {
 	public static String[] setSeparado() {
 		return (String[]) Separado;
 	}
-	
+	public String getContador() {
+		return Modelo.Contador.getContador();
+	}
 
-	
+	public void setContador(String cont) {
+		Modelo.Contador.setContador(cont);
+	}
 }

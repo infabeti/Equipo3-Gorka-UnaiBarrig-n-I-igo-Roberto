@@ -29,7 +29,6 @@ public class PanelTickets extends JPanel {
 	private JList list_1;
 	private JSpinner spinner;
 	private JTable table;
-	private JTextArea cont;
 	private JLabel PrecioFinal;
 	private ControladorPanelTickets controladorPanelTickets;
 	private double precioTotal = 0;
@@ -43,6 +42,7 @@ public class PanelTickets extends JPanel {
 	private DefaultTableModel model;
 	private JLabel Aviso;
 	private Date fecha;
+	private JTextField cont;
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelTickets(ControladorPanelTickets controladorPanelTickets)
 	{
@@ -80,12 +80,6 @@ public class PanelTickets extends JPanel {
 		spinner.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 		add(spinner);
 		
-		cont = new JTextArea();
-		cont.setEditable(false);
-		cont.setText("1");
-		cont.setBounds(147, 10, 26, 22);
-		add(cont);
-		
 		
 		
 		PrecioFinal = new JLabel("0");
@@ -104,7 +98,7 @@ public class PanelTickets extends JPanel {
 		btnAnadir.setBounds(277, 147, 89, 23);
 		add(btnAnadir);
 		
-		JLabel lblNumeroDeCompra = new JLabel("Numero de compra:");
+		JLabel lblNumeroDeCompra = new JLabel("Numero de Ticket:");
 		lblNumeroDeCompra.setBounds(22, 15, 115, 14);
 		add(lblNumeroDeCompra);
 		
@@ -190,14 +184,21 @@ public class PanelTickets extends JPanel {
 		add(TextoApellido);
 		
 		JLabel fechaTexto = new JLabel("Fecha:");
-		fechaTexto.setBounds(325, 29, 115, 14);
-		fechaTexto.setText("Fecha: ");
+		fechaTexto.setBounds(276, 35, 180, 14);
+		fechaTexto.setText("Fecha: "+controladorPanelTickets.getFecha());
 		add(fechaTexto);
 		
 		Aviso = new JLabel("Rellene los campos");
 		Aviso.setBounds(292, 362, 115, 14);
 		Aviso.setVisible(false);
 		add(Aviso);
+		
+		cont = new JTextField();
+		cont.setText(controladorPanelTickets.getContador());
+		cont.setEditable(false);
+		cont.setColumns(10);
+		cont.setBounds(127, 12, 54, 20);
+		add(cont);
 		
 	
 		
@@ -224,15 +225,15 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
-				controladorPanelTickets.accionadoBottonAñadirPanelTickets(list_1.getSelectedValue());
+				controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue());
 				String[] values = ControladorPanelTickets.setSeparado();
 				 double numEntero = Double.parseDouble(values[1]);
 				 double spinnerInt = (int) spinner.getValue();
-				 double precioCant = controladorPanelTickets.accionadoBottonAñadirPrecioCant(spinnerInt, numEntero);
+				 double precioCant = controladorPanelTickets.accionadoBottonAnadirPrecioCant(spinnerInt, numEntero);
 				Object[] objs = {values[0],spinner.getValue(),precioCant};
 				model = (DefaultTableModel) table.getModel();
 				model.addRow(objs);
-				precioTotal = controladorPanelTickets.accionadoBottonAñadirTotal(precioTotal,precioCant);
+				precioTotal = controladorPanelTickets.accionadoBottonAnadirTotal(precioTotal,precioCant);
 				String total = String.valueOf(precioTotal);		
 				PrecioFinal.setText(total);
 			}
@@ -246,17 +247,12 @@ public class PanelTickets extends JPanel {
 				boolean comprobar = comprobarCamposFactura();
 				if(comprobar == true) {
 					// controladorPanelTickets.accionadoBottonGuardarPanelTickets();
+					controladorPanelTickets.setContador(cont.getText());
 				}
 			}
 		};
 	}
-	public void borrarTabla(JTable tabla) {
-		int contador = tabla.getRowCount();
-		for(int i = contador -1;i>=0;i--) {
-			tabla.remove(i);
-		}
 		
-	}
 	//Este metodo comprueba si se ha selecionado 1 producto como minimo
 	public boolean comprobarCamposFactura() {
 		boolean si = false;
@@ -269,6 +265,9 @@ public class PanelTickets extends JPanel {
 				Aviso.setVisible(false);
 				si = true;
 			}
+		}else {
+			Aviso.setVisible(false);
+			si = true;
 		}
 		return si;
 			

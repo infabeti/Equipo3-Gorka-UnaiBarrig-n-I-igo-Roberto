@@ -42,6 +42,7 @@ public class PanelPedidos extends JPanel {
 	private JList list;
 	private JLabel Aviso;
 	JButton btnGuardar;
+	private JTextField cont;
 	
 	
 	@SuppressWarnings("unchecked")
@@ -92,12 +93,12 @@ public class PanelPedidos extends JPanel {
 		add(DireccionLabel);
 		
 		Aviso = new JLabel("Rellene los campos");
-		Aviso.setBounds(374, 60, 115, 14);
+		Aviso.setBounds(358, 60, 115, 14);
 		Aviso.setVisible(false);
 		add(Aviso);
 		
 		DireccionTexto = new JTextField();
-		DireccionTexto.setBounds(284, 57, 86, 20);
+		DireccionTexto.setBounds(268, 57, 86, 20);
 		DireccionTexto.setVisible(false);
 		add(DireccionTexto);
 		DireccionTexto.setColumns(10);
@@ -141,6 +142,18 @@ public class PanelPedidos extends JPanel {
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(374, 326, 89, 23);
 		add(btnGuardar);
+		
+		JLabel lblNewLabel = new JLabel("Numero de pedido:");
+		lblNewLabel.setBounds(27, 25, 115, 14);
+		add(lblNewLabel);
+		
+		cont = new JTextField();
+		cont.setEditable(false);
+		cont.setBounds(142, 22, 54, 20);
+		cont.setText(controladorPanelPedidos.getContador());
+		cont.setColumns(10);
+		add(cont);
+		
 		
 		
 		Localidad.addActionListener(new ActionListener() {
@@ -202,6 +215,7 @@ public class PanelPedidos extends JPanel {
 				boolean comprobar = comprobarCampos();
 				if (comprobar == true) {
 					// controladorPanelPedidos.accionadoBottonGuardarPanelPedidos();
+					controladorPanelPedidos.setContador(cont.getText());
 				}
 			}
 		};

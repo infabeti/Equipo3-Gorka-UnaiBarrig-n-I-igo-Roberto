@@ -1,10 +1,13 @@
 package Modelo;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Tickets{
 	private int NumTrans;
-	private Date fecha = new Date();
+	Date fecha;
 	private String NomLocal;
 	private ProductosElegidos [] productos = new ProductosElegidos[20];
 	private double precioCant = 0;
@@ -33,11 +36,13 @@ public class Tickets{
 	public int getNumTrans() {
 		return this.NumTrans;
 	}
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setFecha() {
+		this.fecha = Calendar.getInstance().getTime();
 	}
-	public Date getFecha() {
-		return this.fecha;
+	public String getFecha() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String fecha2 = dateFormat.format(this.fecha);
+		return fecha2;
 	}
 	public void setNomLocal(String NomLocal) {
 		this.NomLocal = NomLocal;
