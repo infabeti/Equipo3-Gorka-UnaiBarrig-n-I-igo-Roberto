@@ -33,12 +33,6 @@ public class PanelPedidos extends JPanel {
 	private ControladorPanelPedidos controladorPanelPedidos;
 	private JComboBox Localidad;
 	private JTable table;
-	private JLabel TextoNIF;
-	private JLabel TextoNombre;
-	private JLabel TextoApellido;
-	private JTextField NIF;
-	private JTextField Apellido;
-	private JTextField Nombre;
 	private JSpinner spinner;
 	private JLabel DireccionLabel;
 	private JTextField DireccionTexto;
@@ -46,6 +40,8 @@ public class PanelPedidos extends JPanel {
 	private JLabel PrecioFinal;
 	private double precioTotal = 0;
 	private JList list;
+	private JLabel Aviso;
+	JButton btnGuardar;
 	
 	
 	@SuppressWarnings("unchecked")
@@ -60,7 +56,7 @@ public class PanelPedidos extends JPanel {
 		add(lblPedidos);
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(39, 412, 89, 23);
+		btnVolver.setBounds(39, 326, 89, 23);
 		btnVolver.setFocusPainted(false);
 		Color cpanel = new Color(200,194,182);
 		btnVolver.setBackground(cpanel);
@@ -69,49 +65,16 @@ public class PanelPedidos extends JPanel {
 		btnAnadir = new JButton("A\u00F1adir\r\n");
 		btnAnadir.setFocusPainted(false);
 		btnAnadir.setBackground(new Color(200, 194, 182));
-		btnAnadir.setBounds(135, 412, 89, 23);
+		btnAnadir.setBounds(110, 236, 86, 23);
 		add(btnAnadir);
 		
-		NIF = new JTextField();
-		NIF.setBounds(79, 85, 86, 20);
-		NIF.setVisible(true);
-		NIF.setColumns(10);
-		add(NIF);
-		
-		Apellido = new JTextField();
-		Apellido.setColumns(10);
-		Apellido.setBounds(345, 85, 86, 20);
-		Apellido.setVisible(true);
-		add(Apellido);
-		
-		Nombre = new JTextField();
-		Nombre.setColumns(10);
-		Nombre.setBounds(213, 85, 86, 20);
-		Nombre.setVisible(true);
-		add(Nombre);
-		
-		TextoNIF = new JLabel("NIF");
-		TextoNIF.setBounds(115, 70, 46, 14);
-		TextoNIF.setVisible(true);
-		add(TextoNIF);
-		
-		TextoNombre = new JLabel("Nombre");
-		TextoNombre.setBounds(234, 70, 46, 14);
-		TextoNombre.setVisible(true);
-		add(TextoNombre);
-		
-		TextoApellido = new JLabel("Apellido");
-		TextoApellido.setBounds(366, 70, 46, 14);
-		TextoApellido.setVisible(true);
-		add(TextoApellido);
-		
 		spinner = new JSpinner();
-		spinner.setBounds(217, 252, 41, 23);
+		spinner.setBounds(217, 98, 41, 23);
 		spinner.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 		add(spinner);
 		
 		list = new JList();
-		list.setBounds(39, 239, 157, 140);
+		list.setBounds(39, 85, 157, 140);
 		list.setModel(new AbstractListModel() {
 			String[] values = controladorPanelPedidos.pasarString();
 			public int getSize() {
@@ -124,12 +87,17 @@ public class PanelPedidos extends JPanel {
 		add(list);
 		
 		DireccionLabel = new JLabel("Direccion:\r\n");
-		DireccionLabel.setBounds(238, 188, 66, 14);
+		DireccionLabel.setBounds(221, 60, 66, 14);
 		DireccionLabel.setVisible(false);
 		add(DireccionLabel);
 		
+		Aviso = new JLabel("Rellene los campos");
+		Aviso.setBounds(374, 60, 115, 14);
+		Aviso.setVisible(false);
+		add(Aviso);
+		
 		DireccionTexto = new JTextField();
-		DireccionTexto.setBounds(301, 185, 86, 20);
+		DireccionTexto.setBounds(284, 57, 86, 20);
 		DireccionTexto.setVisible(false);
 		add(DireccionTexto);
 		DireccionTexto.setColumns(10);
@@ -149,13 +117,13 @@ public class PanelPedidos extends JPanel {
 			}
 		));
 		
-		table.setBounds(283, 240, 165, 140);
+		table.setBounds(283, 86, 165, 140);
 		add(table);
 		
 		PrecioFinal = new JLabel("0");
 		PrecioFinal.setBackground(Color.WHITE);
 		PrecioFinal.setForeground(Color.BLACK);
-		PrecioFinal.setBounds(402, 398, 46, 14);
+		PrecioFinal.setBounds(402, 237, 46, 14);
 		add(PrecioFinal);
 		
 		Localidad = new JComboBox();
@@ -163,12 +131,16 @@ public class PanelPedidos extends JPanel {
 		Localidad.addItem("Domicilio");
 		Localidad.setBackground(SystemColor.activeCaption);
 		Localidad.setToolTipText("");
-		Localidad.setBounds(121, 183, 86, 22);
+		Localidad.setBounds(104, 55, 86, 22);
 		add(Localidad);
 		
 		JLabel totalTexto = new JLabel("Total:");
-		totalTexto.setBounds(358, 398, 54, 14);
+		totalTexto.setBounds(358, 237, 54, 14);
 		add(totalTexto);
+		
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(374, 326, 89, 23);
+		add(btnGuardar);
 		
 		
 		Localidad.addActionListener(new ActionListener() {
@@ -193,6 +165,7 @@ public class PanelPedidos extends JPanel {
 	private void initializeEvents() {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelPedidos));
 		this.btnAnadir.addActionListener(listenerBotonAnadir(this.controladorPanelPedidos));
+		this.btnGuardar.addActionListener(listenerBotonGuardar(this.controladorPanelPedidos));
 	}
 	
 	private ActionListener listenerBotonVolver(ControladorPanelPedidos controladorPanelPedidos) {
@@ -221,4 +194,37 @@ public class PanelPedidos extends JPanel {
 			}
 		};
 	}
-}
+	
+	private ActionListener listenerBotonGuardar(ControladorPanelPedidos controladorPanelPedidos) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Ejecutando evento Boton Volver");
+				boolean comprobar = comprobarCampos();
+				if (comprobar == true) {
+					// controladorPanelPedidos.accionadoBottonGuardarPanelPedidos();
+				}
+			}
+		};
+	}
+	
+	//Este metodo comprueba si se ha selecionado 1 producto como minimo
+		public boolean comprobarCampos() {
+			boolean si = false;
+			if(table.getRowCount() == 0 ) {
+				Aviso.setVisible(true);
+			} 
+			else if (Localidad.getSelectedItem() == "Domicilio" && table.getRowCount() > 0) {
+					if (DireccionTexto.getText().length()==0) {
+						Aviso.setVisible(true);
+					}else {
+						Aviso.setVisible(false);
+						return si = true;
+					}
+			}else {
+				Aviso.setVisible(false);
+				return si = true;
+			}
+			return si;
+			} 
+	}
+	

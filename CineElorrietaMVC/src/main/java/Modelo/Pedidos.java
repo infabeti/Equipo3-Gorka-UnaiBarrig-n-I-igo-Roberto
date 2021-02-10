@@ -11,9 +11,6 @@ public class Pedidos {
 	private ProductosElegidos [] productos = new ProductosElegidos[20];
 	private double precioCant = 0;
 	private double total = 0;
-	private String NIF;
-	private String Nombre;
-	private String Apellido;
 	
 	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
@@ -56,24 +53,5 @@ public class Pedidos {
 	}
 	public double getCant() {
 		return this.precioCant;
-	}
-	public void setNIF(String NIF) {
-		this.NIF = NIF;
-	}
-	public String getNIF() {
-		return this.NIF;
-	}
-	public void setNombre(String Nombre) {
-		this.Nombre = Nombre;
-	}
-	public String getNombre() {
-		return this.Nombre;
-	}
-	public void setApellido(String Apellido) {
-		this.Apellido = Apellido;
-	}
-	public String getApellido() {
-		return this.Apellido;
-	}
-	
+	}	
 }
