@@ -24,7 +24,7 @@ public class ControladorPanelBienvenida {
 	}
 	
 	public void accionadoBottonMostrarPanelTickets() {
-		Modelo.ticket.setFecha();
+		modelo.ticket.setFecha();
 		this.controlador.navegarPanelTickets();
 	}
 	public void accionadoBottonMostrarPanelPedidos() {

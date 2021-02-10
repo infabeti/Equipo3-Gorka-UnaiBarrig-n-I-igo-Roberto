@@ -8,9 +8,7 @@ public ProductosElegidos(){
 }
 
 public ProductosElegidos(Object[] productos){
-	
 	this.productos = productos;
-	
 }
 public void setproductos(Object[] productos) {
 	this.productos = productos;

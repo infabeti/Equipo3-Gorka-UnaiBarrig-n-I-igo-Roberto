@@ -32,18 +32,18 @@ public class ControladorPanelPedidos {
 		this.controlador.navegarPanelBienvenida();
 	}
 	public double accionadoBottonAñadirPrecioCant(double num1, double num2) {
-		Modelo.pedidos.setCant(num1,num2);
-		return Modelo.pedidos.getCant();
+		modelo.pedidos.setCant(num1,num2);
+		return modelo.pedidos.getCant();
 	}
 	public double accionadoBottonAñadirTotal(double num1, double num2) {
-		Modelo.pedidos.setTotal(num1,num2);
-		return Modelo.pedidos.getTotal();
+		modelo.pedidos.setTotal(num1,num2);
+		return modelo.pedidos.getTotal();
 	}
 	public void accionadoBottonAñadirPanelPedidos(Object selec) {
-		Separado =  Modelo.productos.separar(selec);
+		Separado =  modelo.productos.separar(selec);
 	}
 	public String[] stringProductos(){
-		String [] arrayr = Modelo.BDD.convertirArrayProductosString();
+		String [] arrayr = modelo.BDD.convertirArrayProductosString();
 		return arrayr;
 		
 	}
@@ -51,10 +51,14 @@ public class ControladorPanelPedidos {
 		return (String[]) Separado;
 	}
 	public String getContador() {
-		return Modelo.Contador.getContador();
+		return modelo.Contador.getContador();
 	}
 
 	public void setContador(String cont) {
-		Modelo.Contador.setContador(cont);
+		modelo.Contador.setContador(cont);
+	}
+
+	public void accionadoBottonEliminarPanelPedidos() {
+		
 	}
 }

@@ -1,9 +1,17 @@
 package Modelo;
 
 public class Modelo {
-public static Tickets ticket = new Tickets();
-public static Pedidos pedidos = new Pedidos();
-public static BDD BDD = new BDD();
-public static Productos productos = new Productos();
-public static ContadorNumPedido Contador = new ContadorNumPedido();
+public Tickets ticket;
+public Pedidos pedidos;
+public BDD BDD;
+public Productos productos;
+public ContadorNumPedido Contador;
+
+public Modelo() {
+	this.ticket = new Tickets();
+	this.pedidos = new Pedidos();
+	this.BDD = new BDD();
+	this.productos = new Productos();
+	this.Contador = new ContadorNumPedido();
+}
 }

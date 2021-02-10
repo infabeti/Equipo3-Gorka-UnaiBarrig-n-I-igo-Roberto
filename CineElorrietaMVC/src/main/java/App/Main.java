@@ -15,7 +15,7 @@ public class Main {
 		modelo = new Modelo();    
 		vista = new Vista();
 		
-		Modelo.BDD.conexion();
+		modelo.BDD.conexion();
                 
 		controlador = new Controlador(modelo, vista);
 	}

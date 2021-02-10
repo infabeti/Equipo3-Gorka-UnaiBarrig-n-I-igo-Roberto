@@ -35,7 +35,7 @@ public class BDD {
 	}
 	
 	public String[]  convertirArrayProductosString(){
-		Productos[] productos = Modelo.BDD.getProductos();
+		Productos[] productos = getProductos();
 		String [] arrayr=new String[productos.length];
 		for(int i=0; i<productos.length; i++) {
 			arrayr[i]=productos[i].toString();

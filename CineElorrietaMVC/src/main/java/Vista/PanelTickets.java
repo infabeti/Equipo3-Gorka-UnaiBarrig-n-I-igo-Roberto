@@ -43,6 +43,9 @@ public class PanelTickets extends JPanel {
 	private JLabel Aviso;
 	private Date fecha;
 	private JTextField cont;
+	private JTextField LocalTexto;
+	private JLabel LocalLabel;
+	private JButton btnEliminar;
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelTickets(ControladorPanelTickets controladorPanelTickets)
 	{
@@ -60,6 +63,10 @@ public class PanelTickets extends JPanel {
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(367, 423, 89, 23);
 		add(btnGuardar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(277, 169, 89, 23);
+		add(btnEliminar);
 		
 		
 		list_1 = new JList();
@@ -200,6 +207,17 @@ public class PanelTickets extends JPanel {
 		cont.setBounds(127, 12, 54, 20);
 		add(cont);
 		
+		LocalTexto = new JTextField();
+		LocalTexto.setBounds(295, 221, 86, 20);
+		add(LocalTexto);
+		LocalTexto.setColumns(10);
+		
+		LocalLabel = new JLabel("Local:");
+		LocalLabel.setBounds(244, 224, 46, 14);
+		add(LocalLabel);
+		
+		
+		
 	
 		
 	
@@ -210,6 +228,7 @@ public class PanelTickets extends JPanel {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelTickets));
 		this.btnAnadir.addActionListener(listenerBotonAnadir(this.controladorPanelTickets));
 		this.btnGuardar.addActionListener(listenerBotonGuardar(this.controladorPanelTickets));
+		this.btnEliminar.addActionListener(listenerBotonEliminar(this.controladorPanelTickets));
 		
 	}
 	
@@ -252,6 +271,14 @@ public class PanelTickets extends JPanel {
 			}
 		};
 	}
+	private ActionListener listenerBotonEliminar(ControladorPanelTickets controladorPanelTickets) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Ejecutando evento Boton Volver");
+				controladorPanelTickets.accionadoBottonEliminarPanelTickets();
+			}
+		};
+	}
 		
 	//Este metodo comprueba si se ha selecionado 1 producto como minimo
 	public boolean comprobarCamposFactura() {
@@ -272,6 +299,5 @@ public class PanelTickets extends JPanel {
 		return si;
 			
 		} 
-		
 	}
 

@@ -43,6 +43,7 @@ public class PanelPedidos extends JPanel {
 	private JLabel Aviso;
 	JButton btnGuardar;
 	private JTextField cont;
+	private JButton btnEliminar;
 	
 	
 	@SuppressWarnings("unchecked")
@@ -55,6 +56,10 @@ public class PanelPedidos extends JPanel {
 		lblPedidos = new JLabel("Pedidos");
 		lblPedidos.setBounds(226, 25, 54, 14);
 		add(lblPedidos);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(277, 169, 89, 23);
+		add(btnEliminar);
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(39, 326, 89, 23);
@@ -179,8 +184,18 @@ public class PanelPedidos extends JPanel {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelPedidos));
 		this.btnAnadir.addActionListener(listenerBotonAnadir(this.controladorPanelPedidos));
 		this.btnGuardar.addActionListener(listenerBotonGuardar(this.controladorPanelPedidos));
+		this.btnEliminar.addActionListener(listenerBotonEliminar(this.controladorPanelPedidos));
 	}
 	
+	private ActionListener listenerBotonEliminar(ControladorPanelPedidos controladorPanelPedidos) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Ejecutando evento Boton Volver");
+				controladorPanelPedidos.accionadoBottonEliminarPanelPedidos();
+			}
+		};
+	}
+
 	private ActionListener listenerBotonVolver(ControladorPanelPedidos controladorPanelPedidos) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

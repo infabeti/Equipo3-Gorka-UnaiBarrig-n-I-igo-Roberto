@@ -37,27 +37,32 @@ public class ControladorPanelTickets {
 		this.controlador.navegarPanelBienvenida();
 	}
 	public void accionadoBottonAnadirPanelTickets(Object selec) {
-		Separado =  Modelo.productos.separar(selec);
+		Separado =  modelo.productos.separar(selec);
 	}
 	public double accionadoBottonAnadirPrecioCant(double num1, double num2) {
-		Modelo.ticket.setCant(num1,num2);
-		return Modelo.ticket.getCant();
+		modelo.ticket.setCant(num1,num2);
+		return modelo.ticket.getCant();
 	}
 	public double accionadoBottonAnadirTotal(double num1, double num2) {
-		Modelo.ticket.setTotal(num1,num2);
-		return Modelo.ticket.getTotal();
+		modelo.ticket.setTotal(num1,num2);
+		return modelo.ticket.getTotal();
 	}		
 	public String[] stringProductos(){
-		return Modelo.BDD.convertirArrayProductosString();
+		return modelo.BDD.convertirArrayProductosString();
 	}
 	public String getContador() {
-		return Modelo.Contador.getContador();
+		return modelo.Contador.getContador();
 	}
 
 	public void setContador(String cont) {
-		Modelo.Contador.setContador(cont);
+		modelo.Contador.setContador(cont);
 	}
 	public String getFecha() {
-		return Modelo.ticket.getFecha();
+		return modelo.ticket.getFecha();
+	}
+
+	public void accionadoBottonEliminarPanelTickets() {
+	
+		
 	}
 }
