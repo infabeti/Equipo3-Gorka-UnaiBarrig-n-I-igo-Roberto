@@ -65,7 +65,7 @@ public class PanelTickets extends JPanel {
 		list_1 = new JList();
 		list_1.setBounds(45, 59, 155, 141);
 		list_1.setModel(new AbstractListModel() {
-			String[] values = controladorPanelTickets.pasarString();
+			String[] values = controladorPanelTickets.stringProductos();
 			public int getSize() {
 				return values.length;
 			}

@@ -37,8 +37,7 @@ public class ControladorPanelTickets {
 		this.controlador.navegarPanelBienvenida();
 	}
 	public void accionadoBottonAñadirPanelTickets(Object selec) {
-		Productos producto = new Productos();
-		Separado = producto.separar(selec);
+		Separado =  Modelo.productos.separar(selec);
 	}
 	public double accionadoBottonAñadirPrecioCant(double num1, double num2) {
 		Modelo.ticket.setCant(num1,num2);
@@ -48,10 +47,8 @@ public class ControladorPanelTickets {
 		Modelo.ticket.setTotal(num1,num2);
 		return Modelo.ticket.getTotal();
 	}		
-	public String[] pasarString(){
-		
-		String [] arrayr = Modelo.BDD.pasarString();
-		return arrayr;
+	public String[] stringProductos(){
+		return Modelo.BDD.convertirArrayProductosString();
 	}
 	public void contador(JTextArea cont) {
 		int i = Integer.parseInt(cont.getText());

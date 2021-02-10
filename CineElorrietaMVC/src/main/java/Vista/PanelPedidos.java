@@ -76,7 +76,7 @@ public class PanelPedidos extends JPanel {
 		list = new JList();
 		list.setBounds(39, 85, 157, 140);
 		list.setModel(new AbstractListModel() {
-			String[] values = controladorPanelPedidos.pasarString();
+			String[] values = controladorPanelPedidos.stringProductos();
 			public int getSize() {
 				return values.length;
 			}

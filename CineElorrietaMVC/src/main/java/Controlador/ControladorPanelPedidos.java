@@ -40,11 +40,10 @@ public class ControladorPanelPedidos {
 		return Modelo.pedidos.getTotal();
 	}
 	public void accionadoBottonAñadirPanelPedidos(Object selec) {
-		Productos producto = new Productos();
-		this.Separado = producto.separar(selec);
+		Separado =  Modelo.productos.separar(selec);
 	}
-	public String[] pasarString(){
-		String [] arrayr = Modelo.BDD.pasarString();
+	public String[] stringProductos(){
+		String [] arrayr = Modelo.BDD.convertirArrayProductosString();
 		return arrayr;
 		
 	}
