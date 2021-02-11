@@ -36,8 +36,12 @@ public class ControladorPanelTickets {
 	public void accionadoBottonVolverPanelTickets() {
 		this.controlador.navegarPanelBienvenida();
 	}
-	public void accionadoBottonAnadirPanelTickets(Object selec) {
+	public void accionadoBottonAnadirPanelTickets(String selec, int cant) {
 		Separado =  modelo.productos.separar(selec);
+		modelo.ticket.productos.setNombre(Separado [0]);
+		double PrecioProducto = Double.parseDouble(Separado[1]);
+		modelo.ticket.productos.setPrecio(PrecioProducto);
+		modelo.ticket.productos.setCantidad(cant);
 	}
 	public double accionadoBottonAnadirPrecioCant(double num1, double num2) {
 		modelo.ticket.setCant(num1,num2);

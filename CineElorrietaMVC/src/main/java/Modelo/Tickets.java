@@ -6,11 +6,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Tickets{
-	private int NumTrans;
+	private Modelo modelo;
+	private String NumTrans;
 	Date fecha;
 	private String NomLocal;
 	private ProductosElegidos [] productos = new ProductosElegidos[20];
-	private double precioCant = 0;
+	private double precioCant;
 	private double total = 0;
 	private String NIF;
 	private String Nombre;
@@ -19,21 +20,21 @@ public class Tickets{
 	
 	public Tickets(){
 	}
-	public Tickets(int NumTrans,Date fecha,String NomLocal,ProductosElegidos[] productos,double total,double precioCant, String NIF, String Nombre, String Apellido){
-		this.NumTrans = NumTrans;
+	public Tickets(Date fecha,String NomLocal,ProductosElegidos[] productos,double total, String NIF, String Nombre, String Apellido){
+		this.NumTrans = modelo.Contador.getContador();
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;
 		this.productos = productos;
-		this.precioCant = precioCant;
+		this.precioCant = this.productos.getPrecioCantidad();
 		this.total = total;
 		this.NIF = NIF;
 		this.Nombre = Nombre;
 		this.Apellido = Apellido;
 	}
-	public void setNumTrans(int Numtrans) {
+	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
 	}
-	public int getNumTrans() {
+	public String getNumTrans() {
 		return this.NumTrans;
 	}
 	public void setFecha() {

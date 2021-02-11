@@ -1,19 +1,34 @@
 package Modelo;
 
 public class ProductosElegidos {
-private Object[] productos = new Object[256];
+private String nombre;
+private double precio;
+private double cantidad;
+private double precioCantidad;
 
 
 public ProductosElegidos(){
 }
-
-public ProductosElegidos(Object[] productos){
-	this.productos = productos;
+public void setNombre(String nombre) {
+	this.nombre = nombre;
 }
-public void setproductos(Object[] productos) {
-	this.productos = productos;
+public String getNombre() {
+	return this.nombre;
 }
-public Object[] getproductos(Object[] productos) {
-	return this.productos;
+public void setPrecio(double precio) {
+	this.precio = precio;
+}
+public double getPrecio() {
+	return this.precio;
+}
+public void setCantidad(double cantidad) {
+	this.cantidad = cantidad;
+}
+public double getCantidad() {
+	return this.cantidad;
+}
+public double getPrecioCantidad() {
+	this.precioCantidad = getPrecio()*getCantidad();
+	return this.precioCantidad;
 }
 }
