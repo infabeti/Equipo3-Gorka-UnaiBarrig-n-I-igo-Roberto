@@ -5,6 +5,7 @@ import javax.swing.JTextArea;
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
+import Modelo.ProductosElegidos;
 import Modelo.Tickets;
 import Vista.PanelBienvenida;
 import Vista.PanelTickets;
@@ -36,19 +37,18 @@ public class ControladorPanelTickets {
 	public void accionadoBottonVolverPanelTickets() {
 		this.controlador.navegarPanelBienvenida();
 	}
-	public void accionadoBottonAnadirPanelTickets(String selec, int cant) {
-		Separado =  modelo.productos.separar(selec);
-		modelo.ticket.productos.setNombre(Separado [0]);
+	public void accionadoBottonAnadirPanelTickets(Object object, int cant) {
+		Separado =  modelo.productos.separar(object);
 		double PrecioProducto = Double.parseDouble(Separado[1]);
-		modelo.ticket.productos.setPrecio(PrecioProducto);
-		modelo.ticket.productos.setCantidad(cant);
+		modelo.ticket.setProductos(Separado[0],PrecioProducto,cant);
 	}
-	public double accionadoBottonAnadirPrecioCant(double num1, double num2) {
-		modelo.ticket.setCant(num1,num2);
+	public String accionadoBottonAnadirName() {
+		return modelo.ticket.getName();
+	}
+	public double accionadoBottonAnadirPrecioCant() {
 		return modelo.ticket.getCant();
 	}
-	public double accionadoBottonAnadirTotal(double num1, double num2) {
-		modelo.ticket.setTotal(num1,num2);
+	public String accionadoBottonAnadirTotal() {
 		return modelo.ticket.getTotal();
 	}		
 	public String[] stringProductos(){
@@ -64,9 +64,8 @@ public class ControladorPanelTickets {
 	public String getFecha() {
 		return modelo.ticket.getFecha();
 	}
-
 	public void accionadoBottonEliminarPanelTickets() {
-	
-		
+			
 	}
+
 }

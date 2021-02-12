@@ -6,9 +6,22 @@ private double precio;
 private double cantidad;
 private double precioCantidad;
 
-
-public ProductosElegidos(){
+public ProductosElegidos(String separado, double precioProducto, int cant) {
+	this.nombre = separado;
+	this.precio = precioProducto;
+	this.cantidad = cant;
 }
+
+public ProductosElegidos(String separado, double precioProducto, int cant, double precioCantidad) {
+	this.nombre = separado;
+	this.precio = precioProducto;
+	this.cantidad = cant;
+	this.precioCantidad = precioCantidad;
+}
+public ProductosElegidos() {
+	
+}
+
 public void setNombre(String nombre) {
 	this.nombre = nombre;
 }
@@ -28,7 +41,7 @@ public double getCantidad() {
 	return this.cantidad;
 }
 public double getPrecioCantidad() {
-	this.precioCantidad = getPrecio()*getCantidad();
+	this.precioCantidad = this.precio*this.cantidad;
 	return this.precioCantidad;
 }
 }

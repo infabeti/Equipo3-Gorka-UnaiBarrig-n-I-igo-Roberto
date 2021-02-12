@@ -245,12 +245,13 @@ public class PanelTickets extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
 				controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(),(int) spinner.getValue());
-				
-				Object[] objs = {values[0],spinner.getValue(),precioCant};
+				String name = controladorPanelTickets.accionadoBottonAnadirName();
+				double cant = (int) spinner.getValue();
+				double precioCant = controladorPanelTickets.accionadoBottonAnadirPrecioCant();
+				Object[] objs = {name,cant,precioCant};
 				model = (DefaultTableModel) table.getModel();
 				model.addRow(objs);
-				precioTotal = controladorPanelTickets.accionadoBottonAnadirTotal(precioTotal,precioCant);
-				String total = String.valueOf(precioTotal);		
+				String total = 	controladorPanelTickets.accionadoBottonAnadirTotal();
 				PrecioFinal.setText(total);
 			}
 		};

@@ -2,6 +2,7 @@ package Modelo;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,7 +11,8 @@ public class Tickets{
 	private String NumTrans;
 	Date fecha;
 	private String NomLocal;
-	private ProductosElegidos [] productos = new ProductosElegidos[20];
+	private ProductosElegidos [] productos = new ProductosElegidos[0];
+	private String nombrePro;
 	private double precioCant;
 	private double total = 0;
 	private String NIF;
@@ -20,12 +22,11 @@ public class Tickets{
 	
 	public Tickets(){
 	}
-	public Tickets(Date fecha,String NomLocal,ProductosElegidos[] productos,double total, String NIF, String Nombre, String Apellido){
+	public Tickets(Date fecha,String NomLocal, double total, String NIF, String Nombre, String Apellido, ProductosElegidos[] productos){
 		this.NumTrans = modelo.Contador.getContador();
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;
-		this.productos = productos;
-		this.precioCant = this.productos.getPrecioCantidad();
+		this.productos  = productos;
 		this.total = total;
 		this.NIF = NIF;
 		this.Nombre = Nombre;
@@ -54,19 +55,27 @@ public class Tickets{
 	public void setproductos(ProductosElegidos[] productos) {
 		this.productos = productos;
 	}
-	public ProductosElegidos[] getproductos(ProductosElegidos[] productos) {
+	public ProductosElegidos[] getproductos() {
 		return this.productos;
 	}
-	public void setTotal(double num1,double num2) {
-		this.total = num1+num2;
+	public String getName() {
+		for(int i = 0;i<this.productos.length;i++) {
+			nombrePro = productos[i].getNombre();
+		}
+		return nombrePro;
 	}
-	public double getTotal() {
-		return this.total;
-	}
-	public void setCant(double num1,double num2) {
-		this.precioCant = num1*num2;
+	
+	public String getTotal() {
+		for(int i = 0;i<this.productos.length;i++) {
+			this.total += productos[i].getPrecioCantidad();
+		}
+		String total = String.valueOf(this.total);
+		return total;
 	}
 	public double getCant() {
+		for(int i = 0;i<this.productos.length;i++) {
+			this.precioCant = productos[i].getPrecioCantidad();
+		}
 		return this.precioCant;
 	}
 	public void setNIF(String NIF) {
@@ -86,5 +95,20 @@ public class Tickets{
 	}
 	public String getApellido() {
 		return this.Apellido;
+	}
+	public ProductosElegidos[] getProductos() {
+		return this.productos;
+	}
+	public void setProductos(String separado, double precioProducto, int cant) {
+		int value = this.productos.length;
+		aumentarArrProductos();
+		this.productos[value]=new ProductosElegidos(separado,precioProducto,cant);
+	}
+	public void aumentarArrProductos() {
+		ProductosElegidos[] temp = new ProductosElegidos[this.productos.length+1];
+		/*for (int i = 0; i<this.productos.length;i++) {
+			temp[i] = this.productos[i];
+		}*/
+		this.productos = Arrays.copyOf(temp ,this.productos.length+1);
 	}
 }
