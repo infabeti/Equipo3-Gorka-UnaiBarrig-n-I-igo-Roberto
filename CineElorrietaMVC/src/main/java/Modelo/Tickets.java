@@ -19,6 +19,7 @@ public class Tickets{
 	private String Nombre;
 	private String Apellido;
 	private boolean EsFactura = false;
+	private int aumentoDeArr = 0;
 	
 	public Tickets(){
 	}
@@ -59,24 +60,24 @@ public class Tickets{
 		return this.productos;
 	}
 	public String getName() {
-		for(int i = 0;i<this.productos.length;i++) {
-			nombrePro = productos[i].getNombre();
-		}
+		nombrePro = productos[productos.length-1].getNombre();
 		return nombrePro;
 	}
 	
 	public String getTotal() {
-		for(int i = 0;i<this.productos.length;i++) {
-			this.total += productos[i].getPrecioCantidad();
-		}
+			this.total = this.total + productos[aumentoDeArr].getPrecioCantidad();
+			aumentoDeArr++;
 		String total = String.valueOf(this.total);
 		return total;
 	}
+	public String eliminarTotal() {
+		this.total = this.total - productos[aumentoDeArr-1].getPrecioCantidad();
+		aumentoDeArr--;
+	String total = String.valueOf(this.total);
+	return total;
+	}
 	public double getCant() {
-		for(int i = 0;i<this.productos.length;i++) {
-			this.precioCant = productos[i].getPrecioCantidad();
-		}
-		return this.precioCant;
+		return	productos[productos.length-1].getPrecioCantidad();
 	}
 	public void setNIF(String NIF) {
 		this.NIF = NIF;
@@ -99,16 +100,17 @@ public class Tickets{
 	public ProductosElegidos[] getProductos() {
 		return this.productos;
 	}
-	public void setProductos(String separado, double precioProducto, int cant) {
+	public void setProductos(String nombre, double precioProducto, int cant) {
 		int value = this.productos.length;
 		aumentarArrProductos();
-		this.productos[value]=new ProductosElegidos(separado,precioProducto,cant);
+		this.productos[value]=new ProductosElegidos(nombre,precioProducto,cant);
 	}
 	public void aumentarArrProductos() {
 		ProductosElegidos[] temp = new ProductosElegidos[this.productos.length+1];
-		/*for (int i = 0; i<this.productos.length;i++) {
+		for (int i = 0; i<this.productos.length;i++) {
 			temp[i] = this.productos[i];
-		}*/
+		}
 		this.productos = Arrays.copyOf(temp ,this.productos.length+1);
 	}
 }
+

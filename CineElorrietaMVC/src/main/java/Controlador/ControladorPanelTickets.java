@@ -37,20 +37,21 @@ public class ControladorPanelTickets {
 	public void accionadoBottonVolverPanelTickets() {
 		this.controlador.navegarPanelBienvenida();
 	}
-	public void accionadoBottonAnadirPanelTickets(Object object, int cant) {
+	public String[] accionadoBottonAnadirPanelTickets(Object object, int cant) {
 		Separado =  modelo.productos.separar(object);
 		double PrecioProducto = Double.parseDouble(Separado[1]);
 		modelo.ticket.setProductos(Separado[0],PrecioProducto,cant);
-	}
-	public String accionadoBottonAnadirName() {
-		return modelo.ticket.getName();
+		return Separado; 
 	}
 	public double accionadoBottonAnadirPrecioCant() {
 		return modelo.ticket.getCant();
 	}
 	public String accionadoBottonAnadirTotal() {
 		return modelo.ticket.getTotal();
-	}		
+	}
+	public String accionadoBottonEliminarTotal() {
+		return modelo.ticket.eliminarTotal();
+	}	
 	public String[] stringProductos(){
 		return modelo.BDD.convertirArrayProductosString();
 	}
@@ -64,7 +65,7 @@ public class ControladorPanelTickets {
 	public String getFecha() {
 		return modelo.ticket.getFecha();
 	}
-	public void accionadoBottonEliminarPanelTickets() {
+	public void accionadoBottonEliminarPanelTickets(int i) {
 			
 	}
 

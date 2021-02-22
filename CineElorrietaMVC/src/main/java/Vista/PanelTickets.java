@@ -118,7 +118,6 @@ public class PanelTickets extends JPanel {
 		String col[] = {"Producto", "Cantidad", "Precio/Cant"};
 		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
 		table = new JTable(tableModel);
-		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				
@@ -244,11 +243,10 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
-				controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(),(int) spinner.getValue());
-				String name = controladorPanelTickets.accionadoBottonAnadirName();
-				double cant = (int) spinner.getValue();
+				String[] NombrePrecio = controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(),(int) spinner.getValue());
+				int cant = (int) spinner.getValue();
 				double precioCant = controladorPanelTickets.accionadoBottonAnadirPrecioCant();
-				Object[] objs = {name,cant,precioCant};
+				Object[] objs = {NombrePrecio[0],cant,precioCant};
 				model = (DefaultTableModel) table.getModel();
 				model.addRow(objs);
 				String total = 	controladorPanelTickets.accionadoBottonAnadirTotal();
@@ -273,7 +271,11 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
-				controladorPanelTickets.accionadoBottonEliminarPanelTickets();
+				controladorPanelTickets.accionadoBottonEliminarPanelTickets(table.getSelectedRow());
+				DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+				modelo.removeRow(table.getSelectedRow());
+				String total = 	controladorPanelTickets.accionadoBottonEliminarTotal();
+				PrecioFinal.setText(total);
 			}
 		};
 	}
