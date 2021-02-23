@@ -58,7 +58,7 @@ public class PanelPedidos extends JPanel {
 		add(lblPedidos);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(277, 169, 89, 23);
+		btnEliminar.setBounds(281, 236, 89, 23);
 		add(btnEliminar);
 		
 		btnVolver = new JButton("Volver");
@@ -98,12 +98,12 @@ public class PanelPedidos extends JPanel {
 		add(DireccionLabel);
 		
 		Aviso = new JLabel("Rellene los campos");
-		Aviso.setBounds(358, 60, 115, 14);
+		Aviso.setBounds(335, 25, 115, 14);
 		Aviso.setVisible(false);
 		add(Aviso);
 		
 		DireccionTexto = new JTextField();
-		DireccionTexto.setBounds(268, 57, 86, 20);
+		DireccionTexto.setBounds(281, 57, 86, 20);
 		DireccionTexto.setVisible(false);
 		add(DireccionTexto);
 		DireccionTexto.setColumns(10);
@@ -113,7 +113,6 @@ public class PanelPedidos extends JPanel {
 		String col[] = {"Producto", "Cantidad", "Precio/Cant"};
 		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
 		table = new JTable(tableModel);
-		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				
@@ -129,7 +128,7 @@ public class PanelPedidos extends JPanel {
 		PrecioFinal = new JLabel("0");
 		PrecioFinal.setBackground(Color.WHITE);
 		PrecioFinal.setForeground(Color.BLACK);
-		PrecioFinal.setBounds(402, 237, 46, 14);
+		PrecioFinal.setBounds(404, 275, 46, 14);
 		add(PrecioFinal);
 		
 		Localidad = new JComboBox();
@@ -141,7 +140,7 @@ public class PanelPedidos extends JPanel {
 		add(Localidad);
 		
 		JLabel totalTexto = new JLabel("Total:");
-		totalTexto.setBounds(358, 237, 54, 14);
+		totalTexto.setBounds(356, 275, 54, 14);
 		add(totalTexto);
 		
 		btnGuardar = new JButton("Guardar");
@@ -191,7 +190,11 @@ public class PanelPedidos extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
-				controladorPanelPedidos.accionadoBottonEliminarPanelPedidos();
+				DefaultTableModel tablemodel = (DefaultTableModel) table.getModel();
+				tablemodel.removeRow(table.getSelectedRow());
+				controladorPanelPedidos.accionadoBottonEliminarTotal();
+				String total = 	controladorPanelPedidos.accionadoBottonEliminarTotal();
+				PrecioFinal.setText(total);
 			}
 		};
 	}
@@ -208,7 +211,7 @@ public class PanelPedidos extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
-				controladorPanelPedidos.accionadoBottonAñadirPanelPedidos(list.getSelectedValue());
+				controladorPanelPedidos.accionadoBottonAñadirPanelPedidos(list.getSelectedValue(),(int) spinner.getValue());
 				String[] values = ControladorPanelPedidos.setSeparado();
 				 double numEntero = Double.parseDouble(values[1]);
 				 double spinnerInt = (int) spinner.getValue();
@@ -216,8 +219,8 @@ public class PanelPedidos extends JPanel {
 				Object[] objs = {values[0],spinner.getValue(),precioCant};
 				model = (DefaultTableModel) table.getModel();
 				model.addRow(objs);
-				precioTotal = controladorPanelPedidos.accionadoBottonAñadirTotal(precioTotal,precioCant);
-				String total = String.valueOf(precioTotal);		
+				  
+				String total = controladorPanelPedidos.accionadoBottonAñadirTotal();	
 				PrecioFinal.setText(total);
 			}
 		};
