@@ -87,10 +87,10 @@ public class Tickets{
 	}
 	private ProductosElegidos[] eliminarSelecArr(ProductosElegidos[] array, int index) {
         int i = index;
-        for (; i < array.length - 1; i++) {
+        for (i = index; i < array.length - 1; i++) {
             array[i] = array[i + 1];
         }
-        array[i] = null;
+        array[array.length-1] = null;
 		return array;
     }
 	public double getCant() {
