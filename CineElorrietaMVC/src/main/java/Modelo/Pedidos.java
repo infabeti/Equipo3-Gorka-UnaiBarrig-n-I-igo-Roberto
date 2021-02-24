@@ -9,7 +9,7 @@ public class Pedidos {
 	private Date fecha = new Date();
 	private String NomLocal;
 	private String Direccion;
-	private ProductosElegidos [] productos = new ProductosElegidos[0];
+	private ProductosElegidos[] productos = new ProductosElegidos[0];
 	private double total = 0;
 	private int aumentoDeArr = 0;
 	private int arrSelec;
@@ -74,11 +74,20 @@ public class Pedidos {
 	}
 	public String eliminarTotal() {
 		this.total = this.total - productos[getArrSelec()].getPrecioCantidad();
-		//this.productos Eliminar fila
+		this.productos = eliminarSelecArr(this.productos, getArrSelec());
+		DisminuirArrProductos();
 		aumentoDeArr--;
 	String total = String.valueOf(this.total);
 	return total;
 	}
+	private ProductosElegidos[] eliminarSelecArr(ProductosElegidos[] array, int index) {
+        int i = index;
+        for (; i < array.length - 1; i++) {
+            array[i] = array[i + 1];
+        }
+        array[i] = null;
+		return array;
+    }
 	public double getCant() {
 		return	productos[productos.length-1].getPrecioCantidad();
 	}
@@ -93,5 +102,12 @@ public class Pedidos {
 			temp[i] = this.productos[i];
 		}
 		this.productos = Arrays.copyOf(temp ,this.productos.length+1);
+	}
+	public void DisminuirArrProductos() {
+		ProductosElegidos[] temp = new ProductosElegidos[this.productos.length-1];
+		for (int i = 0; i<this.productos.length-1;i++) {
+			temp[i] = this.productos[i];
+		}
+		this.productos = Arrays.copyOf(temp ,this.productos.length-1);
 	}
 }
