@@ -17,11 +17,7 @@ public class ControladorPanelTickets {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelTickets panelTickets;
-	private static String[] Separado;
-	
-	public static String[] setSeparado() {
-		return (String[]) Separado;
-	}
+	private String[] Separado;
 	
 	public ControladorPanelTickets(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;

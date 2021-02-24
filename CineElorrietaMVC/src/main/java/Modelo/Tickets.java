@@ -13,7 +13,6 @@ public class Tickets{
 	private String NomLocal;
 	private ProductosElegidos [] productos = new ProductosElegidos[0];
 	private String nombrePro;
-	private double precioCant;
 	private double total = 0;
 	private String NIF;
 	private String Nombre;

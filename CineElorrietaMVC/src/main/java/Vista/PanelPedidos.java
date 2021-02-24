@@ -192,7 +192,6 @@ public class PanelPedidos extends JPanel {
 				System.out.println("Ejecutando evento Boton Volver");
 				DefaultTableModel tablemodel = (DefaultTableModel) table.getModel();
 				tablemodel.removeRow(table.getSelectedRow());
-				controladorPanelPedidos.accionadoBottonEliminarTotal();
 				String total = 	controladorPanelPedidos.accionadoBottonEliminarTotal();
 				PrecioFinal.setText(total);
 			}
@@ -211,16 +210,13 @@ public class PanelPedidos extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
-				controladorPanelPedidos.accionadoBottonAñadirPanelPedidos(list.getSelectedValue(),(int) spinner.getValue());
-				String[] values = ControladorPanelPedidos.setSeparado();
-				 double numEntero = Double.parseDouble(values[1]);
-				 double spinnerInt = (int) spinner.getValue();
-				 double precioCant = controladorPanelPedidos.accionadoBottonAñadirPrecioCant(spinnerInt, numEntero);
-				Object[] objs = {values[0],spinner.getValue(),precioCant};
+				String[] NombrePrecio = controladorPanelPedidos.accionadoBottonAnadirPanelPedidos(list.getSelectedValue(),(int) spinner.getValue());
+				int cant = (int) spinner.getValue();
+				double precioCant = controladorPanelPedidos.accionadoBottonAnadirPrecioCant();
+				Object[] objs = {NombrePrecio[0],cant,precioCant};
 				model = (DefaultTableModel) table.getModel();
 				model.addRow(objs);
-				  
-				String total = controladorPanelPedidos.accionadoBottonAñadirTotal();	
+				String total = 	controladorPanelPedidos.accionadoBottonAnadirTotal();
 				PrecioFinal.setText(total);
 			}
 		};

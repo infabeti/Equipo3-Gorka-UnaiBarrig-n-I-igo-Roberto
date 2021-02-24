@@ -9,11 +9,22 @@ public class Pedidos {
 	private Date fecha = new Date();
 	private String NomLocal;
 	private String Direccion;
-	private ProductosElegidos [] productos = new ProductosElegidos[20];
-	private double precioCant = 0;
+	private ProductosElegidos [] productos = new ProductosElegidos[0];
 	private double total = 0;
 	private int aumentoDeArr = 0;
 	
+	public Pedidos() {
+	}
+	
+	public Pedidos(String NumTrans,Date fecha,String NomLocal,String Direccion,ProductosElegidos [] productos,double total){
+		this.NumTrans = NumTrans;
+		this.fecha = fecha;
+		this.NomLocal = NomLocal;
+		this.Direccion= Direccion;
+		this.productos = productos;
+		this.total = total;
+	}
+
 	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
 	}
@@ -53,24 +64,20 @@ public class Pedidos {
 	String total = String.valueOf(this.total);
 	return total;
 	}
-	public void setCant(double num1,double num2) {
-		this.precioCant = num1*num2;
-	}
-	public double getCant() {
-		return this.precioCant;
-	}
 	public String eliminarTotal() {
 		this.total = this.total - productos[aumentoDeArr-1].getPrecioCantidad();
 		aumentoDeArr--;
 	String total = String.valueOf(this.total);
 	return total;
 	}
+	public double getCant() {
+		return	productos[productos.length-1].getPrecioCantidad();
+	}
 	public void setProductos(String nombre, double precioProducto, int cant) {
 		int value = this.productos.length;
 		aumentarArrProductos();
 		this.productos[value]=new ProductosElegidos(nombre,precioProducto,cant);
 	}
-	
 	public void aumentarArrProductos() {
 		ProductosElegidos[] temp = new ProductosElegidos[this.productos.length+1];
 		for (int i = 0; i<this.productos.length;i++) {
