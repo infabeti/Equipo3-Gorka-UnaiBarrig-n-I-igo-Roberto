@@ -57,4 +57,7 @@ public class ControladorPanelPedidos {
 	public String accionadoBottonEliminarTotal() {
 		return modelo.pedidos.eliminarTotal();
 	}	
+	public void accionadoBottonEliminarPanelPedidos(int i) {
+		modelo.pedidos.setArrSelec(i);
+	}
 }

@@ -12,17 +12,19 @@ public class Pedidos {
 	private ProductosElegidos [] productos = new ProductosElegidos[0];
 	private double total = 0;
 	private int aumentoDeArr = 0;
+	private int arrSelec;
 	
 	public Pedidos() {
 	}
 	
-	public Pedidos(String NumTrans,Date fecha,String NomLocal,String Direccion,ProductosElegidos [] productos,double total){
+	public Pedidos(String NumTrans,Date fecha,String NomLocal,String Direccion,ProductosElegidos [] productos,double total, int arrSelec){
 		this.NumTrans = NumTrans;
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;
 		this.Direccion= Direccion;
 		this.productos = productos;
 		this.total = total;
+		this.arrSelec = arrSelec;
 	}
 
 	public void setNumTrans(String Numtrans) {
@@ -64,8 +66,15 @@ public class Pedidos {
 	String total = String.valueOf(this.total);
 	return total;
 	}
+	public void setArrSelec(int arrSelec) {
+		this.arrSelec = arrSelec;
+	}
+	public int getArrSelec() {
+		return this.arrSelec;
+	}
 	public String eliminarTotal() {
-		this.total = this.total - productos[aumentoDeArr-1].getPrecioCantidad();
+		this.total = this.total - productos[getArrSelec()].getPrecioCantidad();
+		//this.productos Eliminar fila
 		aumentoDeArr--;
 	String total = String.valueOf(this.total);
 	return total;

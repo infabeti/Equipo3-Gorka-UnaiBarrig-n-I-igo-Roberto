@@ -19,10 +19,11 @@ public class Tickets{
 	private String Apellido;
 	private boolean EsFactura = false;
 	private int aumentoDeArr = 0;
+	private int arrSelec;
 	
 	public Tickets(){
 	}
-	public Tickets(Date fecha,String NomLocal, double total, String NIF, String Nombre, String Apellido, ProductosElegidos[] productos){
+	public Tickets(Date fecha,String NomLocal, double total, String NIF, String Nombre, String Apellido, ProductosElegidos[] productos, int arrSelec){
 		this.NumTrans = modelo.Contador.getContador();
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;
@@ -31,6 +32,7 @@ public class Tickets{
 		this.NIF = NIF;
 		this.Nombre = Nombre;
 		this.Apellido = Apellido;
+		this.arrSelec = arrSelec;
 	}
 	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
@@ -69,8 +71,15 @@ public class Tickets{
 		String total = String.valueOf(this.total);
 		return total;
 	}
+	public void setArrSelec(int arrSelec) {
+		this.arrSelec = arrSelec;
+	}
+	public int getArrSelec() {
+		return this.arrSelec;
+	}
 	public String eliminarTotal() {
-		this.total = this.total - productos[aumentoDeArr-1].getPrecioCantidad();
+		this.total = this.total - productos[getArrSelec()].getPrecioCantidad();
+		//this.productos Eliminar fila
 		aumentoDeArr--;
 	String total = String.valueOf(this.total);
 	return total;

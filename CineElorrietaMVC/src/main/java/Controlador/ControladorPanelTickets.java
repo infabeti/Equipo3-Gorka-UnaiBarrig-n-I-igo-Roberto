@@ -62,7 +62,7 @@ public class ControladorPanelTickets {
 		return modelo.ticket.getFecha();
 	}
 	public void accionadoBottonEliminarPanelTickets(int i) {
-			
+		modelo.ticket.setArrSelec(i);
 	}
 
 }
