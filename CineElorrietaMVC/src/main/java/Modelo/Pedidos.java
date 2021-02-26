@@ -88,13 +88,17 @@ public class Pedidos {
         array[array.length-1] = null;
 		return array;
     }
-	public double getCant() {
-		return	productos[productos.length-1].getPrecioCantidad();
+	public String getCant() {
+		
+		double  precioCant = productos[productos.length-1].getPrecioCantidad();
+			String precioCant1 = String.valueOf(precioCant);
+			return precioCant1;
 	}
-	public void setProductos(String nombre, double precioProducto, int cant) {
+	public void setProductos(String nombre, String precioProducto, int cant) {
+		double PrecioProducto = Double.parseDouble(precioProducto);
 		int value = this.productos.length;
 		aumentarArrProductos();
-		this.productos[value]=new ProductosElegidos(nombre,precioProducto,cant);
+		this.productos[value]=new ProductosElegidos(nombre,PrecioProducto,cant);
 	}
 	public void aumentarArrProductos() {
 		ProductosElegidos[] temp = new ProductosElegidos[this.productos.length+1];

@@ -34,16 +34,14 @@ public class ControladorPanelTickets {
 		this.controlador.navegarPanelBienvenida();
 	}
 	public String[] accionadoBottonAnadirPanelTickets(Object object, int cant) {
+		String[] Separado;
 		Separado =  modelo.productos.separar(object);
-		double PrecioProducto = Double.parseDouble(Separado[1]);
-		modelo.ticket.setProductos(Separado[0],PrecioProducto,cant);
-		return Separado; 
-	}
-	public double accionadoBottonAnadirPrecioCant() {
-		return modelo.ticket.getCant();
-	}
-	public String accionadoBottonAnadirTotal() {
-		return modelo.ticket.getTotal();
+		modelo.ticket.setProductos(Separado[0],Separado[1],cant);
+		String total = modelo.ticket.getTotal();
+		String precioCant = modelo.ticket.getCant();
+		String Cant1 = String.valueOf(cant);
+		String[] todo = {Separado[0],Cant1,precioCant,total};
+		return todo; 
 	}
 	public String accionadoBottonEliminarTotal() {
 		return modelo.ticket.eliminarTotal();
