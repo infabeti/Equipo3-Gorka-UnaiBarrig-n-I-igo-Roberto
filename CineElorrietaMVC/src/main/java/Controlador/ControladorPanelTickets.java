@@ -19,6 +19,8 @@ public class ControladorPanelTickets {
 	private PanelTickets panelTickets;
 	private String[] Separado;
 	
+	public ControladorPanelTickets() {
+	}
 	public ControladorPanelTickets(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
@@ -34,8 +36,7 @@ public class ControladorPanelTickets {
 		this.controlador.navegarPanelBienvenida();
 	}
 	public String[] accionadoBottonAnadirPanelTickets(Object object, int cant) {
-		String[] Separado;
-		Separado =  modelo.productos.separar(object);
+		String[] Separado =  modelo.productos.separar(object);
 		modelo.ticket.setProductos(Separado[0],Separado[1],cant);
 		String total = modelo.ticket.getTotal();
 		String precioCant = modelo.ticket.getCant();
