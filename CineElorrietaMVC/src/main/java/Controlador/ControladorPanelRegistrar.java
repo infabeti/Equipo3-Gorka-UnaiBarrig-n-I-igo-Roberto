@@ -6,7 +6,7 @@ import Modelo.Productos;
 import Vista.PanelBienvenida;
 import Vista.PanelRegistrar;
 import Vista.PanelTickets;
-import Vista.PanelUsuarios;
+import Vista.PanelLogin;
 import Vista.Vista;
 
 public class ControladorPanelRegistrar {

@@ -6,7 +6,7 @@ import Modelo.Productos;
 import Modelo.Usuarios;
 import Vista.PanelBienvenida;
 import Vista.PanelTickets;
-import Vista.PanelUsuarios;
+import Vista.PanelLogin;
 import Vista.Vista;
 
 public class ControladorPanelUsuarios {
@@ -14,7 +14,7 @@ public class ControladorPanelUsuarios {
 	private Modelo modelo;
 	private Vista vista;
 	private Controlador controlador;
-	private PanelUsuarios panelUsuarios;
+	private PanelLogin panelUsuarios;
 	private int cont=1;
 	
 	
@@ -25,7 +25,7 @@ public class ControladorPanelUsuarios {
 	}
 	
 	public void mostrarPanelUsuarios() {
-		this.panelUsuarios = new PanelUsuarios(this);
+		this.panelUsuarios = new PanelLogin(this);
 		this.vista.mostrarPanel(this.panelUsuarios);
 	}
 	

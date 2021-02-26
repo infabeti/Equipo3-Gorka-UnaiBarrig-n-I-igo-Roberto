@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n    <expression enabled\="true" text\="this.productos"/>\r\n    <expression enabled\="true" text\="this.productos.length-1"/>\r\n    <expression enabled\="true" text\="this.productos.length-2"/>\r\n</watchExpressions>\r\n
