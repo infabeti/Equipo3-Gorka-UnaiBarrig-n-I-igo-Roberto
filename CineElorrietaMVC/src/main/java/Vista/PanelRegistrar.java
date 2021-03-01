@@ -114,7 +114,7 @@ public class PanelRegistrar extends JPanel {
 		
 		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Restaurante", "Bar", "Cafeteria"}));
-		comboBox.setBounds(136, 211, 105, 22);
+		comboBox.setBounds(111, 168, 105, 22);
 		add(comboBox);
 		
 	
@@ -150,8 +150,7 @@ public class PanelRegistrar extends JPanel {
 					Local = "Cafeteria";
 				}
 				controladorPanelRegistrar.accionadoBottonRegistrarPanelRegistrar(nombretxt.getText(),apellidotxt.getText(),DNItxt.getText(),contraseñatxt.getText(),Local);
-				
-				lista_registrados.add(nuevo_usuario);
+				//lista_registrados.add(nuevo_usuario);
 				JOptionPane.showMessageDialog(null, "El Usuario ha sido registrado");
 			}
 		};

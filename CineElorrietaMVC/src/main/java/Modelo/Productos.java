@@ -1,8 +1,15 @@
 package Modelo;
 
+import java.util.Date;
+
 public class Productos {
 	private String nombreP;
 	private int Precio;
+	private double preciovent;
+	private String codigo;
+	private String nombre;
+	private double  preciocomp;
+	private Date fechacad;
 	
 	public Productos() {
 	}
@@ -24,9 +31,50 @@ public class Productos {
 	public int getPrecio() {
 		return this.Precio;
 	}
-	 
-	public String toString()
-	{
-		return this.getNombreP() + "-" + this.getPrecio()+"€";
+	public void setPrecioVent(double preciovent){
+	this.preciovent=preciovent;
+	}
+
+	public double getPrecioVent (){
+	return this.preciovent;
+	}
+
+	public void setCodigo(String codigo){
+	this.codigo=codigo;
+	}
+
+	public String getCodigo(){
+	return this.codigo;
+	}
+
+	public void setNombre(String nombre){
+	this.nombre=nombre;
+	}
+
+	public String getNombre(){
+	return this.nombre;
+	}
+
+	public void setPrecioComp(double preciocomp){
+	this.preciocomp=preciocomp;
+	}
+
+	public double getPrecioComp(){
+	return this.preciocomp;
+	}
+
+	public void setfechacad(Date fechacad){
+	this.fechacad=fechacad;
+	}
+
+	public Date getfechacad(){
+	return fechacad;
+	}
+	public String toString(){
+		return this.getNombreP() + "-" + this.getPrecio();
+	}
+	
+	public String[] separar(Object selec) {
+		return ((String) selec).split("-") ;
 	}
 }

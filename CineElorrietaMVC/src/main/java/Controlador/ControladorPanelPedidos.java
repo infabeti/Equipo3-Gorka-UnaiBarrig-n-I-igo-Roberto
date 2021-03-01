@@ -3,9 +3,7 @@ package Controlador;
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
-import Vista.PanelBienvenida;
 import Vista.PanelPedidos;
-import Vista.PanelTickets;
 import Vista.Vista;
 
 public class ControladorPanelPedidos {
@@ -29,19 +27,34 @@ public class ControladorPanelPedidos {
 	public void accionadoBottonVolverPanelPedidos() {
 		this.controlador.navegarPanelBienvenida();
 	}
-	public void accionadoBottonAñadirPanelPedidos() {
-		this.controlador.navegarPanelBienvenida();
+	public String[] accionadoBottonAnadirPanelPedidos(Object selec, int cant) {
+			String[] Separado;
+			Separado =  modelo.productos.separar(selec);
+			modelo.pedidos.setProductos(Separado[0],Separado[1],cant);
+			String total = modelo.pedidos.getTotal();
+			String precioCant = modelo.pedidos.getCant();
+			String Cant1 = String.valueOf(cant);
+			String[] todo = {Separado[0],Cant1,precioCant,total};
+			return todo; 
 	}
-	public String[] pasarString(){
-		BDD productos = new BDD();
-		Productos[] poductos2 = productos.getProductosP();
-		String [] arrayr=new String[poductos2.length];
-		for(int i=0; i<poductos2.length; i++) {
-			arrayr[i]=poductos2[i].toString();
-		}
-		return  arrayr;
+	public String[] stringProductos(){
+		String [] arrayr = modelo.BDD.convertirArrayProductosString();
+		return arrayr;
 		
 	}
-
 	
+	public String getContador() {
+		return modelo.Contador.getContador();
+	}
+
+	public void setContador(String cont) {
+		modelo.Contador.setContador(cont);
+	}
+
+	public String accionadoBottonEliminarTotal() {
+		return modelo.pedidos.eliminarTotal();
+	}	
+	public void accionadoBottonEliminarPanelPedidos(int i) {
+		modelo.pedidos.setArrSelec(i);
+	}
 }

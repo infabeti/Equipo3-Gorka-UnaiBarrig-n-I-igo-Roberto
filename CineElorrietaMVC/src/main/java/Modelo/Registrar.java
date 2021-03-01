@@ -8,6 +8,7 @@ public class Registrar {
 	private String Contraseña;
 	private String Local;
 	
+	
 	public Registrar(){
 	}
 	

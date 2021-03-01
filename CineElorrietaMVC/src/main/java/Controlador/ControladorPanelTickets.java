@@ -1,8 +1,12 @@
 package Controlador;
 
+import javax.swing.JTextArea;
+
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
+import Modelo.ProductosElegidos;
+import Modelo.Tickets;
 import Vista.PanelBienvenida;
 import Vista.PanelTickets;
 import Vista.Vista;
@@ -13,9 +17,9 @@ public class ControladorPanelTickets {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelTickets panelTickets;
-	private int cont=1;
 	
-	
+	public ControladorPanelTickets() {
+	}
 	public ControladorPanelTickets(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
@@ -30,21 +34,33 @@ public class ControladorPanelTickets {
 	public void accionadoBottonVolverPanelTickets() {
 		this.controlador.navegarPanelBienvenida();
 	}
-	public void accionadoBottonAñadirPanelTickets() {
-	
+	public String[] accionadoBottonAnadirPanelTickets(Object object, int cant) {
+		String[] Separado =  modelo.productos.separar(object);
+		modelo.ticket.setProductos(Separado[0],Separado[1],cant);
+		String total = modelo.ticket.getTotal();
+		String precioCant = modelo.ticket.getCant();
+		String Cant1 = String.valueOf(cant);
+		String[] todo = {Separado[0],Cant1,precioCant,total};
+		return todo; 
 	}
-	public void accionadoBottonGuardarPanelTickets() {
-		this.cont++;
+	public String accionadoBottonEliminarTotal() {
+		return modelo.ticket.eliminarTotal();
+	}	
+	public String[] stringProductos(){
+		return modelo.BDD.convertirArrayProductosString();
 	}
-	
-	public String[] pasarString(){
-		BDD productos = new BDD();
-		Productos[] poductos2 = productos.getProductos();
-		String [] arrayr=new String[poductos2.length];
-		for(int i=0; i<poductos2.length; i++) {
-			arrayr[i]=poductos2[i].toString();
-		}
-		return  arrayr;
-		
+	public String getContador() {
+		return modelo.Contador.getContador();
 	}
+
+	public void setContador(String cont) {
+		modelo.Contador.setContador(cont);
+	}
+	public String getFecha() {
+		return modelo.ticket.getFecha();
+	}
+	public void accionadoBottonEliminarPanelTickets(int i) {
+		modelo.ticket.setArrSelec(i);
+	}
+
 }
