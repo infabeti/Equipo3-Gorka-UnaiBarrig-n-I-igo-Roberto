@@ -80,7 +80,7 @@ public class Tickets{
 	public String eliminarTotal() {
 		this.total = this.total - productos[getArrSelec()].getPrecioCantidad();
 		this.productos = eliminarSelecArr(this.productos, getArrSelec());
-		DisminuirArrProductos();
+		modelo.ArraysUtils.DisminuirArrProductos(this.productos);
 		aumentoDeArr--;
 	String total = String.valueOf(this.total);
 	return total;
@@ -122,23 +122,8 @@ public class Tickets{
 	public void setProductos(String nombre, String precioProducto, int cant) {
 		double PrecioProducto = Double.parseDouble(precioProducto);
 		int value = this.productos.length;
-		aumentarArrProductos();
+		modelo.ArraysUtils.aumentarArrProductos(this.productos);
 		this.productos[value]=new ProductosElegidos(nombre,PrecioProducto,cant);
-	}
-	public void aumentarArrProductos() {
-		ProductosElegidos[] temp = new ProductosElegidos[this.productos.length+1];
-		for (int i = 0; i<this.productos.length;i++) {
-			temp[i] = this.productos[i];
-		}
-		this.productos = Arrays.copyOf(temp ,this.productos.length+1);
-	}
-	public void DisminuirArrProductos() {
-		ProductosElegidos[] temp = new ProductosElegidos[this.productos.length-1];
-		for (int i = 0; i<this.productos.length-1;i++) {
-			temp[i] = this.productos[i];
-		}
-		this.productos = Arrays.copyOf(temp ,this.productos.length-1);
-	}
-	
+	}	
 }
 

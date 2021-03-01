@@ -6,6 +6,7 @@ public Pedidos pedidos;
 public BDD BDD;
 public Productos productos;
 public ContadorNumPedido Contador;
+public ArraysUtils ArraysUtils;
 
 public Modelo() {
 	this.ticket = new Tickets();
@@ -13,5 +14,6 @@ public Modelo() {
 	this.BDD = new BDD();
 	this.productos = new Productos();
 	this.Contador = new ContadorNumPedido();
+	this.ArraysUtils = new ArraysUtils();
 }
 }
