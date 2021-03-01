@@ -2,12 +2,10 @@ package Modelo;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Tickets{
-	private Modelo modelo;
 	private String NumTrans;
 	Date fecha;
 	private String NomLocal;
@@ -20,6 +18,7 @@ public class Tickets{
 	private boolean EsFactura = false;
 	private int aumentoDeArr = 0;
 	private int arrSelec;
+	private ArraysUtils ArraysUtils = new ArraysUtils();
 	
 	public Tickets(){
 	}
@@ -33,7 +32,6 @@ public class Tickets{
 		this.Nombre = Nombre;
 		this.Apellido = Apellido;
 		this.arrSelec = arrSelec;
-		this.modelo = modelo;
 	}
 	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
@@ -81,7 +79,7 @@ public class Tickets{
 	public String eliminarTotal() {
 		this.total = this.total - productos[getArrSelec()].getPrecioCantidad();
 		this.productos = eliminarSelecArr(this.productos, getArrSelec());
-		modelo.ArraysUtils.DisminuirArrProductos(this.productos);
+		this.productos = ArraysUtils.DisminuirArrProductos(this.productos);
 		aumentoDeArr--;
 	String total = String.valueOf(this.total);
 	return total;
@@ -123,7 +121,7 @@ public class Tickets{
 	public void setProductos(String nombre, String precioProducto, int cant) {
 		double PrecioProducto = Double.parseDouble(precioProducto);
 		int value = this.productos.length;
-		modelo.ArraysUtils.aumentarArrProductos(this.productos);
+		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
 		this.productos[value]=new ProductosElegidos(nombre,PrecioProducto,cant);
 	}	
 }

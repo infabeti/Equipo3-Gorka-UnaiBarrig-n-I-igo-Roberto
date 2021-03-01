@@ -17,7 +17,6 @@ public class ControladorPanelTickets {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelTickets panelTickets;
-	private String[] Separado;
 	
 	public ControladorPanelTickets() {
 	}

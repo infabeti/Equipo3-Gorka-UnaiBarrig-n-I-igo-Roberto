@@ -14,6 +14,7 @@ public class Pedidos {
 	private double total = 0;
 	private int aumentoDeArr = 0;
 	private int arrSelec;
+	private ArraysUtils ArraysUtils = new ArraysUtils();
 	
 	public Pedidos() {
 	}
@@ -77,7 +78,7 @@ public class Pedidos {
 	public String eliminarTotal() {
 		this.total = this.total - productos[getArrSelec()].getPrecioCantidad();
 		this.productos = eliminarSelecArr(this.productos, getArrSelec());
-		modelo.ArraysUtils.DisminuirArrProductos(this.productos);
+		this.productos = ArraysUtils.DisminuirArrProductos(this.productos);
 		aumentoDeArr--;
 	String total = String.valueOf(this.total);
 	return total;
@@ -99,7 +100,7 @@ public class Pedidos {
 	public void setProductos(String nombre, String precioProducto, int cant) {
 		double PrecioProducto = Double.parseDouble(precioProducto);
 		int value = this.productos.length;
-		modelo.ArraysUtils.aumentarArrProductos(this.productos);
+		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
 		this.productos[value]=new ProductosElegidos(nombre,PrecioProducto,cant);
 	}
 }
