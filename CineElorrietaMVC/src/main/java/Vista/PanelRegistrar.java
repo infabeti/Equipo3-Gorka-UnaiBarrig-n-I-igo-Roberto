@@ -25,6 +25,8 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 @SuppressWarnings("serial")
 public class PanelRegistrar extends JPanel {
@@ -32,13 +34,17 @@ public class PanelRegistrar extends JPanel {
 	private JButton btnVolver;
 	private JButton btnRegistrar;
 	private JLabel lblTickets;
-
 	private ControladorPanelRegistrar controladorPanelRegistrar;
 	private JTable table;
 	private JTextField nombretxt;
 	private JTextField apellidotxt;
 	private JTextField DNItxt;
 	private JTextField contraseñatxt;
+	private JComboBox comboBox;
+	private JSeparator separator;
+	private JLabel lblApellido;
+	private JLabel lblNombre;
+	
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelRegistrar(ControladorPanelRegistrar controladorPanelRegistrar)
@@ -54,13 +60,13 @@ public class PanelRegistrar extends JPanel {
 		btnVolver.setBounds(37, 211, 89, 23);
 		add(btnVolver);
 		
-		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(37, 85, 54, 14);
-		add(lblNewLabel);
+		lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(37, 85, 54, 14);
+		add(lblNombre);
 		
-		JLabel lblContrasea = new JLabel("Apellido:");
-		lblContrasea.setBounds(37, 134, 54, 14);
-		add(lblContrasea);
+		lblApellido = new JLabel("Apellido:");
+		lblApellido.setBounds(37, 134, 54, 14);
+		add(lblApellido);
 		
 		nombretxt = new JTextField();
 		nombretxt.setBounds(101, 82, 95, 20);
@@ -80,30 +86,13 @@ public class PanelRegistrar extends JPanel {
 		contraseñatxt.setBounds(314, 131, 94, 20);
 		add(contraseñatxt);
 		
-		JSeparator separator = new JSeparator();
+		separator = new JSeparator();
 		separator.setBounds(10, 60, 430, 2);
 		add(separator);
 		
 		ArrayList<Registrar> lista_registrados=new ArrayList<>();
 
 		btnRegistrar = new JButton("Registrar");
-		btnRegistrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String Nombre = nombretxt.getText();
-				String Apellido = apellidotxt.getText();
-				String DNI = DNItxt.getText();
-				String Contraseña = contraseñatxt.getText();
-				Registrar nuevo_usuario = new Registrar();
-				nuevo_usuario.setNombre(Nombre);
-				nuevo_usuario.setApellido(Apellido);
-				nuevo_usuario.setDNI(DNI);
-				nuevo_usuario.setContraseña(Contraseña);
-				lista_registrados.add(nuevo_usuario);
-				JOptionPane.showMessageDialog(null, "El Usuario ha sido registrado");
-				
-			}
-		});
 		btnRegistrar.setBounds(320, 211, 89, 23);
 		add(btnRegistrar);
 		
@@ -115,9 +104,18 @@ public class PanelRegistrar extends JPanel {
 		lblDni.setBounds(234, 85, 34, 14);
 		add(lblDni);
 		
-		JLabel lblContrasea_1 = new JLabel("Contrase\u00F1a:");
-		lblContrasea_1.setBounds(234, 134, 135, 14);
-		add(lblContrasea_1);
+		JLabel lblContrasena = new JLabel("Contrase\u00F1a:");
+		lblContrasena.setBounds(234, 134, 135, 14);
+		add(lblContrasena);
+		
+		JLabel lblLocal = new JLabel("Tipo de local:");
+		lblLocal.setBounds(34, 172, 92, 14);
+		add(lblLocal);
+		
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Restaurante", "Bar", "Cafeteria"}));
+		comboBox.setBounds(136, 211, 105, 22);
+		add(comboBox);
 		
 	
 
@@ -143,7 +141,18 @@ public class PanelRegistrar extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Registrar");
-				controladorPanelRegistrar.accionadoBottonRegistrarPanelRegistrar();
+				String Local = "";
+				if (comboBox.getSelectedIndex() == 0) {
+					Local = "Restaurante";
+				} else if (comboBox.getSelectedIndex() == 1) {
+					Local = "Bar";
+				} else if (comboBox.getSelectedIndex() == 2) {
+					Local = "Cafeteria";
+				}
+				controladorPanelRegistrar.accionadoBottonRegistrarPanelRegistrar(nombretxt.getText(),apellidotxt.getText(),DNItxt.getText(),contraseñatxt.getText(),Local);
+				
+				lista_registrados.add(nuevo_usuario);
+				JOptionPane.showMessageDialog(null, "El Usuario ha sido registrado");
 			}
 		};
 	}

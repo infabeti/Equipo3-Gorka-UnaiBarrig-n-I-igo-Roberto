@@ -6,16 +6,17 @@ public class Registrar {
 	private String Apellido;
 	private String DNI;
 	private String Contraseña;
+	private String Local;
 	
 	public Registrar(){
 	}
 	
-	public Registrar(String Nombre,String Apellido,String DNI, String Contraseña){
+	public Registrar(String Nombre,String Apellido,String DNI, String Contraseña, String local){
 		this.Nombre = Nombre;
 		this.Apellido = Apellido;
 		this.DNI = DNI;
 		this.Contraseña = Contraseña;
-		
+		this.Local = local;
 	}
 	
 	public void setNombre(String Nombre) {
@@ -41,6 +42,12 @@ public class Registrar {
 	}
 	public String getContraseña() {
 		return this.Contraseña;
+	}
+	public void setLocal(String Local) {
+		this.Local = Local;
+	}
+	public String getLocal() {
+		return this.Local;
 	}
 	
 	

@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
+import Modelo.Registrar;
 import Vista.PanelBienvenida;
 import Vista.PanelRegistrar;
 import Vista.PanelTickets;
@@ -32,8 +33,12 @@ public class ControladorPanelRegistrar {
 	public void accionadoBottonVolverPanelRegistrar() {
 		this.controlador.navegarPanelUsuarios();
 	}
-	public void accionadoBottonRegistrarPanelRegistrar() {
-		this.controlador.navegarPanelUsuarios();
+	public void accionadoBottonRegistrarPanelRegistrar(String Nombre, String Apellido, String DNI, String Contraseña, String Local) {
+		modelo.registrar.setNombre(Nombre);
+		modelo.registrar.setApellido(Apellido);
+		modelo.registrar.setDNI(DNI);
+		modelo.registrar.setContraseña(Contraseña);
+		modelo.registrar.setLocal(Local);
 	}
 	
 

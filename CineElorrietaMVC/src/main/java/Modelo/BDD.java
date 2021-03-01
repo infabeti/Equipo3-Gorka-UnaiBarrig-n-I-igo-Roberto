@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Arrays;
 public class BDD {
-	public Usuarios usuario[] =new Usuarios[3];
+	private Usuarios usuario[] =new Usuarios[3];
 	
 	
 	public BDD() {
