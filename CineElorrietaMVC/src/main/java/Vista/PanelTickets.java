@@ -258,7 +258,6 @@ public class PanelTickets extends JPanel {
 				System.out.println("Ejecutando evento Boton Guardar");
 				boolean comprobar = comprobarCamposFactura();
 				if(comprobar == true) {
-					// controladorPanelTickets.accionadoBottonGuardarPanelTickets();
 					controladorPanelTickets.setContador(cont.getText());
 				}
 			}

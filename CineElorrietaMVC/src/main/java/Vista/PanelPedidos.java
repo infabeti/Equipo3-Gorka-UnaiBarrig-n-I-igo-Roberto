@@ -226,7 +226,6 @@ public class PanelPedidos extends JPanel {
 				System.out.println("Ejecutando evento Boton Volver");
 				boolean comprobar = comprobarCampos();
 				if (comprobar == true) {
-					// controladorPanelPedidos.accionadoBottonGuardarPanelPedidos();
 					controladorPanelPedidos.setContador(cont.getText());
 				}
 			}

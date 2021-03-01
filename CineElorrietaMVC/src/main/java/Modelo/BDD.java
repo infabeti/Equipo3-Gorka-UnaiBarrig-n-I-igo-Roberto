@@ -3,14 +3,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 public class BDD {
-	
+	static String url="jdbc:mysql://localhost:33060/reto3";
+	static String username="dam";
+	static String password="elorrieta";
 	public static void conexion() {
-		
-		String url="jdbc:mysql://localhost:33060/reto3";
-		String username="dam";
-		String password="elorrieta";
-
-
 
 		try{
 
