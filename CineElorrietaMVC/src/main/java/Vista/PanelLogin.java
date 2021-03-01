@@ -74,19 +74,6 @@ public class PanelLogin extends JPanel {
 		String usu[]=new String[100];
 		
 		btnRegistrar = new JButton("Registrar");
-		/*btnRegistrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String Usuario = nombretxt.getText();
-				String Contraseña = contraseñatxt.getText();
-				Usuarios nuevo_usuario = new Usuarios();
-				nuevo_usuario.setDNI(Usuario);
-				nuevo_usuario.setContraseña(Contraseña);
-				lista_usuarios.add(nuevo_usuario);
-				JOptionPane.showMessageDialog(null, "El Usuario ha sido registrado");
-				
-			}
-		});*/
 		btnRegistrar.setBounds(171, 211, 89, 23);
 		add(btnRegistrar);
 		
@@ -136,7 +123,6 @@ public class PanelLogin extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Ingresar");
 				controladorPanelUsuarios.accionadoBottonIngresarPanelUsuarios();
-				controladorPanelUsuarios.accionadoBottonRegistrarPanelUsuarios();
 			}
 		};
 	}	

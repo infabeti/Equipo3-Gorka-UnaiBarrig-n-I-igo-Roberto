@@ -2,26 +2,12 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import Controlador.ControladorPanelRegistrar;
-import Controlador.ControladorPanelTickets;
-import Controlador.ControladorPanelUsuarios;
-import Modelo.Registrar;
-import Modelo.Usuarios;
-
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
-import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
@@ -90,7 +76,7 @@ public class PanelRegistrar extends JPanel {
 		separator.setBounds(10, 60, 430, 2);
 		add(separator);
 		
-		ArrayList<Registrar> lista_registrados=new ArrayList<>();
+		
 
 		btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setBounds(320, 211, 89, 23);

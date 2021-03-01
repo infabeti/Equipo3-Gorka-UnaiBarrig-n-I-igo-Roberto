@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Controlador.ControladorPanelBienvenida;
-import Modelo.Registrar;
+
 
 import javax.swing.SwingConstants;
 
@@ -60,7 +60,7 @@ public class PanelBienvenida extends JPanel{
 
 		
 		btnCerrar = new JButton("Cerrar Sesion");
-		btnCerrar.setBounds(303, 230, 120, 23);
+		btnCerrar.setBounds(320, 433, 120, 23);
 		add(btnCerrar);		
 		
 		initializeEvents();
