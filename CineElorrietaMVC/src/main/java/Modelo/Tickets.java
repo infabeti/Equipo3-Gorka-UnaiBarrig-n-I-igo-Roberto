@@ -23,7 +23,7 @@ public class Tickets{
 	
 	public Tickets(){
 	}
-	public Tickets(Date fecha,String NomLocal, double total, String NIF, String Nombre, String Apellido, ProductosElegidos[] productos, int arrSelec){
+	public Tickets(Date fecha,String NomLocal, double total, String NIF, String Nombre, String Apellido, ProductosElegidos[] productos, int arrSelec,Modelo modelo){
 		this.NumTrans = modelo.Contador.getContador();
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;
@@ -33,6 +33,7 @@ public class Tickets{
 		this.Nombre = Nombre;
 		this.Apellido = Apellido;
 		this.arrSelec = arrSelec;
+		this.modelo = modelo;
 	}
 	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
