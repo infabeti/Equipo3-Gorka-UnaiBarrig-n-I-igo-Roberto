@@ -9,6 +9,7 @@ public class BDD {
 	static String url="jdbc:mysql://localhost:33060/reto3";
 	static String username="dam";
 	static String password="elorrieta";
+	private ArraysUtils ArraysUtils = new ArraysUtils();
 	
 	public BDD() {
 	}
@@ -38,25 +39,18 @@ public class BDD {
 		producto[5]=new Productos("pistachos",5);
 		return producto;
 	}
-	public void setUsuarios(String TipoLocal, String DNI, String cant) {
+	public void setUsuarios(String TipoLocal, String DNI, String Contraseña, String apellido, String nombre) {
 		int value = this.usuario.length;
-		aumentarArrProductos();
-		this.usuario[value]=new Usuarios(TipoLocal,DNI,cant);
+		this.usuario = ArraysUtils.aumentarArrUsu(this.usuario);
+		this.usuario[value]=new Usuarios(TipoLocal,DNI,Contraseña,apellido,nombre);
 	}
 	public Usuarios[] getUsuarios() {
 		return usuario;
 	}
-	public void aumentarArrProductos() {
-		Usuarios[] temp = new Usuarios[this.usuario.length+1];
-		for (int i = 0; i<this.usuario.length;i++) {
-			temp[i] = this.usuario[i];
-		}
-		this.usuario = Arrays.copyOf(temp ,this.usuario.length+1);
-	}
 	public void usuariosPrueba() {
-		usuario[0]= new Usuarios("Restaurante","79171053Q", "12345678");
-		usuario[1]= new Usuarios("Bar","79171053Q", "12345678");
-		usuario[2]= new Usuarios("Cafeteria","79171053Q", "12345678");
+		usuario[0]= new Usuarios("Restaurante","79171053Q", "12345678","Lopez","Jose");
+		usuario[1]= new Usuarios("Bar","79171053Q", "12345678","Lorenzo","Mariano");
+		usuario[2]= new Usuarios("Cafeteria","79171053Q", "12345678","Perez","Julia");
 	}
 		
 	public String[]  convertirArrayProductosString(){

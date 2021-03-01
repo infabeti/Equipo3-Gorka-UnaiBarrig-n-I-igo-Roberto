@@ -18,4 +18,12 @@ public class ArraysUtils {
 		}
 		return productos = Arrays.copyOf(temp ,productos.length-1);
 	}
+	public Usuarios[] aumentarArrUsu(Usuarios[] Usuario) {
+		Usuarios[] temp = new Usuarios[Usuario.length+1];
+		for (int i = 0; i<Usuario.length;i++) {
+			temp[i] = Usuario[i];
+		}
+		return Usuario = Arrays.copyOf(temp ,Usuario.length+1);
+		
+	}
 }
