@@ -23,7 +23,24 @@ public class ControladorPanelBienvenida {
 		this.vista.mostrarPanel(this.panelBienvenida);
 	}
 	
-	public void accionadoBottonMostrarPanelGeneros() {
-		this.controlador.navegarPanelGeneros();
+	public void accionadoBottonMostrarPanelTickets() {
+		modelo.ticket.setFecha();
+		this.controlador.navegarPanelTickets();
 	}
+	public void accionadoBottonMostrarPanelPedidos() {
+		this.controlador.navegarPanelPedidos();
+	}
+	public void accionadoBottonMostrarPanelComandas() {
+		this.controlador.navegarPanelComandas();
+	}
+	public void accionadoBottonMostrarPanelAprovisionamiento() {
+		this.controlador.navegarPanelAprovisionamiento();
+	}
+	
+	public void accionadoBottonMostrarConexionBDD() {
+		
+		this.controlador.conectarBDD();
+	}
+
+	
 }
