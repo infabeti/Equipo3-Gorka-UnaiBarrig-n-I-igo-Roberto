@@ -46,7 +46,7 @@ public class BDD {
 	}
 	public Usuarios[] getUsuarios() {
 		usuario[0]= new Usuarios("Restaurante","79171053Q", "12345678","Lopez","Jose");
-		usuario[1]= new Usuarios("Bar","79171053Q", "12345678","Lorenzo","Mariano");
+		usuario[1]= new Usuarios("Bar","79171052Q", "12345678","Lorenzo","Mariano");
 		usuario[2]= new Usuarios("Cafeteria","79171053Q", "12345678","Perez","Julia");
 		return usuario;
 	}

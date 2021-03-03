@@ -1,5 +1,7 @@
 package Controlador;
 
+import javax.swing.JOptionPane;
+
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
@@ -30,6 +32,7 @@ public class ControladorPanelLogin {
 	}
 	
 	public void accionadoBottonIngresarPanelLoginBienvenida() {
+		JOptionPane.showMessageDialog(null, "El Usuario ha iniciado sesion");
 		this.controlador.navegarPanelBienvenida();
 	}
 	public void accionadoBottonRegistrarPanelLogin() {

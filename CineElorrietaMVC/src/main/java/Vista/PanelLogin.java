@@ -36,6 +36,7 @@ public class PanelLogin extends JPanel {
 	private ControladorPanelLogin controladorPanelLogin;
 	private JTextField nombretxt;
 	private JTextField contraseñatxt; 
+	private JLabel error;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelLogin(ControladorPanelLogin controladorPanelLogin)
@@ -84,6 +85,11 @@ public class PanelLogin extends JPanel {
 		separator_1.setBounds(10, 245, 430, 2);
 		add(separator_1);
 		
+		error = new JLabel("DNI o Contrase\u00F1a err\u00F3neo");
+		error.setBounds(194, 162, 163, 14);
+		error.setVisible(false);
+		add(error);
+		
 		initializeEvents();
 	}
 	
@@ -97,23 +103,23 @@ public class PanelLogin extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Ingresar");
-				Usuarios [] usuarios =aumentarArrUsu(controladorPanelLogin.DevolverUsuariosPanelLogin());
+				Usuarios [] usuarios =Arrays.copyOf(controladorPanelLogin.DevolverUsuariosPanelLogin(),controladorPanelLogin.DevolverUsuariosPanelLogin().length);
 				String DNIIntroducido = nombretxt.getText();
 				String ContraseñaIntroducida = contraseñatxt.getText();
 
-				String nombre1 = usuarios[0].getDNI();
-				String contraseña1 = usuarios[0].getContraseña();
-
-				if(DNIIntroducido.equals(nombre1) && ContraseñaIntroducida.equals(contraseña1)) 
-				{
-					JOptionPane.showMessageDialog(null, "El Usuario ha iniciado sesion");
-					controladorPanelLogin.accionadoBottonRegistrarPanelLogin();
+				
+				
+				for(int i = 0;i<usuarios.length;i++) {
+					String nombre1 = usuarios[i].getDNI();
+					String contraseña1 = usuarios[i].getContraseña();
+					
+					if(DNIIntroducido.equals(nombre1) && ContraseñaIntroducida.equals(contraseña1)) 
+					{
+					controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
+					} else {
+						error.setVisible(true);
+					}
 				}
-				else {
-						JOptionPane.showMessageDialog(null, "El Usuario introducido no esta registrado");
-						
-				}
-				controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
 			}
 		};
 	}	
@@ -125,13 +131,5 @@ public class PanelLogin extends JPanel {
 				controladorPanelUsuarios.accionadoBottonRegistrarPanelLogin();
 			}
 		};
-	}
-	public Usuarios[] aumentarArrUsu(Usuarios[] Usuario) {
-		Usuarios[] temp = new Usuarios[Usuario.length];
-		for (int i = 0; i<Usuario.length;i++) {
-			temp[i] = Usuario[i];
-		}
-		return Usuario = Arrays.copyOf(temp ,Usuario.length);
-		
 	}
 }
