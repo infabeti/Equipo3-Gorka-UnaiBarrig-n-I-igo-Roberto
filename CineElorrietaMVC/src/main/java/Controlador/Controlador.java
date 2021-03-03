@@ -30,9 +30,9 @@ public class Controlador {
 		this.navegarPanelUsuarios();
 	}
 	
-	public void navegarPanelBienvenida() {
+	public void navegarPanelBienvenida(String local) {
 		System.out.println("Navegar panel Bienvenida");
-		this.controladorPanelBienvenida.mostrarPanelBienvenida();
+		this.controladorPanelBienvenida.mostrarPanelBienvenida(local);
 	}
 	
 	public void navegarPanelTickets() {

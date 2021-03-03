@@ -31,15 +31,21 @@ public class ControladorPanelLogin {
 		this.vista.mostrarPanel(this.panelUsuarios);
 	}
 	
-	public void accionadoBottonIngresarPanelLoginBienvenida() {
+	public void accionadoBottonIngresarPanelLoginBienvenida(String local) {
 		JOptionPane.showMessageDialog(null, "El Usuario ha iniciado sesion");
-		this.controlador.navegarPanelBienvenida();
+		this.controlador.navegarPanelBienvenida(local);
 	}
 	public void accionadoBottonRegistrarPanelLogin() {
 		this.controlador.navegarPanelRegistrar();
 	}
-	public Usuarios[] DevolverUsuariosPanelLogin() {
+	public String[] DevolverUsuariosPanelLogin() {
 		
-		return modelo.BDD.getUsuarios();
+		Usuarios[] Usuarios= modelo.BDD.getUsuarios();
+		String UsuariosAString = Usuarios.toString();
+		String[] DevolverUsuarios = separar(UsuariosAString);
+		return DevolverUsuarios;
+	}
+	public String[] separar(Object selec) {
+		return ((String) selec).split(",") ;
 	}
 }

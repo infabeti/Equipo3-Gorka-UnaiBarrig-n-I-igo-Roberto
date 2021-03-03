@@ -18,8 +18,8 @@ public class ControladorPanelBienvenida {
 		this.controlador = controlador;	
 	}
 	
-	public void mostrarPanelBienvenida() {
-		this.panelBienvenida = new PanelBienvenida(this);
+	public void mostrarPanelBienvenida(String local) {
+		this.panelBienvenida = new PanelBienvenida(this,local);
 		this.vista.mostrarPanel(this.panelBienvenida);
 	}
 	

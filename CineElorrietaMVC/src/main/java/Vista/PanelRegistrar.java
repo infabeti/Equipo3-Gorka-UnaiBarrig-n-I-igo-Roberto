@@ -24,7 +24,7 @@ public class PanelRegistrar extends JPanel {
 	private JTable table;
 	private JTextField nombretxt;
 	private JTextField apellidotxt;
-	private JTextField DNItxt;
+	private JTextField NIFtxt;
 	private JTextField contraseñatxt;
 	private JComboBox comboBox;
 	private JSeparator separator;
@@ -63,10 +63,10 @@ public class PanelRegistrar extends JPanel {
 		apellidotxt.setBounds(101, 131, 98, 20);
 		add(apellidotxt);
 		
-		DNItxt = new JTextField();
-		DNItxt.setColumns(10);
-		DNItxt.setBounds(314, 82, 95, 20);
-		add(DNItxt);
+		NIFtxt = new JTextField();
+		NIFtxt.setColumns(10);
+		NIFtxt.setBounds(314, 82, 95, 20);
+		add(NIFtxt);
 		
 		contraseñatxt = new JTextField();
 		contraseñatxt.setBounds(314, 131, 94, 20);
@@ -86,9 +86,9 @@ public class PanelRegistrar extends JPanel {
 		separator_1.setBounds(10, 245, 430, 2);
 		add(separator_1);
 		
-		JLabel lblDni = new JLabel("DNI:");
-		lblDni.setBounds(234, 85, 34, 14);
-		add(lblDni);
+		JLabel lblNIF = new JLabel("NIF:");
+		lblNIF.setBounds(234, 85, 34, 14);
+		add(lblNIF);
 		
 		JLabel lblContrasena = new JLabel("Contrase\u00F1a:");
 		lblContrasena.setBounds(234, 134, 135, 14);
@@ -102,17 +102,14 @@ public class PanelRegistrar extends JPanel {
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Restaurante", "Bar", "Cafeteria"}));
 		comboBox.setBounds(111, 168, 105, 22);
 		add(comboBox);
-		
-	
 
-		
 		initializeEvents();
 	}
 	
 
 	private void initializeEvents() {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelRegistrar));
-		this.btnRegistrar.addActionListener(listenerBotonVolver(this.controladorPanelRegistrar));
+		this.btnRegistrar.addActionListener(listenerBotonRegistrar(this.controladorPanelRegistrar));
 	}
 	
 	private ActionListener listenerBotonVolver(ControladorPanelRegistrar controladorPanelRegistrar) {
@@ -135,10 +132,14 @@ public class PanelRegistrar extends JPanel {
 				} else if (comboBox.getSelectedIndex() == 2) {
 					Local = "Cafeteria";
 				}
-				controladorPanelRegistrar.accionadoBottonRegistrarPanelRegistrar(nombretxt.getText(),apellidotxt.getText(),DNItxt.getText(),contraseñatxt.getText(),Local);
+				controladorPanelRegistrar.accionadoBottonRegistrarPanelRegistrar(nombretxt.getText(),apellidotxt.getText(),NIFtxt.getText(),contraseñatxt.getText(),Local);
 				//lista_registrados.add(nuevo_usuario);
 				JOptionPane.showMessageDialog(null, "El Usuario ha sido registrado");
+				controladorPanelRegistrar.accionadoBottonVolverPanelRegistrar();
 			}
 		};
+	}
+	public void validarRegistro() {
+		
 	}
 }

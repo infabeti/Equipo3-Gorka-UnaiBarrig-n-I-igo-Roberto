@@ -30,11 +30,11 @@ public class PanelLogin extends JPanel {
 	private JButton btnRegistrar;
 	private JButton btnIngresar;
 	private JLabel lblUsuario;
-	private JLabel lblDNI;
+	private JLabel lblNIF;
 	private JLabel lblContraseña;
 
 	private ControladorPanelLogin controladorPanelLogin;
-	private JTextField nombretxt;
+	private JTextField NIFtxt;
 	private JTextField contraseñatxt; 
 	private JLabel error;
 	
@@ -49,18 +49,18 @@ public class PanelLogin extends JPanel {
 		add(lblUsuario);
 		
 		
-		lblDNI = new JLabel("DNI:");
-		lblDNI.setBounds(83, 85, 104, 14);
-		add(lblDNI);
+		lblNIF = new JLabel("NIF:");
+		lblNIF.setBounds(83, 85, 104, 14);
+		add(lblNIF);
 		
 		lblContraseña = new JLabel("Contrase\u00F1a:");
 		lblContraseña.setBounds(83, 134, 104, 14);
 		add(lblContraseña);
 		
-		nombretxt = new JTextField();
-		nombretxt.setBounds(184, 82, 150, 20);
-		add(nombretxt);
-		nombretxt.setColumns(10);
+		NIFtxt = new JTextField();
+		NIFtxt.setBounds(184, 82, 150, 20);
+		add(NIFtxt);
+		NIFtxt.setColumns(10);
 		
 		contraseñatxt = new JTextField();
 		contraseñatxt.setColumns(10);
@@ -85,7 +85,7 @@ public class PanelLogin extends JPanel {
 		separator_1.setBounds(10, 245, 430, 2);
 		add(separator_1);
 		
-		error = new JLabel("DNI o Contrase\u00F1a err\u00F3neo");
+		error = new JLabel("NIF o Contrase\u00F1a err\u00F3neo");
 		error.setBounds(194, 162, 163, 14);
 		error.setVisible(false);
 		add(error);
@@ -103,24 +103,23 @@ public class PanelLogin extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Ingresar");
-				Usuarios [] usuarios =Arrays.copyOf(controladorPanelLogin.DevolverUsuariosPanelLogin(),controladorPanelLogin.DevolverUsuariosPanelLogin().length);
-				String DNIIntroducido = nombretxt.getText();
-				String ContraseñaIntroducida = contraseñatxt.getText();
+				String [] usuarios =controladorPanelLogin.DevolverUsuariosPanelLogin();
+				String Local = usuarios[0];
+				String NIF = usuarios[1];
+				String Contrasena =  usuarios[2];
+				String NIFIntroducido = NIFtxt.getText();
+				String ContrasenaIntroducida = contraseñatxt.getText();
 
-				
-				
-				for(int i = 0;i<usuarios.length;i++) {
-					String nombre1 = usuarios[i].getDNI();
-					String contraseña1 = usuarios[i].getContraseña();
+	
 					
-					if(DNIIntroducido.equals(nombre1) && ContraseñaIntroducida.equals(contraseña1)) 
+					if(NIFIntroducido.equals(NIF) && ContrasenaIntroducida.equals(Contrasena)) 
 					{
-					controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
+					controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida(Local);
 					} else {
 						error.setVisible(true);
 					}
 				}
-			}
+			
 		};
 	}	
 	

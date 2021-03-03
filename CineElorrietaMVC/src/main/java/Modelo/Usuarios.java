@@ -2,7 +2,7 @@ package Modelo;
 
 public class Usuarios {
 	
-	private String DNI;
+	private String NIF;
 	private String Contraseña;
 	private String TipoLocal;
 	private String Nombre;
@@ -11,11 +11,11 @@ public class Usuarios {
 	public Usuarios(){
 	}
 	
-	public Usuarios(String TipoLocal, String DNI, String Contraseña, String Apellido, String Nombre){
+	public Usuarios(String TipoLocal, String NIF, String Contraseña, String Apellido, String Nombre){
 		this.TipoLocal = TipoLocal;
 		this.Nombre = Nombre;
 		this.Apellido = Apellido;
-		this.DNI = DNI;
+		this.NIF = NIF;
 		this.Contraseña = Contraseña;
 	}
 	public void setNombre(String Nombre) {
@@ -36,18 +36,19 @@ public class Usuarios {
 	public String getTipoLocal() {
 		return this.TipoLocal;
 	}
-	public void setDNI(String DNI) {
-		this.DNI = DNI;
+	public void setNIF(String NIF) {
+		this.NIF = NIF;
 	}
-	public String getDNI() {
-		return this.DNI;
+	public String getNIF() {
+		return this.NIF;
 	}
-	public void setContraseña(String Contraseña) {
+	public void setContrasena(String Contraseña) {
 		this.Contraseña = Contraseña;
 	}
-	public String getContraseña() {
+	public String getContrasena() {
 		return this.Contraseña;
 	}
-	
-
+	public String toString() {
+		return getTipoLocal()+","+getNIF()+","+getContrasena()+","+getApellido()+","+getNombre();
+	}
 }
