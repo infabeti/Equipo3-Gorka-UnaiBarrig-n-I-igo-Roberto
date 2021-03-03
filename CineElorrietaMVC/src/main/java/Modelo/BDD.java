@@ -45,12 +45,10 @@ public class BDD {
 		this.usuario[value]=new Usuarios(TipoLocal,DNI,Contraseña,apellido,nombre);
 	}
 	public Usuarios[] getUsuarios() {
-		return usuario;
-	}
-	public void usuariosPrueba() {
 		usuario[0]= new Usuarios("Restaurante","79171053Q", "12345678","Lopez","Jose");
 		usuario[1]= new Usuarios("Bar","79171053Q", "12345678","Lorenzo","Mariano");
 		usuario[2]= new Usuarios("Cafeteria","79171053Q", "12345678","Perez","Julia");
+		return usuario;
 	}
 		
 	public String[]  convertirArrayProductosString(){

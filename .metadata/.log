@@ -1318,3 +1318,356 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2021-03-03 08:15:08.014 -----------------------------------------------
+eclipse.buildId=4.15.0.I20200305-0155
+java.version=14
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.mylyn.bugzilla.core 4 0 2021-03-03 08:15:11.201
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.mylyn.bugzilla.core [270]
+  Unresolved requirement: Require-Bundle: org.apache.xmlrpc
+    -> Bundle-SymbolicName: org.apache.xmlrpc; bundle-version="3.0.0.v20100427-1100"
+       org.apache.xmlrpc [57]
+         Unresolved requirement: Import-Package: javax.xml.bind
+  Unresolved requirement: Require-Bundle: org.eclipse.mylyn.commons.xmlrpc; bundle-version="[3.8.0,4.0.0)"
+    -> Bundle-SymbolicName: org.eclipse.mylyn.commons.xmlrpc; bundle-version="3.24.2.v20180904-2231"; singleton:="true"
+       org.eclipse.mylyn.commons.xmlrpc [287]
+         Unresolved requirement: Require-Bundle: org.apache.xmlrpc; bundle-version="[3.0.0,4.0.0)"
+           -> Bundle-SymbolicName: org.apache.xmlrpc; bundle-version="3.0.0.v20100427-1100"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.mylyn.bugzilla.ui 4 0 2021-03-03 08:15:11.202
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.mylyn.bugzilla.ui [272]
+  Unresolved requirement: Require-Bundle: org.eclipse.mylyn.bugzilla.core; bundle-version="[3.8.0,4.0.0)"
+    -> Bundle-SymbolicName: org.eclipse.mylyn.bugzilla.core; bundle-version="3.24.2.v20180905-0003"; singleton:="true"
+       org.eclipse.mylyn.bugzilla.core [270]
+         Unresolved requirement: Require-Bundle: org.apache.xmlrpc
+           -> Bundle-SymbolicName: org.apache.xmlrpc; bundle-version="3.0.0.v20100427-1100"
+              org.apache.xmlrpc [57]
+                Unresolved requirement: Import-Package: javax.xml.bind
+         Unresolved requirement: Require-Bundle: org.eclipse.mylyn.commons.xmlrpc; bundle-version="[3.8.0,4.0.0)"
+           -> Bundle-SymbolicName: org.eclipse.mylyn.commons.xmlrpc; bundle-version="3.24.2.v20180904-2231"; singleton:="true"
+              org.eclipse.mylyn.commons.xmlrpc [287]
+                Unresolved requirement: Require-Bundle: org.apache.xmlrpc; bundle-version="[3.0.0,4.0.0)"
+                  -> Bundle-SymbolicName: org.apache.xmlrpc; bundle-version="3.0.0.v20100427-1100"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.mylyn.commons.xmlrpc 4 0 2021-03-03 08:15:11.203
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.mylyn.commons.xmlrpc [287]
+  Unresolved requirement: Require-Bundle: org.apache.xmlrpc; bundle-version="[3.0.0,4.0.0)"
+    -> Bundle-SymbolicName: org.apache.xmlrpc; bundle-version="3.0.0.v20100427-1100"
+       org.apache.xmlrpc [57]
+         Unresolved requirement: Import-Package: javax.xml.bind
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.core.resources 2 10035 2021-03-03 08:15:15.388
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.mylyn.tasks.core 4 0 2021-03-03 08:15:51.269
+!MESSAGE Unexpected error while loading repository template extensions
+!SUBENTRY 1 org.eclipse.mylyn.tasks.core 4 0 2021-03-03 08:15:51.269
+!MESSAGE Could not load repository template extension contributed by 'org.eclipse.mylyn.bugzilla.ide' with connectorKind 'bugzilla'
+
+!ENTRY org.eclipse.egit.ui 2 0 2021-03-03 08:16:11.831
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\in1dam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.628
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.671
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.707
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.740
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.773
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.804
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.834
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.864
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.895
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:19.923
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.011
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.045
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.070
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.094
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.117
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.151
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.176
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.208
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.229
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.251
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.450
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.471
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.493
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.514
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.536
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.566
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.587
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.607
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.628
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.648
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.768
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.768
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.789
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.789
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.809
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.809
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.830
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.830
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.852
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.853
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.873
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.874
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.895
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.895
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.917
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.917
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.937
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.938
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.958
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:21.959
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.047
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.048
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.070
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.071
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.094
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.094
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.116
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.117
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.166
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.166
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.188
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.188
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.209
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.210
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.232
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.232
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.255
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.255
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.277
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:22.278
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.855
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.855
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.876
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.876
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.896
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.896
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.917
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.917
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.958
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.958
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.995
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:26.995
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:27.029
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:27.029
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:27.051
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2021-03-03 09:12:27.051
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: <unnamed>, java.base

@@ -14,7 +14,7 @@ public class Controlador {
 	private ControladorPanelPedidos controladorPanelPedidos;
 	private ControladorPanelComandas controladorPanelComandas;
 	private ControladorPanelAprovisionamiento controladorPanelAprovisionamiento;
-	private ControladorPanelUsuarios controladorPanelUsuarios;
+	private ControladorPanelLogin controladorPanelUsuarios;
 	private ControladorPanelRegistrar controladorPanelRegistrar;
 	
 	public Controlador(Modelo modelo, Vista vista) {
@@ -25,7 +25,7 @@ public class Controlador {
 		this.controladorPanelPedidos = new ControladorPanelPedidos(this.modelo, this.vista, this);
 		this.controladorPanelComandas = new ControladorPanelComandas(this.modelo, this.vista, this);
 		this.controladorPanelAprovisionamiento = new ControladorPanelAprovisionamiento(this.modelo, this.vista, this);
-		this.controladorPanelUsuarios = new ControladorPanelUsuarios(this.modelo, this.vista, this);
+		this.controladorPanelUsuarios = new ControladorPanelLogin(this.modelo, this.vista, this);
 		this.controladorPanelRegistrar = new ControladorPanelRegistrar(this.modelo, this.vista, this);
 		this.navegarPanelUsuarios();
 	}

@@ -9,7 +9,7 @@ import Vista.PanelTickets;
 import Vista.PanelLogin;
 import Vista.Vista;
 
-public class ControladorPanelUsuarios {
+public class ControladorPanelLogin {
 
 	private Modelo modelo;
 	private Vista vista;
@@ -18,7 +18,7 @@ public class ControladorPanelUsuarios {
 	private int cont=1;
 	
 	
-	public ControladorPanelUsuarios(Modelo modelo, Vista vista, Controlador controlador) {
+	public ControladorPanelLogin(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
 		this.controlador = controlador;	
@@ -29,25 +29,14 @@ public class ControladorPanelUsuarios {
 		this.vista.mostrarPanel(this.panelUsuarios);
 	}
 	
-	public void accionadoBottonIngresarPanelUsuarios() {
+	public void accionadoBottonIngresarPanelLoginBienvenida() {
 		this.controlador.navegarPanelBienvenida();
 	}
-	public void accionadoBottonRegistrarPanelUsuarios() {
+	public void accionadoBottonRegistrarPanelLogin() {
 		this.controlador.navegarPanelRegistrar();
 	}
-
-	
-	
-
-	
-	public String[] pasarString(){
-		BDD Usuarios = new BDD();
-		Usuarios[] usuarios2 = Usuarios.getUsuarios();
-		String [] arrayr=new String[usuarios2.length];
-		for(int i=0; i<usuarios2.length; i++) {
-			arrayr[i]=usuarios2[i].toString();
-		}
-		return  arrayr;
+	public Usuarios[] DevolverUsuariosPanelLogin() {
 		
+		return modelo.BDD.getUsuarios();
 	}
 }

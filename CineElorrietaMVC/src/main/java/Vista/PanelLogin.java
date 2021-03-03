@@ -3,6 +3,7 @@ package Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
@@ -11,7 +12,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Controlador.ControladorPanelTickets;
-import Controlador.ControladorPanelUsuarios;
+import Controlador.ControladorPanelLogin;
 import Modelo.Usuarios;
 
 import javax.swing.JSpinner;
@@ -30,18 +31,16 @@ public class PanelLogin extends JPanel {
 	private JButton btnIngresar;
 	private JLabel lblUsuario;
 	private JLabel lblDNI;
-	private JLabel lblContrasea;
+	private JLabel lblContraseña;
 
-	private ControladorPanelUsuarios controladorPanelUsuarios;
-	private JTable table;
+	private ControladorPanelLogin controladorPanelLogin;
 	private JTextField nombretxt;
-	private JTextField contraseñatxt;
-	private int i=0; 
+	private JTextField contraseñatxt; 
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public PanelLogin(ControladorPanelUsuarios controladorPanelUsuarios)
+	public PanelLogin(ControladorPanelLogin controladorPanelLogin)
 	{
-		this.controladorPanelUsuarios = controladorPanelUsuarios;
+		this.controladorPanelLogin = controladorPanelLogin;
 		setLayout(null);
 		
 		lblUsuario = new JLabel("Inicio de Sesion");
@@ -53,9 +52,9 @@ public class PanelLogin extends JPanel {
 		lblDNI.setBounds(83, 85, 104, 14);
 		add(lblDNI);
 		
-		lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setBounds(83, 134, 104, 14);
-		add(lblContrasea);
+		lblContraseña = new JLabel("Contrase\u00F1a:");
+		lblContraseña.setBounds(83, 134, 104, 14);
+		add(lblContraseña);
 		
 		nombretxt = new JTextField();
 		nombretxt.setBounds(184, 82, 150, 20);
@@ -71,37 +70,13 @@ public class PanelLogin extends JPanel {
 		separator.setBounds(10, 60, 430, 2);
 		add(separator);
 		
-		String usu[]=new String[100];
 		
 		btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setBounds(171, 211, 89, 23);
 		add(btnRegistrar);
 		
-		ArrayList<Usuarios> lista_usuarios=new ArrayList<>();
-		btnIngresar = new JButton("Ingresar");
-		btnIngresar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String[] values = controladorPanelUsuarios.pasarString();
-				String Usuario = nombretxt.getText();
-				String Contraseña = contraseñatxt.getText();
-				Usuarios nuevo_usuario = new Usuarios();
-				String nombre=values[i].substring(0,9);
-				String cont=values[i].substring(10,values[0].length());
-				if(nombre.equals(Usuario) && cont.equals(Contraseña)) 
-				{
-					nuevo_usuario.setDNI(Usuario);
-					nuevo_usuario.setContraseña(Contraseña);
-					lista_usuarios.add(nuevo_usuario);
-					JOptionPane.showMessageDialog(null, "El Usuario ha iniciado sesion");
-				}
-				else {
-					
-						JOptionPane.showMessageDialog(null, "El Usuario introducido no esta registrado");
-						controladorPanelUsuarios.accionadoBottonRegistrarPanelUsuarios();
-				}
-				i++;
-			}
-		});
+	
+		btnIngresar = new JButton("Ingresar");			
 		btnIngresar.setBounds(320, 211, 89, 23);
 		add(btnIngresar);
 		
@@ -114,25 +89,49 @@ public class PanelLogin extends JPanel {
 	
 
 	private void initializeEvents() {
-		this.btnIngresar.addActionListener(listenerBotonIngresar(this.controladorPanelUsuarios));
-		this.btnRegistrar.addActionListener(listenerBotonRegistrar(this.controladorPanelUsuarios));                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+		this.btnIngresar.addActionListener(listenerBotonIngresar(this.controladorPanelLogin));
+		this.btnRegistrar.addActionListener(listenerBotonRegistrar(this.controladorPanelLogin));                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 	}
 	
-	private ActionListener listenerBotonIngresar(ControladorPanelUsuarios controladorPanelUsuarios) {
+	private ActionListener listenerBotonIngresar(ControladorPanelLogin controladorPanelLogin) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Ingresar");
-				controladorPanelUsuarios.accionadoBottonIngresarPanelUsuarios();
+				Usuarios [] usuarios =aumentarArrUsu(controladorPanelLogin.DevolverUsuariosPanelLogin());
+				String DNIIntroducido = nombretxt.getText();
+				String ContraseñaIntroducida = contraseñatxt.getText();
+
+				String nombre1 = usuarios[0].getDNI();
+				String contraseña1 = usuarios[0].getContraseña();
+
+				if(DNIIntroducido.equals(nombre1) && ContraseñaIntroducida.equals(contraseña1)) 
+				{
+					JOptionPane.showMessageDialog(null, "El Usuario ha iniciado sesion");
+					controladorPanelLogin.accionadoBottonRegistrarPanelLogin();
+				}
+				else {
+						JOptionPane.showMessageDialog(null, "El Usuario introducido no esta registrado");
+						
+				}
+				controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
 			}
 		};
 	}	
 	
-	private ActionListener listenerBotonRegistrar(ControladorPanelUsuarios controladorPanelUsuarios) {
+	private ActionListener listenerBotonRegistrar(ControladorPanelLogin controladorPanelUsuarios) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Registrar");
-				controladorPanelUsuarios.accionadoBottonRegistrarPanelUsuarios();
+				controladorPanelUsuarios.accionadoBottonRegistrarPanelLogin();
 			}
 		};
+	}
+	public Usuarios[] aumentarArrUsu(Usuarios[] Usuario) {
+		Usuarios[] temp = new Usuarios[Usuario.length];
+		for (int i = 0; i<Usuario.length;i++) {
+			temp[i] = Usuario[i];
+		}
+		return Usuario = Arrays.copyOf(temp ,Usuario.length);
+		
 	}
 }
