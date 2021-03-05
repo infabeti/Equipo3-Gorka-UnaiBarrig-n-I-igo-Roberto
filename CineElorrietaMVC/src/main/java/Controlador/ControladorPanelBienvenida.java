@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Modelo;
+import Modelo.Usuarios;
 import Vista.PanelBienvenida;
 import Vista.Vista;
 
@@ -17,12 +18,16 @@ public class ControladorPanelBienvenida {
 		this.vista = vista;
 		this.controlador = controlador;	
 	}
-	
-	public void mostrarPanelBienvenida(String local) {
-		this.panelBienvenida = new PanelBienvenida(this,local);
+	public void mostrarPanelBienvenida() {
+		this.panelBienvenida = new PanelBienvenida(this);
 		this.vista.mostrarPanel(this.panelBienvenida);
 	}
-	
+	public String llevarLocalBienvenida() {
+		Usuarios[] usuarios = modelo.BDD.getUsuarios();
+		String StringUsu = usuarios.toString();
+		String[] StringArrUsu = modelo.ArraysUtils.separarParaUsu(StringUsu) ;
+		return StringArrUsu[0];
+	}
 	public void accionadoBottonMostrarPanelTickets() {
 		modelo.ticket.setFecha();
 		this.controlador.navegarPanelTickets();

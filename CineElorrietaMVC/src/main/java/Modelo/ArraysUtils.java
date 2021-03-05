@@ -24,6 +24,8 @@ public class ArraysUtils {
 			temp[i] = Usuario[i];
 		}
 		return Usuario = Arrays.copyOf(temp ,Usuario.length+1);
-		
+	}
+	public String[] separarParaUsu(Object selec) {
+		return ((String) selec).split(",") ;
 	}
 }

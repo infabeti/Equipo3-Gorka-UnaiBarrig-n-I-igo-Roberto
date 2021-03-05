@@ -24,11 +24,11 @@ public class PanelBienvenida extends JPanel{
 	private String TipoLocal;
 	private ControladorPanelBienvenida controladorPanelBienvenida;
 	
-	public PanelBienvenida(ControladorPanelBienvenida controladorPanelBienvenida, String local) {
+	public PanelBienvenida(ControladorPanelBienvenida controladorPanelBienvenida) {
 		this.controladorPanelBienvenida = controladorPanelBienvenida;
-		this.TipoLocal = local;
-		setLayout(null);
 		
+		setLayout(null);
+		this.TipoLocal = controladorPanelBienvenida.llevarLocalBienvenida();
 		
 		lblBienvenida = new JLabel("BIENVENIDA");
 		lblBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
@@ -64,7 +64,7 @@ public class PanelBienvenida extends JPanel{
 		btnCerrar = new JButton("Cerrar Sesion");
 		btnCerrar.setBounds(320, 433, 120, 23);
 		add(btnCerrar);	
-		/*
+		
 		if (TipoLocal.equals("Cafeteria")) {
 			btnComandas.setVisible(false);
 		} else if (TipoLocal.equals("Bar")) {
@@ -72,7 +72,7 @@ public class PanelBienvenida extends JPanel{
 			btnAprovisionamiento.setBounds(153, 171, 212, 74);
 			btnPedidos.setVisible(false);
 			btnComandas.setVisible(false);
-		}*/
+		}
 		initializeEvents();
 	}
 	

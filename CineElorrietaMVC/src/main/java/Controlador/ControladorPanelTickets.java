@@ -30,7 +30,7 @@ public class ControladorPanelTickets {
 		this.panelTickets = new PanelTickets(this);
 		this.vista.mostrarPanel(this.panelTickets);
 	}
-	
+		
 	public void accionadoBottonVolverPanelTickets() {
 		this.controlador.navegarPanelBienvenida();
 	}

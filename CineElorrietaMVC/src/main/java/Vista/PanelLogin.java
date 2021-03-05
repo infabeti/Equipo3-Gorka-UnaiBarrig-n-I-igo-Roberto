@@ -114,7 +114,8 @@ public class PanelLogin extends JPanel {
 					
 					if(NIFIntroducido.equals(NIF) && ContrasenaIntroducida.equals(Contrasena)) 
 					{
-					controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida(Local);
+					controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
+					
 					} else {
 						error.setVisible(true);
 					}

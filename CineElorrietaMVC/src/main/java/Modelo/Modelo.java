@@ -15,6 +15,5 @@ public Modelo() {
 	this.productos = new Productos();
 	this.Contador = new ContadorNumPedido();
 	this.ArraysUtils = new ArraysUtils();
-
 }
 }

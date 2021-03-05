@@ -29,10 +29,9 @@ public class Controlador {
 		this.controladorPanelRegistrar = new ControladorPanelRegistrar(this.modelo, this.vista, this);
 		this.navegarPanelUsuarios();
 	}
-	
-	public void navegarPanelBienvenida(String local) {
+	public void navegarPanelBienvenida() {
 		System.out.println("Navegar panel Bienvenida");
-		this.controladorPanelBienvenida.mostrarPanelBienvenida(local);
+		this.controladorPanelBienvenida.mostrarPanelBienvenida();
 	}
 	
 	public void navegarPanelTickets() {

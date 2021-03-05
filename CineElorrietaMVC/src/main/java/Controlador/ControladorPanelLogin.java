@@ -31,9 +31,9 @@ public class ControladorPanelLogin {
 		this.vista.mostrarPanel(this.panelUsuarios);
 	}
 	
-	public void accionadoBottonIngresarPanelLoginBienvenida(String local) {
+	public void accionadoBottonIngresarPanelLoginBienvenida() {
 		JOptionPane.showMessageDialog(null, "El Usuario ha iniciado sesion");
-		this.controlador.navegarPanelBienvenida(local);
+		this.controlador.navegarPanelBienvenida();
 	}
 	public void accionadoBottonRegistrarPanelLogin() {
 		this.controlador.navegarPanelRegistrar();
@@ -42,10 +42,8 @@ public class ControladorPanelLogin {
 		
 		Usuarios[] Usuarios= modelo.BDD.getUsuarios();
 		String UsuariosAString = Usuarios.toString();
-		String[] DevolverUsuarios = separar(UsuariosAString);
+		String[] DevolverUsuarios = modelo.ArraysUtils.separarParaUsu(UsuariosAString);
 		return DevolverUsuarios;
 	}
-	public String[] separar(Object selec) {
-		return ((String) selec).split(",") ;
-	}
+	
 }
