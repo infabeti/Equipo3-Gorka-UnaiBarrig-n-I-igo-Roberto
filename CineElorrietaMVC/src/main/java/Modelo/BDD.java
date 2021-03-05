@@ -1,27 +1,30 @@
 package Modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 public class BDD {
 
-	private Usuarios usuario[] =new Usuarios[3];
+	private Usuarios usuario;
 	static String url="jdbc:mysql://localhost:33060/reto3";
 	static String username="dam";
 	static String password="elorrieta";
+	static Connection conexionbd;
 	private ArraysUtils ArraysUtils = new ArraysUtils();
 	
 	public BDD() {
 	}
 
-	public BDD(Usuarios[] usuario) {
+	public BDD(Usuarios usuario) {
 		this.usuario = usuario;
 	}	
 	
 	public static void conexion() {
 
 		try{
-		Connection conexionbd = DriverManager.getConnection(url,username,password);
+			conexionbd = DriverManager.getConnection(url,username,password);
 			System.out.println("Conectado correctamente.");
 		}catch(SQLException e){
 
@@ -40,14 +43,20 @@ public class BDD {
 		return producto;
 	}
 	public void setUsuarios(String TipoLocal, String DNI, String Contraseña, String apellido, String nombre) {
-		int value = this.usuario.length;
+		/*int value = this.usuario.length;
 		this.usuario = ArraysUtils.aumentarArrUsu(this.usuario);
-		this.usuario[value]=new Usuarios(TipoLocal,DNI,Contraseña,apellido,nombre);
+		this.usuario[value]=new Usuarios(TipoLocal,DNI,Contraseña,apellido,nombre);*/
 	}
-	public Usuarios[] getUsuarios() {
-		usuario[0]= new Usuarios("Restaurante","79171053Q", "12345678","Lopez","Jose");
-		usuario[1]= new Usuarios("Bar","81899056N", "12345678","Lorenzo","Mariano");
-		usuario[2]= new Usuarios("Cafeteria","78482256T", "12345678","Perez","Julia");
+	
+	public Usuarios LoginUsu(String DNIIntroducido,String ContraIntro) throws SQLException {
+		PreparedStatement consulta = conexionbd.prepareStatement("SELECT DNI,Contraseña,Tipo  FROM Usuarios U join Locale L on U.NIFLocal= L.NIF where DNI = "+DNIIntroducido+"and where Contraseña = "+ContraIntro);
+	    ResultSet resultado=consulta.executeQuery();
+	    if(resultado.next()) {
+		usuario= new Usuarios(resultado.getString("Tipo"),resultado.getString("DNI"),resultado.getString("Contraseña"));
+	    }
+		return usuario;
+	}
+	public Usuarios getUsuario() {
 		return usuario;
 	}
 		

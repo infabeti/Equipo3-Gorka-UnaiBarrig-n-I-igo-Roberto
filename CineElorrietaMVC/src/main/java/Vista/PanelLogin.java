@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -101,24 +102,23 @@ public class PanelLogin extends JPanel {
 	
 	private ActionListener listenerBotonIngresar(ControladorPanelLogin controladorPanelLogin) {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0)  {
 				System.out.println("Ejecutando evento Boton Ingresar");
-				String [] usuarios =controladorPanelLogin.DevolverUsuariosPanelLogin();
+				String NIFIntroducido = NIFtxt.getText();
+				String ContrasenaIntroducida = contraseñatxt.getText();
+				String[] usuarios = null;
+				try {
+					String[]recoger = controladorPanelLogin.DevolverUsuariosPanelLogin(NIFIntroducido,ContrasenaIntroducida);
+					usuarios = recoger;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				String Local = usuarios[0];
 				String NIF = usuarios[1];
 				String Contrasena =  usuarios[2];
-				String NIFIntroducido = NIFtxt.getText();
-				String ContrasenaIntroducida = contraseñatxt.getText();
-
-	
+				
+				controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
 					
-					if(NIFIntroducido.equals(NIF) && ContrasenaIntroducida.equals(Contrasena)) 
-					{
-					controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
-					
-					} else {
-						error.setVisible(true);
-					}
 				}
 			
 		};

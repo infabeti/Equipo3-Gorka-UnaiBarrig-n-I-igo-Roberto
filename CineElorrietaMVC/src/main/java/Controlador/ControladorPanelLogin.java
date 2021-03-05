@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 
 import Modelo.BDD;
@@ -38,9 +40,9 @@ public class ControladorPanelLogin {
 	public void accionadoBottonRegistrarPanelLogin() {
 		this.controlador.navegarPanelRegistrar();
 	}
-	public String[] DevolverUsuariosPanelLogin() {
+	public String[] DevolverUsuariosPanelLogin(String nIFIntroducido, String contrasenaIntroducida) throws SQLException {
 		
-		Usuarios[] Usuarios= modelo.BDD.getUsuarios();
+		Usuarios Usuarios= modelo.BDD.LoginUsu( nIFIntroducido,contrasenaIntroducida);
 		String UsuariosAString = Usuarios.toString();
 		String[] DevolverUsuarios = modelo.ArraysUtils.separarParaUsu(UsuariosAString);
 		return DevolverUsuarios;

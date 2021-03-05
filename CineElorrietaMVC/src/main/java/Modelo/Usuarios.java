@@ -7,16 +7,37 @@ public class Usuarios {
 	private String TipoLocal;
 	private String Nombre;
 	private String Apellido;
+	private String nombreLocal;
 	
-	public Usuarios(){
+	public Usuarios() {
 	}
-	
+	public Usuarios(String NIF, String Contraseña, String nombreLocal, String TipoLocal){
+		this.NIF = NIF;
+		this.Contraseña = Contraseña;
+		this.nombreLocal = nombreLocal;
+		this.TipoLocal = TipoLocal;
+	}
+	//SinNombreLocal
+	public Usuarios(String NIF, String Contraseña, String TipoLocal){
+		this.NIF = NIF;
+		this.Contraseña = Contraseña;
+		this.TipoLocal = TipoLocal;
+	}
+	//SinNombreLocal
 	public Usuarios(String TipoLocal, String NIF, String Contraseña, String Apellido, String Nombre){
 		this.TipoLocal = TipoLocal;
 		this.Nombre = Nombre;
 		this.Apellido = Apellido;
 		this.NIF = NIF;
 		this.Contraseña = Contraseña;
+	}
+	public Usuarios(String TipoLocal, String NIF, String Contraseña, String Apellido, String Nombre, String nombreLocal){
+		this.TipoLocal = TipoLocal;
+		this.Nombre = Nombre;
+		this.Apellido = Apellido;
+		this.NIF = NIF;
+		this.Contraseña = Contraseña;
+		this.nombreLocal = nombreLocal;
 	}
 	public void setNombre(String Nombre) {
 		this.Nombre = Nombre;
@@ -50,5 +71,12 @@ public class Usuarios {
 	}
 	public String toString() {
 		return getTipoLocal()+","+getNIF()+","+getContrasena()+","+getApellido()+","+getNombre();
+	}
+	public String getNombreLocal() {
+		return nombreLocal;
+	}
+
+	public void setNombreLocal(String nombreLocal) {
+		this.nombreLocal = nombreLocal;
 	}
 }
