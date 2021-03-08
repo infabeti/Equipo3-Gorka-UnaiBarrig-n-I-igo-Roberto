@@ -86,7 +86,7 @@ public class PanelLogin extends JPanel {
 		separator_1.setBounds(10, 245, 430, 2);
 		add(separator_1);
 		
-		error = new JLabel("NIF o Contrase\u00F1a err\u00F3neo");
+		error = new JLabel("NIF o Contraseña incorrecto");
 		error.setBounds(194, 162, 163, 14);
 		error.setVisible(false);
 		add(error);
@@ -106,30 +106,25 @@ public class PanelLogin extends JPanel {
 				System.out.println("Ejecutando evento Boton Ingresar");
 				String NIFIntroducido = NIFtxt.getText();
 				String ContrasenaIntroducida = contraseñatxt.getText();
-				String[] usuarios = null;
-				try {
-					String[]recoger = controladorPanelLogin.DevolverUsuariosPanelLogin(NIFIntroducido,ContrasenaIntroducida);
-					usuarios = recoger;
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				
 				try {
 					
-					String Local = usuarios[0];
-					String NIF = usuarios[1];
-					String Contrasena =  usuarios[2];
-					error.setVisible(false);
+					
+					
+						String[]usuarios = controladorPanelLogin.DevolverUsuariosPanelLogin(NIFIntroducido,ContrasenaIntroducida);
+						String Local = usuarios[0];
+						String NIF = usuarios[1];
+						String Contrasena =  usuarios[2];
+						error.setVisible(false);
+						controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
 				}
-				catch(Exception E) {
-					
-					
-					System.out.println("Usuario incorrecto");
-					error.setVisible(true);
-				}
+					catch(Exception E) {
+						
+						System.out.println("Usuario incorrecto");
+						error.setVisible(true);
+					}
+			
 				
-				
-				controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
-					
 				}
 			
 		};
