@@ -33,7 +33,7 @@ public class ControladorPanelRegistrar {
 		this.controlador.navegarPanelUsuarios();
 	}
 	public void accionadoBottonRegistrarPanelRegistrar(String Nombre, String Apellido, String DNI, String Contraseña, String Local) {
-		modelo.BDD.setUsuarios(Local, DNI, Contraseña, Apellido, Nombre);
+		//modelo.BDD.setUsuarios(Local, DNI, Contraseña, Apellido, Nombre);
 	}
 	
 
