@@ -113,9 +113,20 @@ public class PanelLogin extends JPanel {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				String Local = usuarios[0];
-				String NIF = usuarios[1];
-				String Contrasena =  usuarios[2];
+				try {
+					
+					String Local = usuarios[0];
+					String NIF = usuarios[1];
+					String Contrasena =  usuarios[2];
+					error.setVisible(false);
+				}
+				catch(Exception E) {
+					
+					
+					System.out.println("Usuario incorrecto");
+					error.setVisible(true);
+				}
+				
 				
 				controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
 					

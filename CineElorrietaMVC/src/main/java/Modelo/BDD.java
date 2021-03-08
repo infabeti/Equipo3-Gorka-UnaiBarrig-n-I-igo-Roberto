@@ -49,15 +49,16 @@ public class BDD {
 	}
 	
 	public Usuarios LoginUsu(String DNIIntroducido,String ContraIntro) throws SQLException {
-		PreparedStatement consulta = conexionbd.prepareStatement("SELECT DNI,Contraseña,Tipo  FROM Usuarios U join Locale L on U.NIFLocal= L.NIF where DNI = "+DNIIntroducido+"and where Contraseña = "+ContraIntro);
+		PreparedStatement consulta = conexionbd.prepareStatement("SELECT DNI,Contraseña,Tipo  FROM Usuarios U join Locale L on U.NIFLocal = L.NIF where DNI = \""+DNIIntroducido+"\" and Contraseña = \""+ContraIntro+"\"");
 	    ResultSet resultado=consulta.executeQuery();
 	    if(resultado.next()) {
-		usuario= new Usuarios(resultado.getString("Tipo"),resultado.getString("DNI"),resultado.getString("Contraseña"));
+		usuario= new Usuarios(resultado.getString("DNI"),resultado.getString("Contraseña"),resultado.getString("Tipo"));
 	    }
 		return usuario;
 	}
-	public Usuarios getUsuario() {
-		return usuario;
+	public String getUsuString() {
+		String usu = usuario.toString();
+		return usu;
 	}
 		
 	public String[]  convertirArrayProductosString(){

@@ -23,10 +23,8 @@ public class ControladorPanelBienvenida {
 		this.vista.mostrarPanel(this.panelBienvenida);
 	}
 	public String llevarLocalBienvenida() {
-		
-		Usuarios usuarios = modelo.BDD.getUsuario();
-		String StringUsu = usuarios.toString();
-		String[] StringArrUsu = modelo.ArraysUtils.separarParaUsu(StringUsu) ;
+		String StringUsu = modelo.BDD.getUsuString();
+		String[] StringArrUsu = modelo.ArraysUtils.separarParaUsu(StringUsu);
 		return StringArrUsu[0];
 	}
 	public void accionadoBottonMostrarPanelTickets() {
@@ -49,6 +47,4 @@ public class ControladorPanelBienvenida {
 		
 		this.controlador.conectarBDD();
 	}
-
-	
 }
