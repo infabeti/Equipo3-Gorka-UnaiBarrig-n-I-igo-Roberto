@@ -20,6 +20,9 @@ public class BDD {
 	public BDD(Usuarios usuario) {
 		this.usuario = usuario;
 	}	
+	public Connection llevarConexionScriptsBDD() {
+		return conexionbd;
+	}
 	
 	public static void conexion() {
 
@@ -41,11 +44,6 @@ public class BDD {
 		producto[4]=new Productos("pastel",5);
 		producto[5]=new Productos("pistachos",5);
 		return producto;
-	}
-	public void setUsuarios(String TipoLocal, String DNI, String Contraseña, String apellido, String nombre) {
-		/*int value = this.usuario.length;
-		this.usuario = ArraysUtils.aumentarArrUsu(this.usuario);
-		this.usuario[value]=new Usuarios(TipoLocal,DNI,Contraseña,apellido,nombre);*/
 	}
 	
 	public Usuarios LoginUsu(String DNIIntroducido,String ContraIntro) throws SQLException {

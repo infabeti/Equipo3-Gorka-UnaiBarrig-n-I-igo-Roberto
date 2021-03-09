@@ -2,6 +2,8 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,10 +28,10 @@ public class PanelRegistrar extends JPanel {
 	private JTextField apellidotxt;
 	private JTextField NIFtxt;
 	private JTextField contraseñatxt;
-	private JComboBox comboBox;
 	private JSeparator separator;
 	private JLabel lblApellido;
 	private JLabel lblNombre;
+	private JTextField NIFLocaltxt;
 	
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -94,14 +96,13 @@ public class PanelRegistrar extends JPanel {
 		lblContrasena.setBounds(234, 134, 135, 14);
 		add(lblContrasena);
 		
-		JLabel lblLocal = new JLabel("Tipo de local:");
-		lblLocal.setBounds(34, 172, 92, 14);
+		JLabel lblLocal = new JLabel("NIF del local:\r\n");
+		lblLocal.setBounds(37, 172, 92, 14);
 		add(lblLocal);
 		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Restaurante", "Bar", "Cafeteria"}));
-		comboBox.setBounds(111, 168, 105, 22);
-		add(comboBox);
+		NIFLocaltxt = new JTextField();
+		NIFLocaltxt.setBounds(101, 169, 98, 20);
+		add(NIFLocaltxt);
 
 		initializeEvents();
 	}
@@ -124,16 +125,15 @@ public class PanelRegistrar extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Registrar");
-				String Local = "";
-				if (comboBox.getSelectedIndex() == 0) {
-					Local = "Restaurante";
-				} else if (comboBox.getSelectedIndex() == 1) {
-					Local = "Bar";
-				} else if (comboBox.getSelectedIndex() == 2) {
-					Local = "Cafeteria";
+				
+			
+				try {
+					controladorPanelRegistrar.accionadoBottonRegistrarPanelRegistrar(nombretxt.getText(),apellidotxt.getText(),NIFtxt.getText(),contraseñatxt.getText(),NIFLocaltxt.getText());
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
 				}
-				controladorPanelRegistrar.accionadoBottonRegistrarPanelRegistrar(nombretxt.getText(),apellidotxt.getText(),NIFtxt.getText(),contraseñatxt.getText(),Local);
-				//lista_registrados.add(nuevo_usuario);
+				
 				JOptionPane.showMessageDialog(null, "El Usuario ha sido registrado");
 				controladorPanelRegistrar.accionadoBottonVolverPanelRegistrar();
 			}

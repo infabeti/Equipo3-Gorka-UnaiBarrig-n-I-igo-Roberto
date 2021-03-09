@@ -195,6 +195,7 @@ public class PanelTickets extends JPanel {
 		add(fechaTexto);
 		
 		Aviso = new JLabel("Rellene los campos");
+		Aviso.setForeground(Color.BLACK);
 		Aviso.setBounds(292, 362, 115, 14);
 		Aviso.setVisible(false);
 		add(Aviso);

@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
@@ -18,6 +20,7 @@ public class ControladorPanelRegistrar {
 	private int cont=1;
 	
 	
+	
 	public ControladorPanelRegistrar(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
@@ -32,12 +35,10 @@ public class ControladorPanelRegistrar {
 	public void accionadoBottonVolverPanelRegistrar() {
 		this.controlador.navegarPanelUsuarios();
 	}
-	public void accionadoBottonRegistrarPanelRegistrar(String Nombre, String Apellido, String DNI, String Contraseña, String Local) {
-		//modelo.BDD.setUsuarios(Local, DNI, Contraseña, Apellido, Nombre);
+	public void accionadoBottonRegistrarPanelRegistrar(String Nombre, String Apellido, String DNI, String Contraseña, String NIFLocal) throws SQLException {
+		modelo.ScriptsBDD.registrarUsuario(DNI, Contraseña, Apellido, Nombre, NIFLocal);
 	}
-	
 
-	
 	public String[] pasarString(){
 		BDD productos = new BDD();
 		Productos[] poductos2 = productos.getProductos();

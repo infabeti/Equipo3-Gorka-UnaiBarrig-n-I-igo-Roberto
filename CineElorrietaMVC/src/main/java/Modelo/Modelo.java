@@ -7,6 +7,7 @@ public BDD BDD;
 public Productos productos;
 public ContadorNumPedido Contador;
 public ArraysUtils ArraysUtils;
+public ScriptsBDD ScriptsBDD;
 
 public Modelo() {
 	this.ticket = new Tickets();
@@ -15,5 +16,6 @@ public Modelo() {
 	this.productos = new Productos();
 	this.Contador = new ContadorNumPedido();
 	this.ArraysUtils = new ArraysUtils();
+	this.ScriptsBDD = new ScriptsBDD();
 }
 }
