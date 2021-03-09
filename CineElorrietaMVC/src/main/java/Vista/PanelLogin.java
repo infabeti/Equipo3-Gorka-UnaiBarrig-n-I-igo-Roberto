@@ -2,27 +2,11 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import Controlador.ControladorPanelTickets;
 import Controlador.ControladorPanelLogin;
-import Modelo.Usuarios;
-
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import java.awt.Color;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 
 @SuppressWarnings("serial")
@@ -108,9 +92,6 @@ public class PanelLogin extends JPanel {
 				String ContrasenaIntroducida = contraseñatxt.getText();
 				
 				try {
-					
-					
-					
 						String[]usuarios = controladorPanelLogin.DevolverUsuariosPanelLogin(NIFIntroducido,ContrasenaIntroducida);
 						String Local = usuarios[0];
 						String NIF = usuarios[1];
@@ -119,7 +100,6 @@ public class PanelLogin extends JPanel {
 						controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
 				}
 					catch(Exception E) {
-						
 						System.out.println("Usuario incorrecto");
 						error.setVisible(true);
 					}
