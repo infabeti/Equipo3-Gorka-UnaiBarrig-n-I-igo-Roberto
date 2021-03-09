@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -46,6 +47,9 @@ public class PanelRegistrar extends JPanel {
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(37, 211, 89, 23);
+		btnVolver.setFocusPainted(false);
+		Color cpanel = new Color(200,194,182);
+		btnVolver.setBackground(cpanel);
 		add(btnVolver);
 		
 		lblNombre = new JLabel("Nombre:");
@@ -62,7 +66,8 @@ public class PanelRegistrar extends JPanel {
 		nombretxt.setColumns(10);
 		
 		apellidotxt = new JTextField();
-		apellidotxt.setBounds(101, 131, 98, 20);
+		apellidotxt.setColumns(10);
+		apellidotxt.setBounds(101, 131, 95, 20);
 		add(apellidotxt);
 		
 		NIFtxt = new JTextField();
@@ -71,7 +76,8 @@ public class PanelRegistrar extends JPanel {
 		add(NIFtxt);
 		
 		contraseñatxt = new JTextField();
-		contraseñatxt.setBounds(314, 131, 94, 20);
+		contraseñatxt.setColumns(10);
+		contraseñatxt.setBounds(314, 131, 95, 20);
 		add(contraseñatxt);
 		
 		separator = new JSeparator();
@@ -82,13 +88,15 @@ public class PanelRegistrar extends JPanel {
 
 		btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setBounds(320, 211, 89, 23);
+		btnRegistrar.setFocusPainted(false);
+		btnRegistrar.setBackground(cpanel);
 		add(btnRegistrar);
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(10, 245, 430, 2);
 		add(separator_1);
 		
-		JLabel lblNIF = new JLabel("NIF:");
+		JLabel lblNIF = new JLabel("DNI:\r\n");
 		lblNIF.setBounds(234, 85, 34, 14);
 		add(lblNIF);
 		
@@ -96,12 +104,13 @@ public class PanelRegistrar extends JPanel {
 		lblContrasena.setBounds(234, 134, 135, 14);
 		add(lblContrasena);
 		
-		JLabel lblLocal = new JLabel("NIF del local:\r\n");
-		lblLocal.setBounds(37, 172, 92, 14);
+		JLabel lblLocal = new JLabel("NIF:");
+		lblLocal.setBounds(37, 186, 92, 14);
 		add(lblLocal);
 		
 		NIFLocaltxt = new JTextField();
-		NIFLocaltxt.setBounds(101, 169, 98, 20);
+		NIFLocaltxt.setColumns(10);
+		NIFLocaltxt.setBounds(101, 180, 95, 20);
 		add(NIFLocaltxt);
 
 		initializeEvents();

@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -59,11 +60,16 @@ public class PanelLogin extends JPanel {
 		
 		btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setBounds(171, 211, 89, 23);
+		btnRegistrar.setFocusPainted(false);
+		Color cpanel = new Color(200,194,182);
+		btnRegistrar.setBackground(cpanel);
 		add(btnRegistrar);
 		
 	
 		btnIngresar = new JButton("Ingresar");			
 		btnIngresar.setBounds(320, 211, 89, 23);
+		btnIngresar.setFocusPainted(false);
+		btnIngresar.setBackground(cpanel);
 		add(btnIngresar);
 		
 		JSeparator separator_1 = new JSeparator();

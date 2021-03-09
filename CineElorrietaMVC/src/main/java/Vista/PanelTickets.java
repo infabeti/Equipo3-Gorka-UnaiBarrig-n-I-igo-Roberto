@@ -52,24 +52,34 @@ public class PanelTickets extends JPanel {
 		setLayout(null);
 		
 		lblTickets = new JLabel("Tickets");
-		lblTickets.setBounds(227, 15, 115, 14);
+		lblTickets.setBounds(210, 15, 115, 14);
+		
 		add(lblTickets);
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(33, 423, 89, 23);
+		btnVolver.setFocusPainted(false);
+		Color cpanel = new Color(200,194,182);
+		btnVolver.setBackground(cpanel);
 		add(btnVolver);
 		
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(367, 423, 89, 23);
+		btnGuardar.setFocusPainted(false);
+		
+		btnGuardar.setBackground(cpanel);
 		add(btnGuardar);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(277, 169, 89, 23);
+		btnEliminar.setBounds(265, 315, 89, 23);
+		btnEliminar.setFocusPainted(false);
+		
+		btnEliminar.setBackground(cpanel);
 		add(btnEliminar);
 		
 		
 		list_1 = new JList();
-		list_1.setBounds(45, 59, 155, 141);
+		list_1.setBounds(33, 205, 155, 141);
 		list_1.setModel(new AbstractListModel() {
 			String[] values = controladorPanelTickets.stringProductos();
 			public int getSize() {
@@ -82,7 +92,7 @@ public class PanelTickets extends JPanel {
 		add(list_1);
 		
 		spinner = new JSpinner();
-		spinner.setBounds(210, 56, 41, 23);
+		spinner.setBounds(198, 202, 41, 23);
 		spinner.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 		add(spinner);
 		
@@ -91,7 +101,7 @@ public class PanelTickets extends JPanel {
 		PrecioFinal = new JLabel("0");
 		PrecioFinal.setBackground(Color.WHITE);
 		PrecioFinal.setForeground(Color.BLACK);
-		PrecioFinal.setBounds(410, 151, 46, 14);
+		PrecioFinal.setBounds(398, 297, 46, 14);
 		add(PrecioFinal);
 		
 		btnAnadir = new JButton("Añadir");
@@ -101,7 +111,9 @@ public class PanelTickets extends JPanel {
 				
 			}
 		});
-		btnAnadir.setBounds(277, 147, 89, 23);
+		btnAnadir.setBounds(265, 293, 89, 23);
+		btnAnadir.setFocusPainted(false);
+		btnAnadir.setBackground(cpanel);
 		add(btnAnadir);
 		
 		JLabel lblNumeroDeCompra = new JLabel("Numero de Ticket:");
@@ -109,7 +121,7 @@ public class PanelTickets extends JPanel {
 		add(lblNumeroDeCompra);
 		
 		JLabel lblTotal = new JLabel("Total:");
-		lblTotal.setBounds(376, 151, 115, 14);
+		lblTotal.setBounds(364, 297, 115, 14);
 		add(lblTotal);
 		
 		
@@ -126,13 +138,13 @@ public class PanelTickets extends JPanel {
 			}
 		));
 		
-		table.setBounds(275, 60, 165, 80);
+		table.setBounds(263, 206, 165, 80);
 		add(table);
 		
 		
 		
 		Factura = new JCheckBox("Factura");
-		Factura.setBounds(50, 220, 97, 23);
+		Factura.setBounds(33, 80, 97, 23);
 		Factura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (Factura.isSelected() == true) {
@@ -156,46 +168,47 @@ public class PanelTickets extends JPanel {
 		add(Factura);
 		
 		NIF = new JTextField();
-		NIF.setBounds(74, 317, 86, 20);
+		NIF.setBounds(54, 134, 86, 20);
 		NIF.setVisible(false);
 		add(NIF);
 		NIF.setColumns(10);
 		
 		Apellido = new JTextField();
 		Apellido.setColumns(10);
-		Apellido.setBounds(340, 317, 86, 20);
+		Apellido.setBounds(320, 134, 86, 20);
 		Apellido.setVisible(false);
 		add(Apellido);
 		
 		Nombre = new JTextField();
 		Nombre.setColumns(10);
-		Nombre.setBounds(208, 317, 86, 20);
+		Nombre.setBounds(188, 134, 86, 20);
 		Nombre.setVisible(false);
 		add(Nombre);
 		
 		TextoNIF = new JLabel("NIF");
-		TextoNIF.setBounds(110, 302, 46, 14);
+		TextoNIF.setBounds(90, 119, 46, 14);
 		TextoNIF.setVisible(false);
 		add(TextoNIF);
 		
 		TextoNombre = new JLabel("Nombre");
-		TextoNombre.setBounds(229, 302, 46, 14);
+		TextoNombre.setBounds(209, 119, 46, 14);
 		TextoNombre.setVisible(false);
 		add(TextoNombre);
 		
 		TextoApellido = new JLabel("Apellido");
-		TextoApellido.setBounds(361, 302, 46, 14);
+		TextoApellido.setBounds(341, 119, 46, 14);
 		TextoApellido.setVisible(false);
 		add(TextoApellido);
 		
 		JLabel fechaTexto = new JLabel("Fecha:");
-		fechaTexto.setBounds(276, 35, 180, 14);
+		fechaTexto.setBounds(284, 56, 180, 14);
 		fechaTexto.setText("Fecha: "+controladorPanelTickets.getFecha());
 		add(fechaTexto);
 		
 		Aviso = new JLabel("Rellene los campos");
+		Aviso.setBackground(Color.RED);
 		Aviso.setForeground(Color.BLACK);
-		Aviso.setBounds(292, 362, 115, 14);
+		Aviso.setBounds(320, 165, 115, 14);
 		Aviso.setVisible(false);
 		add(Aviso);
 		
@@ -207,12 +220,12 @@ public class PanelTickets extends JPanel {
 		add(cont);
 		
 		LocalTexto = new JTextField();
-		LocalTexto.setBounds(295, 221, 86, 20);
+		LocalTexto.setBounds(84, 53, 86, 20);
 		add(LocalTexto);
 		LocalTexto.setColumns(10);
 		
 		LocalLabel = new JLabel("Local:");
-		LocalLabel.setBounds(244, 224, 46, 14);
+		LocalLabel.setBounds(33, 56, 46, 14);
 		add(LocalLabel);
 		
 		

@@ -63,6 +63,8 @@ public class PanelBienvenida extends JPanel{
 		
 		btnCerrar = new JButton("Cerrar Sesion");
 		btnCerrar.setBounds(320, 433, 120, 23);
+		btnCerrar.setFocusPainted(false);
+		btnCerrar.setBackground(cpanel);
 		add(btnCerrar);	
 		
 		if (TipoLocal.equals("Cafeteria")) {
