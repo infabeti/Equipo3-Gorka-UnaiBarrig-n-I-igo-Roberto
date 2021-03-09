@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Date;
 
 import javax.swing.AbstractListModel;
@@ -31,7 +32,6 @@ public class PanelTickets extends JPanel {
 	private JTable table;
 	private JLabel PrecioFinal;
 	private ControladorPanelTickets controladorPanelTickets;
-	private double precioTotal = 0;
 	private JTextField NIF;
 	private JTextField Apellido;
 	private JTextField Nombre;
@@ -41,7 +41,6 @@ public class PanelTickets extends JPanel {
 	private JLabel TextoApellido;
 	private DefaultTableModel model;
 	private JLabel Aviso;
-	private Date fecha;
 	private JTextField cont;
 	private JTextField LocalTexto;
 	private JLabel LocalLabel;
@@ -260,6 +259,12 @@ public class PanelTickets extends JPanel {
 				boolean comprobar = comprobarCamposFactura();
 				if(comprobar == true) {
 					controladorPanelTickets.setContador(cont.getText());
+				}
+				
+				try {
+					controladorPanelTickets.insertTickets(cont.getText(),controladorPanelTickets.getFecha(),NIF.getText(),Nombre.getText(),Apellido.getText(),Factura.isSelected());
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 			}
 		};

@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import javax.swing.JTextArea;
 
 import Modelo.BDD;
@@ -61,6 +63,10 @@ public class ControladorPanelTickets {
 	}
 	public void accionadoBottonEliminarPanelTickets(int i) {
 		modelo.ticket.setArrSelec(i);
+	}
+	public void insertTickets(String Ntrans, String fecha, String NIF, String Nombre, String Apellido, boolean factura) throws SQLException {
+		modelo.ScriptsBDD.registrarTicketFacts(Ntrans,fecha,NIF, Nombre, Apellido, factura);
+		
 	}
 
 }

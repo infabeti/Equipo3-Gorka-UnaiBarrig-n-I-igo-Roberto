@@ -28,4 +28,7 @@ public class ArraysUtils {
 	public String[] separarParaUsu(Object selec) {
 		return ((String) selec).split(",") ;
 	}
+	public String[] separarParaFecha(Object selec) {
+		return ((String) selec).split("-") ;
+	}
 }
