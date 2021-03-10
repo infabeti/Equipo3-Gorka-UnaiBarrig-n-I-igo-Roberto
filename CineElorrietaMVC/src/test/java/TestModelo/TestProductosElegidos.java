@@ -25,4 +25,15 @@ public class TestProductosElegidos {
 		producto.setPrecio(10.0);
 		assertEquals(10.0,producto.getPrecio(),0);
 }
+	@Test
+	public void TestClaseProductosElegidosCantidad() {
+		assertEquals(2,producto1.getCantidad(),0);
+		assertEquals(2,producto2.getCantidad(),0);
+		producto.setCantidad(3);
+		assertEquals(3,producto.getCantidad(),0);
+}
+	@Test
+	public void TestClaseProductosElegidosPrecioCantidad() {
+		assertEquals(producto2.getPrecio()*producto2.getCantidad(),producto2.getPrecioCantidad(),0);
+}
 }
