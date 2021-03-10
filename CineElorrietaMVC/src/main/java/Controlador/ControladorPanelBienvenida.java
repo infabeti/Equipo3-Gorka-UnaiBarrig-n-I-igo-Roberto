@@ -47,4 +47,7 @@ public class ControladorPanelBienvenida {
 		
 		this.controlador.conectarBDD();
 	}
+	public void accionadoBottonBorrarUsuLog() {
+	modelo.BDD.cerrarSesion();
+	}
 }

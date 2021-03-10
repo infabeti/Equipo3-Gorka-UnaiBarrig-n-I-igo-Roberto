@@ -22,7 +22,7 @@ public class ScriptsBDD {
 	fecha = cambiarFecha(fecha);
 	if (factura == false) {
 		
-		PreparedStatement insert = conexionbd.prepareStatement("insert into transacción" + "values (\""+ntrans+"\",\""+fecha+"\")");
+		PreparedStatement insert = conexionbd.prepareStatement("insert into transacción" + "values (\""+fecha+"\")");
 		insert.executeUpdate();
 		
 	} else if (factura == true) {

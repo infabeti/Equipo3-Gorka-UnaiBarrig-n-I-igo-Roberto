@@ -64,4 +64,7 @@ public class BDD {
 		}
 		return  arrayr;
 	}
+public void cerrarSesion() {
+	usuario=null;
+}
 }
