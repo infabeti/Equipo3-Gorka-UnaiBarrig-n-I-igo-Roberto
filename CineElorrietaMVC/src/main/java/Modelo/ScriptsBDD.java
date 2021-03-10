@@ -22,11 +22,11 @@ public class ScriptsBDD {
 	
 	if (factura == false) {
 		
-		PreparedStatement insert = conexionbd.prepareStatement("insert into transacción" + "values ()");
+		PreparedStatement insert = conexionbd.prepareStatement("insert into transacción " + "values ()");
 		insert.executeUpdate();
 		
 	} else if (factura == true) {
-		PreparedStatement insert = conexionbd.prepareStatement("insert into factura" + "values ()");
+		PreparedStatement insert = conexionbd.prepareStatement("insert into factura " + "values ()");
 		insert.executeUpdate();
 	}
 	}
