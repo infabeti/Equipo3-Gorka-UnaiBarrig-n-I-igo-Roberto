@@ -58,29 +58,31 @@ public class PanelPedidos extends JPanel {
 		add(lblPedidos);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(281, 236, 89, 23);
+		btnEliminar.setBounds(283, 266, 89, 23);
+		Color cpanel = new Color(200,194,182);
+		btnEliminar.setFocusPainted(false);
+		btnEliminar.setBackground(cpanel);
 		add(btnEliminar);
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(39, 326, 89, 23);
 		btnVolver.setFocusPainted(false);
-		Color cpanel = new Color(200,194,182);
 		btnVolver.setBackground(cpanel);
 		add(btnVolver);
 		
 		btnAnadir = new JButton("A\u00F1adir\r\n");
 		btnAnadir.setFocusPainted(false);
 		btnAnadir.setBackground(new Color(200, 194, 182));
-		btnAnadir.setBounds(110, 236, 86, 23);
+		btnAnadir.setBounds(106, 266, 86, 23);
 		add(btnAnadir);
 		
 		spinner = new JSpinner();
-		spinner.setBounds(217, 98, 41, 23);
+		spinner.setBounds(220, 161, 41, 23);
 		spinner.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 		add(spinner);
 		
 		list = new JList();
-		list.setBounds(39, 85, 157, 140);
+		list.setBounds(41, 115, 157, 140);
 		list.setModel(new AbstractListModel() {
 			String[] values = controladorPanelPedidos.stringProductos();
 			public int getSize() {
@@ -93,17 +95,17 @@ public class PanelPedidos extends JPanel {
 		add(list);
 		
 		DireccionLabel = new JLabel("Direccion:\r\n");
-		DireccionLabel.setBounds(221, 60, 66, 14);
+		DireccionLabel.setBounds(283, 90, 66, 14);
 		DireccionLabel.setVisible(false);
 		add(DireccionLabel);
 		
 		Aviso = new JLabel("Rellene los campos");
-		Aviso.setBounds(335, 25, 115, 14);
+		Aviso.setBounds(193, 300, 115, 14);
 		Aviso.setVisible(false);
 		add(Aviso);
 		
 		DireccionTexto = new JTextField();
-		DireccionTexto.setBounds(281, 57, 86, 20);
+		DireccionTexto.setBounds(345, 87, 86, 20);
 		DireccionTexto.setVisible(false);
 		add(DireccionTexto);
 		DireccionTexto.setColumns(10);
@@ -122,13 +124,13 @@ public class PanelPedidos extends JPanel {
 			}
 		));
 		
-		table.setBounds(283, 86, 165, 140);
+		table.setBounds(285, 116, 165, 140);
 		add(table);
 		
 		PrecioFinal = new JLabel("0");
 		PrecioFinal.setBackground(Color.WHITE);
 		PrecioFinal.setForeground(Color.BLACK);
-		PrecioFinal.setBounds(404, 275, 46, 14);
+		PrecioFinal.setBounds(417, 301, 46, 14);
 		add(PrecioFinal);
 		
 		Localidad = new JComboBox();
@@ -136,15 +138,17 @@ public class PanelPedidos extends JPanel {
 		Localidad.addItem("Domicilio");
 		Localidad.setBackground(SystemColor.activeCaption);
 		Localidad.setToolTipText("");
-		Localidad.setBounds(104, 55, 86, 22);
+		Localidad.setBounds(42, 86, 86, 22);
 		add(Localidad);
 		
 		JLabel totalTexto = new JLabel("Total:");
-		totalTexto.setBounds(356, 275, 54, 14);
+		totalTexto.setBounds(369, 301, 54, 14);
 		add(totalTexto);
 		
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(374, 326, 89, 23);
+		btnGuardar.setFocusPainted(false);
+		btnGuardar.setBackground(cpanel);
 		add(btnGuardar);
 		
 		JLabel lblNewLabel = new JLabel("Numero de pedido:");
