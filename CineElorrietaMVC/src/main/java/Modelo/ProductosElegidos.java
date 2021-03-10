@@ -5,6 +5,9 @@ public class ProductosElegidos {
 	private double precio;
 	private double cantidad;
 	private double precioCantidad;
+	
+	public ProductosElegidos() {
+	}
 
 	public ProductosElegidos(String separado, double precioProducto, int cant) {
 		this.nombre = separado;

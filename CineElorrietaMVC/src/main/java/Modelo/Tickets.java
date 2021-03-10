@@ -17,8 +17,7 @@ public class Tickets {
 
 	public Tickets() {
 	}
-	public Tickets(Date fecha, String NomLocal, double total, String NIF, String Nombre, String Apellido,
-			ProductosElegidos[] productos, int arrSelec, Modelo modelo) {
+	public Tickets(Date fecha, String NomLocal, double total, String NIF, String Nombre, String Apellido,ProductosElegidos[] productos, int arrSelec, Modelo modelo) {
 		this.NumTrans = modelo.Contador.getContador();
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;

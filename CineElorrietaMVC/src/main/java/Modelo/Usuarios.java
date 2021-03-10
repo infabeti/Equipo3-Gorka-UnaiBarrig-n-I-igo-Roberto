@@ -11,6 +11,7 @@ public class Usuarios {
 	
 	public Usuarios() {
 	}
+	
 	public Usuarios(String NIF, String Contraseña, String nombreLocal, String TipoLocal){
 		this.NIF = NIF;
 		this.Contraseña = Contraseña;
