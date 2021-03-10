@@ -19,14 +19,14 @@ public class ScriptsBDD {
 	public void registrarTicketFacts(String ntrans, String fecha, String NIF, String Apellido, String Nombre, boolean factura) throws SQLException {
 	conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta");
 	
-	fecha = cambiarFecha(fecha);
+	
 	if (factura == false) {
 		
-		PreparedStatement insert = conexionbd.prepareStatement("insert into transacción" + "values (\""+fecha+"\")");
+		PreparedStatement insert = conexionbd.prepareStatement("insert into transacción" + "values ()");
 		insert.executeUpdate();
 		
 	} else if (factura == true) {
-		PreparedStatement insert = conexionbd.prepareStatement("insert into transacción" + "values (\""+ntrans+"\",\""+fecha+"\",\""+NIF+"\",\""+Apellido+"\",\""+Nombre+"\")");
+		PreparedStatement insert = conexionbd.prepareStatement("insert into factura" + "values ()");
 		insert.executeUpdate();
 	}
 	}

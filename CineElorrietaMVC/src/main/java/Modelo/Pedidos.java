@@ -19,7 +19,7 @@ public class Pedidos {
 	public Pedidos() {
 	}
 	
-	public Pedidos(String NumTrans,Date fecha,String NomLocal,String Direccion,ProductosElegidos [] productos,double total, int arrSelec,Modelo modelo){
+	public Pedidos(String NumTrans,Date fecha,String NomLocal,String Direccion,ProductosElegidos [] productos,double total, int arrSelec){
 		this.NumTrans = NumTrans;
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;
@@ -27,7 +27,6 @@ public class Pedidos {
 		this.productos = productos;
 		this.total = total;
 		this.arrSelec = arrSelec;
-		this.modelo = modelo;
 	}
 
 	public void setNumTrans(String Numtrans) {
