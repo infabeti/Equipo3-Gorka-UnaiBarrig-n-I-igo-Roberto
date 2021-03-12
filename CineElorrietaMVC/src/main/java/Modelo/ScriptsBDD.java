@@ -16,10 +16,10 @@ public class ScriptsBDD {
 	insert.executeUpdate();
 	}
 	
-	public void registrarTicketFacts(String ntrans, String fecha, String NIF, String Apellido, String Nombre, boolean factura) throws SQLException {
+	public void registrarTicketFacts(String ntrans, String NIF, String Apellido, String Nombre, boolean factura) throws SQLException {
 	conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta");
 	
-	
+	//hace falta codigo de los productos y cantidad
 	if (factura == false) {
 		
 		PreparedStatement insert = conexionbd.prepareStatement("insert into transacción " + "values ()");
@@ -32,6 +32,8 @@ public class ScriptsBDD {
 	}
 	
 	public void registrarPedido(int numtrans, String fecha, String entrega) throws SQLException {
+		
+		//hace falta codigo de los productos y cantidad
 	conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta"); 
 	
 	PreparedStatement insert = conexionbd.prepareStatement("insert into pedido" + "values (\""+numtrans+"\",\""+fecha+"\",\""+entrega+"\")");

@@ -51,6 +51,27 @@ public class BDD {
 	    }
 		return usuario;
 	}
+	
+	public Productos[] bddProductos() throws SQLException {
+		
+		PreparedStatement consulta = conexionbd.prepareStatement("select count(Código) Cantidad ");
+		ResultSet resultado=consulta.executeQuery();
+		int cantidad = resultado.getInt("Cantidad");
+		
+		Productos [] productos = new Productos[cantidad];
+		
+		for(int i =0;cantidad>i;i++) {
+			
+			PreparedStatement consulta2 = conexionbd.prepareStatement("select Código, nombre, cantidad where Código = "+i+1);
+			ResultSet result=consulta2.executeQuery();
+			//productos[i] = new Productos(result.getString("Código"),result.getString("nombre"),result.getInt("cantidad"));
+		}
+		
+		return productos;
+		
+		
+		
+	}
 	public String getUsuString() {
 		String usu = usuario.toString();
 		return usu;

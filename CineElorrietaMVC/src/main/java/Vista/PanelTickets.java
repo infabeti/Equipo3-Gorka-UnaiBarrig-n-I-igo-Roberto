@@ -275,7 +275,7 @@ public class PanelTickets extends JPanel {
 				}
 				
 				try {
-					controladorPanelTickets.insertTickets(cont.getText(),controladorPanelTickets.getFecha(),NIF.getText(),Nombre.getText(),Apellido.getText(),Factura.isSelected());
+					controladorPanelTickets.insertTickets(cont.getText(),NIF.getText(),Nombre.getText(),Apellido.getText(),Factura.isSelected());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
