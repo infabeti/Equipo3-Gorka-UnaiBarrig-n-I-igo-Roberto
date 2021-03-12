@@ -32,14 +32,18 @@ public class BDD {
 		}
 		return conexionbd;
 	}
-	public Productos[]  getProductos() {
-		Productos producto[]=new Productos[6];
+	public Productos[]  getProductos() throws SQLException {
+		
+		Productos producto[]=bddProductos();
+		
+	/*	Productos producto[]=new Productos[6];
 		producto[0]=new Productos("kass",5);
 		producto[1]=new Productos("cocacola",5);
 		producto[2]=new Productos("cafe",5);
 		producto[3]=new Productos("pintxos",5);
 		producto[4]=new Productos("pastel",5);
 		producto[5]=new Productos("pistachos",5);
+		*/
 		return producto;
 	}
 	
@@ -66,6 +70,8 @@ public class BDD {
 			ResultSet result=consulta2.executeQuery();
 			//productos[i] = new Productos(result.getString("Código"),result.getString("nombre"),result.getInt("cantidad"));
 		}
+		
+		
 		
 		return productos;
 		
