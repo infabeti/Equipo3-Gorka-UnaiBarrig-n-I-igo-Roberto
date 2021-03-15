@@ -37,11 +37,16 @@ public class BDD {
 		
 		PreparedStatement consulta = conexionbd.prepareStatement("select count(Código) from producto");
 		ResultSet resultado=consulta.executeQuery();
-		String cantidad2 = resultado.getString("count(Código)");
+		String cantidad2 = null;
+		if(resultado.next()) {
+			cantidad2 = resultado.getString("count(Código)");
+			
+		}
+		
 		int cantidad = Integer.parseInt(cantidad2);
 		productos = new Productos[cantidad];
-		for(int i =0;cantidad>i;i++) {
-			int x = i+1;
+		for(int i = 0;cantidad>i;i++) {
+			int x = i+1;           
 			PreparedStatement consulta2 = conexionbd.prepareStatement("select Código, nombre, PrecioVent from producto where Código = "+x);
 			ResultSet result=consulta2.executeQuery();
 			productos[i] = new Productos(result.getString("Código"),result.getString("nombre"),result.getInt("PrecioVent"));
