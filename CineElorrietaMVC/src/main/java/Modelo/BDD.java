@@ -8,6 +8,7 @@ import java.util.Arrays;
 public class BDD {
 
 	private Usuarios usuario;
+	private Productos [] productos;
 	static String url="jdbc:mysql://localhost:33060/reto3";
 	static String username="dam";
 	static String password="elorrieta";
@@ -34,17 +35,19 @@ public class BDD {
 	}
 	public Productos[]  getProductos() throws SQLException {
 		
-		Productos producto[]=bddProductos();
-		
-	/*	Productos producto[]=new Productos[6];
-		producto[0]=new Productos("kass",5);
-		producto[1]=new Productos("cocacola",5);
-		producto[2]=new Productos("cafe",5);
-		producto[3]=new Productos("pintxos",5);
-		producto[4]=new Productos("pastel",5);
-		producto[5]=new Productos("pistachos",5);
-		*/
-		return producto;
+		PreparedStatement consulta = conexionbd.prepareStatement("select count(Código) from producto");
+		ResultSet resultado=consulta.executeQuery();
+		String cantidad2 = resultado.getString("count(Código)");
+		int cantidad = Integer.parseInt(cantidad2);
+		productos = new Productos[cantidad];
+		for(int i =0;cantidad>i;i++) {
+			int x = i+1;
+			PreparedStatement consulta2 = conexionbd.prepareStatement("select Código, nombre, PrecioVent from producto where Código = "+x);
+			ResultSet result=consulta2.executeQuery();
+			productos[i] = new Productos(result.getString("Código"),result.getString("nombre"),result.getInt("PrecioVent"));
+		}
+
+		return productos;
 	}
 	
 	public Usuarios LoginUsu(String DNIIntroducido,String ContraIntro) throws SQLException {
@@ -56,34 +59,12 @@ public class BDD {
 		return usuario;
 	}
 	
-	public Productos[] bddProductos() throws SQLException {
-		
-		PreparedStatement consulta = conexionbd.prepareStatement("select count(Código) Cantidad ");
-		ResultSet resultado=consulta.executeQuery();
-		int cantidad = resultado.getInt("Cantidad");
-		
-		Productos [] productos = new Productos[cantidad];
-		
-		for(int i =0;cantidad>i;i++) {
-			
-			PreparedStatement consulta2 = conexionbd.prepareStatement("select Código, nombre, cantidad where Código = "+i+1);
-			ResultSet result=consulta2.executeQuery();
-			//productos[i] = new Productos(result.getString("Código"),result.getString("nombre"),result.getInt("cantidad"));
-		}
-		
-		
-		
-		return productos;
-		
-		
-		
-	}
 	public String getUsuString() {
 		String usu = usuario.toString();
 		return usu;
 	}
 		
-	public String[]  convertirArrayProductosString(){
+	public String[]  convertirArrayProductosString() throws SQLException{
 		Productos[] productos = getProductos();
 		String [] arrayr=new String[productos.length];
 		for(int i=0; i<productos.length; i++) {

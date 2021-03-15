@@ -2,6 +2,8 @@ package TestModelo;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
 import org.junit.Test;
 
 import Modelo.Productos;
@@ -13,7 +15,7 @@ public class TestBDD {
 	private Productos[] resultadoproductos;
 	
 	@Test
-	public void consultaProductosBDD() {
+	public void consultaProductosBDD() throws SQLException {
 		resultadoproductosesperado[0]=new Productos("kass",5);
 		resultadoproductosesperado[1]=new Productos("cocacola",5);
 		resultadoproductosesperado[2]=new Productos("cafe",5);
@@ -30,7 +32,7 @@ public class TestBDD {
 	}
 	
 	@Test
-	public void consultaProductosBDDsetget() {
+	public void consultaProductosBDDsetget() throws SQLException {
 		resultadoproductosesperado[0]=new Productos();
 		resultadoproductosesperado[1]=new Productos();
 		resultadoproductosesperado[2]=new Productos();

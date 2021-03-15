@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
@@ -19,7 +21,7 @@ public class ControladorPanelPedidos {
 		this.controlador = controlador;	
 	}
 	
-	public void mostrarPanelPedidos() {
+	public void mostrarPanelPedidos() throws SQLException {
 		this.panelPedidos = new PanelPedidos(this);
 		this.vista.mostrarPanel(this.panelPedidos);
 	}
@@ -37,7 +39,7 @@ public class ControladorPanelPedidos {
 			String[] todo = {Separado[0],Cant1,precioCant,total};
 			return todo; 
 	}
-	public String[] stringProductos(){
+	public String[] stringProductos() throws SQLException{
 		String [] arrayr = modelo.BDD.convertirArrayProductosString();
 		return arrayr;
 		

@@ -3,6 +3,8 @@ package Vista;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -95,7 +97,12 @@ public class PanelBienvenida extends JPanel{
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Tickets");
-				controladorPanelBienvenida.accionadoBottonMostrarPanelTickets();
+				try {
+					controladorPanelBienvenida.accionadoBottonMostrarPanelTickets();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		};
 	}
@@ -103,7 +110,12 @@ public class PanelBienvenida extends JPanel{
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Pedidos");
-				controladorPanelBienvenida.accionadoBottonMostrarPanelPedidos();
+				try {
+					controladorPanelBienvenida.accionadoBottonMostrarPanelPedidos();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		};
 	}

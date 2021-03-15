@@ -28,7 +28,7 @@ public class ControladorPanelTickets {
 		this.controlador = controlador;	
 	}
 	
-	public void mostrarPanelTickets() {
+	public void mostrarPanelTickets() throws SQLException {
 		this.panelTickets = new PanelTickets(this);
 		this.vista.mostrarPanel(this.panelTickets);
 	}
@@ -48,7 +48,7 @@ public class ControladorPanelTickets {
 	public String accionadoBottonEliminarTotal() {
 		return modelo.ticket.eliminarTotal();
 	}	
-	public String[] stringProductos(){
+	public String[] stringProductos() throws SQLException{
 		return modelo.BDD.convertirArrayProductosString();
 	}
 	public String getContador() {

@@ -39,7 +39,7 @@ public class ControladorPanelRegistrar {
 		modelo.ScriptsBDD.registrarUsuario(DNI, Contraseña, Apellido, Nombre, NIFLocal);
 	}
 
-	public String[] pasarString(){
+	public String[] pasarString() throws SQLException{
 		BDD productos = new BDD();
 		Productos[] poductos2 = productos.getProductos();
 		String [] arrayr=new String[poductos2.length];

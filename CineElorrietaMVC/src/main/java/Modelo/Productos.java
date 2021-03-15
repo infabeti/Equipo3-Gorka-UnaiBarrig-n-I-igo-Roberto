@@ -19,6 +19,12 @@ public class Productos {
 		this.Precio = precio;
 	}
 	
+	public Productos(String codigo, String nombre, int precioVenta) {
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.preciovent = precioVenta;
+	}
+
 	public void setNombreP(String nombreP) {
 		this.nombreP = nombreP;
 	}

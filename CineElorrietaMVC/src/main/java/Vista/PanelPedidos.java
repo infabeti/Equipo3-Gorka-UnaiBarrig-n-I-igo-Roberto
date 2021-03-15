@@ -3,6 +3,7 @@ package Vista;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -47,7 +48,7 @@ public class PanelPedidos extends JPanel {
 	
 	
 	@SuppressWarnings("unchecked")
-	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos)
+	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos) throws SQLException
 	{
 		this.controladorPanelPedidos = controladorPanelPedidos;
 		

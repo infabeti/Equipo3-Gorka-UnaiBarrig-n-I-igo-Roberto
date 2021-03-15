@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import Modelo.Modelo;
 import Modelo.Usuarios;
 import Vista.PanelBienvenida;
@@ -27,11 +29,11 @@ public class ControladorPanelBienvenida {
 		String[] StringArrUsu = modelo.ArraysUtils.separarParaUsu(StringUsu);
 		return StringArrUsu[0];
 	}
-	public void accionadoBottonMostrarPanelTickets() {
+	public void accionadoBottonMostrarPanelTickets() throws SQLException {
 		modelo.ticket.setFecha();
 		this.controlador.navegarPanelTickets();
 	}
-	public void accionadoBottonMostrarPanelPedidos() {
+	public void accionadoBottonMostrarPanelPedidos() throws SQLException {
 		this.controlador.navegarPanelPedidos();
 	}
 	public void accionadoBottonMostrarPanelComandas() {

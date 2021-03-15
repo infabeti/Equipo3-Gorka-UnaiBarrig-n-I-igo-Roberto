@@ -46,7 +46,7 @@ public class PanelTickets extends JPanel {
 	private JLabel LocalLabel;
 	private JButton btnEliminar;
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public PanelTickets(ControladorPanelTickets controladorPanelTickets)
+	public PanelTickets(ControladorPanelTickets controladorPanelTickets) throws SQLException
 	{
 		this.controladorPanelTickets = controladorPanelTickets;
 		setLayout(null);

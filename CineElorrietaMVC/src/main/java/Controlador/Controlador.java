@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import Modelo.BDD;
 import Modelo.Modelo;
 import Vista.Vista;
@@ -34,11 +36,11 @@ public class Controlador {
 		this.controladorPanelBienvenida.mostrarPanelBienvenida();
 	}
 	
-	public void navegarPanelTickets() {
+	public void navegarPanelTickets() throws SQLException {
 		System.out.println("Navegar panel Tickets");
 		this.controladorPanelTickets.mostrarPanelTickets();
 	}
-	public void navegarPanelPedidos() {
+	public void navegarPanelPedidos() throws SQLException {
 		System.out.println("Navegar panel Pedidos");
 		this.controladorPanelPedidos.mostrarPanelPedidos();
 	}
