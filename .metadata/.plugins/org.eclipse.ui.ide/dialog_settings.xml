@@ -7,6 +7,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\RETO3\Equipo3-Gorka-UnaiBarrig-n-I-igo-Roberto\CineElorrietaMVC"/>
 			<item value="C:\workspace\Equipo3-Gorka-UnaiBarrig-n-I-igo-Roberto\CineElorrietaMVC"/>
 			<item value="C:\workspace\Equipo3-Gorka-UnaiBarrig-n-I-igo-Roberto"/>
 		</list>
