@@ -74,10 +74,9 @@ create table if not exists Factura (
 
 NTrans int ,
 NIFC char(9),
-ApellidoC varchar(15),
-NombreC varchar(25),
-	constraint pk_Factura primary key (NTrans),
-	constraint fk_Factura_NTrans foreign key (NTrans) references Transaccion(NTrans)
+	constraint pk_Factura primary key (NTrans,NIFC),
+	constraint fk_Factura_NTrans foreign key (NTrans) references Transaccion(NTrans),
+    constraint fk_Factura_NIFC foreign key (NIFC) references Comprador(NIFC)
 
 );
 
@@ -160,6 +159,17 @@ Constraint pk_Aprovisionamiento primary key (NTrans),
 constraint fk_Aprovisionamiento_NTrans foreign key (NTrans) references transaccion(NTrans),
 constraint fk_Aprovisionamiento_NomFabricante foreign key (NomFabricante) references Fabricante(Nombre)
 
+
+
+);
+
+create table if not exists Comprador(
+
+NIFC char(9),
+ApellidoC varchar(15),
+NombreC varchar(25),
+
+constraint pk_Comprador primary key (NIFC)
 
 
 );
