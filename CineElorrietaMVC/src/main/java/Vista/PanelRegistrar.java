@@ -150,5 +150,8 @@ public class PanelRegistrar extends JPanel {
 	}
 	public void validarRegistro() {
 		
+		
+		
+		
 	}
 }
