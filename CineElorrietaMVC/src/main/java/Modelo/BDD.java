@@ -40,7 +40,6 @@ public class BDD {
 		String cantidad2 = null;
 		if(resultado.next()) {
 			cantidad2 = resultado.getString("count(Código)");
-			
 		}
 		
 		int cantidad = Integer.parseInt(cantidad2);
