@@ -26,8 +26,13 @@ public class ScriptsBDD {
 		insert.executeUpdate();
 		
 	} else if (factura == true) {
-		PreparedStatement insert = conexionbd.prepareStatement("insert into factura " + "values ()");
-		insert.executeUpdate();
+		PreparedStatement ticket = conexionbd.prepareStatement("insert into transaccion " + "values ()");
+		ticket.executeUpdate();
+		PreparedStatement comprador = conexionbd.prepareStatement("insert into comprador (nifc,ApellidoC,NombreC) " + "values (\""+NIF+"\",\""+Apellido+"\",\""+Nombre+"\")");
+		comprador.executeUpdate();
+		PreparedStatement facturaIntro = conexionbd.prepareStatement("insert into factura (ntrans,nifc) " + "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""+NIF+"\")");
+		facturaIntro.executeUpdate();
+		System.out.println("factura completada");
 	}
 	}
 	
