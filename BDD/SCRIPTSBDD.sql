@@ -70,17 +70,6 @@ NIFLocal char(9),
 constraint fk_NIF_Usuario foreign key (NIFLocal) references locale(NIF));
 
 
-create table if not exists Factura (
-
-NTrans int ,
-NIFC char(9),
-	constraint pk_Factura primary key (NTrans,NIFC),
-	constraint fk_Factura_NTrans foreign key (NTrans) references Transaccion(NTrans),
-    constraint fk_Factura_NIFC foreign key (NIFC) references Comprador(NIFC)
-
-);
-
-
 create table if not exists Comanda(
 NTrans int ,
 constraint pk_Comanda primary key (NTrans),
@@ -171,6 +160,16 @@ NombreC varchar(25),
 
 constraint pk_Comprador primary key (NIFC)
 
+
+);
+
+create table if not exists Factura (
+
+NTrans int ,
+NIFC char(9),
+	constraint pk_Factura primary key (NTrans,NIFC),
+	constraint fk_Factura_NTrans foreign key (NTrans) references Transaccion(NTrans),
+    constraint fk_Factura_NIFC foreign key (NIFC) references Comprador(NIFC)
 
 );
 
