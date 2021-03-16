@@ -3,8 +3,6 @@ package Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.Date;
-
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,7 +12,6 @@ import Controlador.ControladorPanelTickets;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JCheckBox;
@@ -27,6 +24,7 @@ public class PanelTickets extends JPanel {
 	private JButton btnAnadir;
 	private JButton btnGuardar;
 	private JLabel lblTickets;
+	@SuppressWarnings("rawtypes")
 	private JList list_1;
 	private JSpinner spinner;
 	private JTable table;
@@ -220,7 +218,9 @@ public class PanelTickets extends JPanel {
 		add(cont);
 		
 		LocalTexto = new JTextField();
+		LocalTexto.setEditable(false);
 		LocalTexto.setBounds(84, 53, 86, 20);
+		//LocalTexto.setText();
 		add(LocalTexto);
 		LocalTexto.setColumns(10);
 		

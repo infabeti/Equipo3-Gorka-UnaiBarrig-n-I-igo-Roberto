@@ -63,4 +63,23 @@ public class ScriptsBDD {
 	String [] fecha2 = modelo.ArraysUtils.separarParaFecha(fecha);
 	return fecha = fecha2[0]+"/"+fecha2[1]+"/"+fecha2[2]+"";
 }
+	
+	public String getNombreLocal () throws SQLException {
+		
+		
+		String DNI = null;
+		
+		conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta"); 
+		PreparedStatement ntrans = conexionbd.prepareStatement("select nombre from locale where NIF = (select NIFLocal from usuarios where DNI = \""+DNI +"\")" );
+		@SuppressWarnings("unused")
+		ResultSet resultrans=ntrans.executeQuery();
+		
+		
+		return null;
+	}
+	
+	
+	//El total de las interfaces funciona mal, acumula precios a base de hacer más de una transacción
+	//No se puede añadir una factura con el mismo DNI dos veces, aunque se establezca como clave primaria los 3 atributos de la tabla comprador.
+	
 }

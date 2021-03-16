@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BDD {
-	private Modelo modelo;
 	private Usuarios usuario;
 	static String url="jdbc:mysql://localhost:33060/reto3";
 	static String username="dam";

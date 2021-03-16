@@ -3,13 +3,12 @@ package Controlador;
 import java.sql.SQLException;
 
 import Modelo.Modelo;
-import Modelo.Usuarios;
 import Vista.PanelBienvenida;
 import Vista.Vista;
 
 public class ControladorPanelBienvenida {
 
-	@SuppressWarnings("unused")
+
 	private Modelo modelo;
 	private Vista vista;
 	private Controlador controlador;

@@ -9,6 +9,7 @@ public class Usuarios {
 	private String Apellido;
 	private String nombreLocal;
 	
+	
 	public Usuarios() {
 	}
 	

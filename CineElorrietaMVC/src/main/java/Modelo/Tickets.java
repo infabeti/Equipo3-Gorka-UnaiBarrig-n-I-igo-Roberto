@@ -10,7 +10,6 @@ public class Tickets {
 	private ProductosElegidos[] productos = new ProductosElegidos[0];
 	private double total = 0;
 	private String NIF,Nombre,Apellido,nombrePro,NomLocal,NumTrans;
-	private boolean EsFactura = false;
 	private int aumentoDeArr = 0;
 	private int arrSelec;
 	private ArraysUtils ArraysUtils = new ArraysUtils();

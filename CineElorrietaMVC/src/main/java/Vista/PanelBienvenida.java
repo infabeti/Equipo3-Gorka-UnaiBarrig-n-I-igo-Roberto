@@ -20,7 +20,6 @@ public class PanelBienvenida extends JPanel{
 	private JButton btnComandas;
 	private JButton btnTickets;
 	private JButton btnAprovisionamiento;
-	private JButton btnBDD;
 	private JButton btnCerrar;
 	private JLabel lblBienvenida;
 	private String TipoLocal;
@@ -100,7 +99,6 @@ public class PanelBienvenida extends JPanel{
 				try {
 					controladorPanelBienvenida.accionadoBottonMostrarPanelTickets();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -113,7 +111,6 @@ public class PanelBienvenida extends JPanel{
 				try {
 					controladorPanelBienvenida.accionadoBottonMostrarPanelPedidos();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -132,14 +129,6 @@ public class PanelBienvenida extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Aprovisionamiento");
 				controladorPanelBienvenida.accionadoBottonMostrarPanelAprovisionamiento();
-			}
-		};
-	}
-	private ActionListener listenerBotonBDD(ControladorPanelBienvenida controladorPanelBDD) {
-		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Ejecutando evento conexión BDD");
-				controladorPanelBDD.accionadoBottonMostrarConexionBDD();
 			}
 		};
 	}

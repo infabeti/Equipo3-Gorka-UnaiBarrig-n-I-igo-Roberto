@@ -24,7 +24,7 @@ public class PanelLogin extends JPanel {
 	private JTextField contraseñatxt; 
 	private JLabel error;
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+
 	public PanelLogin(ControladorPanelLogin controladorPanelLogin)
 	{
 		this.controladorPanelLogin = controladorPanelLogin;
