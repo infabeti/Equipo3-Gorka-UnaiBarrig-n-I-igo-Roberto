@@ -15,8 +15,8 @@ create table if not exists Producto (
 
 Codigo char(5),
 Nombre varchar(40) not null,
-PrecioComp float not null,
-PrecioVent float not null,
+PrecioComp int not null,
+PrecioVent int not null,
 FechaCad date,
 Tipo  varchar (15),
 constraint pk_producto primary key (Codigo));
@@ -42,7 +42,7 @@ create table if not exists Contenido (
 NTrans tinyint auto_increment,
 Codigo char(5),
 Cantidad tinyint,
-PVP float,
+PVP int,
 
 constraint pk_Contenido primary key(NTrans,Codigo),
 constraint fk_Contenido_Trans foreign key (NTrans) references Transaccion(NTrans),
@@ -93,7 +93,7 @@ constraint fk_Comanda_NTrans foreign key (NTrans) references Transaccion(NTrans)
 create table if not exists Plato(
 
 Codigo char(5),
-PVP float,
+PVP int,
 Nombre varchar(30),
 Categoria enum("Primer plato","Segundo plato","Postre"),
 Tipo varchar(15),
@@ -106,7 +106,7 @@ create table if not exists PlatosAdquiridos(
 
 NTrans tinyint auto_increment,
 Codigo char(5),
-PVP float,
+PVP int,
 Cantidad char(2),
 constraint pk_PlatosAdquiridos primary key (NTrans,Codigo),
 constraint fk_PlatosAdquiridos_NTrans foreign key (NTrans) references Transaccion(NTrans),
@@ -147,7 +147,7 @@ constraint fk_IngPlato_codigoPlato foreign key (codigoPlato) references Plato (c
 create table if not exists Fabricante(
 
 Nombre varchar(40),
-Duracion float,
+Duracion int,
 constraint pk_Fabricante primary key (Nombre)
 
 );
