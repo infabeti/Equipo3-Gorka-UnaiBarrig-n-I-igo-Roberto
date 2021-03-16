@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class BDD {
 
 	private Usuarios usuario;
-	private Productos [] productos;
+	private Productos[] productos;
 	static String url="jdbc:mysql://localhost:33060/reto3";
 	static String username="dam";
 	static String password="elorrieta";
@@ -33,27 +33,14 @@ public class BDD {
 		}
 		return conexionbd;
 	}
-	public Productos[]  getProductos() throws SQLException {
-		
-		PreparedStatement consulta = conexionbd.prepareStatement("select count(Codigo) from producto");
-		ResultSet resultado=consulta.executeQuery();
-		String cantidad2 = null;
-		if(resultado.next()) {
-
-			cantidad2 = resultado.getString("count(Código)");
-
+	public Productos getProductos() throws SQLException {
+		PreparedStatement consulta = conexionbd.prepareStatement("select Codigo, nombre, PrecioVent from producto");
+		ResultSet result=consulta.executeQuery();
+		if(result.next()) {
+			productos[1] = new Productos(result.getString("Código"),result.getString("nombre"),result.getInt("PrecioVent"));
 		}
-		
-		int cantidad = Integer.parseInt(cantidad2);
-		productos = new Productos[cantidad];
-		for(int i = 0;cantidad>i;i++) {
-			int x = i+1;           
-			PreparedStatement consulta2 = conexionbd.prepareStatement("select Codigo, nombre, PrecioVent from producto where Codigo = "+x);
-			ResultSet result=consulta2.executeQuery();
-			productos[i] = new Productos(result.getString("Código"),result.getString("nombre"),result.getInt("PrecioVent"));
-		}
-
-		return productos;
+	
+		return productos[1];
 	}
 	
 	public Usuarios LoginUsu(String DNIIntroducido,String ContraIntro) throws SQLException {
