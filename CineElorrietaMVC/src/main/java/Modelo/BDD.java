@@ -33,14 +33,18 @@ public class BDD {
 		}
 		return conexionbd;
 	}
-	public Productos getProductos() throws SQLException {
-		PreparedStatement consulta = conexionbd.prepareStatement("select Codigo, nombre, PrecioVent from producto");
+	public Productos[] getProductos() throws SQLException {
+		PreparedStatement consulta = conexionbd.prepareStatement("select Código, nombre, PrecioVent from producto");
 		ResultSet result=consulta.executeQuery();
-		if(result.next()) {
-			productos[1] = new Productos(result.getString("Código"),result.getString("nombre"),result.getInt("PrecioVent"));
+		
+		int i = 0;
+		while(result.next()) {
+			String precioString = result.getString("PrecioVent");
+			int precioInt = Integer.parseInt(precioString);
+			productos[i] = new Productos(result.getString("Código"),result.getString("nombre"),precioInt);
+			i++;
 		}
-	
-		return productos[1];
+		return productos;
 	}
 	
 	public Usuarios LoginUsu(String DNIIntroducido,String ContraIntro) throws SQLException {
