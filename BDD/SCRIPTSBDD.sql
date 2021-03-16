@@ -18,11 +18,11 @@ Nombre varchar(40) not null,
 PrecioComp int not null,
 PrecioVent int not null,
 FechaCad date,
-Tipo  varchar (15),
+Tipo  enum("bebida","comida","otros"),
 constraint pk_producto primary key (Codigo));
 
 create table if not exists Transaccion (
-NTrans tinyint auto_increment,
+NTrans int auto_increment,
 FechaTrans date,
 constraint pk_transaccion primary key (NTrans));
 
@@ -30,7 +30,7 @@ create table if not exists Venta (
 
 NIF char(9),
 Codigo char(5),
-Stock tinyint,
+Stock int,
 
 constraint pk_Venta primary key(NIF,Codigo),
 constraint fk_NIF_Venta foreign key (NIF) references locale(NIF),
@@ -39,9 +39,9 @@ constraint fk_codigo_Venta foreign key (Codigo) references Producto (Codigo)
 
 create table if not exists Contenido (
 
-NTrans tinyint auto_increment,
+NTrans int ,
 Codigo char(5),
-Cantidad tinyint,
+Cantidad int,
 PVP int,
 
 constraint pk_Contenido primary key(NTrans,Codigo),
@@ -52,7 +52,7 @@ constraint fk_Contenido_Codigo foreign key (Codigo) references Producto(Codigo)
 
 create table if not exists Pedido (
 
-NTrans tinyint auto_increment,
+NTrans int ,
 Entrega varchar(40),
 constraint pk_Pedido primary key (NTrans),
 	constraint fk_Pedido foreign key (NTrans) references transaccion(NTrans));
@@ -72,7 +72,7 @@ constraint fk_NIF_Usuario foreign key (NIFLocal) references locale(NIF));
 
 create table if not exists Factura (
 
-NTrans tinyint auto_increment,
+NTrans int ,
 NIFC char(9),
 ApellidoC varchar(15),
 NombreC varchar(25),
@@ -83,7 +83,7 @@ NombreC varchar(25),
 
 
 create table if not exists Comanda(
-NTrans tinyint auto_increment,
+NTrans int ,
 constraint pk_Comanda primary key (NTrans),
 constraint fk_Comanda_NTrans foreign key (NTrans) references Transaccion(NTrans)
 
@@ -96,7 +96,7 @@ Codigo char(5),
 PVP int,
 Nombre varchar(30),
 Categoria enum("Primer plato","Segundo plato","Postre"),
-Tipo varchar(15),
+Tipo enum("Normal", "Vegetariano", "Vegano"),
 
 constraint pk_PlatosAdquiridos primary key (Codigo)
 
@@ -104,10 +104,10 @@ constraint pk_PlatosAdquiridos primary key (Codigo)
 
 create table if not exists PlatosAdquiridos(
 
-NTrans tinyint auto_increment,
+NTrans int ,
 Codigo char(5),
 PVP int,
-Cantidad char(2),
+Cantidad int,
 constraint pk_PlatosAdquiridos primary key (NTrans,Codigo),
 constraint fk_PlatosAdquiridos_NTrans foreign key (NTrans) references Transaccion(NTrans),
 constraint fk_PlatosAdquiridos_Codigo foreign key (Codigo) references Plato (Codigo)
@@ -128,7 +128,7 @@ constraint fk_Carta_NIFLocal foreign key (NIFLocal) references locale(NIF)
 create table if not exists Ingrediente(
 
 Nombre varchar(20),
-Alergenos varchar(30),
+Alergenos enum("Gluten","Mariscos","Frutos Secos"),
 constraint pk_Ingrediente primary key (Nombre)
 
 );
@@ -154,7 +154,7 @@ constraint pk_Fabricante primary key (Nombre)
 
 create table if not exists Aprovisionamiento(
 
-NTrans tinyint auto_increment,
+NTrans int ,
 NomFabricante varchar(40),
 Constraint pk_Aprovisionamiento primary key (NTrans),
 constraint fk_Aprovisionamiento_NTrans foreign key (NTrans) references transaccion(NTrans),
@@ -173,16 +173,17 @@ values ("06155050C","Ernesto","Avenida","Bar Ernesto","Bar"),
 insert into Usuarios (DNI,nombre,apellido,contraseña,NIFLocal)
 values ("83651135C","Juan","Fernández","12345678","06155050C"),
 ("32137168G","Jose","Martínez","12345678","29099031Y"),
-("91846396J","Unai","Montero","12345678","08038879B");
+("91846396J","Unai","Montero","12345678","08038879B"),
+("12312312Q","Gorka","Sagrario","123","08038879B");
 
 
 insert into producto(Codigo,Nombre,PrecioComp,PrecioVent,Tipo)
 values("1","kass","0","5","bebida"),
 ("2","cocacola","0","5","bebida"),
 ("3","cafe","0","5","bebida"),
-("4","pintxos","0","5","entrante"),
-("5","pastel","0","5","entrante"),
-("6","pistachos","0","5","entrante");
+("4","pintxos","0","5","comida"),
+("5","pastel","0","5","comida"),
+("6","pistachos","0","5","comida");
 
 
 
