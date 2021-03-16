@@ -36,18 +36,30 @@ public class ScriptsBDD {
 	}
 	}
 	
-	public void registrarPedido(int numtrans, String fecha, String entrega) throws SQLException {
+	public void registrarPedido (String entrega) throws SQLException {
 		
 		//hace falta codigo de los productos y cantidad
 	conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta"); 
-	
-	PreparedStatement insert = conexionbd.prepareStatement("insert into pedido" + "values (\""+numtrans+"\",\""+fecha+"\",\""+entrega+"\")");
+	PreparedStatement ticket = conexionbd.prepareStatement("insert into transaccion " + "values ()");
+	ticket.executeUpdate();	
+	PreparedStatement insert = conexionbd.prepareStatement("insert into pedido " + "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""+entrega+"\")");
 	insert.executeUpdate();
-	
-	
+	System.out.println("pedido completado");
+
+	}
+	public String NTrans() throws SQLException {
+		conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta"); 
+		PreparedStatement ntrans = conexionbd.prepareStatement("select count(ntrans) from transaccion");
+		ResultSet resultrans=ntrans.executeQuery();
+		String numtrans = null;
+		if(resultrans.next()) {
+			
+			numtrans = resultrans.getString("count(ntrans)");
+		}
+		return numtrans;
 	}
 
-public String cambiarFecha(String fecha) {
+	public String cambiarFecha(String fecha) {
 	String [] fecha2 = modelo.ArraysUtils.separarParaFecha(fecha);
 	return fecha = fecha2[0]+"/"+fecha2[1]+"/"+fecha2[2]+"";
 }

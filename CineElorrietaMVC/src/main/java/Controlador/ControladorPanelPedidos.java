@@ -45,8 +45,13 @@ public class ControladorPanelPedidos {
 		
 	}
 	
-	public String getContador() {
-		return modelo.Contador.getContador();
+	public String getContador() throws SQLException {
+		String numero = modelo.ScriptsBDD.NTrans();
+		int numero1 = Integer.parseInt(numero);
+		numero1++;
+		String contador = String.valueOf(numero1);
+		
+		return contador;
 	}
 
 	public void setContador(String cont) {
@@ -58,5 +63,9 @@ public class ControladorPanelPedidos {
 	}	
 	public void accionadoBottonEliminarPanelPedidos(int i) {
 		modelo.pedidos.setArrSelec(i);
+	}
+	
+	public void insertPedido(String entrega) throws SQLException {
+		modelo.ScriptsBDD.registrarPedido(entrega);
 	}
 }

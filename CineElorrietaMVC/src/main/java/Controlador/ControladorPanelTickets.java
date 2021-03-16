@@ -51,13 +51,15 @@ public class ControladorPanelTickets {
 	public String[] stringProductos() throws SQLException{
 		return modelo.BDD.convertirArrayProductosString();
 	}
-	public String getContador() {
-		return modelo.Contador.getContador();
+	public String getContador() throws SQLException {
+		String numero = modelo.ScriptsBDD.NTrans();
+		int numero1 = Integer.parseInt(numero);
+		numero1++;
+		String contador = String.valueOf(numero1);
+		
+		return contador;
 	}
 
-	public void setContador(String cont) {
-		modelo.Contador.setContador(cont);
-	}
 	public String getFecha() {
 		return modelo.ticket.getFecha();
 	}

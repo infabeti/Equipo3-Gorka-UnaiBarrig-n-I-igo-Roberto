@@ -231,7 +231,13 @@ public class PanelPedidos extends JPanel {
 				System.out.println("Ejecutando evento Boton Volver");
 				boolean comprobar = comprobarCampos();
 				if (comprobar == true) {
-					controladorPanelPedidos.setContador(cont.getText());
+					try {
+						controladorPanelPedidos.insertPedido(DireccionTexto.getText());
+					} catch (SQLException e) {
+						e.printStackTrace();
+						System.out.println("hola");
+					}
+					
 				}
 			}
 		};

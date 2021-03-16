@@ -271,14 +271,14 @@ public class PanelTickets extends JPanel {
 				System.out.println("Ejecutando evento Boton Guardar");
 				boolean comprobar = comprobarCamposFactura();
 				if(comprobar == true) {
-					controladorPanelTickets.setContador(cont.getText());
+					try {
+						controladorPanelTickets.insertTickets(cont.getText(),NIF.getText(),Nombre.getText(),Apellido.getText(),Factura.isSelected());
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
 				
-				try {
-					controladorPanelTickets.insertTickets(cont.getText(),NIF.getText(),Nombre.getText(),Apellido.getText(),Factura.isSelected());
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				
 			}
 		};
 	}
