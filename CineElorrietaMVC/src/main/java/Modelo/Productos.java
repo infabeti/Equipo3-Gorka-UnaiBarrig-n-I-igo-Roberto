@@ -6,7 +6,6 @@ public class Productos {
 	private String nombreP;
 	private int Precio;
 	private String codigo;
-	private String nombre;
 	private double  preciocomp;
 	private Date fechacad;
 	
@@ -18,10 +17,10 @@ public class Productos {
 		this.Precio = precio;
 	}
 	
-	public Productos(String codigo, String nombre, int precioVenta) {
+	public Productos(String codigo, String nombre, int precio) {
 		this.codigo = codigo;
-		this.nombre = nombre;
-		this.Precio = precioVenta;
+		this.nombreP = nombre;
+		this.Precio = precio;
 	}
 
 	public void setNombreP(String nombreP) {
@@ -43,14 +42,6 @@ public class Productos {
 
 	public String getCodigo(){
 	return this.codigo;
-	}
-
-	public void setNombre(String nombre){
-	this.nombre=nombre;
-	}
-
-	public String getNombre(){
-	return this.nombre;
 	}
 
 	public void setPrecioComp(double preciocomp){

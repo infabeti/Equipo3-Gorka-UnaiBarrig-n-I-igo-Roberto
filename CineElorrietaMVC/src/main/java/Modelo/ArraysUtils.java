@@ -31,4 +31,12 @@ public class ArraysUtils {
 	public String[] separarParaFecha(Object selec) {
 		return ((String) selec).split("-") ;
 	}
+	public Productos[] aumentarArrProductos1(Productos[] productos) {
+		Productos[] temp = new Productos[productos.length+1];
+		for (int i = 0; i<productos.length;i++) {
+			temp[i] = productos[i];
+		}
+		return productos = Arrays.copyOf(temp ,productos.length+1);
+		
+	}
 }

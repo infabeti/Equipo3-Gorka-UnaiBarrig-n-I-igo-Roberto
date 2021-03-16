@@ -4,16 +4,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
-public class BDD {
 
+public class BDD {
+	private Modelo modelo;
 	private Usuarios usuario;
-	private Productos[] productos;
 	static String url="jdbc:mysql://localhost:33060/reto3";
 	static String username="dam";
 	static String password="elorrieta";
 	static Connection conexionbd;
-	private ArraysUtils ArraysUtils = new ArraysUtils();
 	
 	public BDD() {
 	}
@@ -34,15 +32,30 @@ public class BDD {
 		return conexionbd;
 	}
 	public Productos[] getProductos() throws SQLException {
-		PreparedStatement consulta = conexionbd.prepareStatement("select Código, nombre, PrecioVent from producto");
+		PreparedStatement consulta = conexionbd.prepareStatement("select Codigo, nombre, PrecioVent from producto");
 		ResultSet result=consulta.executeQuery();
 		
+		PreparedStatement numero = conexionbd.prepareStatement("select count(Codigo) from producto");
+		ResultSet cantidad=numero.executeQuery();
+		int tamArr = 0;
+		if (cantidad.next()) {
+			String cantCodigo = cantidad.getString("count(Codigo)");
+			tamArr = Integer.parseInt(cantCodigo);
+		}
+	
+		Productos[] productos = new Productos[tamArr];
 		int i = 0;
 		while(result.next()) {
-			String precioString = result.getString("PrecioVent");
-			int precioInt = Integer.parseInt(precioString);
-			productos[i] = new Productos(result.getString("Código"),result.getString("nombre"),precioInt);
-			i++;
+
+			try {
+				productos[i] = new Productos(result.getString("Codigo"),result.getString("nombre"),result.getInt("PrecioVent"));
+				i++;
+			}
+			catch(Exception E) {
+				System.out.println("no se ha introducido el producto");
+				
+			}
+			
 		}
 		return productos;
 	}
