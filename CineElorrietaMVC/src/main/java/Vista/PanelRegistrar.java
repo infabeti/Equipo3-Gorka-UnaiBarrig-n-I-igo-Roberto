@@ -33,7 +33,7 @@ public class PanelRegistrar extends JPanel {
 	private JLabel lblApellido;
 	private JLabel lblNombre;
 	private JTextField NIFLocaltxt;
-	
+	private JLabel lblComprobacion;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PanelRegistrar(ControladorPanelRegistrar controladorPanelRegistrar)
@@ -112,6 +112,11 @@ public class PanelRegistrar extends JPanel {
 		NIFLocaltxt.setColumns(10);
 		NIFLocaltxt.setBounds(101, 180, 95, 20);
 		add(NIFLocaltxt);
+		
+	 lblComprobacion = new JLabel("Campos mal o sin rellenar\r\n\r\n\r\n");
+		lblComprobacion.setBounds(281, 186, 187, 14);
+		lblComprobacion.setVisible(false);
+		add(lblComprobacion);
 
 		initializeEvents();
 	}
@@ -133,22 +138,66 @@ public class PanelRegistrar extends JPanel {
 	private ActionListener listenerBotonRegistrar(ControladorPanelRegistrar controladorPanelRegistrar) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Ejecutando evento Boton Registrar");
+				
 				
 			
-				try {
-					controladorPanelRegistrar.accionadoBottonRegistrarPanelRegistrar(nombretxt.getText(),apellidotxt.getText(),NIFtxt.getText(),contraseñatxt.getText(),NIFLocaltxt.getText());
-				} catch (SQLException e) {
-					
-					e.printStackTrace();
-				}
+					if(validarRegistro() == true) {
+						System.out.println("Ejecutando evento Boton Registrar");
+			
+						
+						try {
+							controladorPanelRegistrar.accionadoBottonRegistrarPanelRegistrar(nombretxt.getText(),apellidotxt.getText(),NIFtxt.getText(),contraseñatxt.getText(),NIFLocaltxt.getText());
+							JOptionPane.showMessageDialog(null, "El Usuario ha sido registrado");
+							controladorPanelRegistrar.accionadoBottonVolverPanelRegistrar();
+						} catch (SQLException e) {
+							lblComprobacion.setVisible(true);
+							System.out.println("Algo ha ido mal, es posible que el NIF de local no esté registrado en la BD");
+						
+						}
+						
+
+						
+					}
 				
-				JOptionPane.showMessageDialog(null, "El Usuario ha sido registrado");
-				controladorPanelRegistrar.accionadoBottonVolverPanelRegistrar();
+				
+				
+				
+				
 			}
 		};
 	}
-	public void validarRegistro() {
+	public boolean validarRegistro() {
+		
+		
+		String NIF = NIFtxt.getText(); 
+		String NIFLocal = NIFLocaltxt.getText();
+		String contraseña = contraseñatxt.getText();
+		
+			if(NIF.length()!=9) {
+				
+				lblComprobacion.setVisible(true);
+				System.out.println("DNI de usuario no válido");
+				return false;
+			}
+			
+			
+			
+			 if(NIFLocal.length()!=9) {
+				
+				lblComprobacion.setVisible(true);
+				System.out.println("NIF de local no válido");
+				return false;
+			}
+			 
+			 if(contraseña.length()==0) {
+				 
+				 lblComprobacion.setVisible(true);
+					System.out.println("Contraseña sin rellenar");
+					return false;
+			 }
+			
+		
+		return true;
 		
 		
 		
