@@ -22,7 +22,7 @@ public class ScriptsBDD {
 	//hace falta codigo de los productos y cantidad
 	if (factura == false) {
 		
-		PreparedStatement insert = conexionbd.prepareStatement("insert into transacción " + "values ()");
+		PreparedStatement insert = conexionbd.prepareStatement("insert into transaccion " + "values ()");
 		insert.executeUpdate();
 		
 	} else if (factura == true) {
