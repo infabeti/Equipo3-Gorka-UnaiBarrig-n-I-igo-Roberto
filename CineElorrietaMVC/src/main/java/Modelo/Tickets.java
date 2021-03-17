@@ -114,10 +114,10 @@ public class Tickets {
 	public ProductosElegidos[] getProductos() {
 		return this.productos;
 	}
-	public void setProductos(String nombre, String precioProducto, int cant) {
+	public void setProductos(String codigo, String nombre, String precioProducto, int cant) {
 		double PrecioProducto = Double.parseDouble(precioProducto);
 		int value = this.productos.length;
 		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
-		this.productos[value] = new ProductosElegidos(nombre, PrecioProducto, cant);
+		this.productos[value]=new ProductosElegidos(codigo,nombre,PrecioProducto,cant);
 	}
 }

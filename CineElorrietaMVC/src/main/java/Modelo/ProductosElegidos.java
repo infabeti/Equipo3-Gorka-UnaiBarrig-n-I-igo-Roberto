@@ -16,11 +16,11 @@ public class ProductosElegidos {
 		this.cantidad = cant;
 	}
 
-	public ProductosElegidos(String separado, double precioProducto, int cant, double precioCantidad) {
-		this.nombre = separado;
+	public ProductosElegidos(String codigo, String nombre, double precioProducto, double cant) {
+		this.nombre = nombre;
 		this.precio = precioProducto;
 		this.cantidad = cant;
-		this.precioCantidad = precioCantidad;
+		this.codigoProducto = codigo;
 	}
 
 	public void setNombre(String nombre) {

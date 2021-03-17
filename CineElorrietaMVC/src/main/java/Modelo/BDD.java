@@ -54,20 +54,11 @@ public class BDD {
 			}
 			catch(Exception E) {
 				System.out.println("no se ha introducido el producto");
-				
 			}
-			
 		}
 		return productos;
 	}
-	public String[] codigoProductos() {
-		String[] codigoProductos = new String[productos.length];
-		for(int i = 0;i<this.productos.length;i++) {
-			codigoProductos[i] = productos[i].getCodigo();
-		}
-		return codigoProductos;
-		
-	}
+
 	
 	public Usuarios LoginUsu(String DNIIntroducido,String ContraIntro) throws SQLException {
 		PreparedStatement consulta = conexionbd.prepareStatement("SELECT DNI,Contraseña,Tipo  FROM Usuarios U join Locale L on U.NIFLocal = L.NIF where DNI = \""+DNIIntroducido+"\" and Contraseña = \""+ContraIntro+"\"");

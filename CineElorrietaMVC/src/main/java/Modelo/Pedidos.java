@@ -99,10 +99,10 @@ public class Pedidos {
 			String precioCant1 = String.valueOf(precioCant);
 			return precioCant1;
 	}
-	public void setProductos(String nombre, String precioProducto, int cant) {
+	public void setProductos(String codigo, String nombre, String precioProducto, int cant) {
 		double PrecioProducto = Double.parseDouble(precioProducto);
 		int value = this.productos.length;
 		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
-		this.productos[value]=new ProductosElegidos(nombre,PrecioProducto,cant);
+		this.productos[value]=new ProductosElegidos(codigo,nombre,PrecioProducto,cant);
 	}
 }

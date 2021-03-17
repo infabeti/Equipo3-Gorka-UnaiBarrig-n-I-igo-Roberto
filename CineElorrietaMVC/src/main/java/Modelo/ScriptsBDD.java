@@ -92,5 +92,9 @@ public class ScriptsBDD {
 		}
 		return conexionbd;
 	}
-	//El total de las interfaces funciona mal, acumula precios a base de hacer más de una transacción
+	public void insertarProductosElegidos() {
+		
+		
+		
+	}
 }

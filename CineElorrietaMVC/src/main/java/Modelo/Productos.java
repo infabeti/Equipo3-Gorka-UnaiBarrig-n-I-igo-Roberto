@@ -60,7 +60,7 @@ public class Productos {
 	return fechacad;
 	}
 	public String toString(){
-		return this.getNombreP() + " " + this.getPrecio();
+		return this.getCodigo()+" "+this.getNombreP() + " " + this.getPrecio();
 	}
 	public String[] separarGuion(Object selec) {
 		return ((String) selec).split("-") ;
