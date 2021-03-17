@@ -28,10 +28,22 @@ public class ScriptsBDD {
 	} else if (factura == true) {
 		PreparedStatement ticket = conexionbd.prepareStatement("insert into transaccion " + "values ()");
 		ticket.executeUpdate();
-		PreparedStatement comprador = conexionbd.prepareStatement("insert into comprador (nifc,ApellidoC,NombreC) " + "values (\""+NIF+"\",\""+Apellido+"\",\""+Nombre+"\")");
-		comprador.executeUpdate();
-		PreparedStatement facturaIntro = conexionbd.prepareStatement("insert into factura (ntrans,nifc) " + "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""+NIF+"\")");
-		facturaIntro.executeUpdate();
+		PreparedStatement NIFCheck = conexionbd.prepareStatement("select nifc from comprador where NIFC= \""+NIF+"\"");
+		ResultSet resultNIF= NIFCheck.executeQuery();
+		if(resultNIF.next()) {
+			
+			PreparedStatement facturaIntro = conexionbd.prepareStatement("insert into factura (ntrans,nifc) " + "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""+NIF+"\")");
+			facturaIntro.executeUpdate();
+		}
+		else {
+			PreparedStatement comprador = conexionbd.prepareStatement("insert into comprador (nifc,ApellidoC,NombreC) " + "values (\""+NIF+"\",\""+Apellido+"\",\""+Nombre+"\")");
+			comprador.executeUpdate();
+			
+			PreparedStatement facturaIntro = conexionbd.prepareStatement("insert into factura (ntrans,nifc) " + "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""+NIF+"\")");
+			facturaIntro.executeUpdate();
+		}
+		
+		
 		System.out.println("factura completada");
 	}
 	}
@@ -80,6 +92,5 @@ public class ScriptsBDD {
 	
 	
 	//El total de las interfaces funciona mal, acumula precios a base de hacer más de una transacción
-	//No se puede añadir una factura con el mismo DNI dos veces, aunque se establezca como clave primaria los 3 atributos de la tabla comprador.
 	
 }

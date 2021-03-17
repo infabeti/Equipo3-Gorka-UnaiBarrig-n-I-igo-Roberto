@@ -167,7 +167,7 @@ create table if not exists Factura (
 
 NTrans int ,
 NIFC char(9),
-	constraint pk_Factura primary key (NTrans,NIFC),
+	constraint pk_Factura primary key (NTrans),
 	constraint fk_Factura_NTrans foreign key (NTrans) references Transaccion(NTrans),
     constraint fk_Factura_NIFC foreign key (NIFC) references Comprador(NIFC)
 
