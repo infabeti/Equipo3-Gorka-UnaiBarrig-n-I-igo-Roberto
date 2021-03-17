@@ -8,10 +8,10 @@ import java.sql.SQLException;
 public class BDD {
 	private Usuarios usuario;
 	private Productos[] productos;
-	static String url="jdbc:mysql://localhost:33060/reto3";
-	static String username="dam";
-	static String password="elorrieta";
-	static Connection conexionbd;
+	protected static String url="jdbc:mysql://localhost:33060/reto3";
+	protected static String username="dam";
+	protected static String password="elorrieta";
+	protected static Connection conexionbd;
 	
 	
 	public BDD() {

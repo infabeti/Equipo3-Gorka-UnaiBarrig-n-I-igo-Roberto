@@ -16,6 +16,6 @@ public Modelo() {
 	this.productos = new Productos();
 	this.Contador = new ContadorNumPedido();
 	this.ArraysUtils = new ArraysUtils();
-	this.ScriptsBDD = new ScriptsBDD();
+	this.ScriptsBDD = new ScriptsBDD(this);
 }
 }

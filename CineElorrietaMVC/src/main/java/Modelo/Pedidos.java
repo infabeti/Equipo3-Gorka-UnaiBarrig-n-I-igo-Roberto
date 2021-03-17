@@ -105,4 +105,7 @@ public class Pedidos {
 		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
 		this.productos[value]=new ProductosElegidos(codigo,nombre,PrecioProducto,cant);
 	}
+	public int getLongitudArr() {
+		return this.productos.length;
+	}
 }

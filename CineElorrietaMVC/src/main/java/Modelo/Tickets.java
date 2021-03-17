@@ -47,12 +47,6 @@ public class Tickets {
 	public String getNomLocal() {
 		return this.NomLocal;
 	}
-	public void setproductos(ProductosElegidos[] productos) {
-		this.productos = productos;
-	}
-	public ProductosElegidos[] getproductos() {
-		return this.productos;
-	}
 	public String getName() {
 		nombrePro = productos[productos.length - 1].getNombre();
 		return nombrePro;
@@ -119,5 +113,9 @@ public class Tickets {
 		int value = this.productos.length;
 		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
 		this.productos[value]=new ProductosElegidos(codigo,nombre,PrecioProducto,cant);
+	}
+	public int getLongitudArr() {
+		int i = this.productos.length;
+		return i;
 	}
 }
