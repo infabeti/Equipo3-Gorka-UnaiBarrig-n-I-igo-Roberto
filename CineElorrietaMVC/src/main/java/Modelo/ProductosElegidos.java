@@ -5,6 +5,7 @@ public class ProductosElegidos {
 	private double precio;
 	private double cantidad;
 	private double precioCantidad;
+	private String codigoProducto;
 	
 	public ProductosElegidos() {
 	}
@@ -49,5 +50,13 @@ public class ProductosElegidos {
 	public double getPrecioCantidad() {
 		this.precioCantidad = this.precio * this.cantidad;
 		return this.precioCantidad;
+	}
+
+	public String getCodigoProducto() {
+		return codigoProducto;
+	}
+
+	public void setCodigoProducto(String codigoProducto) {
+		this.codigoProducto = codigoProducto;
 	}
 }

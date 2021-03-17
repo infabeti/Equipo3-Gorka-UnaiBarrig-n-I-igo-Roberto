@@ -7,10 +7,12 @@ import java.sql.SQLException;
 
 public class BDD {
 	private Usuarios usuario;
+	private Productos[] productos;
 	static String url="jdbc:mysql://localhost:33060/reto3";
 	static String username="dam";
 	static String password="elorrieta";
 	static Connection conexionbd;
+	
 	
 	public BDD() {
 	}
@@ -42,7 +44,7 @@ public class BDD {
 			tamArr = Integer.parseInt(cantCodigo);
 		}
 	
-		Productos[] productos = new Productos[tamArr];
+		this.productos = new Productos[tamArr];
 		int i = 0;
 		while(result.next()) {
 
@@ -57,6 +59,14 @@ public class BDD {
 			
 		}
 		return productos;
+	}
+	public String[] codigoProductos() {
+		String[] codigoProductos = new String[productos.length];
+		for(int i = 0;i<this.productos.length;i++) {
+			codigoProductos[i] = productos[i].getCodigo();
+		}
+		return codigoProductos;
+		
 	}
 	
 	public Usuarios LoginUsu(String DNIIntroducido,String ContraIntro) throws SQLException {

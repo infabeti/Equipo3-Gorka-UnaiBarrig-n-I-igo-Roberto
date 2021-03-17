@@ -42,7 +42,6 @@ public class ControladorPanelPedidos {
 	public String[] stringProductos() throws SQLException{
 		String [] arrayr = modelo.BDD.convertirArrayProductosString();
 		return arrayr;
-		
 	}
 	
 	public String getContador() throws SQLException {

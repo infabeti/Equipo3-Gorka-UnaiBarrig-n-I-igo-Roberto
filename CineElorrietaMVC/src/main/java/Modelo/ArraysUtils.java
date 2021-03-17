@@ -9,7 +9,6 @@ public class ArraysUtils {
 			temp[i] = productos[i];
 		}
 		return productos = Arrays.copyOf(temp ,productos.length+1);
-		
 	}
 	public ProductosElegidos[] DisminuirArrProductos(ProductosElegidos[] productos) {
 		ProductosElegidos[] temp = new ProductosElegidos[productos.length-1];
