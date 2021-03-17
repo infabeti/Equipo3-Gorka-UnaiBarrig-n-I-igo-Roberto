@@ -92,7 +92,7 @@ public class PanelLogin extends JPanel {
 				String ContrasenaIntroducida = contraseñatxt.getText();
 
 				try {
-					String[] usuarios = controladorPanelLogin.DevolverUsuariosPanelLogin(NIFIntroducido,
+					 controladorPanelLogin.DevolverUsuariosPanelLogin(NIFIntroducido,
 							ContrasenaIntroducida);
 					error.setVisible(false);
 					controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
