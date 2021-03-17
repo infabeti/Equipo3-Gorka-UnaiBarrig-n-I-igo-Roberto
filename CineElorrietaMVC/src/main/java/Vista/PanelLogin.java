@@ -99,9 +99,6 @@ public class PanelLogin extends JPanel {
 				
 				try {
 						String[]usuarios = controladorPanelLogin.DevolverUsuariosPanelLogin(NIFIntroducido,ContrasenaIntroducida);
-						String Local = usuarios[0];
-						String NIF = usuarios[1];
-						String Contrasena =  usuarios[2];
 						error.setVisible(false);
 						controladorPanelLogin.accionadoBottonIngresarPanelLoginBienvenida();
 				}
