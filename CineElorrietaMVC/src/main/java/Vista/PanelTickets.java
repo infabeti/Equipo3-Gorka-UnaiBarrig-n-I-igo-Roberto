@@ -261,12 +261,13 @@ public class PanelTickets extends JPanel {
 					try {
 						controladorPanelTickets.insertTickets(cont.getText(), NIF.getText(), Nombre.getText(),
 								Apellido.getText(), Factura.isSelected());
+						controladorPanelTickets.borrarTotalTickets();
+						controladorPanelTickets.accionadoBottonVolverPanelTickets();
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
 				}
-				controladorPanelTickets.borrarTotalTickets();
-				controladorPanelTickets.accionadoBottonVolverPanelTickets();
+				
 			}
 		};
 	}
@@ -289,16 +290,15 @@ public class PanelTickets extends JPanel {
 		boolean si = false;
 		if (table.getRowCount() == 0) {
 			Aviso.setVisible(true);
+			return si = false;
 		} else if (table.getRowCount() > 0 && Factura.isSelected() == true) {
 			if (NIF.getText().length() == 0 || Nombre.getText().length() == 0 || Apellido.getText().length() == 0) {
 				Aviso.setVisible(true);
-			} else {
-				Aviso.setVisible(false);
-				si = true;
-			}
+				return si = false;
+			} 
 		} else {
 			Aviso.setVisible(false);
-			si = true;
+			return si = true;
 		}
 		return si;
 

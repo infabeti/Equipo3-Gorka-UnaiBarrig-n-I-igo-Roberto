@@ -66,7 +66,7 @@ public class PanelBienvenida extends JPanel {
 		btnCerrar.setBackground(cpanel);
 		add(btnCerrar);
 
-		if (TipoLocal.equals("Cafeteria")) {
+		if (TipoLocal.equals("Cafetería")) {
 			btnComandas.setVisible(false);
 		} else if (TipoLocal.equals("Bar")) {
 			btnTickets.setBounds(153, 84, 212, 74);

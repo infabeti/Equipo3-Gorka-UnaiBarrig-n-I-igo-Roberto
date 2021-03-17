@@ -227,14 +227,16 @@ public class PanelPedidos extends JPanel {
 				if (comprobar == true) {
 					try {
 						controladorPanelPedidos.insertPedido(DireccionTexto.getText());
+						controladorPanelPedidos.borrarTotalTickets();
+						controladorPanelPedidos.accionadoBottonVolverPanelPedidos();
 					} catch (SQLException e) {
 						e.printStackTrace();
-						System.out.println("hola");
+						
 					}
 
 				}
-				controladorPanelPedidos.borrarTotalTickets();
-				controladorPanelPedidos.accionadoBottonVolverPanelPedidos();
+				
+				
 			}
 		};
 	}
@@ -244,14 +246,14 @@ public class PanelPedidos extends JPanel {
 		boolean si = false;
 		if (table.getRowCount() == 0) {
 			Aviso.setVisible(true);
+			return si = false;
 		} else if (Localidad.getSelectedItem() == "Domicilio" && table.getRowCount() > 0) {
 			if (DireccionTexto.getText().length() == 0) {
 				Aviso.setVisible(true);
-			} else {
-				Aviso.setVisible(false);
-				return si = true;
+				return si = false;
+			} 
 			}
-		} else {
+		 else {
 			Aviso.setVisible(false);
 			return si = true;
 		}
