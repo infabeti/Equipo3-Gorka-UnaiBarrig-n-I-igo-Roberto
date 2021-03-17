@@ -11,13 +11,13 @@ public class ScriptsBDD {
 	static Connection conexionbd;
 	
 	public void registrarUsuario(String DNI, String Contraseña, String Apellido, String nombre, String NIF) throws SQLException {	
-	conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta");  
+	conexionbd = conexion();  
 	PreparedStatement insert = conexionbd.prepareStatement("insert into usuarios " + "values (\""+DNI+"\",\""+nombre+"\",\""+Apellido+"\",\""+Contraseña+"\",\""+NIF+"\")");
 	insert.executeUpdate();
 	}
 	
 	public void registrarTicketFacts(String ntrans, String NIF, String Apellido, String Nombre, boolean factura) throws SQLException {
-	conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta");
+	conexionbd = conexion();
 	
 	//hace falta codigo de los productos y cantidad
 	if (factura == false) {
@@ -42,8 +42,6 @@ public class ScriptsBDD {
 			PreparedStatement facturaIntro = conexionbd.prepareStatement("insert into factura (ntrans,nifc) " + "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""+NIF+"\")");
 			facturaIntro.executeUpdate();
 		}
-		
-		
 		System.out.println("factura completada");
 	}
 	}
@@ -51,7 +49,7 @@ public class ScriptsBDD {
 	public void registrarPedido (String entrega) throws SQLException {
 		
 		//hace falta codigo de los productos y cantidad
-	conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta"); 
+	conexionbd = conexion();  
 	PreparedStatement ticket = conexionbd.prepareStatement("insert into transaccion " + "values ()");
 	ticket.executeUpdate();	
 	PreparedStatement insert = conexionbd.prepareStatement("insert into pedido " + "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""+entrega+"\")");
@@ -60,7 +58,7 @@ public class ScriptsBDD {
 
 	}
 	public String NTrans() throws SQLException {
-		conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta"); 
+		conexionbd = conexion(); 
 		PreparedStatement ntrans = conexionbd.prepareStatement("select count(ntrans) from transaccion");
 		ResultSet resultrans=ntrans.executeQuery();
 		String numtrans = null;
@@ -77,20 +75,23 @@ public class ScriptsBDD {
 }
 	
 	public String getNombreLocal () throws SQLException {
-		
-		
 		String DNI = null;
-		
-		conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta"); 
+		conexionbd = conexion(); 
 		PreparedStatement ntrans = conexionbd.prepareStatement("select nombre from locale where NIF = (select NIFLocal from usuarios where DNI = \""+DNI+"\")" );
 		@SuppressWarnings("unused")
 		ResultSet resultrans=ntrans.executeQuery();
-		
-		
 		return null;
 	}
-	
-	
+	public Connection conexion() {
+
+		try{
+			conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta");
+			System.out.println("Conectado correctamente.");
+		}catch(SQLException e){
+			System.out.println("No se ha podido conectar a la base de datos");
+			e.printStackTrace();
+		}
+		return conexionbd;
+	}
 	//El total de las interfaces funciona mal, acumula precios a base de hacer más de una transacción
-	
 }
