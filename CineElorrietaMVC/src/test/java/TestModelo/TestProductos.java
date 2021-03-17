@@ -25,7 +25,7 @@ public class TestProductos {
 		assertEquals(1,producto.getPrecio());
 		assertEquals(5,producto1.getPrecio());
 }
-	@Test
+/*	@Test
 	public void TestClaseProductosPrecioVent() {
 		producto.setPrecioVent(10.0);
 		assertEquals(10.0,producto.getPrecioVent(),0);
@@ -40,6 +40,7 @@ public class TestProductos {
 		producto.setNombre("Nombre");
 		assertEquals("Nombre",producto.getNombre());
 }
+*/
 	@Test
 	public void TestClaseProductosPrecioComp() {
 		producto.setPrecioComp(10.0);

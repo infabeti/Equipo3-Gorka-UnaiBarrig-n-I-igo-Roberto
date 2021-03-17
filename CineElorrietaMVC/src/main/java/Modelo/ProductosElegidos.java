@@ -6,7 +6,7 @@ public class ProductosElegidos {
 	private double cantidad;
 	private double precioCantidad;
 	private String codigoProducto;
-	
+
 	public ProductosElegidos() {
 	}
 

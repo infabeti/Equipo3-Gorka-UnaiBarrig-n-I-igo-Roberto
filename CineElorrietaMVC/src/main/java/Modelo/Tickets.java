@@ -9,14 +9,16 @@ public class Tickets {
 	Date fecha;
 	private ProductosElegidos[] productos = new ProductosElegidos[0];
 	private double total = 0;
-	private String NIF,Nombre,Apellido,nombrePro,NomLocal,NumTrans;
+	private String NIF, Nombre, Apellido, nombrePro, NomLocal, NumTrans;
 	private int aumentoDeArr = 0;
 	private int arrSelec;
 	private ArraysUtils ArraysUtils = new ArraysUtils();
 
 	public Tickets() {
 	}
-	public Tickets(Date fecha, String NomLocal, double total, String NIF, String Nombre, String Apellido,ProductosElegidos[] productos, int arrSelec, Modelo modelo) {
+
+	public Tickets(Date fecha, String NomLocal, double total, String NIF, String Nombre, String Apellido,
+			ProductosElegidos[] productos, int arrSelec, Modelo modelo) {
 		this.NumTrans = modelo.Contador.getContador();
 		this.fecha = fecha;
 		this.NomLocal = NomLocal;
@@ -27,45 +29,57 @@ public class Tickets {
 		this.Apellido = Apellido;
 		this.arrSelec = arrSelec;
 	}
+
 	public void setNumTrans(String Numtrans) {
 		this.NumTrans = Numtrans;
 	}
+
 	public String getNumTrans() {
 		return this.NumTrans;
 	}
+
 	public void setFecha() {
 		this.fecha = Calendar.getInstance().getTime();
 	}
+
 	public String getFecha() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String fecha2 = dateFormat.format(this.fecha);
 		return fecha2;
 	}
+
 	public void setNomLocal(String NomLocal) {
 		this.NomLocal = NomLocal;
 	}
+
 	public String getNomLocal() {
 		return this.NomLocal;
 	}
+
 	public String getName() {
 		nombrePro = productos[productos.length - 1].getNombre();
 		return nombrePro;
 	}
+
 	public String getTotal() {
 		this.total = this.total + productos[aumentoDeArr].getPrecioCantidad();
 		aumentoDeArr++;
 		String total = String.valueOf(this.total);
 		return total;
 	}
+
 	public void borrarTotal() {
 		this.total = 0;
 	}
+
 	public void setArrSelec(int arrSelec) {
 		this.arrSelec = arrSelec;
 	}
+
 	public int getArrSelec() {
 		return this.arrSelec;
 	}
+
 	public String eliminarTotal() {
 		this.total = this.total - productos[getArrSelec()].getPrecioCantidad();
 		this.productos = eliminarSelecArr(this.productos, getArrSelec());
@@ -74,6 +88,7 @@ public class Tickets {
 		String total = String.valueOf(this.total);
 		return total;
 	}
+
 	private ProductosElegidos[] eliminarSelecArr(ProductosElegidos[] array, int index) {
 		int i = index;
 		for (i = index; i < array.length - 1; i++) {
@@ -82,38 +97,48 @@ public class Tickets {
 		array[array.length - 1] = null;
 		return array;
 	}
+
 	public String getCant() {
 		double precioCant = productos[productos.length - 1].getPrecioCantidad();
 		String precioCant1 = String.valueOf(precioCant);
 		return precioCant1;
 	}
+
 	public void setNIF(String NIF) {
 		this.NIF = NIF;
 	}
+
 	public String getNIF() {
 		return this.NIF;
 	}
+
 	public void setNombre(String Nombre) {
 		this.Nombre = Nombre;
 	}
+
 	public String getNombre() {
 		return this.Nombre;
 	}
+
 	public void setApellido(String Apellido) {
 		this.Apellido = Apellido;
 	}
+
 	public String getApellido() {
 		return this.Apellido;
 	}
+
 	public ProductosElegidos[] getProductos() {
 		return this.productos;
 	}
+
 	public void setProductos(String codigo, String nombre, String precioProducto, int cant) {
 		double PrecioProducto = Double.parseDouble(precioProducto);
 		int value = this.productos.length;
 		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
-		this.productos[value]=new ProductosElegidos(codigo,nombre,PrecioProducto,cant);
+		this.productos[value] = new ProductosElegidos(codigo, nombre, PrecioProducto, cant);
 	}
+
 	public int getLongitudArr() {
 		int i = this.productos.length;
 		return i;

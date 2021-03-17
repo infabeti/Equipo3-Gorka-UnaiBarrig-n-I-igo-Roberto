@@ -19,33 +19,35 @@ public class ControladorPanelLogin {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelLogin panelUsuarios;
-	private int cont=1;
-	
-	
+	private int cont = 1;
+
 	public ControladorPanelLogin(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
-		this.controlador = controlador;	
+		this.controlador = controlador;
 	}
-	
+
 	public void mostrarPanelUsuarios() {
 		this.panelUsuarios = new PanelLogin(this);
 		this.vista.mostrarPanel(this.panelUsuarios);
 	}
-	
+
 	public void accionadoBottonIngresarPanelLoginBienvenida() {
 		JOptionPane.showMessageDialog(null, "El Usuario ha iniciado sesion");
 		this.controlador.navegarPanelBienvenida();
 	}
+
 	public void accionadoBottonRegistrarPanelLogin() {
 		this.controlador.navegarPanelRegistrar();
 	}
-	public String[] DevolverUsuariosPanelLogin(String nIFIntroducido, String contrasenaIntroducida) throws SQLException {
-		
-		Usuarios Usuarios= modelo.BDD.LoginUsu( nIFIntroducido,contrasenaIntroducida);
+
+	public String[] DevolverUsuariosPanelLogin(String nIFIntroducido, String contrasenaIntroducida)
+			throws SQLException {
+
+		Usuarios Usuarios = modelo.BDD.LoginUsu(nIFIntroducido, contrasenaIntroducida);
 		String UsuariosAString = Usuarios.toString();
 		String[] DevolverUsuarios = modelo.ArraysUtils.separarParaUsu(UsuariosAString);
 		return DevolverUsuarios;
 	}
-	
+
 }

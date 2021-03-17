@@ -17,32 +17,31 @@ public class PanelAprovisionamiento extends JPanel {
 	private JButton btnVolver;
 	private JLabel lblAprovisionamiento;
 	private ControladorPanelAprovisionamiento controladorPanelAprovisionamiento;
-	
-	public PanelAprovisionamiento(ControladorPanelAprovisionamiento controladorPanelAprovisionamiento)
-	{
+
+	public PanelAprovisionamiento(ControladorPanelAprovisionamiento controladorPanelAprovisionamiento) {
 		this.controladorPanelAprovisionamiento = controladorPanelAprovisionamiento;
-		
+
 		setLayout(null);
-		
+
 		lblAprovisionamiento = new JLabel("Aprovisionamiento");
 		lblAprovisionamiento.setBounds(198, 15, 115, 14);
 		add(lblAprovisionamiento);
-		
+
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(58, 192, 89, 23);
 		btnVolver.setFocusPainted(false);
-		Color cpanel = new Color(200,194,182);
+		Color cpanel = new Color(200, 194, 182);
 		btnVolver.setBackground(cpanel);
-		
+
 		add(btnVolver);
-		
+
 		initializeEvents();
 	}
-	
+
 	private void initializeEvents() {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelAprovisionamiento));
 	}
-	
+
 	private ActionListener listenerBotonVolver(ControladorPanelAprovisionamiento controladorPanelAprovisionamiento) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

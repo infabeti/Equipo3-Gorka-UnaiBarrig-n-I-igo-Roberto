@@ -17,36 +17,36 @@ public class ControladorPanelRegistrar {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelRegistrar panelRegistrar;
-	private int cont=1;
-	
-	
-	
+	private int cont = 1;
+
 	public ControladorPanelRegistrar(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
-		this.controlador = controlador;	
+		this.controlador = controlador;
 	}
-	
+
 	public void mostrarPanelRegistrar() {
 		this.panelRegistrar = new PanelRegistrar(this);
 		this.vista.mostrarPanel(this.panelRegistrar);
 	}
-	
+
 	public void accionadoBottonVolverPanelRegistrar() {
 		this.controlador.navegarPanelUsuarios();
 	}
-	public void accionadoBottonRegistrarPanelRegistrar(String Nombre, String Apellido, String DNI, String Contraseña, String NIFLocal) throws SQLException {
+
+	public void accionadoBottonRegistrarPanelRegistrar(String Nombre, String Apellido, String DNI, String Contraseña,
+			String NIFLocal) throws SQLException {
 		modelo.ScriptsBDD.registrarUsuario(DNI, Contraseña, Apellido, Nombre, NIFLocal);
 	}
 
-	public String[] pasarString() throws SQLException{
+	public String[] pasarString() throws SQLException {
 		BDD productos = new BDD();
 		Productos[] poductos2 = productos.getProductos();
-		String [] arrayr=new String[poductos2.length];
-		for(int i=0; i<poductos2.length; i++) {
-			arrayr[i]=poductos2[i].toString();
+		String[] arrayr = new String[poductos2.length];
+		for (int i = 0; i < poductos2.length; i++) {
+			arrayr[i] = poductos2[i].toString();
 		}
-		return  arrayr;
-		
+		return arrayr;
+
 	}
 }
