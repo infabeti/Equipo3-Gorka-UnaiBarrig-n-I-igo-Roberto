@@ -241,6 +241,7 @@ public class PanelPedidos extends JPanel {
 					
 				}
 				controladorPanelPedidos.borrarTotalTickets();
+				controladorPanelPedidos.accionadoBottonVolverPanelPedidos();
 			}
 		};
 	}
