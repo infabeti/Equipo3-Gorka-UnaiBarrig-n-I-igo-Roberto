@@ -249,6 +249,7 @@ public class PanelTickets extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
 				controladorPanelTickets.accionadoBottonVolverPanelTickets();
+				controladorPanelTickets.borrarTotalTickets();
 			}
 		};
 	}
@@ -277,8 +278,7 @@ public class PanelTickets extends JPanel {
 						e.printStackTrace();
 					}
 				}
-				
-				
+				controladorPanelTickets.borrarTotalTickets();
 			}
 		};
 	}

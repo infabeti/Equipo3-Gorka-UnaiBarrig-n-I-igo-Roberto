@@ -68,4 +68,7 @@ public class ControladorPanelPedidos {
 	public void insertPedido(String entrega) throws SQLException {
 		modelo.ScriptsBDD.registrarPedido(entrega);
 	}
+	public void borrarTotalTickets() {
+		modelo.pedidos.borrarTotal();
+	}
 }

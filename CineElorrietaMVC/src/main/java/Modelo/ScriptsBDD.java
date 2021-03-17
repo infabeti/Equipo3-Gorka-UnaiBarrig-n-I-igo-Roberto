@@ -86,7 +86,6 @@ public class ScriptsBDD {
 
 		try{
 			conexionbd = DriverManager.getConnection("jdbc:mysql://localhost:33060/reto3","dam","elorrieta");
-			System.out.println("Conectado correctamente.");
 		}catch(SQLException e){
 			System.out.println("No se ha podido conectar a la base de datos");
 			e.printStackTrace();

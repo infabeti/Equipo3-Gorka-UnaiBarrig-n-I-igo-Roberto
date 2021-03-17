@@ -63,6 +63,9 @@ public class Tickets {
 		String total = String.valueOf(this.total);
 		return total;
 	}
+	public void borrarTotal() {
+		this.total = 0;
+	}
 	public void setArrSelec(int arrSelec) {
 		this.arrSelec = arrSelec;
 	}

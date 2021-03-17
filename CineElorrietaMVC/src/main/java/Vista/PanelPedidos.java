@@ -209,6 +209,7 @@ public class PanelPedidos extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
 				controladorPanelPedidos.accionadoBottonVolverPanelPedidos();
+				controladorPanelPedidos.borrarTotalTickets();
 			}
 		};
 	}
@@ -239,6 +240,7 @@ public class PanelPedidos extends JPanel {
 					}
 					
 				}
+				controladorPanelPedidos.borrarTotalTickets();
 			}
 		};
 	}
