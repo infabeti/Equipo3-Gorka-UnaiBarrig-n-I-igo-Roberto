@@ -18,7 +18,7 @@ Nombre varchar(40) not null,
 PrecioComp int not null,
 PrecioVent int not null,
 FechaCad date,
-Tipo  enum("bebida","comida","otros"),
+Tipo  enum("bebida","comida","otros") not null,
 constraint pk_producto primary key (Codigo));
 
 create table if not exists Transaccion (
@@ -29,8 +29,8 @@ constraint pk_transaccion primary key (NTrans));
 create table if not exists Venta (
 
 NIF char(9),
-Codigo char(5),
-Stock int,
+Codigo char(5) not null,
+Stock int not null,
 
 constraint pk_Venta primary key(NIF,Codigo),
 constraint fk_NIF_Venta foreign key (NIF) references locale(NIF),
@@ -41,8 +41,8 @@ create table if not exists Contenido (
 
 NTrans int ,
 Codigo char(5),
-Cantidad int,
-PVP int,
+Cantidad int not null,
+PVP int not null,
 
 constraint pk_Contenido primary key(NTrans,Codigo),
 constraint fk_Contenido_Trans foreign key (NTrans) references Transaccion(NTrans),
@@ -53,7 +53,7 @@ constraint fk_Contenido_Codigo foreign key (Codigo) references Producto(Codigo)
 create table if not exists Pedido (
 
 NTrans int ,
-Entrega varchar(40),
+Entrega varchar(40) not null,
 constraint pk_Pedido primary key (NTrans),
 	constraint fk_Pedido foreign key (NTrans) references transaccion(NTrans));
 
@@ -64,7 +64,7 @@ DNI char(9) ,
 Nombre varchar(25),
 Apellido varchar (15),
 Contraseña varchar (20) not null,
-NIFLocal char(9),
+NIFLocal char(9) not null,
 
 	constraint pk_Usuarios primary key (DNI),
 constraint fk_NIF_Usuario foreign key (NIFLocal) references locale(NIF));
@@ -81,10 +81,10 @@ constraint fk_Comanda_NTrans foreign key (NTrans) references Transaccion(NTrans)
 create table if not exists Plato(
 
 Codigo char(5),
-PVP int,
+PVP int not null,
 Nombre varchar(30),
-Categoria enum("Primer plato","Segundo plato","Postre"),
-Tipo enum("Normal", "Vegetariano", "Vegano"),
+Categoria enum("Primer plato","Segundo plato","Postre") not null,
+Tipo enum("Normal", "Vegetariano", "Vegano") not null,
 
 constraint pk_PlatosAdquiridos primary key (Codigo)
 
@@ -94,8 +94,8 @@ create table if not exists PlatosAdquiridos(
 
 NTrans int ,
 Codigo char(5),
-PVP int,
-Cantidad int,
+PVP int not null,
+Cantidad int not null,
 constraint pk_PlatosAdquiridos primary key (NTrans,Codigo),
 constraint fk_PlatosAdquiridos_NTrans foreign key (NTrans) references Transaccion(NTrans),
 constraint fk_PlatosAdquiridos_Codigo foreign key (Codigo) references Plato (Codigo)
