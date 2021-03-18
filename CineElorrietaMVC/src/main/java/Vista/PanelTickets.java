@@ -276,7 +276,6 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
-				controladorPanelTickets.accionadoBottonEliminarPanelTickets(table.getSelectedRow());
 				DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 				modelo.removeRow(table.getSelectedRow());
 				String total = controladorPanelTickets.accionadoBottonEliminarTotal();

@@ -69,10 +69,6 @@ public class ControladorPanelTickets {
 		return modelo.ticket.getFecha();
 	}
 
-	public void accionadoBottonEliminarPanelTickets(int i) {
-		modelo.ticket.setArrSelec(i);
-	}
-
 	public void insertTickets(String Ntrans, String NIF, String Nombre, String Apellido, boolean factura)
 			throws SQLException {
 		modelo.ScriptsBDD.registrarTicketFacts(Ntrans, NIF, Nombre, Apellido, factura);

@@ -63,9 +63,7 @@ public class ControladorPanelPedidos {
 		return modelo.pedidos.eliminarTotal();
 	}
 
-	public void accionadoBottonEliminarPanelPedidos(int i) {
-		modelo.pedidos.setArrSelec(i);
-	}
+	
 
 	public void insertPedido(String entrega) throws SQLException {
 		modelo.ScriptsBDD.registrarPedido(entrega);
