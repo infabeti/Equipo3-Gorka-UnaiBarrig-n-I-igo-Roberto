@@ -25,10 +25,9 @@ public class BDD {
 
 		try {
 			conexionbd = DriverManager.getConnection(url, username, password);
-			System.out.println("Conectado correctamente.");
 		} catch (SQLException e) {
 			System.out.println("No se ha podido conectar a la base de datos");
-			e.printStackTrace();
+			
 		}
 		return conexionbd;
 	}

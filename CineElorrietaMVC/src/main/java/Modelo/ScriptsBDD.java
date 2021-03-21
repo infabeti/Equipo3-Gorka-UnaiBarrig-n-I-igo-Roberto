@@ -89,12 +89,22 @@ public class ScriptsBDD {
 	}
 
 	public String getNombreLocal() throws SQLException {
-		String DNI = null;
+		String DNI = "12312312Q";
 		Connection conexionbd = modelo.BDD.conexion();
 		PreparedStatement ntrans = conexionbd.prepareStatement(
-				"select nombre from locale where NIF = (select NIFLocal from usuarios where DNI = \"" + DNI + "\")");
-		@SuppressWarnings("unused")
+				"select Nombre from locale where NIF = (select NIFLocal from usuarios where DNI = \"" + DNI + "\")");
 		ResultSet resultrans = ntrans.executeQuery();
+		String nombre = "";
+		if (resultrans.next()) {
+			
+			nombre = resultrans.getString("Nombre");
+			return nombre;
+		}
+		else {
+			
+			System.out.println("No se ha podido conseguir el nombre del local");
+		}
+		
 		return null;
 	}
 

@@ -45,6 +45,7 @@ public class PanelPedidos extends JPanel {
 	JButton btnGuardar;
 	private JTextField cont;
 	private JButton btnEliminar;
+	private JTextField localtxt;
 
 	@SuppressWarnings("unchecked")
 	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos) throws SQLException {
@@ -157,6 +158,13 @@ public class PanelPedidos extends JPanel {
 		cont.setText(controladorPanelPedidos.getContador());
 		cont.setColumns(10);
 		add(cont);
+		
+		localtxt = new JTextField();
+		localtxt.setEditable(false);
+		localtxt.setColumns(10);
+		localtxt.setBounds(308, 22, 115, 20);
+		localtxt.setText(controladorPanelPedidos.getNombreLocal());
+		add(localtxt);
 
 		Localidad.addActionListener(new ActionListener() {
 			@Override

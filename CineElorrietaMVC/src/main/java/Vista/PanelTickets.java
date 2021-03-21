@@ -41,7 +41,6 @@ public class PanelTickets extends JPanel {
 	private JLabel Aviso;
 	private JTextField cont;
 	private JTextField LocalTexto;
-	private JLabel LocalLabel;
 	private JButton btnEliminar;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -208,14 +207,10 @@ public class PanelTickets extends JPanel {
 
 		LocalTexto = new JTextField();
 		LocalTexto.setEditable(false);
-		LocalTexto.setBounds(84, 53, 86, 20);
-		// LocalTexto.setText();
+		LocalTexto.setBounds(291, 12, 115, 20);
+		 LocalTexto.setText(controladorPanelTickets.getNombreLocal());
 		add(LocalTexto);
 		LocalTexto.setColumns(10);
-
-		LocalLabel = new JLabel("Local:");
-		LocalLabel.setBounds(33, 56, 46, 14);
-		add(LocalLabel);
 
 		initializeEvents();
 	}

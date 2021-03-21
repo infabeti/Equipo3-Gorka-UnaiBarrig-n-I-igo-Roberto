@@ -10,6 +10,7 @@ public class Usuarios {
 	private String nombreLocal;
 	
 	
+	
 	public Usuarios() {
 	}
 	

@@ -72,4 +72,9 @@ public class ControladorPanelPedidos {
 	public void borrarTotalTickets() {
 		modelo.pedidos.borrarTotal();
 	}
+	
+public String getNombreLocal() throws SQLException {
+		
+		return modelo.ScriptsBDD.getNombreLocal();
+	}
 }
