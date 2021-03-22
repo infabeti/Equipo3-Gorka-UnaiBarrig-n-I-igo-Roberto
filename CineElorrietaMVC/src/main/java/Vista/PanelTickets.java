@@ -284,16 +284,24 @@ public class PanelTickets extends JPanel {
 		boolean si = false;
 		if (table.getRowCount() == 0) {
 			Aviso.setVisible(true);
-			return si = false;
-		} else if (table.getRowCount() > 0 && Factura.isSelected() == true) {
+			 si = false;
+		} 
+		
+		
+		if (table.getRowCount() > 0 && Factura.isSelected() == true) {
+			
 			if (NIF.getText().length() == 0 || Nombre.getText().length() == 0 || Apellido.getText().length() == 0) {
 				Aviso.setVisible(true);
 				return si = false;
-			} 
-		} else {
+			}
+			else {
+		  
 			Aviso.setVisible(false);
-			return si = true;
+			 si = true;
+			 System.out.println("Si");
 		}
+		}
+		
 		return si;
 
 	}

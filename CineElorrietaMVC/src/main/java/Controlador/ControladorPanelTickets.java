@@ -73,6 +73,7 @@ public class ControladorPanelTickets {
 	public void insertTickets(String Ntrans, String NIF, String Nombre, String Apellido, boolean factura)
 			throws SQLException {
 		modelo.ScriptsBDD.registrarTicketFacts(Ntrans, NIF, Nombre, Apellido, factura);
+		
 	}
 
 	public void borrarTotalTickets() {
