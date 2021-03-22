@@ -255,17 +255,21 @@ public class PanelPedidos extends JPanel {
 		boolean si = false;
 		if (table.getRowCount() == 0) {
 			Aviso.setVisible(true);
-			return si = false;
-		} else if (Localidad.getSelectedItem() == "Domicilio" && table.getRowCount() > 0) {
+			 si = false;
+		} 
+		
+		if (Localidad.getSelectedItem() == "Domicilio" && table.getRowCount() > 0) {
 			if (DireccionTexto.getText().length() == 0) {
 				Aviso.setVisible(true);
-				return si = false;
-			} 
+				 si = false;
+			
 			}
 		 else {
 			Aviso.setVisible(false);
-			return si = true;
+			 si = true;
+			 System.out.println("Si");
 		}
+		} 
 		return si;
 	}
 }
