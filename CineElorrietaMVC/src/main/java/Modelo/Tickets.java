@@ -64,7 +64,9 @@ public class Tickets {
 	public String getTotal() {
 		this.total = 0;
 		for(int i = 0;i<this.productos.length;i++) {
+			System.out.println("aaaaaaaaaaa");
 		this.total = this.total + productos[i].getPrecioCantidad();
+		
 		}
 		String total = String.valueOf(this.total);
 		return total;
@@ -135,7 +137,7 @@ public class Tickets {
 			for(int i = 0;i<this.productos.length;i++) {
 			if (codigo.equalsIgnoreCase(this.productos[i].getCodigoProducto())) {
 				precio = this.productos[i].getPrecioCantidad();
-				cant = this.productos[i].getPrecioCantidad();
+				cant = this.productos[i].getCantidad();
 		}
 		}
 			System.out.println(precio);
@@ -149,12 +151,16 @@ public class Tickets {
 		int value = this.productos.length;
 		if (this.productos.length > 0) {
 			this.productos = ArraysUtils.aumentarArrProductos(this.productos);
+			this.productos[value] = new ProductosElegidos(codigo, nombre, PrecioProducto, cant);
 		for(int i = 0;i<this.productos.length-1;i++) {
 		if (codigo.equalsIgnoreCase(this.productos[i].getCodigoProducto()) ) {
 			double cantidad = this.productos[i].getCantidad();
 			int cantidadSelec = (int) cantidad;
 			cant = cant + cantidadSelec;
 		this.productos[i] = new ProductosElegidos(codigo, nombre, PrecioProducto, cant);
+	}else {
+		
+		break;
 	}
 	}
 	}else {
@@ -167,4 +173,7 @@ public class Tickets {
 		int i = this.productos.length;
 		return i;
 	}
-}
+	
+	
+	}
+
