@@ -59,6 +59,11 @@ public class ScriptsBDD {
 
 	public void registrarPedido(String entrega) throws SQLException {
 
+		if(entrega =="") {
+			
+			entrega = "Domicilio";
+		}
+		
 		Connection conexionbd = modelo.BDD.conexion();
 		PreparedStatement ticket = conexionbd.prepareStatement("insert into transaccion " + "values ()");
 		ticket.executeUpdate();
