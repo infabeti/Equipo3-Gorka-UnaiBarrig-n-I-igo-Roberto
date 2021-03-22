@@ -140,7 +140,6 @@ public class Tickets {
 			this.productos = ArraysUtils.aumentarArrProductos(this.productos);
 		for(int i = 0;i<this.productos.length-1;i++) {
 		if (codigo.equalsIgnoreCase(this.productos[i].getCodigoProducto()) ) {
-			
 			double cantidad = this.productos[i].getCantidad();
 			int cantidadSelec = (int) cantidad;
 			cant = cant + cantidadSelec;

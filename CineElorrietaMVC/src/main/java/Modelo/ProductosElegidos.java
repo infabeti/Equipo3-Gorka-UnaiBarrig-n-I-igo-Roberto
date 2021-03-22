@@ -48,7 +48,7 @@ public class ProductosElegidos {
 	}
 
 	public double getPrecioCantidad() {
-		this.precioCantidad = this.precio * this.cantidad;
+		this.precioCantidad = this.precio * getCantidad();
 		return this.precioCantidad;
 	}
 
