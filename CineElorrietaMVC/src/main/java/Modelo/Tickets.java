@@ -130,7 +130,7 @@ public class Tickets {
 	public ProductosElegidos[] getProductos() {
 		return this.productos;
 	}
-	//Error a solucionar
+
 		public String getCant(String codigo) {
 			double precio = 0;
 			double cant = 0;

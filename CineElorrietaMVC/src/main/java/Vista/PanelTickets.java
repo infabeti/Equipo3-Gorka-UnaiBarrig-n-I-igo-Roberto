@@ -284,7 +284,7 @@ public class PanelTickets extends JPanel {
 		boolean si = false;
 		if (table.getRowCount() == 0) {
 			Aviso.setVisible(true);
-			 si = false;
+			 return si = false;
 		} 
 		
 		
@@ -297,8 +297,8 @@ public class PanelTickets extends JPanel {
 			else {
 		  
 			Aviso.setVisible(false);
-			 si = true;
-			 System.out.println("Si");
+			return si = true;
+			 
 		}
 		}
 		return si;
