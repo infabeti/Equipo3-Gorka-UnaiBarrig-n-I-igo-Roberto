@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 
 import Controlador.ControladorPanelPedidos;
 import Controlador.ControladorPanelTickets;
+import Modelo.Modelo;
+
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;

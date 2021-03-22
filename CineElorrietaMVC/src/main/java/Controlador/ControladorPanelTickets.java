@@ -19,6 +19,7 @@ public class ControladorPanelTickets {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelTickets panelTickets;
+	private String nombreLocal = null;
 
 	public ControladorPanelTickets() {
 	}
@@ -77,10 +78,9 @@ public class ControladorPanelTickets {
 	public void borrarTotalTickets() {
 		modelo.ticket.borrarTotal();
 	}
-	
 	public String getNombreLocal() throws SQLException {
-		
-		return modelo.ScriptsBDD.getNombreLocal();
+		String usuArr = modelo.BDD.getUsuString();
+		String [] usuarioArr= modelo.ArraysUtils.separarParaUsu(usuArr);
+		return modelo.ScriptsBDD.getNombreLocal(usuarioArr[1]);
 	}
-
 }

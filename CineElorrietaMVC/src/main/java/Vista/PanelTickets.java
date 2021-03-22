@@ -208,7 +208,7 @@ public class PanelTickets extends JPanel {
 		LocalTexto = new JTextField();
 		LocalTexto.setEditable(false);
 		LocalTexto.setBounds(291, 12, 115, 20);
-		 LocalTexto.setText(controladorPanelTickets.getNombreLocal());
+		LocalTexto.setText(controladorPanelTickets.getNombreLocal());
 		add(LocalTexto);
 		LocalTexto.setColumns(10);
 

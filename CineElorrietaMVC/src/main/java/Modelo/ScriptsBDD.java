@@ -88,8 +88,8 @@ public class ScriptsBDD {
 		return fecha = fecha2[0] + "/" + fecha2[1] + "/" + fecha2[2] + "";
 	}
 
-	public String getNombreLocal() throws SQLException {
-		String DNI = "12312312Q";
+	public String getNombreLocal(String NIF) throws SQLException {
+		String DNI = NIF;
 		Connection conexionbd = modelo.BDD.conexion();
 		PreparedStatement ntrans = conexionbd.prepareStatement(
 				"select Nombre from locale where NIF = (select NIFLocal from usuarios where DNI = \"" + DNI + "\")");
@@ -105,7 +105,7 @@ public class ScriptsBDD {
 			System.out.println("No se ha podido conseguir el nombre del local");
 		}
 		
-		return null;
+		return nombre;
 	}
 
 	public void insertarProductosElegidosTicket() throws SQLException {
