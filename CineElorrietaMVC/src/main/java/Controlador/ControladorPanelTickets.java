@@ -43,7 +43,7 @@ public class ControladorPanelTickets {
 		String[] Separado = modelo.productos.separar(object);
 		modelo.ticket.setProductos(Separado[0], Separado[1], Separado[2], cant);
 		String total = modelo.ticket.getTotal();
-		String precioCant = modelo.ticket.getCant();
+		String precioCant = modelo.ticket.getCant(Separado[0]);
 		String Cant1 = String.valueOf(cant);
 		String[] todo = { Separado[1], Cant1, precioCant, total };
 		return todo;

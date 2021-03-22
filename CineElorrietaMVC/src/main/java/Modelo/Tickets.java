@@ -62,7 +62,8 @@ public class Tickets {
 	}
 
 	public String getTotal() {
-		for(int i = 0;i<this.productos.length-1;i++) {
+		this.total = 0;
+		for(int i = 0;i<this.productos.length;i++) {
 		this.total = this.total + productos[i].getPrecioCantidad();
 		}
 		String total = String.valueOf(this.total);
@@ -98,12 +99,7 @@ public class Tickets {
 		array[array.length - 1] = null;
 		return array;
 	}
-	//Error a solucionar
-	public String getCant() {
-		double precioCant = productos[productos.length-1].getPrecioCantidad();
-		String precioCant1 = String.valueOf(precioCant);
-		return precioCant1;
-	}
+	
 
 	public void setNIF(String NIF) {
 		this.NIF = NIF;
@@ -132,6 +128,21 @@ public class Tickets {
 	public ProductosElegidos[] getProductos() {
 		return this.productos;
 	}
+	//Error a solucionar
+		public String getCant(String codigo) {
+			double precio = 0;
+			double cant = 0;
+			for(int i = 0;i<this.productos.length;i++) {
+			if (codigo.equalsIgnoreCase(this.productos[i].getCodigoProducto())) {
+				precio = this.productos[i].getPrecioCantidad();
+				cant = this.productos[i].getPrecioCantidad();
+		}
+		}
+			System.out.println(precio);
+			System.out.println(cant);
+			 String precioCant = String.valueOf(precio);
+			return precioCant;
+		}
 
 	public void setProductos(String codigo, String nombre, String precioProducto, int cant) {
 		double PrecioProducto = Double.parseDouble(precioProducto);
@@ -143,9 +154,8 @@ public class Tickets {
 			double cantidad = this.productos[i].getCantidad();
 			int cantidadSelec = (int) cantidad;
 			cant = cant + cantidadSelec;
-			System.out.println(cant);
 		this.productos[i] = new ProductosElegidos(codigo, nombre, PrecioProducto, cant);
-	} 
+	}
 	}
 	}else {
 		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
