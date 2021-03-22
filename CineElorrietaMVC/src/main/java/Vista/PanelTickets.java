@@ -301,8 +301,6 @@ public class PanelTickets extends JPanel {
 			 System.out.println("Si");
 		}
 		}
-		
 		return si;
-
 	}
 }

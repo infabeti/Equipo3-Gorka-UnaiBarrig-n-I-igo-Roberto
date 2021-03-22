@@ -62,8 +62,9 @@ public class Tickets {
 	}
 
 	public String getTotal() {
-		this.total = this.total + productos[aumentoDeArr].getPrecioCantidad();
-		aumentoDeArr++;
+		for(int i = 0;i<this.productos.length-1;i++) {
+		this.total = this.total + productos[i].getPrecioCantidad();
+		}
 		String total = String.valueOf(this.total);
 		return total;
 	}
@@ -97,9 +98,9 @@ public class Tickets {
 		array[array.length - 1] = null;
 		return array;
 	}
-
+	//Error a solucionar
 	public String getCant() {
-		double precioCant = productos[productos.length - 1].getPrecioCantidad();
+		double precioCant = productos[productos.length-1].getPrecioCantidad();
 		String precioCant1 = String.valueOf(precioCant);
 		return precioCant1;
 	}
@@ -135,8 +136,22 @@ public class Tickets {
 	public void setProductos(String codigo, String nombre, String precioProducto, int cant) {
 		double PrecioProducto = Double.parseDouble(precioProducto);
 		int value = this.productos.length;
+		if (this.productos.length > 0) {
+			this.productos = ArraysUtils.aumentarArrProductos(this.productos);
+		for(int i = 0;i<this.productos.length-1;i++) {
+		if (codigo.equalsIgnoreCase(this.productos[i].getCodigoProducto()) ) {
+			
+			double cantidad = this.productos[i].getCantidad();
+			int cantidadSelec = (int) cantidad;
+			cant = cant + cantidadSelec;
+			System.out.println(cant);
+		this.productos[i] = new ProductosElegidos(codigo, nombre, PrecioProducto, cant);
+	} 
+	}
+	}else {
 		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
 		this.productos[value] = new ProductosElegidos(codigo, nombre, PrecioProducto, cant);
+	}
 	}
 
 	public int getLongitudArr() {
