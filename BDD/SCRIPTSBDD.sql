@@ -155,8 +155,8 @@ constraint fk_Aprovisionamiento_NomFabricante foreign key (NomFabricante) refere
 create table if not exists Comprador(
 
 NIFC char(9),
-ApellidoC varchar(15),
-NombreC varchar(25),
+ApellidoC varchar(15) not null,
+NombreC varchar(25) not null,
 
 constraint pk_Comprador primary key (NIFC)
 
