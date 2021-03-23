@@ -59,9 +59,9 @@ public class ScriptsBDD {
 
 	public void registrarPedido(String entrega) throws SQLException {
 
-		if(entrega =="") {
+		if(entrega.length()<=0) {
 			
-			entrega = "Domicilio";
+			entrega = "Local";
 		}
 		
 		Connection conexionbd = modelo.BDD.conexion();
