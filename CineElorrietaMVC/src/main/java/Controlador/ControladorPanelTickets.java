@@ -39,14 +39,18 @@ public class ControladorPanelTickets {
 		this.controlador.navegarPanelBienvenida();
 	}
 
-	public String[] accionadoBottonAnadirPanelTickets(Object object, int cant) {
-		String[] Separado = modelo.productos.separar(object);
-		modelo.ticket.setProductos(Separado[0], Separado[1], Separado[2], cant);
-		String total = modelo.ticket.getTotal();
-		String precioCant = modelo.ticket.getCant(Separado[0]);
-		String Cant1 = String.valueOf(cant);
-		String[] todo = { Separado[1], Cant1, precioCant, total };
-		return todo;
+	public Object[] accionadoBottonAnadirPanelTickets(Object selec, int cant) {
+		String[] Separado = modelo.productos.separar(selec);
+		 ProductosElegidos[] productos= modelo.ticket.setProductos(Separado[0], Separado[1], Separado[2], cant);
+		 Object [] objs = new Object[productos.length];
+		 
+		 for(int i = 0; i<productos.length;i++) {
+			 objs[i] = (productos[i].getNombre(),productos[i].getCantidad(),productos[i].getPrecioCantidad());
+		 }
+		 return objs;
+	}
+	public String Total() {
+		return modelo.ticket.getTotal();
 	}
 
 	public String accionadoBottonEliminarTotal() {
