@@ -237,13 +237,12 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
+
 				try {
-					String[] ProductoSeleccionado = controladorPanelTickets
-							.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(), (int) spinner.getValue());
-					Object[] objs = { ProductoSeleccionado[0], ProductoSeleccionado[1], ProductoSeleccionado[2] };
+					Object[] objs = controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(), (int) spinner.getValue());
 					model = (DefaultTableModel) table.getModel();
 					model.addRow(objs);
-					PrecioFinal.setText(ProductoSeleccionado[3]);
+					PrecioFinal.setText(total);
 					Aviso.setVisible(false);
 					
 				}
@@ -253,6 +252,7 @@ public class PanelTickets extends JPanel {
 					Aviso.setVisible(true);
 				}
 				
+
 			}
 		};
 	}
