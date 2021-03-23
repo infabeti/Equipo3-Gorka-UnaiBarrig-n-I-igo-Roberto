@@ -227,8 +227,9 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
-				controladorPanelTickets.accionadoBottonVolverPanelTickets();
 				controladorPanelTickets.borrarTotalTickets();
+				controladorPanelTickets.accionadoBottonVolverPanelTickets();
+				
 			}
 		};
 	}
@@ -240,7 +241,7 @@ public class PanelTickets extends JPanel {
 				Object[] objs = controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(), (int) spinner.getValue());
 				model = (DefaultTableModel) table.getModel();
 				model.addRow(objs);
-				PrecioFinal.setText(total);
+				PrecioFinal.setText(controladorPanelTickets.Total());
 			}
 		};
 	}

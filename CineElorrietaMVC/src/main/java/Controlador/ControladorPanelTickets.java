@@ -43,12 +43,17 @@ public class ControladorPanelTickets {
 		String[] Separado = modelo.productos.separar(selec);
 		 ProductosElegidos[] productos= modelo.ticket.setProductos(Separado[0], Separado[1], Separado[2], cant);
 		 Object [] objs = new Object[productos.length];
-		 
+		
 		 for(int i = 0; i<productos.length;i++) {
-			 objs[i] = (productos[i].getNombre(),productos[i].getCantidad(),productos[i].getPrecioCantidad());
+			 String nombre = productos[i].getNombre();
+			 double cant1 = productos[i].getCantidad();
+			 double PrecioCant = productos[i].getPrecioCantidad();
+			 objs[i] = new Object[]{nombre, cant1, PrecioCant};
 		 }
 		 return objs;
 	}
+	
+
 	public String Total() {
 		return modelo.ticket.getTotal();
 	}

@@ -64,7 +64,6 @@ public class Tickets {
 	public String getTotal() {
 		this.total = 0;
 		for (int i = 0; i < this.productos.length; i++) {
-			System.out.println("aaaaaaaaaaa");
 			this.total = this.total + productos[i].getPrecioCantidad();
 
 		}
