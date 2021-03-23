@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import Modelo.BDD;
 import Modelo.Modelo;
 import Modelo.Productos;
+import Modelo.ProductosElegidos;
 import Vista.PanelPedidos;
 import Vista.Vista;
 
@@ -30,17 +31,24 @@ public class ControladorPanelPedidos {
 		this.controlador.navegarPanelBienvenida();
 	}
 
-	public String[] accionadoBottonAnadirPanelPedidos(Object selec, int cant) {
-		String[] Separado;
-		Separado = modelo.productos.separar(selec);
-		modelo.pedidos.setProductos(Separado[0], Separado[1], Separado[2], cant);
-		String total = modelo.pedidos.getTotal();
-		String precioCant = modelo.pedidos.getCant();
-		String Cant1 = String.valueOf(cant);
-		String[] todo = { Separado[1], Cant1, precioCant, total };
-		return todo;
+	public Object[][] accionadoBottonAnadirPanelTickets(Object selec, int cant) {
+		String[] Separado = modelo.productos.separar(selec);
+		 ProductosElegidos[] productos= modelo.pedidos.setProductos(Separado[0], Separado[1], Separado[2], cant);
+		 Object [][] objs = new Object[productos.length][3];
+		
+		 for(int i = 0; i<productos.length;i++) {
+			 String nombre = productos[i].getNombre();
+			 double cant1 = productos[i].getCantidad();
+			 double PrecioCant = productos[i].getPrecioCantidad();
+			 objs[i][0]=nombre;
+			 objs[i][1]=cant1;
+			 objs[i][2]=PrecioCant;
+		 }
+		 return objs;
 	}
-
+	public String Total() {
+		return modelo.pedidos.getTotal();
+	}
 	public String[] stringProductos() throws SQLException {
 		String[] arrayr = modelo.BDD.convertirArrayProductosString();
 		return arrayr;

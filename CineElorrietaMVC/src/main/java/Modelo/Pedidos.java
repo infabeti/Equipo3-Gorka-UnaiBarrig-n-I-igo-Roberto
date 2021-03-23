@@ -75,14 +75,18 @@ public class Pedidos {
 	}
 
 	public String getTotal() {
-		this.total = this.total + productos[aumentoDeArr].getPrecioCantidad();
-		aumentoDeArr++;
+		this.total = 0;
+		for (int i = 0; i < this.productos.length; i++) {
+			this.total = this.total + productos[i].getPrecioCantidad();
+
+		}
 		String total = String.valueOf(this.total);
 		return total;
 	}
 
 	public void borrarTotal() {
 		this.total = 0;
+		this.productos = new ProductosElegidos[0];
 	}
 
 	public void setArrSelec(int arrSelec) {
@@ -118,11 +122,31 @@ public class Pedidos {
 		return precioCant1;
 	}
 
-	public void setProductos(String codigo, String nombre, String precioProducto, int cant) {
+	public ProductosElegidos[] setProductos(String codigo, String nombre, String precioProducto, int cant) {
 		double PrecioProducto = Double.parseDouble(precioProducto);
 		int value = this.productos.length;
-		this.productos = ArraysUtils.aumentarArrProductos(this.productos);
-		this.productos[value] = new ProductosElegidos(codigo, nombre, PrecioProducto, cant);
+		if (this.productos.length > 0) {
+			boolean encontrado = false;
+			for (int i = 0; i <= this.productos.length - 1; i++) {
+				if (codigo.equalsIgnoreCase(this.productos[i].getCodigoProducto())) {
+					double cantidad = this.productos[i].getCantidad();
+					int cantidadSelec = (int) cantidad;
+					cant = cant + cantidadSelec;
+					this.productos[i].setCantidad(cant);
+					encontrado = true;
+					break;
+				}
+			}
+			if (encontrado == false) {
+				this.productos = ArraysUtils.aumentarArrProductos(this.productos);
+				this.productos[value] = new ProductosElegidos(codigo, nombre, PrecioProducto, cant);
+			}
+			
+		} else {
+			this.productos = ArraysUtils.aumentarArrProductos(this.productos);
+			this.productos[value] = new ProductosElegidos(codigo, nombre, PrecioProducto, cant);
+		}
+		return this.productos;
 	}
 
 	public int getLongitudArr() {

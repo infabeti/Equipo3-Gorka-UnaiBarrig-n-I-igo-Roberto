@@ -73,6 +73,7 @@ public class Tickets {
 
 	public void borrarTotal() {
 		this.total = 0;
+		this.productos = new ProductosElegidos[0];
 	}
 
 	public void setArrSelec(int arrSelec) {

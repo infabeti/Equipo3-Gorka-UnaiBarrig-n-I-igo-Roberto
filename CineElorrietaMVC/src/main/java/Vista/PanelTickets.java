@@ -250,7 +250,6 @@ public class PanelTickets extends JPanel {
 						model.addRow(objs2);
 					}
 					
-					
 					PrecioFinal.setText(controladorPanelTickets.Total());
 					Aviso.setVisible(false);
 					
@@ -258,7 +257,6 @@ public class PanelTickets extends JPanel {
 				catch(Exception E) {
 					
 					System.out.println("No has añadido ningún producto");
-					E.printStackTrace();
 					Aviso.setVisible(true);
 				}
 				
@@ -322,10 +320,8 @@ public class PanelTickets extends JPanel {
 				return si = false;
 			}
 			else {
-		  
 			Aviso.setVisible(false);
-			return si = true;
-			 
+			return si = true; 
 		}
 		}
 		return si;

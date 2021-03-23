@@ -218,12 +218,30 @@ public class PanelPedidos extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
-				String[] ProductoSeleccionado = controladorPanelPedidos
-						.accionadoBottonAnadirPanelPedidos(list.getSelectedValue(), (int) spinner.getValue());
-				Object[] objs = { ProductoSeleccionado[0], ProductoSeleccionado[1], ProductoSeleccionado[2] };
-				model = (DefaultTableModel) table.getModel();
-				model.addRow(objs);
-				PrecioFinal.setText(ProductoSeleccionado[3]);
+
+				try {
+					Object[][] objs = controladorPanelPedidos.accionadoBottonAnadirPanelTickets(list.getSelectedValue(), (int) spinner.getValue());
+					model = (DefaultTableModel) table.getModel();
+					for(int i = model.getRowCount()-1;i>=0;i--) {
+						model.removeRow(i);
+					}
+					for (int i = 0;i<objs.length;i++) {
+						Object[] objs2 = {objs[i][0],objs[i][1],objs[i][2]};
+						model.addRow(objs2);
+					}
+					
+					PrecioFinal.setText(controladorPanelPedidos.Total());
+					Aviso.setVisible(false);
+					
+				}
+				catch(Exception E) {
+					
+					System.out.println("No has añadido ningún producto");
+					Aviso.setVisible(true);
+				}
+				
+
+
 			}
 		};
 	}

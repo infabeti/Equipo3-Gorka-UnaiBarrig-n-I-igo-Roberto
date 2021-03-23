@@ -147,8 +147,7 @@ public class PanelRegistrar extends JPanel {
 						controladorPanelRegistrar.accionadoBottonVolverPanelRegistrar();
 					} catch (SQLException e) {
 						lblComprobacion.setVisible(true);
-						System.out
-								.println("Algo ha ido mal, es posible que el NIF de local no esté registrado en la BD");
+						System.out.println("Algo ha ido mal, es posible que el NIF de local no esté registrado en la BD o que el usuario ya esté registrado.");
 
 					}
 				}
@@ -176,7 +175,7 @@ public class PanelRegistrar extends JPanel {
 			return false;
 		}
 
-		if (contraseña.length() == 0) {
+		if (contraseña.length() <= 0) {
 
 			lblComprobacion.setVisible(true);
 			System.out.println("Contraseña sin rellenar");
