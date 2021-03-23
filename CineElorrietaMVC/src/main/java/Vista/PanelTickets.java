@@ -240,9 +240,17 @@ public class PanelTickets extends JPanel {
 				System.out.println("Ejecutando evento Boton Añadir");
 
 				try {
-					Object[] objs = controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(), (int) spinner.getValue());
+					Object[][] objs = controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(), (int) spinner.getValue());
 					model = (DefaultTableModel) table.getModel();
-					model.addRow(objs);
+					for(int i = model.getRowCount()-1;i>=0;i--) {
+						model.removeRow(i);
+					}
+					for (int i = 0;i<objs.length;i++) {
+						Object[] objs2 = {objs[i][0],objs[i][1],objs[i][2]};
+						model.addRow(objs2);
+					}
+					
+					
 					PrecioFinal.setText(controladorPanelTickets.Total());
 					Aviso.setVisible(false);
 					
@@ -250,6 +258,7 @@ public class PanelTickets extends JPanel {
 				catch(Exception E) {
 					
 					System.out.println("No has añadido ningún producto");
+					E.printStackTrace();
 					Aviso.setVisible(true);
 				}
 				
