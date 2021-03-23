@@ -23,12 +23,13 @@ public class ScriptsBDD {
 	public void registrarTicketFacts(String ntrans, String NIF, String Apellido, String Nombre, boolean factura)
 			throws SQLException {
 		Connection conexionbd = modelo.BDD.conexion();
-
+		boolean b = true;
 		if (factura == false) {
 
 			PreparedStatement insert = conexionbd.prepareStatement("insert into transaccion " + "values ()");
 			insert.executeUpdate();
-			insertarProductosElegidosTicket();
+			
+			insertarProductosElegidos(b);
 		} else if (factura == true) {
 			PreparedStatement ticket = conexionbd.prepareStatement("insert into transaccion " + "values ()");
 			ticket.executeUpdate();
@@ -40,7 +41,7 @@ public class ScriptsBDD {
 						+ "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""
 						+ NIF + "\")");
 				facturaIntro.executeUpdate();
-				insertarProductosElegidosTicket();
+				insertarProductosElegidos(b);
 			} else {
 				PreparedStatement comprador = conexionbd
 						.prepareStatement("insert into comprador (nifc,ApellidoC,NombreC) " + "values (\"" + NIF
@@ -51,14 +52,14 @@ public class ScriptsBDD {
 						+ "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""
 						+ NIF + "\")");
 				facturaIntro.executeUpdate();
-				insertarProductosElegidosTicket();
+				insertarProductosElegidos(b);
 			}
 			System.out.println("factura completada");
 		}
 	}
 
 	public void registrarPedido(String entrega) throws SQLException {
-
+		boolean b = false;
 		if(entrega.length()<=0) {
 			
 			entrega = "Local";
@@ -71,7 +72,7 @@ public class ScriptsBDD {
 				+ "values ((select ntrans from transaccion where ntrans = (select count(ntrans) from transaccion)),\""
 				+ entrega + "\")");
 		insert.executeUpdate();
-		insertarProductosElegidosPedido();
+		insertarProductosElegidos(b);
 		System.out.println("pedido completado");
 
 	}
@@ -113,29 +114,39 @@ public class ScriptsBDD {
 		return nombre;
 	}
 
-	public void insertarProductosElegidosTicket() throws SQLException {
+	
+	
+	public void insertarProductosElegidos(boolean b) throws SQLException{
+		
 		Connection conexionbd = modelo.BDD.conexion();
-		ProductosElegidos[] productoTicket = new ProductosElegidos[modelo.ticket.getLongitudArr()];
-		productoTicket = modelo.ticket.getProductos();
-		for (int i = 0; i < productoTicket.length; i++) {
-			PreparedStatement ntrans = conexionbd.prepareStatement("insert into contenido (NTrans,Codigo,Cantidad,PVP) "
-					+ " values((select count(NTrans) from transaccion),\"" + productoTicket[i].getCodigoProducto()
-					+ "\",\"" + productoTicket[i].getCantidad() + "\",\"" + productoTicket[i].getPrecio() + "\")");
-			ntrans.executeUpdate();
+		
+		//b == true (ticket)
+		//b == false (ticket)
+		
+		if (b==true) {
+			
+			ProductosElegidos[] productoTicket = new ProductosElegidos[modelo.ticket.getLongitudArr()];
+			productoTicket = modelo.ticket.getProductos();
+			for (int i = 0; i < productoTicket.length; i++) {
+				PreparedStatement ntrans = conexionbd.prepareStatement("insert into contenido (NTrans,Codigo,Cantidad,PVP) "
+						+ " values((select count(NTrans) from transaccion),\"" + productoTicket[i].getCodigoProducto()
+						+ "\",\"" + productoTicket[i].getCantidad() + "\",\"" + productoTicket[i].getPrecio() + "\")");
+				ntrans.executeUpdate();
+			}
 		}
-
+		else if (b==false) {
+			
+			ProductosElegidos[] productoPedido = new ProductosElegidos[modelo.pedidos.getLongitudArr()];
+			productoPedido = modelo.pedidos.getproductos();
+			for (int i = 0; i < productoPedido.length; i++) {
+				PreparedStatement ntrans = conexionbd.prepareStatement("insert into contenido (NTrans,Codigo,Cantidad,PVP) "
+						+ " values((select count(NTrans) from transaccion),\"" + productoPedido[i].getCodigoProducto()
+						+ "\",\"" + productoPedido[i].getCantidad() + "\",\"" + productoPedido[i].getPrecio() + "\")");
+				ntrans.executeUpdate();
+			}
+		}
 	}
 
-	public void insertarProductosElegidosPedido() throws SQLException {
-		Connection conexionbd = modelo.BDD.conexion();
-		ProductosElegidos[] productoPedido = new ProductosElegidos[modelo.pedidos.getLongitudArr()];
-		productoPedido = modelo.pedidos.getproductos();
-		for (int i = 0; i < productoPedido.length; i++) {
-			PreparedStatement ntrans = conexionbd.prepareStatement("insert into contenido (NTrans,Codigo,Cantidad,PVP) "
-					+ " values((select count(NTrans) from transaccion),\"" + productoPedido[i].getCodigoProducto()
-					+ "\",\"" + productoPedido[i].getCantidad() + "\",\"" + productoPedido[i].getPrecio() + "\")");
-			ntrans.executeUpdate();
-		}
 
-	}
+
 }
