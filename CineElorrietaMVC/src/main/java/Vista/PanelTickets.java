@@ -238,10 +238,23 @@ public class PanelTickets extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
-				Object[] objs = controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(), (int) spinner.getValue());
-				model = (DefaultTableModel) table.getModel();
-				model.addRow(objs);
-				PrecioFinal.setText(controladorPanelTickets.Total());
+
+				try {
+					Object[] objs = controladorPanelTickets.accionadoBottonAnadirPanelTickets(list_1.getSelectedValue(), (int) spinner.getValue());
+					model = (DefaultTableModel) table.getModel();
+					model.addRow(objs);
+					PrecioFinal.setText(controladorPanelTickets.Total());
+					Aviso.setVisible(false);
+					
+				}
+				catch(Exception E) {
+					
+					System.out.println("No has añadido ningún producto");
+					Aviso.setVisible(true);
+				}
+				
+
+
 			}
 		};
 	}
@@ -286,10 +299,16 @@ public class PanelTickets extends JPanel {
 			 return si = false;
 		} 
 		
+		if (table.getRowCount() > 0 && Factura.isSelected() == false) {
+			Aviso.setVisible(false);
+			return si = true;
+			
+		}
+		
 		
 		if (table.getRowCount() > 0 && Factura.isSelected() == true) {
 			
-			if (NIF.getText().length() == 0 || Nombre.getText().length() == 0 || Apellido.getText().length() == 0) {
+			if (NIF.getText().length() < 9 || Nombre.getText().length() <= 0 || Apellido.getText().length() <= 0) {
 				Aviso.setVisible(true);
 				return si = false;
 			}

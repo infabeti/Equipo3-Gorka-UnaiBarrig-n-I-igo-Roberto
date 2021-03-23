@@ -239,7 +239,7 @@ public class PanelPedidos extends JPanel {
 						controladorPanelPedidos.borrarTotalTickets();
 						controladorPanelPedidos.accionadoBottonVolverPanelPedidos();
 					} catch (SQLException e) {
-						e.printStackTrace();
+						System.out.println("No has añadido ningún producto");
 						
 					}
 
@@ -252,23 +252,20 @@ public class PanelPedidos extends JPanel {
 
 	// Este metodo comprueba si se ha selecionado 1 producto como minimo
 	public boolean comprobarCampos() {
-		boolean si = false;
-		if (table.getRowCount() == 0) {
+		boolean si = true;
+		if (table.getRowCount()<= 0) {
 			Aviso.setVisible(true);
-			 si = false;
+			 return si = false;
 		} 
 		
 		if (Localidad.getSelectedItem() == "Domicilio" && table.getRowCount() > 0) {
-			if (DireccionTexto.getText().length() == 0) {
+			if (DireccionTexto.getText().length() <= 0) {
 				Aviso.setVisible(true);
-				 si = false;
+				System.out.println("direcciontexto");
+				 return si = false;
 			
 			}
-		 else {
-			Aviso.setVisible(false);
-			 si = true;
-			 System.out.println("Si");
-		}
+			
 		} 
 		return si;
 	}
