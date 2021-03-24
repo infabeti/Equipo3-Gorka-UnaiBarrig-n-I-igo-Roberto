@@ -72,7 +72,7 @@ public class BDD {
 	}
 
 	public String getUsuString() {
-		String usu = usuario.toString();
+		String usu = usuario.getNombre();
 		return usu;
 	}
 
