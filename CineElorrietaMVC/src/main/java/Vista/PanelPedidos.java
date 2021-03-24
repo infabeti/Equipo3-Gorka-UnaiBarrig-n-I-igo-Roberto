@@ -3,6 +3,7 @@ package Vista;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,6 +11,8 @@ import javax.swing.JPanel;
 
 import Controlador.ControladorPanelPedidos;
 import Controlador.ControladorPanelTickets;
+import Modelo.Modelo;
+
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;
@@ -44,113 +47,113 @@ public class PanelPedidos extends JPanel {
 	JButton btnGuardar;
 	private JTextField cont;
 	private JButton btnEliminar;
-	
-	
+	private JTextField localtxt;
+
 	@SuppressWarnings("unchecked")
-	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos)
-	{
+	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos) throws SQLException {
 		this.controladorPanelPedidos = controladorPanelPedidos;
-		
+
 		setLayout(null);
-		
+
 		lblPedidos = new JLabel("Pedidos");
 		lblPedidos.setBounds(226, 25, 54, 14);
 		add(lblPedidos);
-		
+
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(281, 236, 89, 23);
+		btnEliminar.setBounds(283, 266, 89, 23);
+		Color cpanel = new Color(200, 194, 182);
+		btnEliminar.setFocusPainted(false);
+		btnEliminar.setBackground(cpanel);
 		add(btnEliminar);
-		
+
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(39, 326, 89, 23);
 		btnVolver.setFocusPainted(false);
-		Color cpanel = new Color(200,194,182);
 		btnVolver.setBackground(cpanel);
 		add(btnVolver);
-		
+
 		btnAnadir = new JButton("A\u00F1adir\r\n");
 		btnAnadir.setFocusPainted(false);
 		btnAnadir.setBackground(new Color(200, 194, 182));
-		btnAnadir.setBounds(110, 236, 86, 23);
+		btnAnadir.setBounds(106, 266, 86, 23);
 		add(btnAnadir);
-		
+
 		spinner = new JSpinner();
-		spinner.setBounds(217, 98, 41, 23);
+		spinner.setBounds(220, 161, 41, 23);
 		spinner.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 		add(spinner);
-		
+
 		list = new JList();
-		list.setBounds(39, 85, 157, 140);
+		list.setBounds(41, 115, 157, 140);
 		list.setModel(new AbstractListModel() {
 			String[] values = controladorPanelPedidos.stringProductos();
+
 			public int getSize() {
 				return values.length;
 			}
+
 			public Object getElementAt(int index) {
 				return values[index];
 			}
 		});
 		add(list);
-		
+
 		DireccionLabel = new JLabel("Direccion:\r\n");
-		DireccionLabel.setBounds(221, 60, 66, 14);
+		DireccionLabel.setBounds(283, 90, 66, 14);
 		DireccionLabel.setVisible(false);
 		add(DireccionLabel);
-		
+
 		Aviso = new JLabel("Rellene los campos");
-		Aviso.setBounds(335, 25, 115, 14);
+		Aviso.setBounds(193, 300, 115, 14);
 		Aviso.setVisible(false);
 		add(Aviso);
-		
+
 		DireccionTexto = new JTextField();
-		DireccionTexto.setBounds(281, 57, 86, 20);
+		DireccionTexto.setBounds(345, 87, 86, 20);
 		DireccionTexto.setVisible(false);
 		add(DireccionTexto);
 		DireccionTexto.setColumns(10);
 		String variableDeTexto;
-		variableDeTexto =DireccionTexto.getText();
-		
-		String col[] = {"Producto", "Cantidad", "Precio/Cant"};
+		variableDeTexto = DireccionTexto.getText();
+
+		String col[] = { "Producto", "Cantidad", "Precio/Cant" };
 		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
 		table = new JTable(tableModel);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				
-			},
-			new String[] {
-				"Producto", "Cantidad", "Precio/Cant"
-			}
-		));
-		
-		table.setBounds(283, 86, 165, 140);
+		table.setModel(new DefaultTableModel(new Object[][] {
+
+		}, new String[] { "Producto", "Cantidad", "Precio/Cant" }));
+
+		table.setBounds(285, 116, 165, 140);
 		add(table);
-		
+
 		PrecioFinal = new JLabel("0");
 		PrecioFinal.setBackground(Color.WHITE);
 		PrecioFinal.setForeground(Color.BLACK);
-		PrecioFinal.setBounds(404, 275, 46, 14);
+		PrecioFinal.setBounds(417, 301, 46, 14);
 		add(PrecioFinal);
-		
+
 		Localidad = new JComboBox();
 		Localidad.addItem("Local");
 		Localidad.addItem("Domicilio");
 		Localidad.setBackground(SystemColor.activeCaption);
 		Localidad.setToolTipText("");
-		Localidad.setBounds(104, 55, 86, 22);
+		Localidad.setBounds(42, 86, 86, 22);
 		add(Localidad);
-		
+
 		JLabel totalTexto = new JLabel("Total:");
-		totalTexto.setBounds(356, 275, 54, 14);
+		totalTexto.setBounds(369, 301, 54, 14);
 		add(totalTexto);
-		
+
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(374, 326, 89, 23);
+		btnGuardar.setFocusPainted(false);
+		btnGuardar.setBackground(cpanel);
 		add(btnGuardar);
-		
+
 		JLabel lblNewLabel = new JLabel("Numero de pedido:");
 		lblNewLabel.setBounds(27, 25, 115, 14);
 		add(lblNewLabel);
-		
+
 		cont = new JTextField();
 		cont.setEditable(false);
 		cont.setBounds(142, 22, 54, 20);
@@ -158,42 +161,44 @@ public class PanelPedidos extends JPanel {
 		cont.setColumns(10);
 		add(cont);
 		
-		
-		
+		localtxt = new JTextField();
+		localtxt.setEditable(false);
+		localtxt.setColumns(10);
+		localtxt.setBounds(308, 22, 115, 20);
+		localtxt.setText(controladorPanelPedidos.getNombreLocal());
+		add(localtxt);
+
 		Localidad.addActionListener(new ActionListener() {
-			   @Override
-			   public void actionPerformed(ActionEvent e) {
-				  String Direccion= variableDeTexto;
-				  if (Localidad.getSelectedItem() == "Local") {
-					  DireccionTexto.setVisible(false);
-					  DireccionLabel.setVisible(false);
-					}else if (Localidad.getSelectedItem() == "Domicilio") {
-						DireccionTexto.setVisible(true);
-						DireccionLabel.setVisible(true);
-					}
-			   }
-			});
-		
-		
-		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String Direccion = variableDeTexto;
+				if (Localidad.getSelectedItem() == "Local") {
+					DireccionTexto.setVisible(false);
+					DireccionLabel.setVisible(false);
+				} else if (Localidad.getSelectedItem() == "Domicilio") {
+					DireccionTexto.setVisible(true);
+					DireccionLabel.setVisible(true);
+				}
+			}
+		});
+
 		initializeEvents();
 	}
-	
+
 	private void initializeEvents() {
 		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelPedidos));
 		this.btnAnadir.addActionListener(listenerBotonAnadir(this.controladorPanelPedidos));
 		this.btnGuardar.addActionListener(listenerBotonGuardar(this.controladorPanelPedidos));
 		this.btnEliminar.addActionListener(listenerBotonEliminar(this.controladorPanelPedidos));
 	}
-	
+
 	private ActionListener listenerBotonEliminar(ControladorPanelPedidos controladorPanelPedidos) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
-				controladorPanelPedidos.accionadoBottonEliminarPanelPedidos(table.getSelectedRow());
 				DefaultTableModel tablemodel = (DefaultTableModel) table.getModel();
 				tablemodel.removeRow(table.getSelectedRow());
-				String total = 	controladorPanelPedidos.accionadoBottonEliminarTotal();
+				String total = controladorPanelPedidos.accionadoBottonEliminarTotal();
 				PrecioFinal.setText(total);
 			}
 		};
@@ -204,52 +209,82 @@ public class PanelPedidos extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
 				controladorPanelPedidos.accionadoBottonVolverPanelPedidos();
+				controladorPanelPedidos.borrarTotalTickets();
 			}
 		};
 	}
+
 	private ActionListener listenerBotonAnadir(ControladorPanelPedidos controladorPanelPedidos) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Añadir");
-				String[] ProductoSeleccionado = controladorPanelPedidos.accionadoBottonAnadirPanelPedidos(list.getSelectedValue(),(int) spinner.getValue());
-				Object[] objs = {ProductoSeleccionado[0],ProductoSeleccionado[1],ProductoSeleccionado[2]};
-				model = (DefaultTableModel) table.getModel();
-				model.addRow(objs);
-				PrecioFinal.setText(ProductoSeleccionado[3]);
+
+				try {
+					Object[][] objs = controladorPanelPedidos.accionadoBottonAnadirPanelTickets(list.getSelectedValue(), (int) spinner.getValue());
+					model = (DefaultTableModel) table.getModel();
+					for(int i = model.getRowCount()-1;i>=0;i--) {
+						model.removeRow(i);
+					}
+					for (int i = 0;i<objs.length;i++) {
+						Object[] objs2 = {objs[i][0],objs[i][1],objs[i][2]};
+						model.addRow(objs2);
+					}
+					
+					PrecioFinal.setText(controladorPanelPedidos.Total());
+					Aviso.setVisible(false);
+					
+				}
+				catch(Exception E) {
+					
+					System.out.println("No has añadido ningún producto");
+					Aviso.setVisible(true);
+				}
+				
+
+
 			}
 		};
 	}
-	
+
 	private ActionListener listenerBotonGuardar(ControladorPanelPedidos controladorPanelPedidos) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
 				boolean comprobar = comprobarCampos();
 				if (comprobar == true) {
-					controladorPanelPedidos.setContador(cont.getText());
+					try {
+						controladorPanelPedidos.insertPedido(DireccionTexto.getText());
+						controladorPanelPedidos.borrarTotalTickets();
+						controladorPanelPedidos.accionadoBottonVolverPanelPedidos();
+					} catch (SQLException e) {
+						System.out.println("No has añadido ningún producto");
+						
+					}
+
 				}
+				
+				
 			}
 		};
 	}
-	
-	//Este metodo comprueba si se ha selecionado 1 producto como minimo
-		public boolean comprobarCampos() {
-			boolean si = false;
-			if(table.getRowCount() == 0 ) {
+
+	// Este metodo comprueba si se ha selecionado 1 producto como minimo
+	public boolean comprobarCampos() {
+		boolean si = true;
+		if (table.getRowCount()<= 0) {
+			Aviso.setVisible(true);
+			 return si = false;
+		} 
+		
+		if (Localidad.getSelectedItem() == "Domicilio" && table.getRowCount() > 0) {
+			if (DireccionTexto.getText().length() <= 0) {
 				Aviso.setVisible(true);
-			} 
-			else if (Localidad.getSelectedItem() == "Domicilio" && table.getRowCount() > 0) {
-					if (DireccionTexto.getText().length()==0) {
-						Aviso.setVisible(true);
-					}else {
-						Aviso.setVisible(false);
-						return si = true;
-					}
-			}else {
-				Aviso.setVisible(false);
-				return si = true;
+				System.out.println("direcciontexto");
+				 return si = false;
+			
 			}
-			return si;
-			} 
+			
+		} 
+		return si;
 	}
-	
+}

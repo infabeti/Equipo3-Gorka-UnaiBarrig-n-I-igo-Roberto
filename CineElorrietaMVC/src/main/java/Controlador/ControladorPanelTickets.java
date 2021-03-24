@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import javax.swing.JTextArea;
 
 import Modelo.BDD;
@@ -17,50 +19,79 @@ public class ControladorPanelTickets {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelTickets panelTickets;
-	
+	private String nombreLocal = null;
+
 	public ControladorPanelTickets() {
 	}
+
 	public ControladorPanelTickets(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
-		this.controlador = controlador;	
+		this.controlador = controlador;
 	}
-	
-	public void mostrarPanelTickets() {
+
+	public void mostrarPanelTickets() throws SQLException {
 		this.panelTickets = new PanelTickets(this);
 		this.vista.mostrarPanel(this.panelTickets);
 	}
-	
+
 	public void accionadoBottonVolverPanelTickets() {
 		this.controlador.navegarPanelBienvenida();
 	}
-	public String[] accionadoBottonAnadirPanelTickets(Object object, int cant) {
-		String[] Separado =  modelo.productos.separar(object);
-		modelo.ticket.setProductos(Separado[0],Separado[1],cant);
-		String total = modelo.ticket.getTotal();
-		String precioCant = modelo.ticket.getCant();
-		String Cant1 = String.valueOf(cant);
-		String[] todo = {Separado[0],Cant1,precioCant,total};
-		return todo; 
+
+	public Object[][] accionadoBottonAnadirPanelTickets(Object selec, int cant) {
+		String[] Separado = modelo.productos.separar(selec);
+		 ProductosElegidos[] productos= modelo.ticket.setProductos(Separado[0], Separado[1], Separado[2], cant);
+		 Object [][] objs = new Object[productos.length][3];
+		
+		 for(int i = 0; i<productos.length;i++) {
+			 String nombre = productos[i].getNombre();
+			 double cant1 = productos[i].getCantidad();
+			 double PrecioCant = productos[i].getPrecioCantidad();
+			 objs[i][0]=nombre;
+			 objs[i][1]=cant1;
+			 objs[i][2]=PrecioCant;
+		 }
+		 return objs;
 	}
-	public String accionadoBottonEliminarTotal() {
-		return modelo.ticket.eliminarTotal();
-	}	
-	public String[] stringProductos(){
-		return modelo.BDD.convertirArrayProductosString();
-	}
-	public String getContador() {
-		return modelo.Contador.getContador();
+	
+
+	public String Total() {
+		return modelo.ticket.getTotal();
 	}
 
-	public void setContador(String cont) {
-		modelo.Contador.setContador(cont);
+	public String accionadoBottonEliminarTotal() {
+		return modelo.ticket.eliminarTotal();
 	}
+
+	public String[] stringProductos() throws SQLException {
+		return modelo.BDD.convertirArrayProductosString();
+	}
+
+	public String getContador() throws SQLException {
+		String numero = modelo.ScriptsBDD.NTrans();
+		int numero1 = Integer.parseInt(numero);
+		numero1++;
+		String contador = String.valueOf(numero1);
+
+		return contador;
+	}
+
 	public String getFecha() {
 		return modelo.ticket.getFecha();
 	}
-	public void accionadoBottonEliminarPanelTickets(int i) {
-		modelo.ticket.setArrSelec(i);
+
+	public void insertTickets(String Ntrans, String NIF, String Nombre, String Apellido, boolean factura)
+			throws SQLException {
+		modelo.ScriptsBDD.registrarTicketFacts(Ntrans, NIF, Nombre, Apellido, factura);
+		
 	}
 
+	public void borrarTotalTickets() {
+		modelo.ticket.borrarTotal();
+	}
+	public String getNombreLocal() throws SQLException {
+		String usuArr = modelo.BDD.getUsuString();
+		return modelo.ScriptsBDD.getNombreLocal(usuArr);
+	}
 }
