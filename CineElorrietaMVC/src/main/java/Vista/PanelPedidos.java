@@ -67,7 +67,7 @@ public class PanelPedidos extends JPanel {
 		add(btnEliminar);
 
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(39, 326, 89, 23);
+		btnVolver.setBounds(41, 368, 89, 23);
 		btnVolver.setFocusPainted(false);
 		btnVolver.setBackground(cpanel);
 		add(btnVolver);
@@ -104,7 +104,7 @@ public class PanelPedidos extends JPanel {
 		add(DireccionLabel);
 
 		Aviso = new JLabel("Rellene los campos");
-		Aviso.setBounds(193, 300, 115, 14);
+		Aviso.setBounds(191, 331, 115, 14);
 		Aviso.setVisible(false);
 		add(Aviso);
 
@@ -145,7 +145,7 @@ public class PanelPedidos extends JPanel {
 		add(totalTexto);
 
 		btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(374, 326, 89, 23);
+		btnGuardar.setBounds(376, 368, 89, 23);
 		btnGuardar.setFocusPainted(false);
 		btnGuardar.setBackground(cpanel);
 		add(btnGuardar);
@@ -195,11 +195,19 @@ public class PanelPedidos extends JPanel {
 	private ActionListener listenerBotonEliminar(ControladorPanelPedidos controladorPanelPedidos) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Ejecutando evento Boton Volver");
-				DefaultTableModel tablemodel = (DefaultTableModel) table.getModel();
-				tablemodel.removeRow(table.getSelectedRow());
-				String total = controladorPanelPedidos.accionadoBottonEliminarTotal();
-				PrecioFinal.setText(total);
+				try {
+					
+					System.out.println("Ejecutando evento Boton eliminar");
+					DefaultTableModel tablemodel = (DefaultTableModel) table.getModel();
+					tablemodel.removeRow(table.getSelectedRow());
+					String total = controladorPanelPedidos.accionadoBottonEliminarTotal();
+					PrecioFinal.setText(total);
+				}
+				catch(Exception E) {
+					
+					System.out.println("Tienes que seleccionar un producto");
+				}
+				
 			}
 		};
 	}

@@ -54,28 +54,28 @@ public class PanelTickets extends JPanel {
 		add(lblTickets);
 
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(33, 423, 89, 23);
+		btnVolver.setBounds(33, 411, 89, 23);
 		btnVolver.setFocusPainted(false);
 		Color cpanel = new Color(200, 194, 182);
 		btnVolver.setBackground(cpanel);
 		add(btnVolver);
 
 		btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(367, 423, 89, 23);
+		btnGuardar.setBounds(367, 411, 89, 23);
 		btnGuardar.setFocusPainted(false);
 
 		btnGuardar.setBackground(cpanel);
 		add(btnGuardar);
 
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(265, 315, 89, 23);
+		btnEliminar.setBounds(263, 340, 89, 23);
 		btnEliminar.setFocusPainted(false);
 
 		btnEliminar.setBackground(cpanel);
 		add(btnEliminar);
 
 		list_1 = new JList();
-		list_1.setBounds(33, 205, 155, 141);
+		list_1.setBounds(33, 193, 155, 141);
 		list_1.setModel(new AbstractListModel() {
 			String[] values = controladorPanelTickets.stringProductos();
 
@@ -90,14 +90,14 @@ public class PanelTickets extends JPanel {
 		add(list_1);
 
 		spinner = new JSpinner();
-		spinner.setBounds(198, 202, 41, 23);
+		spinner.setBounds(198, 190, 41, 23);
 		spinner.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 		add(spinner);
 
 		PrecioFinal = new JLabel("0");
 		PrecioFinal.setBackground(Color.WHITE);
 		PrecioFinal.setForeground(Color.BLACK);
-		PrecioFinal.setBounds(398, 297, 46, 14);
+		PrecioFinal.setBounds(375, 374, 46, 14);
 		add(PrecioFinal);
 
 		btnAnadir = new JButton("Añadir");
@@ -106,7 +106,7 @@ public class PanelTickets extends JPanel {
 
 			}
 		});
-		btnAnadir.setBounds(265, 293, 89, 23);
+		btnAnadir.setBounds(99, 340, 89, 23);
 		btnAnadir.setFocusPainted(false);
 		btnAnadir.setBackground(cpanel);
 		add(btnAnadir);
@@ -116,7 +116,7 @@ public class PanelTickets extends JPanel {
 		add(lblNumeroDeCompra);
 
 		JLabel lblTotal = new JLabel("Total:");
-		lblTotal.setBounds(364, 297, 115, 14);
+		lblTotal.setBounds(341, 374, 115, 14);
 		add(lblTotal);
 
 		String col[] = { "Producto", "Cantidad", "Precio/Cant" };
@@ -126,7 +126,7 @@ public class PanelTickets extends JPanel {
 
 		}, new String[] { "Producto", "Cantidad", "Precio/Cant" }));
 
-		table.setBounds(263, 206, 165, 80);
+		table.setBounds(263, 194, 165, 140);
 		add(table);
 
 		Factura = new JCheckBox("Factura");
@@ -289,11 +289,19 @@ public class PanelTickets extends JPanel {
 	private ActionListener listenerBotonEliminar(ControladorPanelTickets controladorPanelTickets) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Ejecutando evento Boton Volver");
-				DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-				modelo.removeRow(table.getSelectedRow());
-				String total = controladorPanelTickets.accionadoBottonEliminarTotal();
-				PrecioFinal.setText(total);
+				try {
+					
+					System.out.println("Ejecutando evento Boton Eliminar");
+					DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+					modelo.removeRow(table.getSelectedRow());
+					String total = controladorPanelTickets.accionadoBottonEliminarTotal();
+					PrecioFinal.setText(total);
+				}
+				catch(Exception E) {
+					
+					System.out.println("Tienes que seleccionar un producto");
+				}
+				
 			}
 		};
 	}
