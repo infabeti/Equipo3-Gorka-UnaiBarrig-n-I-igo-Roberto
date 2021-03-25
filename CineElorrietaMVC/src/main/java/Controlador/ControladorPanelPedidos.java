@@ -83,6 +83,7 @@ public class ControladorPanelPedidos {
 	
 public String getNombreLocal() throws SQLException {
 	String usuArr = modelo.BDD.getUsuString();
-	return modelo.ScriptsBDD.getNombreLocal(usuArr);
+	String [] usuarioArr= modelo.ArraysUtils.separarParaUsu(usuArr);
+	return modelo.ScriptsBDD.getNombreLocal(usuarioArr[1]);
 	}
 }
